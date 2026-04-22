@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Truos — AI Training for Commercial Teams</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="content.js"></script>
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="landing.jsx"></script>
+<script type="text/babel" src="course.jsx"></script>
+<script type="text/babel" src="lesson.jsx"></script>
+<script type="text/babel" src="admin.jsx"></script>
+
+<script type="text/babel">
+const TWEAKS = /*EDITMODE-BEGIN*/{
+  "accent": "#D4F547",
+  "theme": "dark",
+  "gamification": true
+}/*EDITMODE-END*/;
+
+const ACCENT_OPTIONS = [
+  { label: 'Lime', value: '#D4F547' },
+  { label: 'Sky', value: '#7DD3FC' },
+  { label: 'Coral', value: '#FF8566' },
+  { label: 'Violet', value: '#C4B5FD' },
+];
+
+function App() {
+  const [route, setRoute] = React.useState(() => {
+    try { return JSON.parse(localStorage.getItem('truos_route')) || { name: 'landing' }; } catch { return { name: 'landing' }; }
+  });
+  const [tweaks, setTweaks] = React.useState(TWEAKS);
+  const [tweaksOpen, setTweaksOpen] = React.useState(false);
+
+  const onNav = (name, params = {}) => {
+    const r = { name, ...params };
+    setRoute(r);
+    localStorage.setItem('truos_route', JSON.stringify(r));
+    window.scrollTo(0, 0);
+  };
+
+  // Apply tweaks
+  React.useEffect(() => {
+    document.documentElement.dataset.theme = tweaks.theme;
+    document.documentElement.style.setProperty('--accent', tweaks.accent);
+  }, [tweaks]);
+
+  // Edit mode wiring
+  React.useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === '__activate_edit_mode') setTweaksOpen(true);
+      if (e.data?.type === '__deactivate_edit_mode') setTweaksOpen(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  const updateTweak = (k, v) => {
+    const next = { ...tweaks, [k]: v };
+    setTweaks(next);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [k]: v } }, '*');
+  };
+
+  let screen;
+  switch (route.name) {
+    case 'course':          screen = <CourseHome courseId={route.courseId || 101} onNav={onNav}/>; break;
+    case 'lesson':          screen = <Lesson courseId={route.courseId || 101} moduleIdx={route.moduleIdx || 0} lessonIdx={route.lessonIdx || 0} onNav={onNav}/>; break;
+    case 'lesson-complete': screen = <LessonComplete courseId={route.courseId || 101} lessonTitle={route.lessonTitle} onNav={onNav}/>; break;
+    case 'certificate':     screen = <Certificate courseId={route.courseId || 101} onNav={onNav}/>; break;
+    case 'admin':           screen = <AdminDash onNav={onNav}/>; break;
+    case 'checkout':        screen = <Checkout onNav={onNav} plan={route.plan || 'Team'}/>; break;
+    default:                screen = <Landing onNav={onNav}/>;
+  }
+
+  return (
+    <>
+      {screen}
+      {/* Dev jump bar */}
+      <DevBar route={route} onNav={onNav}/>
+      {tweaksOpen && (
+        <div className="tweaks">
+          <div className="tweaks-title">
+            <span>Tweaks</span>
+            <span className="mono" style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.08em' }}>TRUOS</span>
+          </div>
+          <div className="tweak-row">
+            <span className="tweak-label">Accent color</span>
+            <div className="tweak-swatches">
+              {ACCENT_OPTIONS.map(o => (
+                <div key={o.value} className={`swatch ${tweaks.accent === o.value ? 'on' : ''}`}
+                  style={{ background: o.value }}
+                  onClick={() => updateTweak('accent', o.value)}/>
+              ))}
+            </div>
+          </div>
+          <div className="tweak-row">
+            <span className="tweak-label">Theme</span>
+            <div className={`toggle ${tweaks.theme === 'light' ? 'on' : ''}`}
+              onClick={() => updateTweak('theme', tweaks.theme === 'dark' ? 'light' : 'dark')}/>
+          </div>
+          <div className="tweak-row">
+            <span className="tweak-label">Gamification</span>
+            <div className={`toggle ${tweaks.gamification ? 'on' : ''}`}
+              onClick={() => updateTweak('gamification', !tweaks.gamification)}/>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+function DevBar({ route, onNav }) {
+  const jumps = [
+    { name: 'landing', label: 'Landing' },
+    { name: 'course', label: 'Course home', params: { courseId: 101 } },
+    { name: 'lesson', label: 'Lesson', params: { courseId: 101, moduleIdx: 0, lessonIdx: 0 } },
+    { name: 'lesson-complete', label: 'Complete' },
+    { name: 'certificate', label: 'Certificate' },
+    { name: 'admin', label: 'Admin' },
+    { name: 'checkout', label: 'Checkout' },
+  ];
+  return (
+    <div style={{
+      position: 'fixed', bottom: 16, left: '50%', transform: 'translateX(-50%)',
+      display: 'flex', gap: 4, padding: 4,
+      background: 'color-mix(in oklab, var(--bg-elevated) 92%, transparent)',
+      backdropFilter: 'blur(14px)',
+      border: '1px solid var(--border-strong)',
+      borderRadius: 999,
+      boxShadow: 'var(--shadow)',
+      zIndex: 100,
+      fontSize: 12,
+    }}>
+      {jumps.map(j => (
+        <button key={j.name}
+          onClick={() => onNav(j.name, j.params || {})}
+          style={{
+            padding: '6px 12px',
+            borderRadius: 999,
+            background: route.name === j.name ? 'var(--accent)' : 'transparent',
+            color: route.name === j.name ? 'var(--accent-ink)' : 'var(--text-muted)',
+            fontWeight: route.name === j.name ? 600 : 400,
+            fontSize: 12,
+            transition: 'all 0.15s',
+          }}
+        >{j.label}</button>
+      ))}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
