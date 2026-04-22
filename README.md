@@ -1,0 +1,2 @@
+# Truos
+Ai Training Program
