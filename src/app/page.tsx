@@ -67,7 +67,7 @@ function CourseCatalog() {
             <h2 style={{ maxWidth: 640 }}>Four courses. Designed to be <span className="serif" style={{ fontStyle: 'italic' }}>finished</span>.</h2>
           </div>
           <div style={{ color: 'var(--text-muted)', maxWidth: 360, fontSize: 15 }}>
-            Each course is a series of 5–10 minute lessons. Read, engage, quiz. Earn a certificate at the end.
+            Each course is a series of 2–3 minute lessons. Read, engage, quiz. Earn a certificate at the end.
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
@@ -136,10 +136,10 @@ function Pillars() {
 
 function Pricing() {
   const cards = [
-    { id: 101, code: 'AI·101', name: 'Getting Started with AI',  price: 0,    priceLabel: 'Free',    cta: 'Start free',        lessons: 20, hours: 2.5, href: '/courses/101/0/0' },
-    { id: 102, code: 'AI·102', name: 'Practical Prompting',      price: 499,  priceLabel: '$499',    cta: 'Unlock for $499',   lessons: 24, hours: 4,   href: '/checkout?plan=AI·102' },
-    { id: 103, code: 'AI·103', name: 'AI at Work',               price: 999,  priceLabel: '$999',    cta: 'Unlock for $999',   lessons: 32, hours: 6,   href: '/checkout?plan=AI·103' },
-    { id: 104, code: 'AI·104', name: 'The Truos Capstone',       price: 1499, priceLabel: '$1,499',  cta: 'Unlock for $1,499', lessons: 40, hours: 10,  featured: true, href: '/checkout?plan=AI·104' },
+    { id: 101, code: 'AI·101', name: 'Getting Started with AI',  price: 0,    priceLabel: 'Free',    cta: 'Start free',        lessons: 20, hours: 1,   href: '/courses/101/0/0' },
+    { id: 102, code: 'AI·102', name: 'Practical Prompting',      price: 499,  priceLabel: '$499',    cta: 'Unlock for $499',   lessons: 24, hours: 1.5, href: '/checkout?plan=AI·102' },
+    { id: 103, code: 'AI·103', name: 'AI at Work',               price: 999,  priceLabel: '$999',    cta: 'Unlock for $999',   lessons: 32, hours: 2,   href: '/checkout?plan=AI·103' },
+    { id: 104, code: 'AI·104', name: 'The Truos Capstone',       price: 1499, priceLabel: '$1,499',  cta: 'Unlock for $1,499', lessons: 40, hours: 2.5, featured: true, href: '/checkout?plan=AI·104' },
   ];
   return (
     <section id="pricing" style={{ padding: '96px 0', borderTop: '1px solid var(--border)' }}>

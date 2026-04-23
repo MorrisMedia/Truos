@@ -4,7 +4,7 @@ export const BASE_COURSES: Course[] = [
   {
     id: 101, code: 'AI·101', title: 'Getting Started with AI',
     subtitle: 'No jargon, no coding. What AI actually is, how to talk to it, and how to use it without embarrassing yourself.',
-    lessons: 20, hours: 2.5, tier: 'free', suite: 'base', price: 0,
+    lessons: 20, hours: 1, tier: 'free', suite: 'base', price: 0,
     modules: [
       { name: 'What is AI, really?',            lessons: ['What is AI?', "Kinds of AI you'll meet", "What's a chatbot?", 'Signing up: picking a tool'] },
       { name: 'How AI thinks (without the math)', lessons: ["It's predicting words", 'Trained once, used forever', 'Why AI confidently makes stuff up', "What AI can't do"] },
@@ -16,7 +16,7 @@ export const BASE_COURSES: Course[] = [
   {
     id: 102, code: 'AI·102', title: 'Practical Prompting',
     subtitle: 'Prompt patterns, research, writing, meetings, data. The daily toolkit.',
-    lessons: 24, hours: 4, tier: 'paid', suite: 'base', price: 499,
+    lessons: 24, hours: 1.5, tier: 'paid', suite: 'base', price: 499,
     modules: [
       { name: 'Anatomy of a prompt',          lessons: ['Instruction, context, examples, format', 'The role trick', "Show, don't just tell", 'Ask for the format you want'] },
       { name: 'Writing with AI',              lessons: ['Drafting from a blank page', 'Editing and shortening', 'Adjusting tone', 'Keeping your voice'] },
@@ -29,7 +29,7 @@ export const BASE_COURSES: Course[] = [
   {
     id: 103, code: 'AI·103', title: 'AI at Work',
     subtitle: 'Sales, marketing, CS, ops, finance — real playbooks for commercial teams.',
-    lessons: 32, hours: 6, tier: 'paid', suite: 'base', price: 999,
+    lessons: 32, hours: 2, tier: 'paid', suite: 'base', price: 999,
     modules: [
       { name: 'Sales motions',               lessons: ['Account research in 3 minutes', 'Pre-call prep', 'Handling objections', 'Crafting follow-ups', 'Keeping your CRM clean', "What AI can't do for sales"] },
       { name: 'Marketing',                   lessons: ['Campaign brief generator', 'Copy variants at scale', 'Brand voice guardrails', 'Competitive scans', 'Tracking what worked'] },
@@ -42,7 +42,7 @@ export const BASE_COURSES: Course[] = [
   {
     id: 104, code: 'AI·104', title: 'The Truos Capstone',
     subtitle: 'Design, ship, and measure an AI workflow your team will actually use.',
-    lessons: 40, hours: 10, tier: 'paid', suite: 'base', price: 1499, capstone: true,
+    lessons: 40, hours: 2.5, tier: 'paid', suite: 'base', price: 1499, capstone: true,
     modules: [
       { name: 'Identify leverage',           lessons: ['Workflow inventory', 'Sizing impact', 'Choosing a wedge', 'Stakeholder alignment', 'Scoping ruthlessly', 'Red flags: when to walk away', 'The capstone brief'] },
       { name: 'Design the workflow',         lessons: ['Interfaces and handoffs', 'Human-in-the-loop patterns', 'Evals and guardrails', 'Cost modeling', 'Writing the spec', 'Mapping failure modes', 'Review with stakeholders'] },
@@ -58,7 +58,7 @@ export const PLUS_COURSES: Course[] = [
   {
     id: 201, code: 'CPLT·101', title: 'Copilot 101',
     subtitle: 'Microsoft Copilot from zero. Approachable for anyone at a company using Microsoft 365.',
-    lessons: 20, hours: 2.5, tier: 'paid', suite: 'plus', price: 249,
+    lessons: 20, hours: 1, tier: 'paid', suite: 'plus', price: 249,
     modules: [
       { name: "What's Copilot?",              lessons: ['What is Microsoft Copilot?', 'Where Copilot lives: the apps', 'Signing in and getting started', 'Your first conversation with Copilot', 'Copilot vs ChatGPT: when to use which'] },
       { name: 'Copilot in everyday work',     lessons: ['Drafting in Word', 'Triaging Outlook', 'Summarizing Teams meetings', 'Generating PowerPoint', 'Searching across OneDrive'] },
@@ -69,7 +69,7 @@ export const PLUS_COURSES: Course[] = [
   {
     id: 202, code: 'CPLT·EXL', title: 'Copilot + Excel',
     subtitle: 'Copilot inside Excel for data, analysis, and formulas. Assumes Excel basics; teaches Copilot-in-Excel.',
-    lessons: 12, hours: 1.5, tier: 'paid', suite: 'plus', price: 249,
+    lessons: 12, hours: 1, tier: 'paid', suite: 'plus', price: 249,
     modules: [
       { name: 'Copilot in Excel basics',      lessons: ['Opening the Copilot pane', 'Plain-English asks', 'Inserting formulas from a sentence', 'Reading AI-generated explanations'] },
       { name: 'Cleaning & analysis',          lessons: ['Normalizing messy data', 'Natural-language filters', 'Pivot tables via Copilot', 'Charts from prompts'] },

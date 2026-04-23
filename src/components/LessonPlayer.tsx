@@ -160,7 +160,7 @@ export function LessonPlayer({ course, lesson, userId }: { course: Course; lesso
       }}>
         <div style={{ maxWidth: 720, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div className="mono" style={{ fontSize: 11, color: 'var(--text-dim)', letterSpacing: '0.08em' }}>
-            {step.type === 'read' ? '3 MIN READ' : step.type === 'engage' ? 'INTERACTIVE' : 'QUICK CHECK'}
+            {step.type === 'read' ? '1 MIN READ' : step.type === 'engage' ? 'INTERACTIVE' : 'QUICK CHECK'}
           </div>
           {step.type === 'read' ? (
             <button className="btn btn-primary btn-lg" onClick={advance}>Continue {Icons.arrow}</button>
