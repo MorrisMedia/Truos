@@ -184,7 +184,7 @@ function Pricing() {
           <div>
             <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 8 }}>SAVE $500 · FULL BUNDLE</div>
             <div style={{ fontSize: 22, letterSpacing: '-0.015em', marginBottom: 4 }}>AI·102 + AI·103 + AI·104</div>
-            <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>All three paid courses, lifetime. 96 lessons, ~20h total.</div>
+            <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>All three paid courses, lifetime. 96 lessons, ~6h total.</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
             <div style={{ textAlign: 'right' }}>
