@@ -2,7 +2,14 @@
 node_modules/
 .env
 .env.local
+.env.production
+.env.local.truos
 *.log
 .vscode/
 .idea/
 .vercel
+.next/
+out/
+next-env.d.ts
+prisma/*.db
+prisma/*.db-journal

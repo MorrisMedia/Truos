@@ -1,0 +1,150 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String?
+  passwordHash  String
+  role          String   @default("member") // 'member' | 'staff'
+  orgId         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  org           Organization?      @relation(fields: [orgId], references: [id])
+  progress      LessonProgress[]
+  certificates  Certificate[]
+  purchases     Purchase[]
+  entitlements  CourseEntitlement[]
+  codeRedemptions CompCodeRedemption[]
+
+  @@map("truos_users")
+}
+
+model Organization {
+  id                String   @id @default(cuid())
+  name              String
+  stripeCustomerId  String?  @unique
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  members       User[]
+  subscription  Subscription?
+
+  @@map("truos_orgs")
+}
+
+model Subscription {
+  id                   String   @id @default(cuid())
+  orgId                String   @unique
+  stripeSubscriptionId String   @unique
+  stripePriceId        String
+  seats                Int
+  status               String   // 'active' | 'past_due' | 'canceled' | 'trialing'
+  currentPeriodEnd     DateTime
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  org                  Organization @relation(fields: [orgId], references: [id])
+
+  @@map("truos_subscriptions")
+}
+
+model Purchase {
+  id                      String   @id @default(cuid())
+  userId                  String
+  courseIds               Int[]
+  amount                  Int      // cents
+  currency                String   @default("usd")
+  stripePaymentIntentId   String?  @unique
+  stripeCheckoutSessionId String?  @unique
+  status                  String   // 'pending' | 'completed' | 'refunded'
+  paidAt                  DateTime?
+  createdAt               DateTime @default(now())
+
+  user                    User     @relation(fields: [userId], references: [id])
+
+  @@map("truos_purchases")
+}
+
+model CourseEntitlement {
+  id         String    @id @default(cuid())
+  userId     String
+  courseId   Int
+  source     String    // 'purchase' | 'comp_code' | 'manual_grant' | 'subscription'
+  sourceId   String?
+  grantedAt  DateTime  @default(now())
+  expiresAt  DateTime?
+
+  user       User      @relation(fields: [userId], references: [id])
+
+  @@unique([userId, courseId, source])
+  @@index([userId])
+  @@map("truos_entitlements")
+}
+
+model CompCode {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  label       String?
+  courseIds   Int[]
+  maxUses     Int?
+  uses        Int      @default(0)
+  expiresAt   DateTime?
+  createdBy   String
+  createdAt   DateTime @default(now())
+  disabledAt  DateTime?
+
+  redemptions CompCodeRedemption[]
+
+  @@map("truos_comp_codes")
+}
+
+model CompCodeRedemption {
+  id         String   @id @default(cuid())
+  codeId     String
+  userId     String
+  redeemedAt DateTime @default(now())
+
+  code       CompCode @relation(fields: [codeId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@unique([codeId, userId])
+  @@map("truos_code_redemptions")
+}
+
+model LessonProgress {
+  id          String   @id @default(cuid())
+  userId      String
+  courseId    Int
+  moduleIdx   Int
+  lessonIdx   Int
+  completedAt DateTime @default(now())
+  score       Int      // 0-100
+
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, courseId, moduleIdx, lessonIdx])
+  @@index([userId, courseId])
+  @@map("truos_progress")
+}
+
+model Certificate {
+  id               String   @id @default(cuid())
+  userId           String
+  courseId         Int
+  issuedAt         DateTime @default(now())
+  verificationHash String   @unique
+
+  user             User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, courseId])
+  @@map("truos_certificates")
+}
