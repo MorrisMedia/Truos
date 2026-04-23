@@ -4006,7 +4006,8 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "The reasons behind the score and what changed since last time.",
-            "correct": true
+            "correct": true,
+            "feedback": "Exactly. The score is a signal; the reasons + delta tell the CSM whether to act, and how. That's what turns health scoring into a decision tool."
           },
           {
             "text": "The color coding.",
@@ -6140,11 +6141,13 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Storage.",
-            "correct": false
+            "correct": false,
+            "feedback": "Storage costs are small relative to inference and human review. Real bills stack up from tokens and reviewer time, not disk."
           },
           {
             "text": "Latency.",
-            "correct": false
+            "correct": false,
+            "feedback": "Latency is a UX concern, not a cost driver — you'd add caching or change models, not pay more. Human review minutes are the sneaky line item."
           }
         ]
       },
@@ -6569,11 +6572,13 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Synthetic data is expensive.",
-            "correct": false
+            "correct": false,
+            "feedback": "Synthetic data is usually cheap. The point isn't cost — real data exposes the weirdness (typos, half-filled forms, edge cases) you'd never invent."
           },
           {
             "text": "Compliance requires it.",
-            "correct": false
+            "correct": false,
+            "feedback": "Compliance usually pushes toward synthetic or redacted data, not real. Test with real because real contains the mess you haven't imagined."
           }
         ]
       },
@@ -7059,7 +7064,8 @@ export const LESSONS: Record<string, Lesson> = {
         "options": [
           {
             "text": "The intro.",
-            "correct": false
+            "correct": false,
+            "feedback": "Most people skip the intro and jump to the thing they need. The \"what to do when X breaks\" section is where people actually land."
           },
           {
             "text": "\"What to do when X breaks\" / escalation.",
@@ -7068,11 +7074,13 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "The table of contents.",
-            "correct": false
+            "correct": false,
+            "feedback": "TOC is a way-finder, not a destination. Readers use it to jump straight to escalation/troubleshooting sections — write those first."
           },
           {
             "text": "The acknowledgements.",
-            "correct": false
+            "correct": false,
+            "feedback": "Acknowledgements are rarely read. Put your energy into escalation paths and failure-mode handling — that's what people hit the SOP for."
           }
         ]
       },
@@ -7355,11 +7363,13 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Because AI requires it.",
-            "correct": false
+            "correct": false,
+            "feedback": "AI doesn't require thresholds — they're a human choice. You set them so you catch quality drops before users or stakeholders do."
           },
           {
             "text": "For audit.",
-            "correct": false
+            "correct": false,
+            "feedback": "Audit trails are a byproduct, not the reason. Thresholds exist to surface drift early so you can intervene before the business feels it."
           }
         ]
       },
@@ -7500,11 +7510,13 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Whether you've paid the vendor more.",
-            "correct": false
+            "correct": false,
+            "feedback": "Paying more doesn't get you faster swaps. Response speed is almost entirely about having the eval harness + swap plan ready before you need it."
           },
           {
             "text": "The color of your dashboard.",
-            "correct": false
+            "correct": false,
+            "feedback": "Fun answer. The real lever is whether you can re-run your evals against a new model and see if anything broke, in hours not weeks."
           }
         ]
       },
@@ -7574,11 +7586,13 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Can we afford the tokens?",
-            "correct": false
+            "correct": false,
+            "feedback": "Tokens are the cheap part. The expensive part is what a bad autonomous decision costs — that's the question that should gate going hands-off."
           },
           {
             "text": "Does the vendor allow it?",
-            "correct": false
+            "correct": false,
+            "feedback": "The vendor allowing it doesn't make it wise. Ask what one wrong decision costs at scale before deciding any step can run without a human."
           }
         ]
       },
