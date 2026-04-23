@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import type { Course, Lesson, EngageStep, QuizStep } from '@/content/types';
 import { Icons } from './icons';
+import { CopyPrompt, looksLikePrompt } from './CopyPrompt';
 
 // localStorage key for mid-lesson resume state
 function stateKey(courseId: number, moduleIdx: number, lessonIdx: number, userId: string | null): string {
@@ -183,9 +184,15 @@ function ReadStepView({ step }: { step: Extract<Lesson['steps'][number], { type:
     <div>
       <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 16 }}>READ</div>
       <h1 style={{ fontSize: 40, marginBottom: 32, letterSpacing: '-0.03em' }}>{step.title}</h1>
-      {step.body.map((p, i) => (
-        <p key={i} style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--text)', marginBottom: 20 }}>{p}</p>
-      ))}
+      {step.body.map((p, i) => {
+        const prompts = extractPromptsFromParagraph(p);
+        return (
+          <div key={i} style={{ marginBottom: 20 }}>
+            <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--text)', margin: 0 }}>{p}</p>
+            {prompts.map((pr, j) => <CopyPrompt key={j} text={pr} />)}
+          </div>
+        );
+      })}
       {step.callout && (
         <div style={{ marginTop: 32, padding: 24, borderRadius: 12, background: 'var(--bg-panel)', borderLeft: '2px solid var(--accent)' }}>
           <div className="eyebrow" style={{ marginBottom: 8 }}>{step.callout.label}</div>
@@ -196,7 +203,25 @@ function ReadStepView({ step }: { step: Extract<Lesson['steps'][number], { type:
   );
 }
 
+/**
+ * Find quoted substrings in a paragraph that look like LLM prompts.
+ * Handles straight quotes. Ignores very short quoted phrases.
+ */
+function extractPromptsFromParagraph(p: string): string[] {
+  const matches: string[] = [];
+  const re = /"([^"]{30,})"/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(p)) !== null) {
+    matches.push(m[0]);
+  }
+  return matches;
+}
+
 function EngageStepView({ step, selected, setSelected, submitted }: { step: EngageStep; selected: number | null; setSelected: (n: number | null) => void; submitted: boolean }) {
+  const correctIdx = step.options.findIndex(o => o.correct);
+  const correctOpt = correctIdx >= 0 ? step.options[correctIdx] : null;
+  const correctLooksLikePrompt = !!correctOpt && looksLikePrompt(correctOpt.text);
+
   return (
     <div>
       <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 16 }}>ENGAGE</div>
@@ -237,6 +262,12 @@ function EngageStepView({ step, selected, setSelected, submitted }: { step: Enga
           <div style={{ fontSize: 15, lineHeight: 1.55 }}>{step.options[selected].feedback}</div>
         </div>
       )}
+      {submitted && correctOpt && correctLooksLikePrompt && (
+        <div style={{ marginTop: 20 }}>
+          <div className="eyebrow" style={{ marginBottom: 6, color: 'var(--text-muted)' }}>TRY THE WINNING PROMPT</div>
+          <CopyPrompt text={correctOpt.text} />
+        </div>
+      )}
     </div>
   );
 }
@@ -269,12 +300,23 @@ function QuizStepView({ step, selected, setSelected, submitted }: { step: QuizSt
         })}
       </div>
       {submitted && selected != null && (
-        <div style={{ marginTop: 24, padding: 20, borderRadius: 12, background: 'var(--bg-panel)', borderLeft: '2px solid ' + (step.options[selected].correct ? 'var(--accent)' : 'var(--warn)') }}>
-          <div className="eyebrow" style={{ marginBottom: 8, color: step.options[selected].correct ? 'var(--accent)' : 'var(--warn)' }}>
-            {step.options[selected].correct ? 'CORRECT' : 'LEARN'}
+        <>
+          <div style={{ marginTop: 24, padding: 20, borderRadius: 12, background: 'var(--bg-panel)', borderLeft: '2px solid ' + (step.options[selected].correct ? 'var(--accent)' : 'var(--warn)') }}>
+            <div className="eyebrow" style={{ marginBottom: 8, color: step.options[selected].correct ? 'var(--accent)' : 'var(--warn)' }}>
+              {step.options[selected].correct ? 'CORRECT' : 'LEARN'}
+            </div>
+            <div style={{ fontSize: 15, lineHeight: 1.55 }}>{step.answerNote}</div>
           </div>
-          <div style={{ fontSize: 15, lineHeight: 1.55 }}>{step.answerNote}</div>
-        </div>
+          {(() => {
+            const winner = step.options.find(o => o.correct);
+            return winner && looksLikePrompt(winner.text) ? (
+              <div style={{ marginTop: 20 }}>
+                <div className="eyebrow" style={{ marginBottom: 6, color: 'var(--text-muted)' }}>TRY THE WINNING PROMPT</div>
+                <CopyPrompt text={winner.text} />
+              </div>
+            ) : null;
+          })()}
+        </>
       )}
     </div>
   );
