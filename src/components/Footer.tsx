@@ -15,6 +15,7 @@ export function Footer() {
         </div>
         <div style={{ display: 'flex', gap: 28 }}>
           <Link className="nav-link" href="/plus">Truos+</Link>
+          <Link className="nav-link" href="/glossary">Glossary</Link>
           <Link className="nav-link" href="/verify">Verify a cert</Link>
           <a className="nav-link" href="mailto:hello@truos.ai">Contact</a>
         </div>

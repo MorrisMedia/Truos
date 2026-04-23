@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import type { Course, Lesson, EngageStep, QuizStep } from '@/content/types';
 import { Icons } from './icons';
 import { CopyPrompt, looksLikePrompt } from './CopyPrompt';
+import { renderWithGlossary } from './GlossaryTerm';
 
 // localStorage key for mid-lesson resume state
 function stateKey(courseId: number, moduleIdx: number, lessonIdx: number, userId: string | null): string {
@@ -188,7 +189,9 @@ function ReadStepView({ step }: { step: Extract<Lesson['steps'][number], { type:
         const prompts = extractPromptsFromParagraph(p);
         return (
           <div key={i} style={{ marginBottom: 20 }}>
-            <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--text)', margin: 0 }}>{p}</p>
+            <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--text)', margin: 0 }}>
+              {renderWithGlossary(p, `body-${i}`)}
+            </p>
             {prompts.map((pr, j) => <CopyPrompt key={j} text={pr} />)}
           </div>
         );
@@ -196,7 +199,9 @@ function ReadStepView({ step }: { step: Extract<Lesson['steps'][number], { type:
       {step.callout && (
         <div style={{ marginTop: 32, padding: 24, borderRadius: 12, background: 'var(--bg-panel)', borderLeft: '2px solid var(--accent)' }}>
           <div className="eyebrow" style={{ marginBottom: 8 }}>{step.callout.label}</div>
-          <div className="serif" style={{ fontSize: 20, fontStyle: 'italic', lineHeight: 1.4 }}>{step.callout.text}</div>
+          <div className="serif" style={{ fontSize: 20, fontStyle: 'italic', lineHeight: 1.4 }}>
+            {renderWithGlossary(step.callout.text, 'callout')}
+          </div>
         </div>
       )}
     </div>
@@ -259,7 +264,9 @@ function EngageStepView({ step, selected, setSelected, submitted }: { step: Enga
           <div className="eyebrow" style={{ marginBottom: 8, color: step.options[selected].correct ? 'var(--accent)' : 'var(--warn)' }}>
             {step.options[selected].correct ? 'CORRECT' : 'NOT QUITE'}
           </div>
-          <div style={{ fontSize: 15, lineHeight: 1.55 }}>{step.options[selected].feedback}</div>
+          <div style={{ fontSize: 15, lineHeight: 1.55 }}>
+            {renderWithGlossary(step.options[selected].feedback ?? '', `engage-fb-${selected}`)}
+          </div>
         </div>
       )}
       {submitted && correctOpt && correctLooksLikePrompt && (
@@ -305,7 +312,9 @@ function QuizStepView({ step, selected, setSelected, submitted }: { step: QuizSt
             <div className="eyebrow" style={{ marginBottom: 8, color: step.options[selected].correct ? 'var(--accent)' : 'var(--warn)' }}>
               {step.options[selected].correct ? 'CORRECT' : 'LEARN'}
             </div>
-            <div style={{ fontSize: 15, lineHeight: 1.55 }}>{step.answerNote}</div>
+            <div style={{ fontSize: 15, lineHeight: 1.55 }}>
+              {renderWithGlossary(step.answerNote, 'quiz-note')}
+            </div>
           </div>
           {(() => {
             const winner = step.options.find(o => o.correct);
