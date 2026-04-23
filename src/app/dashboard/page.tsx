@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { auth } from '@/lib/auth';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import { prisma } from '@/lib/prisma';
 import { ALL_COURSES, BASE_COURSES, PLUS_COURSES } from '@/content/courses';
 import { LESSONS } from '@/content/lessons';

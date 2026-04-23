@@ -2,9 +2,14 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Course, Lesson, EngageStep, QuizStep } from '@/content/types';
 import { Icons } from './icons';
+
+// localStorage key for mid-lesson resume state
+function stateKey(courseId: number, moduleIdx: number, lessonIdx: number, userId: string | null): string {
+  return `truos:lesson:${userId ?? 'guest'}:${courseId}-${moduleIdx}-${lessonIdx}`;
+}
 
 export function LessonPlayer({ course, lesson, userId }: { course: Course; lesson: Lesson; userId: string | null }) {
   const router = useRouter();
@@ -13,6 +18,41 @@ export function LessonPlayer({ course, lesson, userId }: { course: Course; lesso
   const [submitted, setSubmitted] = useState(false);
   const [hearts, setHearts] = useState(5);
   const [correctCount, setCorrectCount] = useState(0);
+  const [resumed, setResumed] = useState(false);
+
+  // Restore mid-lesson state from localStorage (client-only)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const key = stateKey(course.id, lesson.moduleIdx, lesson.lessonIdx, userId);
+    try {
+      const raw = localStorage.getItem(key);
+      if (raw) {
+        const saved = JSON.parse(raw);
+        const si = Math.max(0, Math.min(lesson.steps.length - 1, Number(saved.stepIdx ?? 0)));
+        if (si > 0) {
+          setStepIdx(si);
+          setCorrectCount(Number(saved.correctCount ?? 0));
+          setHearts(Number(saved.hearts ?? 5));
+          setResumed(true);
+        }
+      }
+    } catch {
+      // ignore
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Persist state on every step advance
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const key = stateKey(course.id, lesson.moduleIdx, lesson.lessonIdx, userId);
+    try {
+      if (stepIdx === 0 && correctCount === 0 && hearts === 5) return;
+      localStorage.setItem(key, JSON.stringify({ stepIdx, correctCount, hearts, t: Date.now() }));
+    } catch {
+      // ignore
+    }
+  }, [stepIdx, correctCount, hearts, course.id, lesson.moduleIdx, lesson.lessonIdx, userId]);
 
   const step = lesson.steps[stepIdx];
   const progress = ((stepIdx + (submitted ? 1 : 0.3)) / lesson.steps.length) * 100;
@@ -52,6 +92,12 @@ export function LessonPlayer({ course, lesson, userId }: { course: Course; lesso
         // best effort — still navigate
       }
     }
+    // clear resume state — lesson is done, no need to restore
+    try {
+      localStorage.removeItem(stateKey(course.id, lesson.moduleIdx, lesson.lessonIdx, userId));
+    } catch {
+      // ignore
+    }
     router.push(`/courses/${course.id}/complete?m=${lesson.moduleIdx}&l=${lesson.lessonIdx}&score=${score}`);
   };
 
@@ -77,8 +123,21 @@ export function LessonPlayer({ course, lesson, userId }: { course: Course; lesso
 
       {/* Breadcrumb */}
       <div style={{ padding: '24px 24px 0', maxWidth: 720, margin: '0 auto', width: '100%' }}>
-        <div className="mono" style={{ fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.08em' }}>
-          {lesson.courseCode} &nbsp;/&nbsp; {lesson.moduleName.toUpperCase()} &nbsp;/&nbsp; LESSON {String(lesson.lessonIndex).padStart(2, '0')}
+        <div className="mono" style={{ fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.08em', display: 'flex', justifyContent: 'space-between', gap: 8 }}>
+          <span>{lesson.courseCode} &nbsp;/&nbsp; {lesson.moduleName.toUpperCase()} &nbsp;/&nbsp; LESSON {String(lesson.lessonIndex).padStart(2, '0')}</span>
+          {resumed && (
+            <button
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  try { localStorage.removeItem(stateKey(course.id, lesson.moduleIdx, lesson.lessonIdx, userId)); } catch {}
+                }
+                setStepIdx(0); setCorrectCount(0); setHearts(5); setSelected(null); setSubmitted(false); setResumed(false);
+              }}
+              style={{ background: 'none', border: 'none', color: 'var(--accent)', cursor: 'pointer', fontFamily: 'inherit', fontSize: 11, letterSpacing: '0.08em' }}
+            >
+              RESUMED · RESTART?
+            </button>
+          )}
         </div>
       </div>
 
