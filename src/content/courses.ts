@@ -76,6 +76,27 @@ export const PLUS_COURSES: Course[] = [
       { name: 'Pro moves',                    lessons: ['Combining with Power Query', 'Advanced formulas', 'AI math gotchas + verification', 'Certification quiz'] },
     ],
   },
+  {
+    id: 203, code: 'GEM·101', title: 'Gemini 101',
+    subtitle: 'Google Gemini from zero. Approachable for anyone at a company on Google Workspace.',
+    lessons: 20, hours: 1, tier: 'paid', suite: 'plus', price: 249,
+    modules: [
+      { name: "What's Gemini?",               lessons: ['What is Google Gemini?', 'Where Gemini lives: Workspace + web', 'Free vs Gemini Advanced', 'Your first conversation with Gemini', 'Gemini vs ChatGPT vs Copilot'] },
+      { name: 'Gemini in everyday work',      lessons: ['Drafting & triaging Gmail', 'Writing in Google Docs', 'Building decks in Slides', 'Meet notes & summaries', 'Searching across Drive'] },
+      { name: 'Prompting Gemini well',        lessons: ['Using @references for files & people', 'Multimodal: images, PDFs, screenshots', 'Iterating: regenerate & compare', 'When Gemini beats general AI', "Gemini's real limits"] },
+      { name: 'Safe at work',                 lessons: ['Personal vs Workspace accounts', 'What IT admins can control', 'What not to paste into personal Gemini', 'When to escalate to IT', 'Certification quiz'] },
+    ],
+  },
+  {
+    id: 204, code: 'GEM·SHT', title: 'Gemini + Google Sheets',
+    subtitle: 'Gemini inside Google Sheets for data, analysis, and formulas. Assumes Sheets basics; teaches Gemini-in-Sheets.',
+    lessons: 12, hours: 1, tier: 'paid', suite: 'plus', price: 249,
+    modules: [
+      { name: 'Gemini in Sheets basics',      lessons: ['Opening the Gemini side panel', 'Plain-English asks', 'Generating tables from a prompt', 'Reading AI-generated explanations'] },
+      { name: 'Cleaning & analysis',          lessons: ['Normalizing messy data', 'Natural-language filters & sorts', 'Pivot tables via Gemini', 'Charts from prompts'] },
+      { name: 'Pro moves',                    lessons: ['Apps Script with Gemini', 'Advanced formulas & array logic', 'AI math gotchas + verification', 'Certification quiz'] },
+    ],
+  },
 ];
 
 export const ALL_COURSES: Course[] = [...BASE_COURSES, ...PLUS_COURSES];

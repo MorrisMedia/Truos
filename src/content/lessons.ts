@@ -10531,5 +10531,1893 @@ export const LESSONS: Record<string, Lesson> = {
         "answerNote": "Explanation + spot-check = the 30-second discipline that prevents 3-hour mistakes. Make it a habit."
       }
     ]
-  }
+  },
+  "203-0-0": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 0,
+      "lessonIdx": 0,
+      "moduleName": "What's Gemini?",
+      "lessonIndex": 1,
+      "totalInModule": 5,
+      "title": "What is Google Gemini?",
+      "steps": [
+        {
+          "type": "read",
+          "title": "What is Google Gemini?",
+          "body": [
+            "Gemini is Google's family of AI models and the chatbot product built on top of them. If you've used ChatGPT or Claude, the interface will feel familiar: you type, it writes back, you iterate. The twist is that Gemini is deeply plugged into Google Workspace — Gmail, Docs, Sheets, Slides, Drive, Calendar, Meet.",
+            "Under the hood there isn't one 'Gemini' — there's a family: Gemini Pro for most work, Gemini Flash for fast cheap answers, and bigger models for hard reasoning. You rarely pick the model yourself; the product routes your request to whichever one fits.",
+            "The same Gemini powers the chatbot at gemini.google.com, the 'Help me write' buttons in Gmail and Docs, and the Gemini side panel that lives inside Workspace apps. Three entry points, one assistant, one login."
+          ],
+          "callout": {
+            "label": "Mental model",
+            "text": "Gemini = Google's ChatGPT, but with a direct line into your Gmail, Docs, Sheets, and Drive when your account is set up for it."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "What makes Gemini different?",
+          "prompt": "You're deciding between ChatGPT and Gemini for the same task. When does Gemini have the clearest edge?",
+          "options": [
+            {
+              "text": "When the task needs context from your Gmail, Docs, or Drive files.",
+              "correct": true,
+              "feedback": "Exactly. The deep Workspace integration is Gemini's real edge — it can read your actual work, not just generic text."
+            },
+            {
+              "text": "When you need code written in an obscure language.",
+              "correct": false,
+              "feedback": "All three (Gemini, ChatGPT, Claude) handle code well. Not a Gemini-specific win."
+            },
+            {
+              "text": "When you want it to browse the public web.",
+              "correct": false,
+              "feedback": "All the majors can do this now. Less of a differentiator than Workspace access."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "Gemini is best described as:",
+          "options": [
+            { "text": "A Google-branded clone of ChatGPT with nothing special.", "correct": false },
+            { "text": "Google's AI assistant, with its own models and tight integration into Gmail, Docs, Sheets, and Drive.", "correct": true },
+            { "text": "A replacement for Google Search.", "correct": false },
+            { "text": "A desktop app you install separately.", "correct": false }
+          ],
+          "answerNote": "Gemini is a product (chatbot + in-app assistant) powered by Google's own models, with Workspace integration as its signature feature."
+        }
+      ]
+    },
+    "203-0-1": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 0,
+      "lessonIdx": 1,
+      "moduleName": "What's Gemini?",
+      "lessonIndex": 2,
+      "totalInModule": 5,
+      "title": "Where Gemini lives: Workspace + web",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Where Gemini lives: Workspace + web",
+          "body": [
+            "You'll meet Gemini in three places. First, gemini.google.com — the standalone chatbot, a blank chat window, the closest analog to ChatGPT. Second, inside Workspace apps — look for the small Gemini icon (a four-point sparkle) in Gmail, Docs, Sheets, Slides, and the side panel in Meet.",
+            "Third, on your phone — the Gemini app on Android (and inside the Google app on iOS) replaces or sits alongside Google Assistant. It can read your screen, help with photos, and pick up where a web conversation left off.",
+            "Your company's IT team controls which of these work for your Workspace account. The standalone chatbot often works with a personal Google account even when Workspace features are locked down — but that's a separate mode with different data rules (more on that in Module 4)."
+          ],
+          "callout": {
+            "label": "Where to look",
+            "text": "Standalone: gemini.google.com. Inside Gmail/Docs/Sheets/Slides: the sparkle icon or side panel. On mobile: the Gemini app."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Where would you summarize a Google Doc?",
+          "prompt": "You're reading a long strategy doc in Google Docs and want a quick summary. Where's the fastest path?",
+          "options": [
+            {
+              "text": "Copy the whole doc, paste it into gemini.google.com, and ask for a summary.",
+              "correct": false,
+              "feedback": "That works, but it's the slow way — and you lose the doc's formatting and any attached comments."
+            },
+            {
+              "text": "Click the Gemini sparkle icon inside the doc and ask for a summary.",
+              "correct": true,
+              "feedback": "Much faster. Gemini reads the doc in place, so no copy-paste, and it can reference headings and comments."
+            },
+            {
+              "text": "Export the doc to PDF first, then ask Gemini about the PDF.",
+              "correct": false,
+              "feedback": "Overkill. The in-doc Gemini already has full access to the live document."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "If you don't see a Gemini icon in a Workspace app you expected, the most likely reason is:",
+          "options": [
+            { "text": "The app is broken.", "correct": false },
+            { "text": "Your Workspace admin hasn't enabled Gemini for your account or your org's plan doesn't include it.", "correct": true },
+            { "text": "You need to install a browser extension.", "correct": false },
+            { "text": "It only works on certain operating systems.", "correct": false }
+          ],
+          "answerNote": "Workspace Gemini is controlled by admins and depends on the plan (Business/Enterprise with AI, or the Gemini Business/Enterprise add-on). Ask IT if it's not showing up."
+        }
+      ]
+    },
+    "203-0-2": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 0,
+      "lessonIdx": 2,
+      "moduleName": "What's Gemini?",
+      "lessonIndex": 3,
+      "totalInModule": 5,
+      "title": "Free vs Gemini Advanced",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Free vs Gemini Advanced",
+          "body": [
+            "The free tier (any Google account, at gemini.google.com) gets you the default Gemini model, decent speed, and core features — chat, image upload, basic file reads. Enough to do real work. Fine for drafting emails, summaries, brainstorming.",
+            "Gemini Advanced (bundled with the Google AI Pro / AI Ultra personal plans, or with the Workspace Gemini add-on for businesses) unlocks the top-tier model, longer context, deeper reasoning, and the Gems feature — custom Gemini personas you save for reuse. Worth it if you're using Gemini every day or need it to chew through long documents.",
+            "If your company is on Workspace with Gemini enabled, you usually already have Advanced-equivalent features inside the Workspace apps — no extra subscription needed. Ask IT if you're not sure."
+          ],
+          "callout": {
+            "label": "Rule of thumb",
+            "text": "Daily user or long-document work? Advanced is worth the cost. Occasional help? The free tier is genuinely useful."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Which plan do you need?",
+          "prompt": "Your team is on Google Workspace Business with Gemini enabled. Should you also buy a personal Google AI Pro subscription?",
+          "options": [
+            {
+              "text": "Yes, always — personal plans are better.",
+              "correct": false,
+              "feedback": "Not if you already have Workspace Gemini. You'd be paying twice for overlapping features."
+            },
+            {
+              "text": "No — Workspace Gemini already covers the advanced features for work tasks.",
+              "correct": true,
+              "feedback": "Right. And using the personal plan for work data can actually violate your company's data policies."
+            },
+            {
+              "text": "Only if you want to use Gemini at the weekend.",
+              "correct": false,
+              "feedback": "You can use the free tier for personal use; no need to double up."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The biggest reason to upgrade from free to Gemini Advanced is:",
+          "options": [
+            { "text": "Prettier UI.", "correct": false },
+            { "text": "Access to the top-tier model, longer context, and saved Gems for repeated tasks.", "correct": true },
+            { "text": "Unlocks Google Search.", "correct": false },
+            { "text": "Nothing — they're identical.", "correct": false }
+          ],
+          "answerNote": "Advanced gets you the smarter model, more room per conversation, and reusable personas (Gems). That's the pitch."
+        }
+      ]
+    },
+    "203-0-3": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 0,
+      "lessonIdx": 3,
+      "moduleName": "What's Gemini?",
+      "lessonIndex": 4,
+      "totalInModule": 5,
+      "title": "Your first conversation with Gemini",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Your first conversation with Gemini",
+          "body": [
+            "Open gemini.google.com signed into the Google account you want it to use. You land on a blank prompt box. Type a request in normal language — you don't need a special syntax. A good starter prompt names who you are, what you need, and the format you want.",
+            "Try something real: 'I'm a marketing manager. Draft a 3-sentence email to a client explaining we need to delay their campaign review by one week. Warm, not apologetic.' You'll get a draft in seconds. Don't accept the first output — refine it.",
+            "Two controls worth knowing right away. The regenerate button gives you alternate versions of the same answer (useful when it's close but not quite right). The edit-prompt button lets you tweak your question and try again without starting over."
+          ],
+          "callout": {
+            "label": "First-prompt recipe",
+            "text": "[Who you are] + [What you want] + [Format/length/tone]. Three ingredients beat one vague ask every time."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Pick the better starter prompt",
+          "prompt": "You want Gemini to help write a thank-you note. Which prompt works better?",
+          "options": [
+            {
+              "text": "\"Write a thank you note.\"",
+              "correct": false,
+              "feedback": "Too vague. Gemini will guess at the context, tone, and length — and probably guess wrong."
+            },
+            {
+              "text": "\"I'm an account manager. Write a 4-sentence thank-you note to a client who just renewed a $50k contract. Warm but professional, mention their team's patience on integration.\"",
+              "correct": true,
+              "feedback": "Clear role, clear task, clear constraints. You'll get a usable draft on the first try."
+            },
+            {
+              "text": "\"Thanks.\"",
+              "correct": false,
+              "feedback": "Not even a prompt. Gemini doesn't know what you want."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The most common reason a first prompt fails is:",
+          "options": [
+            { "text": "Gemini is broken.", "correct": false },
+            { "text": "The prompt was too short and didn't give Gemini enough context to know what 'good' looks like.", "correct": true },
+            { "text": "You need a special keyword.", "correct": false },
+            { "text": "You haven't paid yet.", "correct": false }
+          ],
+          "answerNote": "90% of 'Gemini isn't useful' complaints are just under-specified prompts. Tell it who you are, what you want, and what format."
+        }
+      ]
+    },
+    "203-0-4": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 0,
+      "lessonIdx": 4,
+      "moduleName": "What's Gemini?",
+      "lessonIndex": 5,
+      "totalInModule": 5,
+      "title": "Gemini vs ChatGPT vs Copilot",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Gemini vs ChatGPT vs Copilot",
+          "body": [
+            "All three — Gemini, ChatGPT, Copilot — are chatbots. For pure chat, they're close enough that your prompt technique matters more than your tool choice. Where they diverge is integration.",
+            "Gemini owns Workspace (Gmail, Docs, Sheets, Drive, Meet). Copilot owns Microsoft 365 (Outlook, Word, Excel, Teams, OneDrive). ChatGPT owns neither deeply but is the most flexible standalone — connectors, custom GPTs, a huge ecosystem of external tools.",
+            "The practical rule: if your team lives in Google Workspace, Gemini gives you the biggest leverage because it sees your actual work. If you also need a tool for generic tasks outside your inbox — research, brainstorming, coding help — keep ChatGPT or Claude open in a tab too. Nobody is forcing you to pick just one."
+          ],
+          "callout": {
+            "label": "Don't over-index on the chat engine",
+            "text": "The real difference is which apps the assistant can see. Pick the one wired to the tools you actually work in."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Which tool for the job?",
+          "prompt": "You need to summarize last week's Gmail threads and post the summary into a Google Doc. Which tool wins?",
+          "options": [
+            {
+              "text": "ChatGPT — copy the emails in one by one.",
+              "correct": false,
+              "feedback": "Works, but you're doing manual copy-paste work the AI should be doing. Very slow."
+            },
+            {
+              "text": "Gemini — it can search Gmail and write to Docs natively.",
+              "correct": true,
+              "feedback": "Exactly. Gemini lives inside Workspace, so it reads the emails and writes to the doc in one flow."
+            },
+            {
+              "text": "Copilot — it handles everything.",
+              "correct": false,
+              "feedback": "Copilot doesn't have access to Gmail or Google Docs. Wrong ecosystem."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "Which is the cleanest one-line distinction between the three?",
+          "options": [
+            { "text": "Gemini = Google Workspace. Copilot = Microsoft 365. ChatGPT = standalone and most flexible.", "correct": true },
+            { "text": "They're identical.", "correct": false },
+            { "text": "ChatGPT is smarter than both.", "correct": false },
+            { "text": "Only one is free.", "correct": false }
+          ],
+          "answerNote": "The integration defines the tool. Pick the one wired into the apps your team already uses."
+        }
+      ]
+    },
+    "203-1-0": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 1,
+      "lessonIdx": 0,
+      "moduleName": "Gemini in everyday work",
+      "lessonIndex": 1,
+      "totalInModule": 5,
+      "title": "Drafting & triaging Gmail",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Drafting & triaging Gmail",
+          "body": [
+            "In Gmail, Gemini shows up two ways. First, a 'Help me write' button in the compose window — tell it what you want to say and it drafts the email. Second, the Gemini side panel (the sparkle icon in the top-right) — a chat that can see your whole inbox.",
+            "Drafting in the compose window works best when you give it a sentence of intent, not just a topic. 'Tell John we need to push the kickoff to next Thursday because Priya is out sick' beats 'reschedule email.' You can also ask for polish: 'formalize this,' 'shorten to 3 sentences,' 'make it warmer.'",
+            "The side panel is where triage lives. Ask 'summarize the unread emails from Acme Corp this week' and it'll read the relevant threads and give you a bullet-list. 'Draft a reply to the most recent one' chains naturally. This is where you save serious time each morning."
+          ],
+          "callout": {
+            "label": "Morning inbox routine",
+            "text": "Open the side panel. 'What do I need to respond to today?' Let Gemini do the triage. Then draft replies together."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Which Gmail task is Gemini strongest at?",
+          "prompt": "You have 47 unread emails from a week off. Which use of Gemini gets you back up to speed fastest?",
+          "options": [
+            {
+              "text": "Read each email yourself; ask Gemini to draft replies.",
+              "correct": false,
+              "feedback": "You're still doing the slow part. Let Gemini read and prioritize first."
+            },
+            {
+              "text": "Ask the Gemini side panel to summarize the week's unread threads and flag the ones that actually need a response.",
+              "correct": true,
+              "feedback": "Right. Gemini reads 47 emails in seconds and hands you a ranked list. You only open the ones that matter."
+            },
+            {
+              "text": "Mark them all as read.",
+              "correct": false,
+              "feedback": "Tempting, but risky — you might miss a real ask."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "When drafting an email with 'Help me write,' the single most useful thing to include is:",
+          "options": [
+            { "text": "Your signature.", "correct": false },
+            { "text": "A one-sentence intent — what you want to say and to whom, with any constraints on tone or length.", "correct": true },
+            { "text": "The recipient's full name.", "correct": false },
+            { "text": "A subject line.", "correct": false }
+          ],
+          "answerNote": "Intent beats instruction. 'What do I want this email to accomplish' is the prompt; everything else Gemini can infer or you can tweak."
+        }
+      ]
+    },
+    "203-1-1": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 1,
+      "lessonIdx": 1,
+      "moduleName": "Gemini in everyday work",
+      "lessonIndex": 2,
+      "totalInModule": 5,
+      "title": "Writing in Google Docs",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Writing in Google Docs",
+          "body": [
+            "Inside Docs, Gemini is a side panel plus inline prompts. Click the sparkle icon in a blank line and you'll see 'Help me write.' Type a prompt — 'first draft of a Q3 strategy recap' — and it drops a draft right where your cursor is.",
+            "On existing text, highlight a paragraph and ask for a rewrite: 'shorten,' 'make it less formal,' 'turn into 5 bullets.' Gemini edits in place. You can always undo. The side panel handles the bigger stuff: 'summarize this whole doc in 200 words,' 'list every action item mentioned,' 'who's named and what are they each responsible for.'",
+            "Where Docs Gemini shines: it can reference other files. '@File-name' pulls another Drive doc into the conversation. Ask it to 'rewrite this intro to match the tone of @ACME-One-Pager' and it'll actually pattern-match the style."
+          ],
+          "callout": {
+            "label": "The trick",
+            "text": "Write a bad first draft fast, highlight it, and ask Gemini to tighten. Editing is a better use of AI than drafting from nothing."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "How do you match the tone of another doc?",
+          "prompt": "You want the new memo to read like a previous one your CEO wrote. Best approach?",
+          "options": [
+            {
+              "text": "Paste the whole previous memo into your prompt.",
+              "correct": false,
+              "feedback": "Works but clumsy. There's a better way."
+            },
+            {
+              "text": "Use @ to reference the previous doc directly in your prompt: 'rewrite to match the tone of @CEO-Memo-Q1.'",
+              "correct": true,
+              "feedback": "Right. Gemini pulls the file in natively, no copy-paste, and matches the style more reliably."
+            },
+            {
+              "text": "Give up and write it yourself.",
+              "correct": false,
+              "feedback": "Lazy. Gemini can do this well if you give it the reference."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The highest-leverage use of Gemini inside a Google Doc is usually:",
+          "options": [
+            { "text": "Generating a document from scratch.", "correct": false },
+            { "text": "Editing, tightening, and restructuring your existing draft — with inline highlights.", "correct": true },
+            { "text": "Spell-check.", "correct": false },
+            { "text": "Changing fonts.", "correct": false }
+          ],
+          "answerNote": "Use your brain for the raw ideas; use Gemini for the revision pass. That's the split where AI adds most value in Docs."
+        }
+      ]
+    },
+    "203-1-2": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 1,
+      "lessonIdx": 2,
+      "moduleName": "Gemini in everyday work",
+      "lessonIndex": 3,
+      "totalInModule": 5,
+      "title": "Building decks in Slides",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Building decks in Slides",
+          "body": [
+            "Inside Google Slides, Gemini can generate a whole deck from a prompt. Open a blank presentation, click the sparkle icon, and describe what you want: '5-slide overview of our Q4 goals: title, 3 pillars, one slide each, closing CTA.' It produces a draft deck with slide titles, bullets, and speaker notes.",
+            "The output isn't production-ready — think of it as a rough scaffold. Layouts are basic, images are generic. Your job is to rewrite copy, swap in real data, and add brand visuals. You saved an hour; you didn't save the whole job.",
+            "A more realistic workflow: outline the deck in a Doc first (or in the Gemini chat), reference it in Slides with @, and ask Gemini to generate a deck from that outline. You get a deck that actually reflects your thinking, not a generic template."
+          ],
+          "callout": {
+            "label": "Reality check",
+            "text": "Gemini gives you the 40% draft in 60 seconds. The last 60% — the visuals, the data, the polish — is still your job."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Best workflow for a board deck?",
+          "prompt": "You need a 10-slide board update by Friday. Smartest use of Gemini?",
+          "options": [
+            {
+              "text": "Ask Gemini to 'make me a board deck' and submit whatever it produces.",
+              "correct": false,
+              "feedback": "Way too generic. The deck won't reflect your specifics and the board will see that."
+            },
+            {
+              "text": "Outline the key points in a Doc, then have Gemini generate a structured deck from that outline, then manually rewrite and add charts.",
+              "correct": true,
+              "feedback": "Right. Structured input → structured output. Then you polish. That's where humans still beat AI."
+            },
+            {
+              "text": "Don't use Gemini. Build it from scratch.",
+              "correct": false,
+              "feedback": "You're leaving free time on the table. The scaffolding is exactly what AI is good at."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "Gemini-generated slide decks are best thought of as:",
+          "options": [
+            { "text": "Finished presentations, ready to ship.", "correct": false },
+            { "text": "A fast structural scaffold you then rewrite, re-fact-check, and re-visualize.", "correct": true },
+            { "text": "A replacement for your design team.", "correct": false },
+            { "text": "Only good for internal use.", "correct": false }
+          ],
+          "answerNote": "Scaffold, not ship. That's the honest read on AI-generated decks today."
+        }
+      ]
+    },
+    "203-1-3": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 1,
+      "lessonIdx": 3,
+      "moduleName": "Gemini in everyday work",
+      "lessonIndex": 4,
+      "totalInModule": 5,
+      "title": "Meet notes & summaries",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Meet notes & summaries",
+          "body": [
+            "In Google Meet, 'Take notes with Gemini' is a button inside the meeting. Turn it on (everyone gets notified it's recording notes) and Gemini transcribes, summarizes, and pulls out action items. The output lands as a Google Doc in your Drive, usually within a few minutes of the meeting ending.",
+            "The summary structure is consistent: meeting title, attendees, a short summary paragraph, a bulleted 'discussion' section, and an 'action items' list with owners (when names are mentioned). You can then ask Gemini in the chat to rework the notes — 'make the action items more specific' or 'add a one-line decision log at the top.'",
+            "Limits worth knowing: Gemini catches what's said clearly, but it misses sarcasm, ambiguity, and fast cross-talk. Always skim the summary before forwarding. And if someone says 'don't put this in the notes,' Gemini will usually put it in the notes — it's not smart about discretion."
+          ],
+          "callout": {
+            "label": "Trust but verify",
+            "text": "Read the summary before forwarding. AI transcription is ~95% accurate, and the 5% often includes names, numbers, and dollar amounts."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "What's the right review step?",
+          "prompt": "Gemini generated a 2-page summary of your client call. What do you do before sending it out?",
+          "options": [
+            {
+              "text": "Forward it as-is.",
+              "correct": false,
+              "feedback": "Risky. Errors in names, numbers, and commitments are the ones that embarrass you."
+            },
+            {
+              "text": "Skim it for name/number errors, fix action item owners, and cut any off-the-record material before sharing.",
+              "correct": true,
+              "feedback": "Three-minute review, huge savings in rework and trust."
+            },
+            {
+              "text": "Rewrite it from scratch.",
+              "correct": false,
+              "feedback": "Defeats the purpose of using Gemini in the first place."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The most common errors in Gemini Meet summaries are:",
+          "options": [
+            { "text": "Grammar mistakes.", "correct": false },
+            { "text": "Misattributed names, wrong dollar amounts, and missed decisions that were said in passing.", "correct": true },
+            { "text": "Profanity.", "correct": false },
+            { "text": "Font problems.", "correct": false }
+          ],
+          "answerNote": "AI transcription is great on structure, fallible on specifics. The 'who said what' and 'how much' always need human eyes."
+        }
+      ]
+    },
+    "203-1-4": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 1,
+      "lessonIdx": 4,
+      "moduleName": "Gemini in everyday work",
+      "lessonIndex": 5,
+      "totalInModule": 5,
+      "title": "Searching across Drive",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Searching across Drive",
+          "body": [
+            "The Gemini chat at gemini.google.com (with Workspace access enabled) can search your entire Google Drive. Ask 'find the latest pricing proposal I sent to Acme' and it'll return the file plus a one-line summary. 'What did I say in my last 1:1 notes about the Q3 hiring plan' works the same way.",
+            "This beats Drive's built-in search because it understands meaning, not just keywords. 'That doc about the integration risks' finds the file even when it's titled 'Project Lighthouse Review' and the word 'integration' never appears in the title.",
+            "A natural chain is: find → summarize → extract. 'Find my notes from last week's marketing offsite, summarize the top 3 decisions, and pull any action items assigned to me.' Three tasks, one prompt, one minute."
+          ],
+          "callout": {
+            "label": "Try this today",
+            "text": "'What was the outcome of my most recent meeting with [name]?' Then: 'Draft a follow-up email based on that.' You'll feel the leverage immediately."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "The right tool for fuzzy-memory search",
+          "prompt": "You remember a doc from 'a few weeks ago about vendor pricing' but can't remember the title. What works best?",
+          "options": [
+            {
+              "text": "Scroll through Drive manually.",
+              "correct": false,
+              "feedback": "Slow and you might miss it."
+            },
+            {
+              "text": "Ask Gemini: 'find the doc from the last few weeks about vendor pricing.'",
+              "correct": true,
+              "feedback": "Gemini understands the meaning of the request, not just keywords. It'll find the right file even with vague wording."
+            },
+            {
+              "text": "Search Drive for the word 'vendor.'",
+              "correct": false,
+              "feedback": "Works if that word is in the doc, but keyword search is brittle on fuzzy memory."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The biggest reason to search Drive via Gemini instead of Drive's own search box is:",
+          "options": [
+            { "text": "It's prettier.", "correct": false },
+            { "text": "Gemini understands the meaning of your request and can chain search with summarization and extraction.", "correct": true },
+            { "text": "It's the only way to find shared files.", "correct": false },
+            { "text": "Faster typing.", "correct": false }
+          ],
+          "answerNote": "Semantic search + summarize + extract, all in one prompt. That's the compound win."
+        }
+      ]
+    },
+    "203-2-0": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 2,
+      "lessonIdx": 0,
+      "moduleName": "Prompting Gemini well",
+      "lessonIndex": 1,
+      "totalInModule": 5,
+      "title": "Using @references for files & people",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Using @references for files & people",
+          "body": [
+            "The @ symbol is Gemini's most underused trick. Type @ in a Gemini prompt and you get a picker — files, people, events, sometimes emails. Picking one pastes a live reference into the prompt. Gemini then reads the referenced thing before answering.",
+            "Examples. '@Q3-forecast-v2 — summarize the three biggest risks.' Gemini opens the sheet, finds risks, answers. '@Priya — draft a follow-up message thanking her for the handoff.' Gemini writes a personal note knowing who Priya is in your org. '@yesterday's-offsite-meeting — list the action items assigned to me.'",
+            "@-references beat copy-paste because Gemini sees the file as it is now, not as it was when you copied. Rename a section, fix a typo, add a row — the reference updates automatically on your next prompt."
+          ],
+          "callout": {
+            "label": "The habit",
+            "text": "Anytime you'd paste a chunk of a doc into a prompt, try @ first. Faster, cleaner, and the AI sees the current version."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Which prompt uses @ correctly?",
+          "prompt": "You want Gemini to write a client update based on yesterday's meeting notes doc. Best phrasing?",
+          "options": [
+            {
+              "text": "\"Write a client update based on the meeting.\"",
+              "correct": false,
+              "feedback": "No reference — Gemini has no idea which meeting or what was discussed."
+            },
+            {
+              "text": "\"Based on @Client-Meeting-Notes-2026-04-22, draft a 4-sentence update email to the client covering the three decisions.\"",
+              "correct": true,
+              "feedback": "Clear reference, clear format, clear focus. This is the pattern to copy."
+            },
+            {
+              "text": "Paste the full doc text into the prompt and say 'write an update.'",
+              "correct": false,
+              "feedback": "Works, but slower and less reliable than @. And doesn't update if you edit the doc."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The main advantage of @-referencing a file over copy-pasting is:",
+          "options": [
+            { "text": "It looks more professional.", "correct": false },
+            { "text": "Gemini reads the live, current version and the reference updates if you edit the file.", "correct": true },
+            { "text": "It's required by Google.", "correct": false },
+            { "text": "It saves storage.", "correct": false }
+          ],
+          "answerNote": "Live reference = always-current context. Copy-paste = a frozen snapshot that goes stale."
+        }
+      ]
+    },
+    "203-2-1": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 2,
+      "lessonIdx": 1,
+      "moduleName": "Prompting Gemini well",
+      "lessonIndex": 2,
+      "totalInModule": 5,
+      "title": "Multimodal: images, PDFs, screenshots",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Multimodal: images, PDFs, screenshots",
+          "body": [
+            "Gemini reads pictures. Drop a screenshot of an error message into the chat and ask 'what's going on here and how do I fix it.' Paste a photo of a whiteboard and ask Gemini to transcribe the scribbled diagram as a structured list. Upload a PDF invoice and ask for a summary with total, vendor, and due date extracted.",
+            "This is called multimodal — one model, multiple input types. Good uses: reading charts in screenshots, pulling data from receipts, summarizing photographed documents, decoding UI bugs, translating text on signs or menus in photos.",
+            "Limits. Small text in blurry images fails. Complex charts with dense data often miss nuances. Don't use Gemini as a source of truth when the numbers really matter — always verify extracted data against the source. Good for triage and drafting, not for final accounting."
+          ],
+          "callout": {
+            "label": "Best use cases",
+            "text": "Screenshots → structured output. Photos of whiteboards → text. PDFs → summaries + key-field extraction. All 10x faster than retyping."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "The right tool for a scanned invoice",
+          "prompt": "A vendor emailed you a scanned PDF invoice. You need the vendor name, total, and due date in a spreadsheet row. Best approach?",
+          "options": [
+            {
+              "text": "Manually read and type it into the sheet.",
+              "correct": false,
+              "feedback": "Works, but slow and error-prone when you're doing 20 a day."
+            },
+            {
+              "text": "Upload the PDF to Gemini, ask for vendor, total, and due date in a 'vendor | total | due' format, then paste into your sheet.",
+              "correct": true,
+              "feedback": "30 seconds vs. 3 minutes. Just verify the number against the PDF before filing."
+            },
+            {
+              "text": "Forward it to accounting and wait.",
+              "correct": false,
+              "feedback": "Solves your day but not your workflow. Gemini lets you handle this yourself."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "When extracting data from images with Gemini, you should always:",
+          "options": [
+            { "text": "Trust the output completely.", "correct": false },
+            { "text": "Spot-check extracted numbers and names against the original image before using them in anything that matters.", "correct": true },
+            { "text": "Use only Gemini Ultra.", "correct": false },
+            { "text": "Convert the image to black and white first.", "correct": false }
+          ],
+          "answerNote": "Good for triage. Always verify before the number or name enters a contract, a spreadsheet total, or an external email."
+        }
+      ]
+    },
+    "203-2-2": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 2,
+      "lessonIdx": 2,
+      "moduleName": "Prompting Gemini well",
+      "lessonIndex": 3,
+      "totalInModule": 5,
+      "title": "Iterating: regenerate & compare",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Iterating: regenerate & compare",
+          "body": [
+            "The first answer is rarely the best answer. Gemini has two iteration tools: regenerate and 'show drafts.' Regenerate gives you a fresh attempt at the same prompt. Show drafts (in the chat, via the three-dot menu on the response) gives you 2–3 alternate versions side by side — pick the one closest to what you wanted.",
+            "A better technique than blind regeneration is targeted refinement. Don't just ask again — tell Gemini what was wrong. 'This is too formal — soften it.' 'The middle paragraph is off-topic; drop it.' 'Shorter, and don't start with \"I hope you're well.\"' Each refinement gets closer to the version you'd have written yourself.",
+            "Know when to cut losses. If after three rounds of refinement the answer still isn't right, start a fresh conversation with a better prompt. Don't keep fighting with a bad first attempt — Gemini can get stuck in its own context."
+          ],
+          "callout": {
+            "label": "The 3-round rule",
+            "text": "If three rounds of refinement haven't gotten you there, start over with a sharper prompt. Don't drag a stuck conversation to the finish line."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "The response isn't right. What next?",
+          "prompt": "Gemini's first draft is close but the tone is too stiff. Best next move?",
+          "options": [
+            {
+              "text": "Regenerate and hope.",
+              "correct": false,
+              "feedback": "You might get lucky, but you'll probably get a slightly different version of the same wrong tone."
+            },
+            {
+              "text": "Tell Gemini specifically: 'soften the tone — warmer, more like a colleague than a corporate memo.'",
+              "correct": true,
+              "feedback": "Targeted refinement beats random regeneration every time."
+            },
+            {
+              "text": "Give up and write it yourself.",
+              "correct": false,
+              "feedback": "Sometimes the right call, but not the first move. Try one sharp refinement first."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "If you've refined the same prompt 3+ times and it's still wrong, the smart move is:",
+          "options": [
+            { "text": "Keep refining.", "correct": false },
+            { "text": "Start a new chat with a tighter initial prompt — the old conversation may be stuck in its own wrong context.", "correct": true },
+            { "text": "Escalate to support.", "correct": false },
+            { "text": "Wait an hour and try again.", "correct": false }
+          ],
+          "answerNote": "Bad context compounds. A fresh, better prompt is faster than fighting a stuck conversation."
+        }
+      ]
+    },
+    "203-2-3": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 2,
+      "lessonIdx": 3,
+      "moduleName": "Prompting Gemini well",
+      "lessonIndex": 4,
+      "totalInModule": 5,
+      "title": "When Gemini beats general AI",
+      "steps": [
+        {
+          "type": "read",
+          "title": "When Gemini beats general AI",
+          "body": [
+            "Gemini beats a generic chatbot (ChatGPT, Claude) whenever the answer depends on your Workspace context. 'What did we agree with Acme on their renewal' only Gemini can answer from your actual Gmail and Drive. 'Draft an agenda from last week's offsite notes' same story.",
+            "It also wins on any task where the output needs to go back into Workspace. Writing a doc, generating a slide deck, filling a sheet — Gemini doesn't need you to copy-paste the result, it writes in place.",
+            "Where it doesn't win: pure reasoning, coding help outside your repo, obscure knowledge, creative writing at the bleeding edge. ChatGPT and Claude are fine — sometimes better — for generic tasks. Gemini's moat is your data, not its raw intelligence."
+          ],
+          "callout": {
+            "label": "The fork in the road",
+            "text": "Does this task need YOUR files, emails, or calendar? → Gemini. Is it a generic research/creative/coding task? → ChatGPT or Claude is fine."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Gemini or ChatGPT?",
+          "prompt": "Task: 'Research three competitors we don't have internal notes on and summarize their positioning.' Best tool?",
+          "options": [
+            {
+              "text": "Gemini — it's the Google tool.",
+              "correct": false,
+              "feedback": "For generic research with no Workspace context, Gemini has no moat."
+            },
+            {
+              "text": "ChatGPT or Claude — generic research tasks don't need Workspace integration.",
+              "correct": true,
+              "feedback": "Right. Use Gemini when your data matters; use general tools for generic knowledge work."
+            },
+            {
+              "text": "Always Gemini.",
+              "correct": false,
+              "feedback": "Tool choice should match the task. One-size-fits-all thinking leaves performance on the table."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "Gemini's clearest moat is:",
+          "options": [
+            { "text": "Smarter base model.", "correct": false },
+            { "text": "Direct, authenticated access to your own emails, docs, sheets, meetings, and Drive.", "correct": true },
+            { "text": "Nicer UI.", "correct": false },
+            { "text": "It's free.", "correct": false }
+          ],
+          "answerNote": "Raw intelligence is a commodity across the big models. Your data is the differentiator, and Gemini is wired to yours."
+        }
+      ]
+    },
+    "203-2-4": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 2,
+      "lessonIdx": 4,
+      "moduleName": "Prompting Gemini well",
+      "lessonIndex": 5,
+      "totalInModule": 5,
+      "title": "Gemini's real limits",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Gemini's real limits",
+          "body": [
+            "Gemini hallucinates. Confidently and regularly. It will cite studies that don't exist, quote people who didn't say it, and invent technical specifications. The failure mode is always the same: plausible-sounding wrong. Every fact, every name, every number you use externally — verify.",
+            "Gemini has a knowledge cutoff for non-Workspace info. Recent world events, new product releases, this week's earnings — unless you explicitly ask it to search the web (or your Drive), it's answering from training data that's weeks or months old.",
+            "Gemini doesn't see your entire Workspace. Admin settings, per-user permissions, and plan limits all gate what it can read. If it says 'I don't have access to that file' it may be real, not a bug. And anything in a private personal account won't show up at all — Gemini respects the account boundary."
+          ],
+          "callout": {
+            "label": "The posture",
+            "text": "Trust Gemini for structure and speed. Verify it for facts, names, numbers, and quotes. That posture alone prevents 95% of problems."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Which answer do you trust most?",
+          "prompt": "Gemini gives you these three pieces of information. Which should you verify before using?",
+          "options": [
+            {
+              "text": "A rough outline structure for your presentation.",
+              "correct": false,
+              "feedback": "Structure is low-risk — worst case you adjust it. Verify the facts inside it, not the outline itself."
+            },
+            {
+              "text": "A specific statistic with a cited source (\"42% of enterprises use AI, per Gartner 2026\").",
+              "correct": true,
+              "feedback": "Exactly the kind of thing that's most often hallucinated. Check the source before quoting."
+            },
+            {
+              "text": "A grammatical correction to your draft.",
+              "correct": false,
+              "feedback": "Grammar is low-stakes and easy to spot-check. Not the hallucination risk."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The three things you must always verify in Gemini's output are:",
+          "options": [
+            { "text": "Spelling, grammar, and punctuation.", "correct": false },
+            { "text": "Facts, names, and numbers — especially any specific statistic, citation, or proper noun.", "correct": true },
+            { "text": "The length.", "correct": false },
+            { "text": "Formatting.", "correct": false }
+          ],
+          "answerNote": "Facts, names, numbers. If any of those are wrong in an external-facing document, you pay the cost, not the AI."
+        }
+      ]
+    },
+    "203-3-0": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 3,
+      "lessonIdx": 0,
+      "moduleName": "Safe at work",
+      "lessonIndex": 1,
+      "totalInModule": 5,
+      "title": "Personal vs Workspace accounts",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Personal vs Workspace accounts",
+          "body": [
+            "You probably have two Google accounts: your personal gmail.com and your work Workspace account (@yourcompany.com). They're separate universes with separate rules. Gemini behaves differently in each.",
+            "Personal account Gemini (free or paid via Google One AI) can use your chats to improve Google's models unless you turn off activity saving. Nothing you type should be considered private. Fine for general questions, bad for anything confidential.",
+            "Workspace Gemini (on a paid Business/Enterprise plan with Gemini enabled) has contractual protections: your prompts and data are not used to train Google's models, your admin controls data access, and outputs are logged per your org's retention policy. It's the right place to do work."
+          ],
+          "callout": {
+            "label": "The one rule",
+            "text": "Work tasks? Use your Workspace account. Personal curiosity? Use your personal account. Don't mix — especially don't paste work data into personal Gemini."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Where do you ask about a client deal?",
+          "prompt": "You want Gemini to help you plan talking points for a client call about their renewal. Which account do you use?",
+          "options": [
+            {
+              "text": "Your personal gmail.com account.",
+              "correct": false,
+              "feedback": "Major risk. Client information in a personal AI account may violate your company's data policy and your client's contract."
+            },
+            {
+              "text": "Your work Workspace account, where prompts are covered by your company's data agreement with Google.",
+              "correct": true,
+              "feedback": "Right. Work context → work account. Always."
+            },
+            {
+              "text": "Doesn't matter — they're the same tool.",
+              "correct": false,
+              "feedback": "It matters a lot. Data policy, retention, and training-usage rules differ between the two."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The key difference between personal and Workspace Gemini is:",
+          "options": [
+            { "text": "Personal Gemini is prettier.", "correct": false },
+            { "text": "Workspace Gemini has contractual data protections (no training on your data, admin controls, retention); personal Gemini does not.", "correct": true },
+            { "text": "They use different models.", "correct": false },
+            { "text": "Only Workspace has image generation.", "correct": false }
+          ],
+          "answerNote": "Data treatment is the difference. For anything work-related, the work account is non-negotiable."
+        }
+      ]
+    },
+    "203-3-1": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 3,
+      "lessonIdx": 1,
+      "moduleName": "Safe at work",
+      "lessonIndex": 2,
+      "totalInModule": 5,
+      "title": "What IT admins can control",
+      "steps": [
+        {
+          "type": "read",
+          "title": "What IT admins can control",
+          "body": [
+            "Your Workspace admin has a dashboard of Gemini controls. They decide whether Gemini is turned on at all, which users or groups can use it, which features are enabled (image generation, web browsing, Gems), and how long conversations are retained.",
+            "Admins can also set data boundaries — for example, restricting which Drive folders Gemini can search, or blocking @-references to sensitive shared drives. If a feature seems missing, it's often policy, not a bug. Asking IT 'is this turned on for my account' is usually the first-line debugging question.",
+            "What admins typically can't see: the exact text of your individual prompts and answers, unless they've specifically enabled audit logging. Default settings preserve user privacy for normal activity; targeted audit requires a policy trigger or an investigation."
+          ],
+          "callout": {
+            "label": "Check before you blame",
+            "text": "Gemini acting 'broken'? Before filing a bug, ask IT whether the feature is enabled for your account. Most 'broken' is 'off by policy.'"
+          }
+        },
+        {
+          "type": "engage",
+          "title": "The @-reference button isn't there",
+          "prompt": "You try to @-reference a Drive file in a Gemini prompt but the @ picker shows nothing. What's the most likely reason?",
+          "options": [
+            {
+              "text": "Your browser is out of date.",
+              "correct": false,
+              "feedback": "Rarely the cause. Browser issues are usually visual, not feature-level."
+            },
+            {
+              "text": "Your Workspace admin has restricted Drive access for Gemini, or you're signed into a personal account without Workspace-level features.",
+              "correct": true,
+              "feedback": "Right. Admin policy or wrong-account is 90% of 'a feature is missing.'"
+            },
+            {
+              "text": "Gemini is in maintenance mode.",
+              "correct": false,
+              "feedback": "Unlikely and would be visible as a global banner."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The default level of visibility your admin has into your individual Gemini prompts is:",
+          "options": [
+            { "text": "Every prompt, in real time.", "correct": false },
+            { "text": "Generally limited; targeted audit is possible but not the default. They see aggregate usage, not your specific conversations.", "correct": true },
+            { "text": "Nothing — fully private.", "correct": false },
+            { "text": "Everything, forever.", "correct": false }
+          ],
+          "answerNote": "Trust-but-verify applies to both directions. Admins set policy; they don't typically snoop on your chats without reason."
+        }
+      ]
+    },
+    "203-3-2": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 3,
+      "lessonIdx": 2,
+      "moduleName": "Safe at work",
+      "lessonIndex": 3,
+      "totalInModule": 5,
+      "title": "What not to paste into personal Gemini",
+      "steps": [
+        {
+          "type": "read",
+          "title": "What not to paste into personal Gemini",
+          "body": [
+            "Never paste customer data into personal Gemini. Customer names, emails, contract terms, health info, financial details — any of it. Even if the chat feels private, your activity history is part of the training signal unless you've disabled it, and your employer's contracts with customers almost certainly forbid it.",
+            "Don't paste internal strategy, pricing roadmaps, legal drafts, or anything under NDA. Even innocuous-seeming excerpts ('here's our Q3 planning doc, summarize it') can leak competitive info if activity saving is on or if a future training run ingests it.",
+            "The safe test: would you be comfortable if this prompt appeared in a competitor's email, a journalist's article, or a customer's inbox tomorrow? If no, don't paste it. Use work Gemini or don't use AI for this task."
+          ],
+          "callout": {
+            "label": "The paste test",
+            "text": "Before pasting into personal AI: 'would I be okay if this appeared in a competitor's email tomorrow?' No? Don't paste."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "What's paste-safe in personal Gemini?",
+          "prompt": "Which of these is safe to paste into personal (non-Workspace) Gemini for help?",
+          "options": [
+            {
+              "text": "A customer's support ticket to draft a reply.",
+              "correct": false,
+              "feedback": "Customer data. Use work Gemini; this is not a personal-account task."
+            },
+            {
+              "text": "A public blog post you're editing for clarity.",
+              "correct": true,
+              "feedback": "Public material is fine. The post is already going to be world-readable anyway."
+            },
+            {
+              "text": "Your company's Q3 internal memo.",
+              "correct": false,
+              "feedback": "Internal = confidential by default. Work account or nothing."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The line between 'fine to paste' and 'don't paste' in personal Gemini is:",
+          "options": [
+            { "text": "Length of the text.", "correct": false },
+            { "text": "Whether the content is public / non-sensitive vs. internal, customer, or confidential.", "correct": true },
+            { "text": "Whether you're logged in.", "correct": false },
+            { "text": "Whether the prompt contains names.", "correct": false }
+          ],
+          "answerNote": "Public: fine. Internal or customer-touching: work account only. That's the whole rule."
+        }
+      ]
+    },
+    "203-3-3": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 3,
+      "lessonIdx": 3,
+      "moduleName": "Safe at work",
+      "lessonIndex": 4,
+      "totalInModule": 5,
+      "title": "When to escalate to IT",
+      "steps": [
+        {
+          "type": "read",
+          "title": "When to escalate to IT",
+          "body": [
+            "Most Gemini issues are user error or admin policy. Before filing a ticket, check: right account? Feature enabled? Tried a fresh conversation? Read the error message carefully? If the answer is yes to all and something still seems wrong, escalate.",
+            "Real escalation cases: Gemini returned content from a Drive folder you didn't know it had access to (possible permission misconfiguration), an output included someone else's data (serious), an error mentions rate limits or access controls (admin needs to adjust), or you accidentally pasted sensitive info and want it purged.",
+            "When you file the ticket, include: exact prompt, exact response or error, time, account you were using, and what you expected vs. what happened. 'Gemini is broken' gets the ticket deprioritized. Specifics get it fixed."
+          ],
+          "callout": {
+            "label": "Escalation checklist",
+            "text": "Account right? Feature on? Fresh chat? Specific error? If yes to all → ticket IT with: prompt, response, timestamp, account, expected behavior."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Escalate or debug?",
+          "prompt": "Gemini just returned someone else's meeting notes when you asked about your own. What do you do first?",
+          "options": [
+            {
+              "text": "Close the tab and try again.",
+              "correct": false,
+              "feedback": "Possible cross-contamination is a security issue, not a 'retry' issue."
+            },
+            {
+              "text": "Screenshot the output, note the exact prompt and timestamp, then immediately escalate to IT as a potential access-control issue.",
+              "correct": true,
+              "feedback": "Right. Unauthorized data exposure is a 'file it now' situation. Preserve evidence, report fast."
+            },
+            {
+              "text": "Send the notes to the right owner as a courtesy.",
+              "correct": false,
+              "feedback": "Well-intentioned but wrong. Propagating unauthorized content extends the exposure. IT handles this."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "A good IT ticket for a Gemini issue always includes:",
+          "options": [
+            { "text": "An apology.", "correct": false },
+            { "text": "Exact prompt, exact response/error, timestamp, account used, and expected vs. actual behavior.", "correct": true },
+            { "text": "A screenshot only.", "correct": false },
+            { "text": "Nothing — just 'it's broken.'", "correct": false }
+          ],
+          "answerNote": "Specifics get the ticket resolved. Vague tickets go to the back of the queue."
+        }
+      ]
+    },
+    "203-3-4": {
+      "courseId": 203,
+      "courseCode": "GEM·101",
+      "suite": "plus",
+      "moduleIdx": 3,
+      "lessonIdx": 4,
+      "moduleName": "Safe at work",
+      "lessonIndex": 5,
+      "totalInModule": 5,
+      "title": "Certification quiz",
+      "steps": [
+        {
+          "type": "read",
+          "title": "You've reached the end.",
+          "body": [
+            "Twenty lessons done. You now know how Gemini fits into Workspace, where to find it in each app, how to prompt it for real output, and which rules keep you safe with company data.",
+            "The short summary: Gemini's superpower is your own data. Use @-references and the side panel to pull in files and context. Verify facts, names, and numbers before sending anything external. Keep work tasks in your work account. Escalate security or access issues fast.",
+            "One last quick check, then a certification quiz to lock it in."
+          ],
+          "callout": {
+            "label": "Ready?",
+            "text": "Next step: the certification quiz. 10 questions. Pass to earn your Gemini 101 certificate."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "One-line summary of Gemini 101",
+          "prompt": "If you had to tell a coworker the single most useful thing from this course, it would be:",
+          "options": [
+            {
+              "text": "\"Gemini uses a better model than ChatGPT.\"",
+              "correct": false,
+              "feedback": "Not really the point, and it's model-dependent."
+            },
+            {
+              "text": "\"The @-reference trick — it lets Gemini read your live files instead of making you copy-paste. Huge time-saver.\"",
+              "correct": true,
+              "feedback": "Exactly. @ is the single technique that distinguishes 'occasional Gemini user' from 'daily Gemini user.'"
+            },
+            {
+              "text": "\"Gemini is free.\"",
+              "correct": false,
+              "feedback": "Partly — but it's not the takeaway that changes how people work."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "Before you take the certification quiz, the safest attitude toward a Gemini output is:",
+          "options": [
+            { "text": "Trust it and ship.", "correct": false },
+            { "text": "Use its structure and speed, verify its facts, names, and numbers — every single time.", "correct": true },
+            { "text": "Ignore it.", "correct": false },
+            { "text": "Only trust numbered lists.", "correct": false }
+          ],
+          "answerNote": "Structure free, facts earned. That posture serves you forever."
+        }
+      ]
+    },
+    "204-0-0": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 0,
+      "lessonIdx": 0,
+      "moduleName": "Gemini in Sheets basics",
+      "lessonIndex": 1,
+      "totalInModule": 4,
+      "title": "Opening the Gemini side panel",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Opening the Gemini side panel",
+          "body": [
+            "Open any Google Sheet with a Workspace account that has Gemini enabled. In the top-right corner, look for the four-point sparkle icon (Gemini). Click it. A side panel slides open — that's your chat with Gemini about this specific sheet.",
+            "The side panel already knows what sheet you're in. You don't need to describe it; you can just ask 'summarize this data' and Gemini reads the active tab. It sees your column headers, your data, and (to some extent) your formatting.",
+            "There's also inline help: on a blank cell, the sparkle option in the insert menu lets Gemini generate a formula or a value. Most of the power, though, is in the side panel — that's where you iterate, ask follow-ups, and work through multi-step analysis."
+          ],
+          "callout": {
+            "label": "Two entry points",
+            "text": "Side panel (sparkle icon, top-right) for chat + analysis. Inline sparkle in cells for one-off formulas and values."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Side panel or inline?",
+          "prompt": "You want to generate a SUMIFS formula to total revenue for a specific region. Best starting point?",
+          "options": [
+            {
+              "text": "Inline sparkle in the target cell.",
+              "correct": true,
+              "feedback": "Right. One-shot formula generation is exactly what inline is designed for. Fast and contextual."
+            },
+            {
+              "text": "Open the side panel, describe the sheet in detail, then ask.",
+              "correct": false,
+              "feedback": "Overkill for a single formula. Side panel shines for multi-step analysis, not quick formula writes."
+            },
+            {
+              "text": "Open gemini.google.com in a new tab.",
+              "correct": false,
+              "feedback": "You lose the live sheet context. Slower and less accurate."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The main advantage of the Gemini side panel inside Sheets vs. using gemini.google.com in another tab is:",
+          "options": [
+            { "text": "Less scrolling.", "correct": false },
+            { "text": "Gemini already sees the current sheet — columns, data, formatting — so you don't need to describe it.", "correct": true },
+            { "text": "It's cheaper.", "correct": false },
+            { "text": "Different model.", "correct": false }
+          ],
+          "answerNote": "Live context is the whole point. Side panel reads your sheet; standalone Gemini doesn't."
+        }
+      ]
+    },
+    "204-0-1": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 0,
+      "lessonIdx": 1,
+      "moduleName": "Gemini in Sheets basics",
+      "lessonIndex": 2,
+      "totalInModule": 4,
+      "title": "Plain-English asks",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Plain-English asks",
+          "body": [
+            "You don't need to know formula syntax to ask Gemini for analysis. 'What's the average deal size by region' works. So does 'which customers churned in March' and 'which row has the highest margin.' Gemini reads your headers and translates into the right formulas or filters.",
+            "When your data uses business words ('MRR,' 'CAC,' 'pipeline'), lean into it. 'Show me the top 10 opportunities by weighted pipeline value' uses your column names and your lingo — Gemini usually picks the right fields.",
+            "Be explicit about output format when it matters. 'Give me a single number,' 'give me a ranked list with the top 5,' 'insert the result into cell G2.' Gemini will often just put the answer in the chat — tell it to write into the sheet if that's what you want."
+          ],
+          "callout": {
+            "label": "Say what you want",
+            "text": "Natural words for the question + explicit output format = consistent, usable answers. 'Tell me X as a ranked list in column H.'"
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Better phrasing",
+          "prompt": "You have a 500-row sales sheet with columns for rep, region, deal size, and close date. You want top performers. Best ask?",
+          "options": [
+            {
+              "text": "\"Who's best?\"",
+              "correct": false,
+              "feedback": "Too vague. Gemini has to guess at 'best' — deal count? revenue? win rate?"
+            },
+            {
+              "text": "\"Rank reps by total deal size for deals closed in Q1 2026. Return a table with rep name and total, top 10 only.\"",
+              "correct": true,
+              "feedback": "Clear fields, clear metric, clear time range, clear format. This is the pattern."
+            },
+            {
+              "text": "\"Show me sales.\"",
+              "correct": false,
+              "feedback": "No metric, no format, no filter. You'll get something, but not what you want."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "When asking Gemini to analyze a sheet, the most reliable prompt structure is:",
+          "options": [
+            { "text": "[Question] only.", "correct": false },
+            { "text": "[What to analyze] + [what filter/time range] + [what format of output].", "correct": true },
+            { "text": "[Cell address].", "correct": false },
+            { "text": "[Formula name].", "correct": false }
+          ],
+          "answerNote": "Three ingredients — analysis, filter, format — make the difference between useful output and 'meh.'"
+        }
+      ]
+    },
+    "204-0-2": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 0,
+      "lessonIdx": 2,
+      "moduleName": "Gemini in Sheets basics",
+      "lessonIndex": 3,
+      "totalInModule": 4,
+      "title": "Generating tables from a prompt",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Generating tables from a prompt",
+          "body": [
+            "You can go the other direction too — ask Gemini to build a table from nothing. 'Create a 5-column tracker for Q3 marketing campaigns with: campaign name, channel, budget, owner, start date, status (dropdown).' Gemini drafts the structure, including headers and dropdown values.",
+            "Insert it with 'add this to the sheet starting at A1' (or wherever). Gemini writes the headers, sets up formatting, and drops in a couple example rows if you ask. Not production-ready, but an excellent starting scaffold — maybe 10 minutes of setup in 20 seconds.",
+            "Where this shines: intake forms, basic CRMs, content calendars, tracking dashboards. Anywhere you'd otherwise start by drawing a table in your head and typing headers one by one. Let Gemini make the skeleton; you fill in the real rows."
+          ],
+          "callout": {
+            "label": "Where it's best",
+            "text": "New tracker / form / simple dashboard? Describe the columns and let Gemini generate it. Spend your brain on the data, not the scaffold."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "What's Gemini best at generating?",
+          "prompt": "You need to stand up a new quarterly OKR tracker today. Best use of Gemini?",
+          "options": [
+            {
+              "text": "Have it generate the full list of your company's OKRs.",
+              "correct": false,
+              "feedback": "It can't know your real OKRs. That's your job."
+            },
+            {
+              "text": "Have it generate the table structure — columns, dropdowns, formatting — and then you fill in the actual OKRs.",
+              "correct": true,
+              "feedback": "Right. Scaffold from AI, substance from you. Fast and safe."
+            },
+            {
+              "text": "Generate everything and review later.",
+              "correct": false,
+              "feedback": "You'll end up with generic-sounding OKRs that aren't yours. Bad signal to your team."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "Gemini-generated tables in Sheets are best used as:",
+          "options": [
+            { "text": "Final production trackers.", "correct": false },
+            { "text": "Structural scaffolds — columns, dropdowns, basic formatting — that you then fill with real data.", "correct": true },
+            { "text": "Reports.", "correct": false },
+            { "text": "Historical archives.", "correct": false }
+          ],
+          "answerNote": "Structure from AI, substance from you. That split scales."
+        }
+      ]
+    },
+    "204-0-3": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 0,
+      "lessonIdx": 3,
+      "moduleName": "Gemini in Sheets basics",
+      "lessonIndex": 4,
+      "totalInModule": 4,
+      "title": "Reading AI-generated explanations",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Reading AI-generated explanations",
+          "body": [
+            "When Gemini generates a formula, it usually includes a plain-English explanation. Don't skip it. The explanation tells you what the formula is doing, what cells it's referencing, and what happens if your data changes shape. That last part matters — will this break if you add a column?",
+            "Example. You ask for a formula and Gemini returns =ARRAYFORMULA(IF(B2:B=\"closed-won\", D2:D, 0)). The explanation says 'this returns the deal value in column D for every row where column B is \"closed-won,\" and 0 otherwise, for the full column range.' Now you know: adding rows = fine. Renaming the status column = will break.",
+            "If there's no explanation, ask for one. 'Explain this formula step by step' or 'walk me through what this does for row 5.' Five seconds of explanation saves fifty minutes of debugging when a column moves."
+          ],
+          "callout": {
+            "label": "The rule",
+            "text": "Never paste a Gemini formula you don't understand. Read the explanation first, or ask for one."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Ship it or ask?",
+          "prompt": "Gemini generates a QUERY formula that looks complicated but returns the right answer on the sample data. What now?",
+          "options": [
+            {
+              "text": "Ship it — it works.",
+              "correct": false,
+              "feedback": "Works today on this data. Fails silently tomorrow when the data shape changes, and you won't know why."
+            },
+            {
+              "text": "Ask Gemini to explain what each part of the formula does and when it might break, then document at least the key dependencies.",
+              "correct": true,
+              "feedback": "30 seconds now, hours saved later. Especially valuable for formulas that go into shared or recurring sheets."
+            },
+            {
+              "text": "Rewrite it yourself without using Gemini.",
+              "correct": false,
+              "feedback": "Wastes the work Gemini already did. Understand it, don't redo it."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The highest-value habit when accepting a Gemini-generated formula is:",
+          "options": [
+            { "text": "Running it against the sample data.", "correct": false },
+            { "text": "Reading or asking for a plain-English explanation before pasting — so you know what it does and what breaks it.", "correct": true },
+            { "text": "Changing the font color.", "correct": false },
+            { "text": "Adding a comment.", "correct": false }
+          ],
+          "answerNote": "Understand first, paste second. AI formulas that are shipped without comprehension become silent time bombs."
+        }
+      ]
+    },
+    "204-1-0": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 1,
+      "lessonIdx": 0,
+      "moduleName": "Cleaning & analysis",
+      "lessonIndex": 1,
+      "totalInModule": 4,
+      "title": "Normalizing messy data",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Normalizing messy data",
+          "body": [
+            "Real sheets are messy. Names formatted three different ways, dates as strings, phone numbers with and without dashes, state names mixed with codes. Gemini handles this in plain English. 'Standardize column B — full names in Title Case, no extra spaces.' 'Convert column D to ISO dates (YYYY-MM-DD).' 'Normalize column F to 2-letter state codes.'",
+            "It works on ambiguous inputs too. A column with 'NY,' 'New York,' 'new york city,' and 'n.y.' becomes 'NY' across the board. Gemini is reliable on the common cases; give it a visual scan when done, especially for entries that weren't obvious (foreign cities, ambiguous abbreviations).",
+            "When the transformation is complex, ask Gemini to do it in a new column instead of overwriting. You keep the raw column for reference and a clean column for use. Gemini will typically suggest this pattern anyway — take it."
+          ],
+          "callout": {
+            "label": "Cleaning habit",
+            "text": "Transform into a new column, not in place. Keep the raw. Faster to trust, easier to fix if Gemini mis-guesses something."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Where do you put the clean data?",
+          "prompt": "Your raw column has inconsistent date formats. You ask Gemini to standardize. Where should the clean version go?",
+          "options": [
+            {
+              "text": "Overwrite the raw column.",
+              "correct": false,
+              "feedback": "You lose the original. If Gemini gets one wrong, you have no way to trace back."
+            },
+            {
+              "text": "A new adjacent column — raw in A, clean in B.",
+              "correct": true,
+              "feedback": "Right. Keeps the original as the source of truth; clean column is for consumption."
+            },
+            {
+              "text": "A new sheet entirely.",
+              "correct": false,
+              "feedback": "Sometimes appropriate but usually overkill. Side-by-side is faster to scan."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The biggest risk with AI-driven data cleaning is:",
+          "options": [
+            { "text": "It's slow.", "correct": false },
+            { "text": "Silent mis-guesses on ambiguous rows (abbreviations, foreign names) that look plausible but are wrong.", "correct": true },
+            { "text": "It always fails loudly.", "correct": false },
+            { "text": "It changes font colors.", "correct": false }
+          ],
+          "answerNote": "Plausible-but-wrong is the whole danger. Keep the raw column, spot-check the edge cases, trust the common ones."
+        }
+      ]
+    },
+    "204-1-1": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 1,
+      "lessonIdx": 1,
+      "moduleName": "Cleaning & analysis",
+      "lessonIndex": 2,
+      "totalInModule": 4,
+      "title": "Natural-language filters & sorts",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Natural-language filters & sorts",
+          "body": [
+            "Instead of building filter views by hand, describe what you want. 'Show me rows where deal size is above $50k and status is not closed-lost.' Gemini either gives you a FILTER or QUERY formula you can paste into a new tab, or applies a filter view directly — depends on your permission level and the sheet structure.",
+            "Multi-condition sorts are just as easy. 'Sort by region, then descending by MRR, then by account name.' Gemini sets it up. Where it's useful: stakeholder reviews, where you need a specific cut of the data for a specific meeting, then revert to the raw view.",
+            "For recurring filters (you look at the same cut every Monday), save the resulting formula or filter view. Gemini can regenerate on demand, but a saved view is one click the next time. Reserve AI for new cuts you haven't done before."
+          ],
+          "callout": {
+            "label": "When AI beats manual filters",
+            "text": "Complex, multi-condition, one-off asks. Stuff you'd spend 5 minutes clicking through filter dialogs to set up."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Where does Gemini help most?",
+          "prompt": "You need to answer: 'Which enterprise accounts in EMEA had an NPS score over 8 AND were flagged for expansion in Q2?' Best use of Gemini?",
+          "options": [
+            {
+              "text": "Ask Gemini to produce a QUERY or FILTER formula capturing all conditions and the output format you need.",
+              "correct": true,
+              "feedback": "Right. Multi-condition logical asks are exactly where natural-language filtering beats clicking through menus."
+            },
+            {
+              "text": "Build nested AutoFilters by hand.",
+              "correct": false,
+              "feedback": "Works but you'll spend 5-10 minutes setting it up. Gemini does it in 20 seconds."
+            },
+            {
+              "text": "Export to CSV and use Python.",
+              "correct": false,
+              "feedback": "Way overkill for a sheet-level question."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The kind of filter Gemini is best at is:",
+          "options": [
+            { "text": "One-column one-value.", "correct": false },
+            { "text": "Multi-condition, multi-column, with sort order — the kind that takes 5 minutes to set up manually.", "correct": true },
+            { "text": "No filter.", "correct": false },
+            { "text": "Only numeric.", "correct": false }
+          ],
+          "answerNote": "Complex asks are where the natural-language interface actually beats the UI. Simple one-off filters, just use the menus."
+        }
+      ]
+    },
+    "204-1-2": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 1,
+      "lessonIdx": 2,
+      "moduleName": "Cleaning & analysis",
+      "lessonIndex": 3,
+      "totalInModule": 4,
+      "title": "Pivot tables via Gemini",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Pivot tables via Gemini",
+          "body": [
+            "Pivot tables are powerful and their menu is confusing. Gemini shortcuts both. 'Create a pivot table on the current sheet: rows by region, columns by quarter, values sum of revenue.' Gemini creates it on a new tab, ready to use.",
+            "Follow-ups chain naturally. 'Now add a column for average deal size.' 'Filter to customers with more than 3 renewals.' 'Sort descending by Q4 revenue.' Each turn refines the pivot without you touching the UI.",
+            "A practical trick: if the pivot looks almost right but one grouping is off, don't keep prompting — just grab the pivot options panel that Gemini placed next to it and tweak the one field by hand. Use Gemini to build the scaffold, finger controls to refine the detail."
+          ],
+          "callout": {
+            "label": "The hybrid play",
+            "text": "Gemini to build the pivot, UI to refine it. Talking to AI for every small tweak is slower than one click in the right menu."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "When to switch from Gemini to the UI",
+          "prompt": "Your pivot is 90% right but you want to change the column-grouping from month to quarter. Best next move?",
+          "options": [
+            {
+              "text": "Ask Gemini to regenerate it with quarters.",
+              "correct": false,
+              "feedback": "It'll work but you'll rebuild the whole pivot just to swap one field. Slower than the UI."
+            },
+            {
+              "text": "Open the pivot options panel and change the date grouping field to 'quarter' in one click.",
+              "correct": true,
+              "feedback": "Right. AI for the scaffold, direct UI for small tweaks. That's the efficient loop."
+            },
+            {
+              "text": "Delete the pivot and start over.",
+              "correct": false,
+              "feedback": "Worst option. You lose all the setup for no reason."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The best way to use Gemini with pivot tables is:",
+          "options": [
+            { "text": "Talk to Gemini for every adjustment.", "correct": false },
+            { "text": "Use Gemini to create the initial pivot and major restructurings; use the pivot options panel for small tweaks.", "correct": true },
+            { "text": "Avoid pivots entirely.", "correct": false },
+            { "text": "Always regenerate from scratch.", "correct": false }
+          ],
+          "answerNote": "Big structure from AI, small changes from the UI. Match the tool to the size of the edit."
+        }
+      ]
+    },
+    "204-1-3": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 1,
+      "lessonIdx": 3,
+      "moduleName": "Cleaning & analysis",
+      "lessonIndex": 4,
+      "totalInModule": 4,
+      "title": "Charts from prompts",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Charts from prompts",
+          "body": [
+            "Ask Gemini for a chart and describe what you want: 'line chart of monthly revenue for 2026, with a trend line.' 'Bar chart of top 10 reps by closed-won, with each rep's quota as a dashed reference line.' Gemini inserts the chart, usually on the current tab near the source data.",
+            "Styling is where Gemini is weakest. Defaults are fine but not beautiful — think Google's built-in chart look. If you need a polished chart for a board deck, plan to hand-tune colors, labels, and axis formatting yourself. Or generate the chart, then ask Gemini for suggested improvements, one at a time.",
+            "When the prompt is ambiguous, Gemini will guess at chart type. Say what you want: line, bar, stacked bar, scatter, pie, sparkline. Ambiguity often yields a column chart when you wanted a line — specify to save a round trip."
+          ],
+          "callout": {
+            "label": "Be explicit",
+            "text": "Name the chart type. Name the reference lines. Name the labels. Ambiguity guessed-at wastes a round trip."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "The chart came back wrong — what first?",
+          "prompt": "You asked for a trend chart; Gemini produced a column chart. Best next move?",
+          "options": [
+            {
+              "text": "Regenerate and hope.",
+              "correct": false,
+              "feedback": "Rarely works. Be specific about what you want."
+            },
+            {
+              "text": "Tell Gemini: 'change to a line chart with a linear trend line; keep the same data and axes.'",
+              "correct": true,
+              "feedback": "Right. Targeted correction beats random regeneration."
+            },
+            {
+              "text": "Delete the chart and make one by hand.",
+              "correct": false,
+              "feedback": "You leave AI's value on the table. Targeted correction is faster."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The biggest weakness of Gemini-generated charts is:",
+          "options": [
+            { "text": "Wrong data.", "correct": false },
+            { "text": "Default styling — fine for internal use, not polished enough for external-facing decks without hand-tuning.", "correct": true },
+            { "text": "Insane colors.", "correct": false },
+            { "text": "Always pie charts.", "correct": false }
+          ],
+          "answerNote": "Structure free, polish earned. For board-grade visuals, plan to tune the labels, colors, and axes yourself."
+        }
+      ]
+    },
+    "204-2-0": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 2,
+      "lessonIdx": 0,
+      "moduleName": "Pro moves",
+      "lessonIndex": 1,
+      "totalInModule": 4,
+      "title": "Apps Script with Gemini",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Apps Script with Gemini",
+          "body": [
+            "Apps Script is Google's scripting language for Workspace — lightweight JavaScript that automates Sheets, Docs, Gmail, and more. You don't need to be a programmer. You describe what you want in the Gemini side panel, it produces the code, you paste it into Tools → Apps Script and run it.",
+            "Good starter asks. 'Write an Apps Script that sends me an email every Monday at 9am with a summary of the 'pipeline' tab.' 'When someone adds a row to this sheet, auto-fill column G with today's date.' 'Move any row where status = \"closed\" to a separate tab called Archive.'",
+            "Always read Gemini's explanation before running the script. Scripts have write access to your data and can send emails on your behalf — harmless bugs become embarrassing, real bugs become data-loss. Test on a copy of the sheet first, not production data."
+          ],
+          "callout": {
+            "label": "Safety rule",
+            "text": "Test every AI-generated Apps Script on a copy first. It has real write access to your data. Bugs here have real consequences."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "The right starter automation",
+          "prompt": "Your team manually copies 'closed' deals to an archive tab every week. Best use of Gemini + Apps Script?",
+          "options": [
+            {
+              "text": "Keep doing it manually.",
+              "correct": false,
+              "feedback": "Exactly the kind of task this automates away."
+            },
+            {
+              "text": "Ask Gemini to write an Apps Script that moves rows to Archive when status = 'closed,' test it on a copy of the sheet, then deploy.",
+              "correct": true,
+              "feedback": "Right. Describe the rule, test the script, then run it on real data. One-time setup, permanent time save."
+            },
+            {
+              "text": "Ask Gemini to delete the closed deals.",
+              "correct": false,
+              "feedback": "Never. Archive, never delete. Data that looks useless today often matters tomorrow."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "Before running a Gemini-generated Apps Script on a production sheet, you should:",
+          "options": [
+            { "text": "Nothing — it's AI, it's correct.", "correct": false },
+            { "text": "Read the explanation, test on a copy of the sheet, verify the outcome, then deploy to production.", "correct": true },
+            { "text": "Email it to IT for review.", "correct": false },
+            { "text": "Run it at midnight.", "correct": false }
+          ],
+          "answerNote": "Scripts have write access. Test on a copy is a non-negotiable one-minute habit that prevents disasters."
+        }
+      ]
+    },
+    "204-2-1": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 2,
+      "lessonIdx": 1,
+      "moduleName": "Pro moves",
+      "lessonIndex": 2,
+      "totalInModule": 4,
+      "title": "Advanced formulas & array logic",
+      "steps": [
+        {
+          "type": "read",
+          "title": "Advanced formulas & array logic",
+          "body": [
+            "Gemini is extremely good at the formulas most people avoid. QUERY with nested conditions. ARRAYFORMULA to apply a formula to an entire column in one cell. REGEXEXTRACT for pulling substrings out of messy text. LAMBDA for defining reusable functions inside a sheet. Describe the result you want; Gemini writes the formula.",
+            "A useful pattern: 'generate an ARRAYFORMULA in cell C2 that, for every row, returns the deal value from column D if status in column B is \"closed-won\" and the close date in column E is in 2026.' Gemini writes it, tests it, and explains it. Faster than you could construct the syntax.",
+            "The win isn't that Gemini writes formulas you couldn't write — it's that it writes them in 10 seconds instead of you spending 10 minutes rifling through docs and nesting parentheses. Reserve your brain for the business logic; let Gemini handle the syntax."
+          ],
+          "callout": {
+            "label": "Brain vs syntax",
+            "text": "Business logic is hard and human. Syntax is mechanical and AI-solvable. Split the work accordingly."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "The right task to delegate",
+          "prompt": "You need a formula that pulls the email-domain from each row's email column (e.g. 'acme.com' from 'alice@acme.com'). Best approach?",
+          "options": [
+            {
+              "text": "Search online for a REGEXEXTRACT formula pattern.",
+              "correct": false,
+              "feedback": "Works but slow and you copy someone else's formula that may or may not fit your data."
+            },
+            {
+              "text": "Ask Gemini: 'in column C, ARRAYFORMULA that extracts the domain (everything after @) from the email in column B.' Review, paste, verify on two rows.",
+              "correct": true,
+              "feedback": "30 seconds. Gemini handles syntax; you verify the result matches expectations."
+            },
+            {
+              "text": "Do it by hand, one cell at a time.",
+              "correct": false,
+              "feedback": "Fine for 5 rows, impossible for 5,000. Delegate the syntax."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "The highest-leverage category of Sheets work to delegate to Gemini is:",
+          "options": [
+            { "text": "Font selection.", "correct": false },
+            { "text": "Complex formula construction (QUERY, ARRAYFORMULA, REGEX, LAMBDA) where syntax is mechanical but error-prone.", "correct": true },
+            { "text": "Chart colors.", "correct": false },
+            { "text": "Row height.", "correct": false }
+          ],
+          "answerNote": "Syntax is the sweet spot. Your judgment on the business question; AI's speed on the formula. Biggest time-saver in this course."
+        }
+      ]
+    },
+    "204-2-2": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 2,
+      "lessonIdx": 2,
+      "moduleName": "Pro moves",
+      "lessonIndex": 3,
+      "totalInModule": 4,
+      "title": "AI math gotchas + verification",
+      "steps": [
+        {
+          "type": "read",
+          "title": "AI math gotchas + verification",
+          "body": [
+            "Gemini does math, and sometimes gets it wrong — especially when asked to reason in the chat rather than via a formula. If you ask 'what's the total revenue in column D,' Gemini may answer in prose using arithmetic it did in its head. That arithmetic is not always reliable.",
+            "The fix: whenever the answer is a number that matters, insist on a formula, not a reasoned answer. 'Give me a SUM formula for column D' always returns a verifiable cell reference. 'What's the total' may return a number Gemini computed incorrectly.",
+            "Same principle for percentages, growth rates, averages, medians. If it matters in a report, it goes through a formula. Gemini's chat math is fine for rough estimates, not for anything you're presenting, signing, or billing against."
+          ],
+          "callout": {
+            "label": "Cardinal rule",
+            "text": "Important number? It comes from a formula, not a chat answer. Always."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "Which answer do you trust?",
+          "prompt": "You asked Gemini for Q3 pipeline totals. Which response do you trust more?",
+          "options": [
+            {
+              "text": "A chat reply saying \"The Q3 total is $2,847,300.\"",
+              "correct": false,
+              "feedback": "Could be right, could be Gemini doing arithmetic in its head. You have no way to verify without recomputing."
+            },
+            {
+              "text": "A formula like =SUMIF(B:B,\"Q3\",D:D) inserted in a cell, returning $2,847,300.",
+              "correct": true,
+              "feedback": "Right. The formula is auditable — you see the cell range, you see the logic. The number is reproducible."
+            },
+            {
+              "text": "They're equivalent.",
+              "correct": false,
+              "feedback": "Feels equivalent. Isn't. Formula = verifiable; chat = trust-me."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "When you need a number from Gemini that will end up in a report or meeting, you should:",
+          "options": [
+            { "text": "Trust the chat output.", "correct": false },
+            { "text": "Always get it via a formula in a cell so the math is verifiable and reproducible.", "correct": true },
+            { "text": "Run it twice and average the answers.", "correct": false },
+            { "text": "Round to the nearest thousand.", "correct": false }
+          ],
+          "answerNote": "Verifiable beats confident. A formula in a cell you can audit; a chat number you cannot."
+        }
+      ]
+    },
+    "204-2-3": {
+      "courseId": 204,
+      "courseCode": "GEM·SHT",
+      "suite": "plus",
+      "moduleIdx": 2,
+      "lessonIdx": 3,
+      "moduleName": "Pro moves",
+      "lessonIndex": 4,
+      "totalInModule": 4,
+      "title": "Certification quiz",
+      "steps": [
+        {
+          "type": "read",
+          "title": "You've reached the end.",
+          "body": [
+            "Twelve lessons down. You can now navigate the Gemini side panel in Sheets, describe asks in plain English, generate tables and formulas, clean messy data, build pivots and charts, and automate workflows with Apps Script — all without writing a line of syntax by hand.",
+            "The through-line of this course: Gemini handles the mechanics (syntax, structure, scaffolds) while you handle the judgment (which metric, which filter, which chart, whether the answer makes sense). Together it's 10x faster than either alone.",
+            "One recap engage-check, then the certification quiz."
+          ],
+          "callout": {
+            "label": "Core habit",
+            "text": "Ask in plain English. Get the formula, chart, or script. Read the explanation. Verify on 2-3 rows. Ship."
+          }
+        },
+        {
+          "type": "engage",
+          "title": "The one habit that prevents disasters",
+          "prompt": "If you could make your team adopt one discipline from this course, which matters most?",
+          "options": [
+            {
+              "text": "Always use Gemini's side panel, never inline.",
+              "correct": false,
+              "feedback": "Both have their place. Not a universal rule."
+            },
+            {
+              "text": "Never trust a number from chat — always convert it to a verifiable formula in a cell, and test AI-generated scripts on a copy first.",
+              "correct": true,
+              "feedback": "Right. This single habit separates teams that scale AI safely from teams that get burned by silent errors."
+            },
+            {
+              "text": "Use Advanced only.",
+              "correct": false,
+              "feedback": "Plan choice is organizational, not a discipline."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "prompt": "Your one-line rule for Gemini inside Sheets is:",
+          "options": [
+            { "text": "Trust and ship.", "correct": false },
+            { "text": "Plain-English ask, read the explanation, verify against the source, ship — and never trust chat math for anything that ends in a report.", "correct": true },
+            { "text": "Only use it for cleaning data.", "correct": false },
+            { "text": "Ask twice, average the answers.", "correct": false }
+          ],
+          "answerNote": "The formula-not-chat rule alone prevents most embarrassing mistakes. That plus 'test scripts on copies' and you're good."
+        }
+      ]
+    }
 };

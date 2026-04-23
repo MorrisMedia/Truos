@@ -27,12 +27,14 @@ interface PlanSpec {
 }
 
 const SPECS: PlanSpec[] = [
-  { planKey: 'AI·102',   envVar: 'STRIPE_PRICE_AI_102',      name: 'AI·102 — Practical Prompting',       description: 'Lifetime access to AI·102. 24 lessons, ~4 hours.',            amountCents: 49900,  mode: 'one_time' },
-  { planKey: 'AI·103',   envVar: 'STRIPE_PRICE_AI_103',      name: 'AI·103 — AI at Work',                description: 'Lifetime access to AI·103. 32 lessons, ~6 hours.',            amountCents: 99900,  mode: 'one_time' },
-  { planKey: 'AI·104',   envVar: 'STRIPE_PRICE_AI_104',      name: 'AI·104 — The Truos Capstone',        description: 'Lifetime access to AI·104. 40 lessons, ~10 hours.',           amountCents: 149900, mode: 'one_time' },
+  { planKey: 'AI·102',   envVar: 'STRIPE_PRICE_AI_102',      name: 'AI·102 — Practical Prompting',       description: 'Lifetime access to AI·102. 24 lessons, ~1.5 hours.',          amountCents: 49900,  mode: 'one_time' },
+  { planKey: 'AI·103',   envVar: 'STRIPE_PRICE_AI_103',      name: 'AI·103 — AI at Work',                description: 'Lifetime access to AI·103. 32 lessons, ~2 hours.',            amountCents: 99900,  mode: 'one_time' },
+  { planKey: 'AI·104',   envVar: 'STRIPE_PRICE_AI_104',      name: 'AI·104 — The Truos Capstone',        description: 'Lifetime access to AI·104. 40 lessons, ~2.5 hours.',          amountCents: 149900, mode: 'one_time' },
   { planKey: 'Bundle',   envVar: 'STRIPE_PRICE_BUNDLE_FULL', name: 'Truos Base Bundle — AI·102+103+104', description: 'Lifetime access to all three paid base courses. Save $500.',  amountCents: 249700, mode: 'one_time' },
-  { planKey: 'CPLT·101', envVar: 'STRIPE_PRICE_CPLT_101',    name: 'Truos+ · Copilot 101',               description: 'Lifetime access to Copilot 101. 20 lessons, ~2.5 hours.',     amountCents: 24900,  mode: 'one_time' },
-  { planKey: 'CPLT·EXL', envVar: 'STRIPE_PRICE_CPLT_EXL',    name: 'Truos+ · Copilot + Excel',           description: 'Lifetime access to Copilot + Excel. 12 lessons, ~1.5 hours.', amountCents: 24900,  mode: 'one_time' },
+  { planKey: 'CPLT·101', envVar: 'STRIPE_PRICE_CPLT_101',    name: 'Truos+ · Copilot 101',               description: 'Lifetime access to Copilot 101. 20 lessons, ~1 hour.',        amountCents: 24900,  mode: 'one_time' },
+  { planKey: 'CPLT·EXL', envVar: 'STRIPE_PRICE_CPLT_EXL',    name: 'Truos+ · Copilot + Excel',           description: 'Lifetime access to Copilot + Excel. 12 lessons, ~1 hour.',    amountCents: 24900,  mode: 'one_time' },
+  { planKey: 'GEM·101',  envVar: 'STRIPE_PRICE_GEM_101',     name: 'Truos+ · Gemini 101',                description: 'Lifetime access to Gemini 101. 20 lessons, ~1 hour.',         amountCents: 24900,  mode: 'one_time' },
+  { planKey: 'GEM·SHT',  envVar: 'STRIPE_PRICE_GEM_SHT',     name: 'Truos+ · Gemini + Google Sheets',    description: 'Lifetime access to Gemini + Sheets. 12 lessons, ~1 hour.',    amountCents: 24900,  mode: 'one_time' },
   { planKey: 'Team',     envVar: 'STRIPE_PRICE_TEAM_SEAT',   name: 'Truos Team · per seat / mo',         description: 'Team subscription. Per seat, billed monthly.',                amountCents: 9900,   mode: 'recurring' },
 ];
 

@@ -25,6 +25,8 @@ export const PLANS: Record<string, PlanConfig> = {
   'Bundle':   { envVar: 'STRIPE_PRICE_BUNDLE_FULL', mode: 'payment',      courseIds: [102, 103, 104],           label: 'Base bundle — AI·102 + 103 + 104', amountCents: 249700 },
   'CPLT·101': { envVar: 'STRIPE_PRICE_CPLT_101',    mode: 'payment',      courseIds: [201],                     label: 'Copilot 101',                      amountCents: 24900 },
   'CPLT·EXL': { envVar: 'STRIPE_PRICE_CPLT_EXL',    mode: 'payment',      courseIds: [202],                     label: 'Copilot + Excel',                  amountCents: 24900 },
+  'GEM·101':  { envVar: 'STRIPE_PRICE_GEM_101',     mode: 'payment',      courseIds: [203],                     label: 'Gemini 101',                       amountCents: 24900 },
+  'GEM·SHT':  { envVar: 'STRIPE_PRICE_GEM_SHT',     mode: 'payment',      courseIds: [204],                     label: 'Gemini + Google Sheets',           amountCents: 24900 },
   'Team':     { envVar: 'STRIPE_PRICE_TEAM_SEAT',   mode: 'subscription', courseIds: [],                        label: 'Team subscription',                amountCents: 9900 },
 };
 

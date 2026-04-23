@@ -57,7 +57,7 @@ export default function TruosPlusPage() {
             <div className="panel" style={{ padding: 24, borderStyle: 'dashed' }}>
               <div className="eyebrow" style={{ marginBottom: 10 }}>COMING SOON</div>
               <div style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.55 }}>
-                Gemini for Workspace · ChatGPT Pro · Notion AI · Claude for Work. Suggest the next one: <a href="mailto:hello@truos.ai" style={{ color: 'var(--accent)' }}>hello@truos.ai</a>.
+                ChatGPT Pro · Notion AI · Claude for Work · Gemini + Docs. Suggest the next one: <a href="mailto:hello@truos.ai" style={{ color: 'var(--accent)' }}>hello@truos.ai</a>.
               </div>
             </div>
             <div className="panel" style={{ padding: 24, background: 'color-mix(in oklab, var(--accent) 6%, var(--bg-panel))', borderColor: 'rgba(212,245,71,0.25)' }}>
