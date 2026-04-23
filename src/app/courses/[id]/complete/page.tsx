@@ -67,7 +67,7 @@ export default async function LessonCompletePage({ params, searchParams }: {
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
           <Link className="btn btn-ghost" href={`/courses/${courseId}`}>Back to course</Link>
           {courseComplete ? (
-            <Link className="btn btn-primary" href={`/certificates/${courseId}`}>See certificate {Icons.arrow}</Link>
+            <Link className="btn btn-primary" href={`/courses/${courseId}/cert-quiz`}>Take certification quiz {Icons.arrow}</Link>
           ) : (
             <Link className="btn btn-primary" href={nextHref}>Next lesson {Icons.arrow}</Link>
           )}

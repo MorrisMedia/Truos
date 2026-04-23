@@ -3,7 +3,6 @@ import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { auth } from '@/lib/auth';
 import { recordProgress } from '@/lib/access';
-import { maybeIssueCertificate } from '@/lib/certificate';
 
 const Body = z.object({
   courseId: z.number().int(),
@@ -21,12 +20,12 @@ export async function POST(req: Request) {
 
   const { courseId, moduleIdx, lessonIdx, score } = parsed.data;
   await recordProgress(session.user.id, courseId, moduleIdx, lessonIdx, score);
-  const cert = await maybeIssueCertificate(session.user.id, courseId);
 
-  // Invalidate the pages that show progress so the user sees their update immediately
+  // Invalidate the pages that show progress so the user sees their update immediately.
+  // Certificates are earned via /courses/[id]/cert-quiz — not auto-issued here.
   revalidatePath('/dashboard');
   revalidatePath(`/courses/${courseId}`);
   revalidatePath('/account');
 
-  return NextResponse.json({ ok: true, certIssued: !!cert });
+  return NextResponse.json({ ok: true });
 }

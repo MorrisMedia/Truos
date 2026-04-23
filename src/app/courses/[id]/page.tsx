@@ -36,6 +36,12 @@ export default async function CoursePage({ params }: { params: { id: string } })
   const totalLessons = Object.keys(LESSONS).filter(k => k.startsWith(`${courseId}-`)).length;
   const pct = totalLessons ? Math.round((progress.length / totalLessons) * 100) : 0;
 
+  const cert = userId
+    ? await prisma.certificate.findUnique({ where: { userId_courseId: { userId, courseId } } })
+    : null;
+  const lessonsComplete = pct === 100;
+  const certReady = lessonsComplete && !cert;
+
   // Find first incomplete lesson for "Continue" button
   let nextModule = 0, nextLesson = 0;
   outer: for (let m = 0; m < course.modules.length; m++) {
@@ -65,14 +71,22 @@ export default async function CoursePage({ params }: { params: { id: string } })
                 <span>{progress.length} of {totalLessons} lessons</span>
                 <span>~{Math.max(0, Math.round(course.hours * (1 - pct / 100) * 10) / 10)}h left</span>
               </div>
-              <Link className="btn btn-primary" style={{ width: '100%', marginTop: 20, display: 'block', textAlign: 'center' }}
-                href={`/courses/${courseId}/${nextModule}/${nextLesson}`}>
-                {pct === 0 ? 'Start course' : 'Continue'} {Icons.arrow}
-              </Link>
-              {pct === 100 && (
-                <Link className="btn btn-ghost btn-sm" style={{ width: '100%', marginTop: 8, display: 'block', textAlign: 'center' }}
+              {!lessonsComplete && (
+                <Link className="btn btn-primary" style={{ width: '100%', marginTop: 20, display: 'block', textAlign: 'center' }}
+                  href={`/courses/${courseId}/${nextModule}/${nextLesson}`}>
+                  {pct === 0 ? 'Start course' : 'Continue'} {Icons.arrow}
+                </Link>
+              )}
+              {certReady && (
+                <Link className="btn btn-primary" style={{ width: '100%', marginTop: 20, display: 'block', textAlign: 'center' }}
+                  href={`/courses/${courseId}/cert-quiz`}>
+                  Take certification quiz {Icons.arrow}
+                </Link>
+              )}
+              {cert && (
+                <Link className="btn btn-primary" style={{ width: '100%', marginTop: 20, display: 'block', textAlign: 'center' }}
                   href={`/certificates/${courseId}`}>
-                  See certificate
+                  See certificate {Icons.arrow}
                 </Link>
               )}
             </div>
