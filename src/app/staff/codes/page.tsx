@@ -7,6 +7,9 @@ import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { Icons } from '@/components/icons';
 import { ALL_COURSES } from '@/content/courses';
+import { APP_URL } from '@/lib/config';
+
+export const dynamic = 'force-dynamic';
 
 function randomCode(len = 8): string {
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -21,7 +24,6 @@ async function createCode(formData: FormData) {
   if (!session?.user?.isStaff) throw new Error('staff only');
 
   const customCode = String(formData.get('customCode') ?? '').trim().toUpperCase();
-  const code = (customCode || randomCode()).toUpperCase();
   const label = String(formData.get('label') ?? '').trim() || null;
   const courseIds = (formData.getAll('courseIds') as string[]).map(Number).filter(Boolean);
   const maxUsesRaw = String(formData.get('maxUses') ?? '').trim();
@@ -29,18 +31,36 @@ async function createCode(formData: FormData) {
   const expiresRaw = String(formData.get('expiresAt') ?? '').trim();
   const expiresAt = expiresRaw ? new Date(expiresRaw) : null;
 
-  await prisma.compCode.create({
-    data: {
-      code,
-      label,
-      courseIds: courseIds.length ? courseIds : [], // [] = all paid
-      maxUses,
-      expiresAt,
-      createdBy: session.user.email,
-    },
-  });
+  // Auto-generate unique code if custom not provided; retry on collision.
+  let code = customCode;
+  let created = null;
+  for (let attempt = 0; attempt < 6; attempt++) {
+    const candidate = code || randomCode();
+    const existing = await prisma.compCode.findUnique({ where: { code: candidate } });
+    if (existing) {
+      if (customCode) {
+        // Tried a custom that already exists — bubble up a readable error.
+        redirect(`/staff/codes?err=${encodeURIComponent(`Code "${customCode}" already exists`)}`);
+      }
+      continue;
+    }
+    created = await prisma.compCode.create({
+      data: {
+        code: candidate,
+        label,
+        courseIds: courseIds.length ? courseIds : [],
+        maxUses,
+        expiresAt,
+        createdBy: session.user.email,
+      },
+    });
+    code = candidate;
+    break;
+  }
+  if (!created) redirect('/staff/codes?err=Could%20not%20generate%20a%20unique%20code');
 
   revalidatePath('/staff/codes');
+  redirect(`/staff/codes?created=${encodeURIComponent(code)}`);
 }
 
 async function toggleCode(formData: FormData) {
@@ -57,12 +77,14 @@ async function toggleCode(formData: FormData) {
   revalidatePath('/staff/codes');
 }
 
-export default async function StaffCodesPage() {
+export default async function StaffCodesPage({ searchParams }: { searchParams: { created?: string; err?: string } }) {
   const session = await auth();
   if (!session?.user?.isStaff) redirect('/');
 
   const codes = await prisma.compCode.findMany({ orderBy: { createdAt: 'desc' }, take: 50 });
   const paidCourses = ALL_COURSES.filter(c => c.tier === 'paid');
+  const createdCode = searchParams?.created ? String(searchParams.created) : null;
+  const errMsg = searchParams?.err ? String(searchParams.err) : null;
 
   return (
     <>
@@ -80,6 +102,22 @@ export default async function StaffCodesPage() {
       </section>
 
       <section style={{ padding: '40px 0' }}>
+        <div className="container">
+          {createdCode && (
+            <div style={{ background: 'color-mix(in oklab, var(--accent) 10%, var(--bg-panel))', border: '1px solid var(--accent)', borderRadius: 8, padding: '14px 18px', marginBottom: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+              <div style={{ fontSize: 14 }}>
+                Created <span className="mono" style={{ color: 'var(--accent)', fontWeight: 600 }}>{createdCode}</span>.
+                Shareable URL: <span className="mono" style={{ fontSize: 12 }}>{APP_URL}/redeem/{createdCode}</span>
+              </div>
+              <Link href="/staff/codes" className="btn btn-ghost btn-sm">Dismiss</Link>
+            </div>
+          )}
+          {errMsg && (
+            <div style={{ background: 'color-mix(in oklab, var(--danger) 10%, var(--bg-panel))', border: '1px solid var(--danger)', borderRadius: 8, padding: '14px 18px', marginBottom: 24, fontSize: 14 }}>
+              {errMsg}
+            </div>
+          )}
+        </div>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '420px 1fr', gap: 32 }}>
           <div className="panel" style={{ padding: 24, alignSelf: 'start' }}>
             <div className="eyebrow" style={{ marginBottom: 16 }}>NEW CODE</div>
