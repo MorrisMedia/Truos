@@ -10,7 +10,8 @@
     "postinstall": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate deploy",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "stripe:setup": "tsx scripts/setup-stripe.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
