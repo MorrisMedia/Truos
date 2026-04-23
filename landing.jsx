@@ -10,8 +10,11 @@ function LandingNav({ onNav }) {
         <a className="nav-link" href="#courses">Courses</a>
         <a className="nav-link" href="#pricing">Pricing</a>
         <a className="nav-link" href="#teams">For teams</a>
+        <a className="nav-link" onClick={() => onNav('plus')} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}>
+          Truos<span style={{ color: 'var(--accent)', fontWeight: 600 }}>+</span>
+        </a>
         <a className="nav-link" onClick={() => onNav('admin')} style={{ cursor: 'pointer' }}>Sign in</a>
-        <button className="btn btn-primary btn-sm" onClick={() => onNav('checkout')}>
+        <button className="btn btn-primary btn-sm" onClick={() => onNav('lesson', { courseId: 101, moduleIdx: 0, lessonIdx: 0 })}>
           Start free {icons.arrow}
         </button>
       </div>
@@ -38,8 +41,8 @@ function Hero({ onNav }) {
           AI fluency your <span className="serif" style={{ fontStyle: 'italic' }}>whole team</span> can finish.
         </h1>
         <p style={{ fontSize: 20, color: 'var(--text-muted)', maxWidth: 640, marginBottom: 40, lineHeight: 1.45 }}>
-          Four courses, 116 lessons. Start from zero tech knowledge in 101. Finish with a shipped AI workflow in 104.
-          Built for commercial teams — sales, marketing, CS, ops, finance.
+          Four core courses, 116 lessons. Start from zero tech knowledge in 101. Finish with a shipped AI workflow in 104.
+          Plus the <span onClick={() => onNav('plus')} style={{ color: 'var(--accent)', cursor: 'pointer', borderBottom: '1px solid var(--accent)' }}>Truos+ suite</span> for tool-specific mastery (Copilot, coming: Gemini, ChatGPT, Notion).
         </p>
         <div style={{ display: 'flex', gap: 12, marginBottom: 72 }}>
           <button className="btn btn-primary btn-lg" onClick={() => onNav('lesson')}>
@@ -211,70 +214,110 @@ function LessonPreviewCard() {
 }
 
 function Pricing({ onNav }) {
-  const tiers = [
-    {
-      name: 'Individual',
-      price: '$29',
-      unit: '/mo',
-      body: 'For a single learner. Full access to 101–104. Certificates included.',
-      features: ['All four courses', 'Certificates of completion', 'Personal progress tracking', 'Cancel anytime'],
-      cta: 'Start 14-day trial',
-      featured: false,
-    },
-    {
-      name: 'Team',
-      price: '$19',
-      unit: '/seat/mo',
-      body: 'For commercial teams of 5+. Admin dashboard, team leaderboards, dedicated CSM above 50 seats.',
-      features: ['Everything in Individual', 'Org admin dashboard', 'Team progress & reporting', 'Custom case studies', 'SSO (Google / Microsoft)'],
-      cta: 'Start team trial',
-      featured: true,
-    },
-    {
-      name: 'Enterprise',
-      price: 'Custom',
-      unit: '',
-      body: 'For orgs above 200 seats. SAML SSO, SCIM, custom tracks, co-branded certificates, data residency.',
-      features: ['Everything in Team', 'SAML + SCIM', 'Co-branded certificates', 'Custom curriculum modules', 'Dedicated success engineer'],
-      cta: 'Contact sales',
-      featured: false,
-    },
+  const individualCourses = [
+    { id: 101, code: 'AI·101', name: 'Getting Started with AI',   price: 0,    priceLabel: 'Free',     cta: 'Start free',          lessons: 20, hours: 2.5 },
+    { id: 102, code: 'AI·102', name: 'Practical Prompting',        price: 499,  priceLabel: '$499',     cta: 'Unlock for $499',     lessons: 24, hours: 4   },
+    { id: 103, code: 'AI·103', name: 'AI at Work',                 price: 999,  priceLabel: '$999',     cta: 'Unlock for $999',     lessons: 32, hours: 6   },
+    { id: 104, code: 'AI·104', name: 'The Truos Capstone',         price: 1499, priceLabel: '$1,499',   cta: 'Unlock for $1,499',   lessons: 40, hours: 10, featured: true },
   ];
   return (
     <section id="pricing" style={{ padding: '96px 0', borderTop: '1px solid var(--border)' }}>
       <div className="container">
-        <div style={{ marginBottom: 56 }}>
+        <div style={{ marginBottom: 48 }}>
           <div className="eyebrow" style={{ marginBottom: 16 }}>PRICING</div>
-          <h2 style={{ maxWidth: 720 }}>Simple. Per seat. <span className="serif" style={{ fontStyle: 'italic' }}>No surprises.</span></h2>
+          <h2 style={{ maxWidth: 720 }}>Pay once. <span className="serif" style={{ fontStyle: 'italic' }}>Keep it forever.</span></h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: 16, maxWidth: 640, marginTop: 12, lineHeight: 1.5 }}>
+            Individuals buy courses outright — lifetime access, no renewals. Teams get everything on a monthly per-seat subscription.
+          </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-          {tiers.map((t, i) => (
-            <div key={i} className="panel" style={{
-              padding: 32,
-              background: t.featured ? 'linear-gradient(160deg, #16181C, #1a1d14)' : 'var(--bg-panel)',
-              borderColor: t.featured ? 'rgba(212,245,71,0.3)' : 'var(--border)',
+
+        <div className="eyebrow" style={{ marginBottom: 20 }}>FOR INDIVIDUALS · LIFETIME ACCESS</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 16 }}>
+          {individualCourses.map((c) => (
+            <div key={c.id} className="panel" style={{
+              padding: 24,
+              background: c.featured ? 'linear-gradient(160deg, #16181C, #1a1d14)' : 'var(--bg-panel)',
+              borderColor: c.featured ? 'rgba(212,245,71,0.3)' : 'var(--border)',
               position: 'relative',
             }}>
-              {t.featured && (
-                <div style={{ position: 'absolute', top: -10, right: 24 }} className="badge accent">MOST POPULAR</div>
+              {c.featured && (
+                <div style={{ position: 'absolute', top: -10, right: 20 }} className="badge accent">CAPSTONE</div>
               )}
-              <div style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 8, letterSpacing: '0.04em', textTransform: 'uppercase' }}>{t.name}</div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 12 }}>
-                <span style={{ fontSize: 44, fontWeight: 500, letterSpacing: '-0.03em' }}>{t.price}</span>
-                <span style={{ color: 'var(--text-muted)', fontSize: 14 }}>{t.unit}</span>
+              <div className="mono" style={{ fontSize: 11, color: c.featured ? 'var(--accent)' : 'var(--text-muted)', letterSpacing: '0.08em', marginBottom: 10 }}>{c.code}</div>
+              <div style={{ fontSize: 20, letterSpacing: '-0.015em', marginBottom: 8, minHeight: 48, lineHeight: 1.2 }}>{c.name}</div>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 6 }}>
+                <span style={{ fontSize: 32, fontWeight: 500, letterSpacing: '-0.025em' }}>{c.priceLabel}</span>
               </div>
-              <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.55, marginBottom: 24, minHeight: 60 }}>{t.body}</p>
-              <button className={`btn ${t.featured ? 'btn-primary' : 'btn-ghost'}`} style={{ width: '100%', marginBottom: 28 }} onClick={() => onNav('checkout', { plan: t.name })}>{t.cta}</button>
-              <div style={{ borderTop: '1px solid var(--border)', paddingTop: 20 }}>
-                {t.features.map((f, j) => (
-                  <div key={j} style={{ display: 'flex', gap: 10, alignItems: 'center', padding: '6px 0', fontSize: 13 }}>
-                    <span style={{ color: 'var(--accent)', display: 'flex' }}>{icons.check}</span>
-                    <span>{f}</span>
-                  </div>
-                ))}
+              <div style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 20 }}>
+                {c.lessons} lessons · ~{c.hours}h · lifetime
               </div>
+              <button className={`btn ${c.price === 0 ? 'btn-primary' : 'btn-ghost'} btn-sm`} style={{ width: '100%' }}
+                onClick={() => c.price === 0 ? onNav('lesson', { courseId: c.id, moduleIdx: 0, lessonIdx: 0 }) : onNav('checkout', { plan: c.code })}>
+                {c.cta}
+              </button>
             </div>
           ))}
+        </div>
+
+        {/* Bundle card */}
+        <div className="panel" style={{
+          padding: 24, marginBottom: 48,
+          background: 'color-mix(in oklab, var(--accent) 6%, var(--bg-panel))',
+          borderColor: 'rgba(212,245,71,0.25)',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap',
+        }}>
+          <div>
+            <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 8 }}>SAVE $500 · FULL BUNDLE</div>
+            <div style={{ fontSize: 22, letterSpacing: '-0.015em', marginBottom: 4 }}>AI·102 + AI·103 + AI·104</div>
+            <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>All three paid courses, lifetime. 96 lessons, ~20h total.</div>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+            <div style={{ textAlign: 'right' }}>
+              <div style={{ fontSize: 13, color: 'var(--text-dim)', textDecoration: 'line-through' }}>$2,997</div>
+              <div style={{ fontSize: 28, fontWeight: 500, letterSpacing: '-0.025em' }}>$2,497</div>
+            </div>
+            <button className="btn btn-primary" onClick={() => onNav('checkout', { plan: 'Bundle' })}>Get the bundle {icons.arrow}</button>
+          </div>
+        </div>
+
+        {/* Teams card */}
+        <div className="eyebrow" style={{ marginBottom: 20 }}>FOR TEAMS · MONTHLY PER SEAT</div>
+        <div className="panel" style={{
+          padding: 32,
+          background: 'linear-gradient(160deg, #16181C, #1a1d14)',
+          borderColor: 'rgba(212,245,71,0.3)',
+          position: 'relative',
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center',
+        }}>
+          <div>
+            <div className="eyebrow" style={{ marginBottom: 12 }}>TEAM PLAN</div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 12 }}>
+              <span style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.03em' }}>$99</span>
+              <span style={{ color: 'var(--text-muted)', fontSize: 15 }}>/ seat / month</span>
+            </div>
+            <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.55, marginBottom: 20 }}>
+              Everything included. All four base courses (AI·101–104) and <strong style={{ color: 'var(--text)' }}>the full Truos+ suite</strong>.
+              Org admin dashboard, team progress reporting, seat management.
+            </p>
+            <button className="btn btn-primary" onClick={() => onNav('checkout', { plan: 'Team' })}>Start team trial {icons.arrow}</button>
+            <div style={{ fontSize: 12, color: 'var(--text-dim)', marginTop: 12 }}>Minimum 5 seats. Enterprise (200+ seats, SSO, data residency): contact sales.</div>
+          </div>
+          <div style={{ borderLeft: '1px solid var(--border)', paddingLeft: 32 }}>
+            <div className="eyebrow" style={{ marginBottom: 16 }}>INCLUDED</div>
+            {[
+              'Base curriculum AI·101–104 (116 lessons)',
+              'Full Truos+ suite (Copilot 101, Copilot + Excel, + future courses)',
+              'Org admin dashboard & seat management',
+              'Team progress & reporting',
+              'Certificates of completion (verifiable)',
+              'Single sign-on (Google / Microsoft)',
+            ].map((f, i) => (
+              <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'center', padding: '6px 0', fontSize: 13 }}>
+                <span style={{ color: 'var(--accent)', display: 'flex' }}>{icons.check}</span>
+                <span>{f}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -334,4 +377,103 @@ function Landing({ onNav }) {
   );
 }
 
-Object.assign(window, { Landing });
+/* =============================================================
+   TRUOS+ CATALOG — standalone tool-specific courses
+   ============================================================= */
+
+function TruosPlus({ onNav }) {
+  return (
+    <div>
+      <nav className="nav">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+          <Logo />
+          <span style={{ color: 'var(--text-dim)' }}>/</span>
+          <span className="nav-link" onClick={() => onNav('landing')} style={{ cursor: 'pointer' }}>Home</span>
+          <span style={{ color: 'var(--text-dim)' }}>/</span>
+          <span className="mono" style={{ color: 'var(--accent)', fontSize: 13 }}>TRUOS<span style={{ fontWeight: 600 }}>+</span></span>
+        </div>
+        <div className="nav-links">
+          <a className="nav-link" onClick={() => onNav('landing')} style={{ cursor: 'pointer' }}>Base courses</a>
+          <a className="nav-link" onClick={() => onNav('admin')} style={{ cursor: 'pointer' }}>Sign in</a>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section style={{ padding: '72px 0 32px', borderBottom: '1px solid var(--border)' }}>
+        <div className="container">
+          <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 20 }}>TRUOS<span style={{ fontWeight: 700 }}>+</span> · TOOL-SPECIFIC MASTERY</div>
+          <h1 style={{ maxWidth: 900, marginBottom: 20, fontSize: 56, letterSpacing: '-0.03em' }}>
+            One tool. One workflow. <span className="serif" style={{ fontStyle: 'italic' }}>Real depth.</span>
+          </h1>
+          <p style={{ fontSize: 18, color: 'var(--text-muted)', maxWidth: 640, lineHeight: 1.5 }}>
+            Standalone courses that go deep on the specific AI tools your team actually uses.
+            Approachable for anyone, regardless of base Truos experience. Lifetime access per course; team plans include everything.
+          </p>
+        </div>
+      </section>
+
+      {/* Course grid */}
+      <section style={{ padding: '48px 0 72px' }}>
+        <div className="container">
+          <div className="eyebrow" style={{ marginBottom: 20 }}>AVAILABLE NOW</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 48 }}>
+            {PLUS_COURSES.map((c) => (
+              <div key={c.id}
+                onClick={() => onNav('course', { courseId: c.id })}
+                className="panel"
+                style={{
+                  padding: 32,
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s ease',
+                  background: 'var(--bg-panel)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+                onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
+                  <div className="code" style={{ fontSize: 13, color: 'var(--accent)', letterSpacing: '0.08em' }}>{c.code}</div>
+                  <span className="badge paid">${c.price}</span>
+                </div>
+                <h3 style={{ fontSize: 30, marginBottom: 10, letterSpacing: '-0.025em' }}>{c.title}</h3>
+                <p style={{ color: 'var(--text-muted)', marginBottom: 28, fontSize: 14, lineHeight: 1.5 }}>{c.subtitle}</p>
+                <div style={{ display: 'flex', gap: 20, alignItems: 'center', color: 'var(--text-dim)', fontSize: 13 }}>
+                  <span className="mono">{c.lessons} LESSONS</span>
+                  <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'var(--text-dim)' }}/>
+                  <span className="mono">~{c.hours}H</span>
+                  <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'var(--text-dim)' }}/>
+                  <span className="mono">{c.modules.length} MODULES</span>
+                  <span style={{ marginLeft: 'auto', color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    View {icons.arrow}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Coming-soon + team note */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <div className="panel" style={{ padding: 24, borderStyle: 'dashed' }}>
+              <div className="eyebrow" style={{ marginBottom: 10 }}>COMING SOON</div>
+              <div style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.55 }}>
+                Gemini for Workspace · ChatGPT Pro · Notion AI · Claude for Work. Suggest the next one: <a href="mailto:hello@truos.ai" style={{ color: 'var(--accent)' }}>hello@truos.ai</a>.
+              </div>
+            </div>
+            <div className="panel" style={{ padding: 24, background: 'color-mix(in oklab, var(--accent) 6%, var(--bg-panel))', borderColor: 'rgba(212,245,71,0.25)' }}>
+              <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 10 }}>TEAMS GET EVERY TRUOS<span style={{ fontWeight: 700 }}>+</span> COURSE</div>
+              <div style={{ fontSize: 15, lineHeight: 1.55 }}>
+                The team plan ($99/seat/mo) includes every Truos+ course — current and future — automatically.
+              </div>
+              <button className="btn btn-ghost btn-sm" style={{ marginTop: 14 }} onClick={() => onNav('checkout', { plan: 'Team' })}>See team plan {icons.arrow}</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
+
+Object.assign(window, { Landing, TruosPlus });

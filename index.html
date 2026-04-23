@@ -13,6 +13,7 @@
 <div id="root"></div>
 
 <script src="content.js"></script>
+<script src="plus-content.js"></script>
 <script type="text/babel" src="shared.jsx"></script>
 <script type="text/babel" src="landing.jsx"></script>
 <script type="text/babel" src="course.jsx"></script>
@@ -76,6 +77,7 @@ function App() {
     case 'lesson':          screen = <Lesson courseId={route.courseId || 101} moduleIdx={route.moduleIdx || 0} lessonIdx={route.lessonIdx || 0} onNav={onNav}/>; break;
     case 'lesson-complete': screen = <LessonComplete courseId={route.courseId || 101} lessonTitle={route.lessonTitle} onNav={onNav}/>; break;
     case 'certificate':     screen = <Certificate courseId={route.courseId || 101} onNav={onNav}/>; break;
+    case 'plus':            screen = <TruosPlus onNav={onNav}/>; break;
     case 'admin':           screen = <AdminDash onNav={onNav}/>; break;
     case 'checkout':        screen = <Checkout onNav={onNav} plan={route.plan || 'Team'}/>; break;
     default:                screen = <Landing onNav={onNav}/>;
@@ -121,10 +123,11 @@ function App() {
 function DevBar({ route, onNav }) {
   const jumps = [
     { name: 'landing', label: 'Landing' },
-    { name: 'course', label: 'Course home', params: { courseId: 101 } },
+    { name: 'plus', label: 'Truos+' },
+    { name: 'course', label: 'Course', params: { courseId: 101 } },
     { name: 'lesson', label: 'Lesson', params: { courseId: 101, moduleIdx: 0, lessonIdx: 0 } },
     { name: 'lesson-complete', label: 'Complete' },
-    { name: 'certificate', label: 'Certificate' },
+    { name: 'certificate', label: 'Cert' },
     { name: 'admin', label: 'Admin' },
     { name: 'checkout', label: 'Checkout' },
   ];

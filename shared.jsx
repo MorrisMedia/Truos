@@ -54,7 +54,7 @@ const COURSES = [
     title: 'Practical Prompting',
     subtitle: 'Prompt patterns, research, writing, meetings, data. The daily toolkit.',
     lessons: 24, hours: 4, tier: 'paid',
-    price: 49,
+    price: 499,
     modules: [
       { name: 'Anatomy of a prompt',         lessons: ['Instruction, context, examples, format', 'The role trick', 'Show, don\'t just tell', 'Ask for the format you want'] },
       { name: 'Writing with AI',             lessons: ['Drafting from a blank page', 'Editing and shortening', 'Adjusting tone', 'Keeping your voice'] },
@@ -70,7 +70,7 @@ const COURSES = [
     title: 'AI at Work',
     subtitle: 'Sales, marketing, CS, ops, finance — real playbooks for commercial teams.',
     lessons: 32, hours: 6, tier: 'paid',
-    price: 89,
+    price: 999,
     modules: [
       { name: 'Sales motions',              lessons: ['Account research in 3 minutes', 'Pre-call prep', 'Handling objections', 'Crafting follow-ups', 'Keeping your CRM clean', 'What AI can\'t do for sales'] },
       { name: 'Marketing',                  lessons: ['Campaign brief generator', 'Copy variants at scale', 'Brand voice guardrails', 'Competitive scans', 'Tracking what worked'] },
@@ -86,7 +86,7 @@ const COURSES = [
     title: 'The Truos Capstone',
     subtitle: 'Design, ship, and measure an AI workflow your team will actually use.',
     lessons: 40, hours: 10, tier: 'paid',
-    price: 249,
+    price: 1499,
     capstone: true,
     modules: [
       { name: 'Identify leverage',          lessons: ['Workflow inventory', 'Sizing impact', 'Choosing a wedge', 'Stakeholder alignment', 'Scoping ruthlessly', 'Red flags: when to walk away', 'The capstone brief'] },
@@ -95,6 +95,37 @@ const COURSES = [
       { name: 'Roll out',                   lessons: ['Change management', 'Training your peers', 'Writing the SOP', 'Measuring adoption', 'Handling objections', 'First 30 days'] },
       { name: 'Sustain',                    lessons: ['Monitoring what matters', 'Iteration rituals', 'Vendor hygiene', 'Keeping humans in the loop', 'When to deprecate', 'Compounding wins'] },
       { name: 'Defense & beyond',           lessons: ['Present your workflow', 'Peer review', 'Scaling to the team', 'Scaling across the company', 'Where AI is going', 'Building a lifelong practice', 'Capstone certification'] },
+    ],
+  },
+];
+
+// ---------------- Truos+ course catalog ----------------
+const PLUS_COURSES = [
+  {
+    code: 'CPLT·101',
+    id: 201,
+    title: 'Copilot 101',
+    subtitle: 'Microsoft Copilot from zero. Approachable for anyone at a company using Microsoft 365.',
+    lessons: 20, hours: 2.5, tier: 'paid', suite: 'plus',
+    price: 249,
+    modules: [
+      { name: "What's Copilot?",                 lessons: ['What is Microsoft Copilot?', "Where Copilot lives: the apps", 'Signing in and getting started', 'Your first conversation with Copilot', 'Copilot vs ChatGPT: when to use which'] },
+      { name: 'Copilot in everyday work',        lessons: ['Drafting in Word', 'Triaging Outlook', 'Summarizing Teams meetings', 'Generating PowerPoint', 'Searching across OneDrive'] },
+      { name: 'Prompting Copilot well',          lessons: ['Giving Copilot context', 'References and /commands', 'Iterating with Copilot', 'When Copilot beats general AI', "Copilot's real limits"] },
+      { name: 'Safe at work',                    lessons: ['Company data rules', 'IT policies and tenant settings', 'What not to paste', 'When to escalate to IT', 'Certification quiz'] },
+    ],
+  },
+  {
+    code: 'CPLT·EXL',
+    id: 202,
+    title: 'Copilot + Excel',
+    subtitle: 'Copilot inside Excel for data, analysis, and formulas. Assumes Excel basics; teaches Copilot-in-Excel.',
+    lessons: 12, hours: 1.5, tier: 'paid', suite: 'plus',
+    price: 249,
+    modules: [
+      { name: 'Copilot in Excel basics',         lessons: ['Opening the Copilot pane', 'Plain-English asks', 'Inserting formulas from a sentence', 'Reading AI-generated explanations'] },
+      { name: 'Cleaning & analysis',             lessons: ['Normalizing messy data', 'Natural-language filters', 'Pivot tables via Copilot', 'Charts from prompts'] },
+      { name: 'Pro moves',                       lessons: ['Combining with Power Query', 'Advanced formulas', 'AI math gotchas + verification', 'Certification quiz'] },
     ],
   },
 ];
@@ -167,8 +198,13 @@ function getLesson(courseId, moduleIdx, lessonIdx) {
   return fallback || null;
 }
 
+// Helper: find any course (base or plus) by id.
+function findCourse(courseId) {
+  return COURSES.find(c => c.id === courseId) || PLUS_COURSES.find(c => c.id === courseId) || COURSES[0];
+}
+
 // Export to window
 Object.assign(window, {
-  icons, COURSES, ORG, TEAM,
-  Logo, Avatar, ProgressRing, getLesson,
+  icons, COURSES, PLUS_COURSES, ORG, TEAM,
+  Logo, Avatar, ProgressRing, getLesson, findCourse,
 });

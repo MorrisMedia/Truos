@@ -3,8 +3,8 @@
    ============================================================= */
 
 function CourseHome({ courseId, onNav }) {
-  const course = COURSES.find(c => c.id === courseId) || COURSES[0];
-  const progress = { 101: 100, 102: 62, 103: 0, 104: 0 }[course.id] || 22;
+  const course = findCourse(courseId);
+  const progress = { 101: 100, 102: 62, 103: 0, 104: 0, 201: 0, 202: 0 }[course.id] || 22;
   const [focused, setFocused] = React.useState(course.id === 102 ? 1 : 0);
 
   return (
@@ -13,7 +13,9 @@ function CourseHome({ courseId, onNav }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
           <Logo />
           <span style={{ color: 'var(--text-dim)' }}>/</span>
-          <span className="nav-link" onClick={() => onNav('landing')} style={{ cursor: 'pointer' }}>Courses</span>
+          <span className="nav-link" onClick={() => onNav(course.suite === 'plus' ? 'plus' : 'landing')} style={{ cursor: 'pointer' }}>
+            {course.suite === 'plus' ? 'Truos+' : 'Courses'}
+          </span>
           <span style={{ color: 'var(--text-dim)' }}>/</span>
           <span className="mono" style={{ color: 'var(--accent)', fontSize: 13 }}>{course.code}</span>
         </div>

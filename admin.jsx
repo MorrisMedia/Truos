@@ -407,9 +407,20 @@ function SettingsTab() {
    ============================================================= */
 
 function Checkout({ onNav, plan = 'Team' }) {
+  // Plan catalog — derives pricing + billing cadence from the plan name
+  const PLAN_INFO = {
+    'Team':     { name: 'Team subscription',         unit: '$99/seat/mo',      recurring: true,  basePrice: 99,   desc: 'Monthly per seat. All base courses + full Truos+ suite. Min 5 seats.' },
+    'Bundle':   { name: 'AI·102 + AI·103 + AI·104',  unit: '$2,497 one-time',  recurring: false, basePrice: 2497, desc: 'All three paid base courses, lifetime access. Save $500 vs buying individually.' },
+    'AI·102':   { name: 'AI·102 — Practical Prompting', unit: '$499 one-time', recurring: false, basePrice: 499,  desc: 'Lifetime access. 24 lessons, ~4 hours.' },
+    'AI·103':   { name: 'AI·103 — AI at Work',       unit: '$999 one-time',    recurring: false, basePrice: 999,  desc: 'Lifetime access. 32 lessons, ~6 hours.' },
+    'AI·104':   { name: 'AI·104 — The Truos Capstone', unit: '$1,499 one-time', recurring: false, basePrice: 1499, desc: 'Lifetime access. 40 lessons, ~10 hours. Includes capstone project.' },
+    'CPLT·101': { name: 'Copilot 101',                unit: '$249 one-time',   recurring: false, basePrice: 249,  desc: 'Truos+ standalone. Lifetime access. 20 lessons, ~2.5 hours.' },
+    'CPLT·EXL': { name: 'Copilot + Excel',            unit: '$249 one-time',   recurring: false, basePrice: 249,  desc: 'Truos+ standalone. Lifetime access. 12 lessons, ~1.5 hours.' },
+  };
+  const info = PLAN_INFO[plan] || PLAN_INFO['Team'];
+  const isTeam = plan === 'Team';
   const [seats, setSeats] = React.useState(10);
-  const pricePerSeat = plan === 'Individual' ? 29 : 19;
-  const total = plan === 'Individual' ? 29 : seats * pricePerSeat;
+  const total = isTeam ? seats * info.basePrice : info.basePrice;
 
   return (
     <div style={{ minHeight: '100vh', display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
@@ -419,19 +430,24 @@ function Checkout({ onNav, plan = 'Team' }) {
           <button className="btn btn-ghost btn-sm" onClick={() => onNav('landing')}>{icons.arrowLeft} Back</button>
           <Logo />
         </div>
-        <div className="eyebrow" style={{ marginBottom: 12 }}>SUBSCRIBE TO TRUOS</div>
+        <div className="eyebrow" style={{ marginBottom: 12 }}>
+          {info.recurring ? 'SUBSCRIBE TO TRUOS' : 'UNLOCK FOREVER'}
+        </div>
         <div style={{ fontSize: 40, letterSpacing: '-0.03em', marginBottom: 8 }}>${total.toLocaleString()}.00</div>
-        <div style={{ color: 'var(--text-muted)', fontSize: 14, marginBottom: 40 }}>per month, billed monthly</div>
+        <div style={{ color: 'var(--text-muted)', fontSize: 14, marginBottom: 40 }}>
+          {info.recurring ? 'per month, billed monthly' : 'one-time payment · lifetime access'}
+        </div>
 
         <div style={{ borderTop: '1px solid var(--border)', paddingTop: 20 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0', fontSize: 14 }}>
             <div>
-              <div>{plan} plan</div>
-              <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>${pricePerSeat}/{plan === 'Individual' ? 'mo' : 'seat/mo'}</div>
+              <div>{info.name}</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{info.unit}</div>
+              <div style={{ fontSize: 11, color: 'var(--text-dim)', marginTop: 4, maxWidth: 320 }}>{info.desc}</div>
             </div>
-            <div>${plan === 'Individual' ? 29 : (seats * pricePerSeat)}.00</div>
+            <div>${(isTeam ? seats * info.basePrice : info.basePrice).toLocaleString()}.00</div>
           </div>
-          {plan !== 'Individual' && (
+          {isTeam && (
             <div style={{ padding: '16px 0', borderTop: '1px solid var(--border)' }}>
               <div className="eyebrow" style={{ marginBottom: 12 }}>SEATS</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -444,7 +460,7 @@ function Checkout({ onNav, plan = 'Team' }) {
           )}
           <div style={{ borderTop: '1px solid var(--border)', paddingTop: 16, display: 'flex', justifyContent: 'space-between', fontSize: 14 }}>
             <div>Subtotal</div>
-            <div className="mono">${total}.00</div>
+            <div className="mono">${total.toLocaleString()}.00</div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0', fontSize: 14, color: 'var(--text-muted)' }}>
             <div>Tax</div>
@@ -452,14 +468,14 @@ function Checkout({ onNav, plan = 'Team' }) {
           </div>
           <div style={{ borderTop: '1px solid var(--border-strong)', paddingTop: 16, display: 'flex', justifyContent: 'space-between', fontSize: 17, fontWeight: 500 }}>
             <div>Total due today</div>
-            <div className="mono">${total}.00</div>
+            <div className="mono">${total.toLocaleString()}.00</div>
           </div>
         </div>
 
         <div style={{ marginTop: 48, fontSize: 12, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 8 }}>
           Powered by <span className="mono" style={{ color: 'var(--text)', fontWeight: 500 }}>stripe</span>
           <span>·</span>
-          <span>14-day free trial · cancel anytime</span>
+          <span>{info.recurring ? '14-day free trial · cancel anytime' : 'Lifetime access · 30-day refund policy'}</span>
         </div>
       </div>
 
@@ -498,7 +514,7 @@ function Checkout({ onNav, plan = 'Team' }) {
         </Field>
 
         <button className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: 24 }} onClick={() => onNav('admin')}>
-          Start subscription · ${total}.00 {icons.arrow}
+          {info.recurring ? `Start subscription · $${total.toLocaleString()}/mo` : `Pay $${total.toLocaleString()} · Unlock forever`} {icons.arrow}
         </button>
 
         <div style={{ marginTop: 16, fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.5 }}>
