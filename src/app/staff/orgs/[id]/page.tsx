@@ -246,7 +246,7 @@ export default async function StaffOrgDetailPage({ params, searchParams }: { par
               {sub && sub.status !== 'canceled' && (
                 <form action={cancelSubscription} style={{ marginTop: 10 }}>
                   <input type="hidden" name="orgId" value={org.id} />
-                  <button type="submit" className="btn btn-ghost btn-sm" style={{ color: 'var(--danger)', width: '100%' }}>Cancel subscription</button>
+                  <button type="submit" className="btn btn-ghost btn-sm" style={{ color: 'var(--danger)', width: '100%', justifyContent: 'center' }}>Cancel subscription</button>
                 </form>
               )}
             </div>

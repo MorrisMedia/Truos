@@ -72,19 +72,19 @@ export default async function CoursePage({ params }: { params: { id: string } })
                 <span>~{Math.max(0, Math.round(course.hours * (1 - pct / 100) * 10) / 10)}h left</span>
               </div>
               {!lessonsComplete && (
-                <Link className="btn btn-primary" style={{ width: '100%', marginTop: 20, display: 'block', textAlign: 'center' }}
+                <Link className="btn btn-primary" style={{ width: '100%', marginTop: 20, justifyContent: 'center' }}
                   href={`/courses/${courseId}/${nextModule}/${nextLesson}`}>
                   {pct === 0 ? 'Start course' : 'Continue'} {Icons.arrow}
                 </Link>
               )}
               {certReady && (
-                <Link className="btn btn-primary" style={{ width: '100%', marginTop: 20, display: 'block', textAlign: 'center' }}
+                <Link className="btn btn-primary" style={{ width: '100%', marginTop: 20, justifyContent: 'center' }}
                   href={`/courses/${courseId}/cert-quiz`}>
                   Take certification quiz {Icons.arrow}
                 </Link>
               )}
               {cert && (
-                <Link className="btn btn-primary" style={{ width: '100%', marginTop: 20, display: 'block', textAlign: 'center' }}
+                <Link className="btn btn-primary" style={{ width: '100%', marginTop: 20, justifyContent: 'center' }}
                   href={`/certificates/${courseId}`}>
                   See certificate {Icons.arrow}
                 </Link>

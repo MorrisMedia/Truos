@@ -98,7 +98,7 @@ export default async function CheckoutPage({ searchParams }: { searchParams: { p
             <p style={{ fontSize: 15, lineHeight: 1.55, marginBottom: 16 }}>
               Sign in first. We attach purchases and subscriptions to your account so everything stays together.
             </p>
-            <Link className="btn btn-primary btn-lg" style={{ width: '100%', textAlign: 'center', display: 'block' }} href={`/sign-up?next=${encodeURIComponent(`/checkout?plan=${encodeURIComponent(plan)}${isTeam ? `&seats=${seats}` : ''}`)}`}>
+            <Link className="btn btn-primary btn-lg" style={{ width: '100%', justifyContent: 'center' }} href={`/sign-up?next=${encodeURIComponent(`/checkout?plan=${encodeURIComponent(plan)}${isTeam ? `&seats=${seats}` : ''}`)}`}>
               Create account · ${total.toLocaleString()} {info.recurring ? '/ mo' : 'one-time'} {Icons.arrow}
             </Link>
             <div style={{ marginTop: 12, fontSize: 13, color: 'var(--text-muted)' }}>
@@ -112,7 +112,7 @@ export default async function CheckoutPage({ searchParams }: { searchParams: { p
             <p style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.55, marginBottom: 20 }}>
               Secure checkout by Stripe. You'll be redirected to complete payment, then brought back to activate your access.
             </p>
-            <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
+            <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%', justifyContent: 'center' }}>
               {info.recurring
                 ? `Subscribe · $${total.toLocaleString()} / mo`
                 : `Pay $${total.toLocaleString()}`} {Icons.arrow}
