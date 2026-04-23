@@ -8,6 +8,8 @@ import { CERT_QUIZ_PASS_THRESHOLD } from '@/lib/cert-quiz';
 import { CERT_HASH_SECRET } from '@/lib/config';
 import { LESSONS } from '@/content/lessons';
 import { findCourse } from '@/content/courses';
+import { sendEmail } from '@/lib/email';
+import { certEarnedEmail } from '@/lib/emails/templates';
 
 const Body = z.object({
   courseId: z.number().int(),
@@ -64,6 +66,19 @@ export async function POST(req: Request) {
   revalidatePath(`/courses/${courseId}`);
   revalidatePath('/dashboard');
   revalidatePath('/account');
+
+  // Transactional email — fire-and-forget
+  sendEmail({
+    to: session.user.email,
+    userId: session.user.id,
+    kind: 'cert_earned',
+    payload: certEarnedEmail({
+      name: session.user.name ?? null,
+      userId: session.user.id,
+      courseId,
+      verificationHash: cert.verificationHash,
+    }),
+  }).catch(err => console.error('[email] cert_earned failed', err));
 
   return NextResponse.json({ ok: true, hash: cert.verificationHash });
 }

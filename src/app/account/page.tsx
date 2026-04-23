@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { findCourse } from '@/content/courses';
@@ -7,12 +8,24 @@ import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { Icons } from '@/components/icons';
 
+async function toggleEmailPref(formData: FormData) {
+  'use server';
+  const session = await auth();
+  if (!session?.user?.id) return;
+  const next = String(formData.get('subscribed')) === 'on';
+  await prisma.user.update({ where: { id: session.user.id }, data: { emailSubscribed: next } });
+  revalidatePath('/account');
+}
+
+export const dynamic = 'force-dynamic';
+
 export default async function AccountPage() {
   const session = await auth();
   if (!session?.user) redirect('/sign-in');
 
   const userId = session.user.id;
-  const [entitlements, certificates, purchases] = await Promise.all([
+  const [user, entitlements, certificates, purchases] = await Promise.all([
+    prisma.user.findUnique({ where: { id: userId }, select: { emailSubscribed: true } }),
     prisma.courseEntitlement.findMany({ where: { userId }, orderBy: { grantedAt: 'desc' } }),
     prisma.certificate.findMany({ where: { userId }, orderBy: { issuedAt: 'desc' } }),
     prisma.purchase.findMany({ where: { userId, status: 'completed' }, orderBy: { paidAt: 'desc' } }),
@@ -82,6 +95,19 @@ export default async function AccountPage() {
                 <div className="mono">${(p.amount / 100).toFixed(2)}</div>
               </div>
             ))}
+          </div>
+          <div className="panel" style={{ padding: 24, gridColumn: '1 / -1' }}>
+            <div className="eyebrow" style={{ marginBottom: 12 }}>EMAIL PREFERENCES</div>
+            <form action={toggleEmailPref} style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14, color: 'var(--text-muted)' }}>
+                <input type="checkbox" name="subscribed" defaultChecked={user?.emailSubscribed ?? true} />
+                Receive Truos announcements and course updates
+              </label>
+              <button type="submit" className="btn btn-ghost btn-sm">Save</button>
+              <span style={{ fontSize: 12, color: 'var(--text-dim)' }}>
+                Receipts, cert emails, and access grants are always sent.
+              </span>
+            </form>
           </div>
           <div style={{ gridColumn: '1 / -1' }}>
             <Link className="btn btn-ghost" href="/sign-out">Sign out</Link>

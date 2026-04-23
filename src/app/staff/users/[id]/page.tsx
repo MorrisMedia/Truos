@@ -8,6 +8,8 @@ import { Footer } from '@/components/Footer';
 import { Icons } from '@/components/icons';
 import { ALL_COURSES, findCourse } from '@/content/courses';
 import { isStaffEmail } from '@/lib/config';
+import { sendEmail } from '@/lib/email';
+import { accessGrantedEmail } from '@/lib/emails/templates';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,8 +19,11 @@ async function grantAccess(formData: FormData) {
   if (!session?.user?.isStaff) throw new Error('staff only');
   const userId = String(formData.get('userId'));
   const courseId = Number(formData.get('courseId'));
+  const notify = String(formData.get('notify') ?? '') === 'on';
   const note = String(formData.get('note') ?? '').trim() || 'manual_grant';
-  if (!userId || !courseId) throw new Error('missing user or course');
+  if (!userId || !courseId) {
+    redirect(`/staff/users/${userId}?err=${encodeURIComponent('Missing user or course')}`);
+  }
 
   await prisma.courseEntitlement.upsert({
     where: { userId_courseId_source: { userId, courseId, source: 'manual_grant' } },
@@ -26,7 +31,20 @@ async function grantAccess(formData: FormData) {
     update: { sourceId: note.slice(0, 100), expiresAt: null, grantedAt: new Date() },
   });
 
+  if (notify) {
+    const user = await prisma.user.findUnique({ where: { id: userId }, select: { email: true, name: true } });
+    if (user) {
+      sendEmail({
+        to: user.email,
+        userId,
+        kind: 'access_granted',
+        payload: accessGrantedEmail({ name: user.name ?? null, userId, courseId, note }),
+      }).catch(err => console.error('[email] access_granted failed', err));
+    }
+  }
+
   revalidatePath(`/staff/users/${userId}`);
+  redirect(`/staff/users/${userId}?ok=${encodeURIComponent(`Access granted${notify ? ' + email sent' : ''}`)}`);
 }
 
 async function revokeEntitlement(formData: FormData) {
@@ -61,9 +79,12 @@ async function attachToOrg(formData: FormData) {
   revalidatePath(`/staff/users/${userId}`);
 }
 
-export default async function StaffUserDetailPage({ params }: { params: { id: string } }) {
+export default async function StaffUserDetailPage({ params, searchParams }: { params: { id: string }; searchParams: { ok?: string; err?: string } }) {
   const session = await auth();
   if (!session?.user?.isStaff) redirect('/');
+
+  const okMsg = searchParams?.ok ? String(searchParams.ok) : null;
+  const errMsg = searchParams?.err ? String(searchParams.err) : null;
 
   const user = await prisma.user.findUnique({
     where: { id: params.id },
@@ -117,6 +138,10 @@ export default async function StaffUserDetailPage({ params }: { params: { id: st
       </section>
 
       <section style={{ padding: '32px 0 48px' }}>
+        <div className="container" style={{ marginBottom: okMsg || errMsg ? 16 : 0 }}>
+          {okMsg && <FlashBanner kind="ok">{okMsg}</FlashBanner>}
+          {errMsg && <FlashBanner kind="err">{errMsg}</FlashBanner>}
+        </div>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
@@ -224,6 +249,10 @@ export default async function StaffUserDetailPage({ params }: { params: { id: st
                     <span className="eyebrow" style={{ fontSize: 10 }}>INTERNAL NOTE (OPTIONAL)</span>
                     <input name="note" placeholder="e.g. cohort-3, refund replacement" style={fieldStyle} />
                   </label>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-muted)' }}>
+                    <input type="checkbox" name="notify" defaultChecked />
+                    Email the user to let them know
+                  </label>
                   <button type="submit" className="btn btn-primary btn-sm" style={{ marginTop: 4 }}>Grant access {Icons.arrow}</button>
                   <div style={{ fontSize: 11, color: 'var(--text-dim)', marginTop: 4 }}>
                     Creates CourseEntitlement with source = manual_grant. Permanent until revoked.
@@ -290,3 +319,14 @@ const fieldStyle: React.CSSProperties = {
   background: 'var(--bg-elevated)', color: 'var(--text)',
   fontSize: 14, fontFamily: 'inherit', outline: 'none',
 };
+
+function FlashBanner({ kind, children }: { kind: 'ok' | 'err'; children: React.ReactNode }) {
+  const color = kind === 'ok' ? 'var(--accent)' : 'var(--danger)';
+  return (
+    <div style={{
+      background: `color-mix(in oklab, ${color} 10%, var(--bg-panel))`,
+      border: `1px solid ${color}`,
+      borderRadius: 8, padding: '12px 16px', fontSize: 14,
+    }}>{children}</div>
+  );
+}

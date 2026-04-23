@@ -3,6 +3,8 @@ import { redirect } from 'next/navigation';
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { signIn } from '@/lib/auth';
+import { sendEmail } from '@/lib/email';
+import { welcomeEmail, codeRedeemedEmail } from '@/lib/emails/templates';
 import { Logo } from '@/components/Logo';
 import { Icons } from '@/components/icons';
 
@@ -25,6 +27,8 @@ async function createAccount(formData: FormData) {
   });
 
   // Optional comp code redemption
+  let redeemedCourseIds: number[] | null = null;
+  let redeemedCodeStr: string | null = null;
   if (accessCode) {
     const code = await prisma.compCode.findUnique({ where: { code: accessCode } });
     if (code && !code.disabledAt && (!code.expiresAt || code.expiresAt > new Date()) && (code.maxUses === null || code.uses < code.maxUses)) {
@@ -38,7 +42,26 @@ async function createAccount(formData: FormData) {
           })
         ),
       ]);
+      redeemedCourseIds = targetCourses;
+      redeemedCodeStr = code.code;
     }
+  }
+
+  // Transactional email — fire-and-forget so signup never blocks on mail.
+  sendEmail({
+    to: user.email,
+    userId: user.id,
+    kind: 'welcome',
+    payload: welcomeEmail({ name: user.name, userId: user.id }),
+  }).catch(err => console.error('[email] welcome failed', err));
+
+  if (redeemedCodeStr && redeemedCourseIds) {
+    sendEmail({
+      to: user.email,
+      userId: user.id,
+      kind: 'code_redeemed',
+      payload: codeRedeemedEmail({ name: user.name, userId: user.id, code: redeemedCodeStr, courseIds: redeemedCourseIds }),
+    }).catch(err => console.error('[email] code_redeemed failed', err));
   }
 
   await signIn('credentials', { email, password, redirect: false });

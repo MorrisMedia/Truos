@@ -42,6 +42,7 @@ export default async function StaffOverviewPage() {
             <Link href="/staff/users" className="btn btn-ghost btn-sm">Users</Link>
             <Link href="/staff/orgs" className="btn btn-ghost btn-sm">Organizations</Link>
             <Link href="/staff/codes" className="btn btn-ghost btn-sm">Comp codes</Link>
+            <Link href="/staff/broadcasts" className="btn btn-ghost btn-sm">Broadcasts</Link>
           </div>
         </div>
       </section>
@@ -129,7 +130,8 @@ export default async function StaffOverviewPage() {
               <div className="panel" style={{ padding: 20 }}>
                 <div className="eyebrow" style={{ marginBottom: 12 }}>QUICK ACTIONS</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  <Link className="btn btn-primary btn-sm" href="/staff/codes">Create comp code {Icons.arrow}</Link>
+                  <Link className="btn btn-primary btn-sm" href="/staff/broadcasts">Send broadcast {Icons.arrow}</Link>
+                  <Link className="btn btn-ghost btn-sm" href="/staff/codes">Create comp code</Link>
                   <Link className="btn btn-ghost btn-sm" href="/staff/users">Search users · grant access</Link>
                   <Link className="btn btn-ghost btn-sm" href="/staff/orgs">View organizations</Link>
                   <Link className="btn btn-ghost btn-sm" href="/staff/orgs/new">Create new organization</Link>

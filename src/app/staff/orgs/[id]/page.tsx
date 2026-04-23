@@ -26,11 +26,16 @@ async function addMember(formData: FormData) {
   if (!session?.user?.isStaff) throw new Error('staff only');
   const orgId = String(formData.get('orgId'));
   const email = String(formData.get('email') ?? '').trim().toLowerCase();
-  if (!email) return;
+  if (!email) {
+    redirect(`/staff/orgs/${orgId}?err=${encodeURIComponent('Email is required')}`);
+  }
   const user = await prisma.user.findUnique({ where: { email } });
-  if (!user) throw new Error(`No user found with email ${email}. User must sign up first.`);
+  if (!user) {
+    redirect(`/staff/orgs/${orgId}?err=${encodeURIComponent(`No user with email ${email}. They must sign up first.`)}`);
+  }
   await prisma.user.update({ where: { id: user.id }, data: { orgId } });
   revalidatePath(`/staff/orgs/${orgId}`);
+  redirect(`/staff/orgs/${orgId}?ok=${encodeURIComponent(`Added ${email} to org`)}`);
 }
 
 async function removeMember(formData: FormData) {
@@ -89,9 +94,12 @@ async function cancelSubscription(formData: FormData) {
   revalidatePath(`/staff/orgs/${orgId}`);
 }
 
-export default async function StaffOrgDetailPage({ params }: { params: { id: string } }) {
+export default async function StaffOrgDetailPage({ params, searchParams }: { params: { id: string }; searchParams: { ok?: string; err?: string } }) {
   const session = await auth();
   if (!session?.user?.isStaff) redirect('/');
+
+  const okMsg = searchParams?.ok ? String(searchParams.ok) : null;
+  const errMsg = searchParams?.err ? String(searchParams.err) : null;
 
   const org = await prisma.organization.findUnique({
     where: { id: params.id },
@@ -128,6 +136,16 @@ export default async function StaffOrgDetailPage({ params }: { params: { id: str
       </section>
 
       <section style={{ padding: '32px 0 48px' }}>
+        {(okMsg || errMsg) && (
+          <div className="container" style={{ marginBottom: 16 }}>
+            {okMsg && (
+              <div style={{ background: 'color-mix(in oklab, var(--accent) 10%, var(--bg-panel))', border: '1px solid var(--accent)', borderRadius: 8, padding: '12px 16px', fontSize: 14 }}>{okMsg}</div>
+            )}
+            {errMsg && (
+              <div style={{ background: 'color-mix(in oklab, var(--danger) 10%, var(--bg-panel))', border: '1px solid var(--danger)', borderRadius: 8, padding: '12px 16px', fontSize: 14 }}>{errMsg}</div>
+            )}
+          </div>
+        )}
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: 24 }}>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
