@@ -3,17 +3,17 @@
 // (10 questions pulled across the whole course), not just 1 quiz at the end.
 
 import { LESSONS } from '@/content/lessons';
-import type { EngageStep, QuizStep } from '@/content/types';
+import type { ApplyStep, QuizStep } from '@/content/types';
 
 export interface CertQuestion {
-  id: string;          // "courseId-moduleIdx-lessonIdx-step-<idx>"
+  id: string;
   courseId: number;
   lessonTitle: string;
   moduleName: string;
   prompt: string;
   options: { text: string; correct: boolean }[];
   explanation?: string;
-  kind: 'engage' | 'quiz';
+  kind: 'apply' | 'quiz';
 }
 
 export function buildQuestionPool(courseId: number): CertQuestion[] {
@@ -23,17 +23,17 @@ export function buildQuestionPool(courseId: number): CertQuestion[] {
   for (const [key, lesson] of Object.entries(LESSONS)) {
     if (!key.startsWith(prefix)) continue;
     lesson.steps.forEach((step, stepIdx) => {
-      if (step.type === 'engage') {
-        const s = step as EngageStep;
+      if (step.type === 'apply') {
+        const s = step as ApplyStep;
         pool.push({
           id: `${key}-s${stepIdx}`,
           courseId,
           lessonTitle: lesson.title,
           moduleName: lesson.moduleName,
-          prompt: s.prompt,
+          prompt: s.scenario,
           options: s.options.map(o => ({ text: o.text, correct: o.correct })),
           explanation: s.options.find(o => o.correct)?.feedback,
-          kind: 'engage',
+          kind: 'apply',
         });
       } else if (step.type === 'quiz') {
         const s = step as QuizStep;
