@@ -32,14 +32,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "A colleague says \"we're using AI now.\" Which of these fits the modern definition?",
         "options": [
           {
-            "text": "A macro in Excel that adds up a column.",
-            "correct": false,
-            "feedback": "That's automation — a fixed rule. AI, in today's sense, generates new responses it wasn't explicitly programmed to produce."
-          },
-          {
             "text": "A chatbot that drafts an email based on a sentence you typed.",
             "correct": true,
             "feedback": "Exactly. Generating new text from your input is the everyday face of AI today."
+          },
+          {
+            "text": "A macro in Excel that adds up a column.",
+            "correct": false,
+            "feedback": "That's automation — a fixed rule. AI, in today's sense, generates new responses it wasn't explicitly programmed to produce."
           },
           {
             "text": "A spam filter from 2008.",
@@ -53,20 +53,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The easiest way to describe AI to a family member is:",
         "options": [
           {
-            "text": "A robot that lives in your computer.",
+            "text": "A search engine with a new name.",
             "correct": false
           },
           {
-            "text": "Software that reads your input and generates a response — like a very fast, very well-read assistant.",
-            "correct": true
-          },
-          {
-            "text": "A search engine with a new name.",
+            "text": "A robot that lives in your computer.",
             "correct": false
           },
           {
             "text": "A future technology that isn't really here yet.",
             "correct": false
+          },
+          {
+            "text": "Software that reads your input and generates a response — like a very fast, very well-read assistant.",
+            "correct": true
           }
         ],
         "answerNote": "AI today is not a robot, not just search, and definitely not hypothetical. It's working software you're about to use."
@@ -99,9 +99,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You want to summarize a 30-page PDF. Which is the right first stop?",
         "options": [
           {
-            "text": "Midjourney.",
+            "text": "Google Search.",
             "correct": false,
-            "feedback": "Midjourney makes images, not summaries. Wrong tool for the job."
+            "feedback": "Search can find the PDF; it can't summarize it."
           },
           {
             "text": "A general AI chatbot like ChatGPT or Claude.",
@@ -109,9 +109,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Yes. Uploading a PDF and asking for a summary is one of the most common tasks for general chatbots."
           },
           {
-            "text": "Google Search.",
+            "text": "Midjourney.",
             "correct": false,
-            "feedback": "Search can find the PDF; it can't summarize it."
+            "feedback": "Midjourney makes images, not summaries. Wrong tool for the job."
           }
         ]
       },
@@ -120,7 +120,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which of these is an example of AI \"baked in\" to an existing tool?",
         "options": [
           {
-            "text": "A standalone chatbot app on your phone.",
+            "text": "Your calendar.",
             "correct": false
           },
           {
@@ -128,11 +128,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "A .docx file.",
+            "text": "A standalone chatbot app on your phone.",
             "correct": false
           },
           {
-            "text": "Your calendar.",
+            "text": "A .docx file.",
             "correct": false
           }
         ],
@@ -170,6 +170,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You start a new conversation with a chatbot tomorrow. What does it remember about you from today's chat?",
         "options": [
           {
+            "text": "Only negative interactions.",
+            "correct": false,
+            "feedback": "No — there's no grudge-keeping. It just doesn't carry anything forward by default."
+          },
+          {
             "text": "Everything, including your name and style preferences.",
             "correct": false,
             "feedback": "By default, no. Each conversation is a clean slate unless you've enabled a memory feature and the tool supports it."
@@ -178,11 +183,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Nothing — each conversation starts fresh.",
             "correct": true,
             "feedback": "Correct. This is why it's worth adding a line of context (who you are, what you want) at the start of any serious chat."
-          },
-          {
-            "text": "Only negative interactions.",
-            "correct": false,
-            "feedback": "No — there's no grudge-keeping. It just doesn't carry anything forward by default."
           }
         ]
       },
@@ -191,7 +191,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Inside a single conversation, the chatbot:",
         "options": [
           {
-            "text": "Forgets the previous message as soon as you hit send.",
+            "text": "Stores your chat in a separate database you can query.",
+            "correct": false
+          },
+          {
+            "text": "Only reads the most recent sentence.",
             "correct": false
           },
           {
@@ -199,11 +203,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Only reads the most recent sentence.",
-            "correct": false
-          },
-          {
-            "text": "Stores your chat in a separate database you can query.",
+            "text": "Forgets the previous message as soon as you hit send.",
             "correct": false
           }
         ],
@@ -266,7 +266,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "They all charge monthly fees.",
+            "text": "Switching tools is technically difficult.",
             "correct": false
           },
           {
@@ -274,7 +274,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Switching tools is technically difficult.",
+            "text": "They all charge monthly fees.",
             "correct": false
           }
         ],
@@ -312,6 +312,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which of these best describes what happens when you ask a chatbot a question?",
         "options": [
           {
+            "text": "It predicts the next word repeatedly until the answer is complete.",
+            "correct": true,
+            "feedback": "Exactly. Every word is a prediction, and the response is built one small step at a time."
+          },
+          {
             "text": "It searches the internet in real time and returns the best result.",
             "correct": false,
             "feedback": "Not by default. Unless a chatbot has a browsing feature turned on, it has no live access to the internet."
@@ -320,11 +325,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "It recalls the exact text from a database it was trained on.",
             "correct": false,
             "feedback": "Closer, but still off. It doesn't recall passages — it generates new text by predicting what comes next."
-          },
-          {
-            "text": "It predicts the next word repeatedly until the answer is complete.",
-            "correct": true,
-            "feedback": "Exactly. Every word is a prediction, and the response is built one small step at a time."
           }
         ]
       },
@@ -333,16 +333,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "A chatbot gives you a plausible citation that doesn't actually exist. Why?",
         "options": [
           {
+            "text": "It predicted what a citation usually looks like, not what a real one is.",
+            "correct": true
+          },
+          {
             "text": "The training data was wrong.",
             "correct": false
           },
           {
             "text": "The chatbot is trying to deceive you.",
             "correct": false
-          },
-          {
-            "text": "It predicted what a citation usually looks like, not what a real one is.",
-            "correct": true
           },
           {
             "text": "The chatbot is broken.",
@@ -408,7 +408,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "A chatbot can permanently remember facts you tell it just by chatting.",
+            "text": "Chatbots are constantly scraping Wikipedia.",
             "correct": false
           },
           {
@@ -416,7 +416,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Chatbots are constantly scraping Wikipedia.",
+            "text": "A chatbot can permanently remember facts you tell it just by chatting.",
             "correct": false
           }
         ],
@@ -454,11 +454,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which task has the lowest risk of AI hallucination?",
         "options": [
           {
-            "text": "Asking for a list of 10 peer-reviewed papers on a niche topic.",
-            "correct": false,
-            "feedback": "High risk. Citations are the #1 hallucination category."
-          },
-          {
             "text": "Asking it to rewrite an email you pasted in, in a friendlier tone.",
             "correct": true,
             "feedback": "Low risk. It's working on text you provided, not inventing facts."
@@ -467,6 +462,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Asking for yesterday's stock prices.",
             "correct": false,
             "feedback": "It probably doesn't know them, and may guess confidently."
+          },
+          {
+            "text": "Asking for a list of 10 peer-reviewed papers on a niche topic.",
+            "correct": false,
+            "feedback": "High risk. Citations are the #1 hallucination category."
           }
         ]
       },
@@ -474,10 +474,6 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "Hallucinations happen because the model is optimizing for:",
         "options": [
-          {
-            "text": "Truth.",
-            "correct": false
-          },
           {
             "text": "Helpfulness — even when it doesn't know the answer.",
             "correct": false
@@ -488,6 +484,10 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Speed over accuracy.",
+            "correct": false
+          },
+          {
+            "text": "Truth.",
             "correct": false
           }
         ],
@@ -521,14 +521,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You type \"Please send this email to my manager.\" What happens?",
         "options": [
           {
-            "text": "It sends the email.",
-            "correct": false,
-            "feedback": "A default chatbot cannot send anything. It has no access to your inbox."
-          },
-          {
             "text": "It drafts the email in the chat, and you have to copy-paste it yourself.",
             "correct": true,
             "feedback": "Exactly. Until you're in a connected tool (Copilot for Outlook, etc.), the chatbot is a text generator, not an agent."
+          },
+          {
+            "text": "It sends the email.",
+            "correct": false,
+            "feedback": "A default chatbot cannot send anything. It has no access to your inbox."
           },
           {
             "text": "It asks you for your email password.",
@@ -542,6 +542,10 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which of these is NOT something a vanilla chatbot can do?",
         "options": [
           {
+            "text": "Brainstorm product names.",
+            "correct": false
+          },
+          {
             "text": "Draft an email.",
             "correct": false
           },
@@ -551,10 +555,6 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Summarize a paragraph you paste in.",
-            "correct": false
-          },
-          {
-            "text": "Brainstorm product names.",
             "correct": false
           }
         ],
@@ -592,14 +592,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You want help writing a LinkedIn post announcing your promotion. Which prompt is likely to give better output?",
         "options": [
           {
-            "text": "\"Write a LinkedIn post.\"",
-            "correct": false,
-            "feedback": "Too vague. You'll get a generic template that sounds like everyone else's."
-          },
-          {
             "text": "\"Write a LinkedIn post announcing my promotion from Senior Account Exec to Director of Sales. Grateful, a bit self-deprecating, 100 words. I want to thank my manager Rachel.\",\"",
             "correct": true,
             "feedback": "This gives task, context, and format. The output will be sharper by a mile."
+          },
+          {
+            "text": "\"Write a LinkedIn post.\"",
+            "correct": false,
+            "feedback": "Too vague. You'll get a generic template that sounds like everyone else's."
           },
           {
             "text": "\"Promotion post LinkedIn director sales please.\"",
@@ -663,6 +663,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which rewrite of \"help me with my presentation\" is most likely to produce useful output?",
         "options": [
           {
+            "text": "\"I kindly request your esteemed feedback on my presentation.\"",
+            "correct": false,
+            "feedback": "Politeness without specificity. The AI still doesn't know what to do."
+          },
+          {
             "text": "\"Improve my presentation please.\"",
             "correct": false,
             "feedback": "Still vague. The AI has to guess what \"improve\" means."
@@ -671,11 +676,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Review these 5 slides of bullet points and suggest where I should cut, combine, or clarify. Aim: tighter and more punchy.\"",
             "correct": true,
             "feedback": "Specific task, specific scope, clear intent. You'll get something usable."
-          },
-          {
-            "text": "\"I kindly request your esteemed feedback on my presentation.\"",
-            "correct": false,
-            "feedback": "Politeness without specificity. The AI still doesn't know what to do."
           }
         ]
       },
@@ -684,19 +684,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The single most high-leverage thing to add to a vague prompt is:",
         "options": [
           {
-            "text": "Politeness.",
-            "correct": false
-          },
-          {
             "text": "A specific verb and a measurable outcome.",
             "correct": true
+          },
+          {
+            "text": "A longer preamble about who you are.",
+            "correct": false
           },
           {
             "text": "Emojis.",
             "correct": false
           },
           {
-            "text": "A longer preamble about who you are.",
+            "text": "Politeness.",
             "correct": false
           }
         ],
@@ -734,11 +734,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You ask a chatbot to \"draft a pitch email for our software.\" Output is generic and bland. What's the most useful thing to add?",
         "options": [
           {
-            "text": "A request for the AI to \"be more creative.\"",
-            "correct": false,
-            "feedback": "Vague, doesn't give it new information to work with."
-          },
-          {
             "text": "A description of who the email is going to and what problem your software solves for them.",
             "correct": true,
             "feedback": "Audience + problem = context. This turns a generic pitch into a specific one."
@@ -747,6 +742,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "A longer word limit.",
             "correct": false,
             "feedback": "More words ≠ better. More context → better."
+          },
+          {
+            "text": "A request for the AI to \"be more creative.\"",
+            "correct": false,
+            "feedback": "Vague, doesn't give it new information to work with."
           }
         ]
       },
@@ -755,19 +755,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which is the best kind of context to add to a prompt?",
         "options": [
           {
-            "text": "A list of tools you use.",
-            "correct": false
-          },
-          {
             "text": "Information that changes what a good answer looks like.",
             "correct": true
           },
           {
-            "text": "Your full resume.",
+            "text": "A list of tools you use.",
             "correct": false
           },
           {
             "text": "A long apology for asking.",
+            "correct": false
+          },
+          {
+            "text": "Your full resume.",
             "correct": false
           }
         ],
@@ -805,6 +805,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You asked for a 100-word summary and it gave you 400. What's the best follow-up?",
         "options": [
           {
+            "text": "Copy the long version and trim it by hand.",
+            "correct": false,
+            "feedback": "Fine if urgent, but iterating would have been faster."
+          },
+          {
             "text": "Start a brand new chat and try again.",
             "correct": false,
             "feedback": "Wasteful — you'd lose all the context you built up. Just follow up."
@@ -813,11 +818,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Cut this to 100 words. Keep the key points, drop the examples.\"",
             "correct": true,
             "feedback": "Precise correction inside the chat. The model already has the draft; now it tightens."
-          },
-          {
-            "text": "Copy the long version and trim it by hand.",
-            "correct": false,
-            "feedback": "Fine if urgent, but iterating would have been faster."
           }
         ]
       },
@@ -826,11 +826,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "When iterating inside a conversation, the model:",
         "options": [
           {
-            "text": "Forgets the previous attempt.",
-            "correct": false
-          },
-          {
-            "text": "Starts each response from scratch.",
+            "text": "Refuses to try more than twice.",
             "correct": false
           },
           {
@@ -838,7 +834,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Refuses to try more than twice.",
+            "text": "Starts each response from scratch.",
+            "correct": false
+          },
+          {
+            "text": "Forgets the previous attempt.",
             "correct": false
           }
         ],
@@ -901,15 +901,15 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Email it to a friend first.",
-            "correct": false
-          },
-          {
             "text": "Redact sensitive details, or use a company-approved AI that has a data agreement.",
             "correct": true
           },
           {
             "text": "Ask the AI to promise it won't save anything.",
+            "correct": false
+          },
+          {
+            "text": "Email it to a friend first.",
             "correct": false
           }
         ],
@@ -968,11 +968,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the most efficient fact-checking habit?",
         "options": [
           {
-            "text": "Re-ask the same chatbot if it's sure.",
+            "text": "Ask another chatbot.",
             "correct": false
           },
           {
-            "text": "Ask another chatbot.",
+            "text": "Assume the AI is right if it sounds confident.",
             "correct": false
           },
           {
@@ -980,7 +980,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Assume the AI is right if it sounds confident.",
+            "text": "Re-ask the same chatbot if it's sure.",
             "correct": false
           }
         ],
@@ -1039,11 +1039,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The best description of AI's role in high-stakes decisions is:",
         "options": [
           {
-            "text": "Replace the decider.",
-            "correct": false
-          },
-          {
-            "text": "Rubber-stamp the decider's first instinct.",
+            "text": "Absolve the decider of responsibility.",
             "correct": false
           },
           {
@@ -1051,7 +1047,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Absolve the decider of responsibility.",
+            "text": "Replace the decider.",
+            "correct": false
+          },
+          {
+            "text": "Rubber-stamp the decider's first instinct.",
             "correct": false
           }
         ],
@@ -1089,14 +1089,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You ask AI to generate a customer testimonial for your B2B software. It writes one from \"John, CEO of Acme.\" What's a useful next move?",
         "options": [
           {
-            "text": "Ship it — it's a placeholder.",
-            "correct": false,
-            "feedback": "Placeholders become defaults. Your materials end up looking less representative than your customer base."
-          },
-          {
             "text": "Rewrite with a different name/role/industry and ask for 3–5 variants.",
             "correct": true,
             "feedback": "Good instinct. Notice the default, override intentionally."
+          },
+          {
+            "text": "Ship it — it's a placeholder.",
+            "correct": false,
+            "feedback": "Placeholders become defaults. Your materials end up looking less representative than your customer base."
           },
           {
             "text": "Complain in a LinkedIn post.",
@@ -1110,20 +1110,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why does AI output often reflect stereotypes?",
         "options": [
           {
-            "text": "The AI is programmed with opinions.",
+            "text": "The company made specific choices to include them.",
             "correct": false
           },
           {
-            "text": "It learned from human-written text, which carries human biases at scale.",
-            "correct": true
-          },
-          {
-            "text": "The company made specific choices to include them.",
+            "text": "The AI is programmed with opinions.",
             "correct": false
           },
           {
             "text": "It's a bug in the software.",
             "correct": false
+          },
+          {
+            "text": "It learned from human-written text, which carries human biases at scale.",
+            "correct": true
           }
         ],
         "answerNote": "The bias comes from the training data — text humans wrote. The fix isn't arguing with the AI, it's specifying what you want."
@@ -1231,6 +1231,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You need to summarize a 40-page research report for your VP of Marketing. Which prompt produces the most useful output?",
         "options": [
           {
+            "text": "\"Important parts please.\"",
+            "correct": false,
+            "feedback": "Too vague — \"important to whom, for what?\""
+          },
+          {
             "text": "\"Summarize this report.\"",
             "correct": false,
             "feedback": "Generic. You'll get a one-paragraph gloss."
@@ -1239,11 +1244,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Summarize for our VP of Marketing. She cares about budget implications, audience insights, and anything that changes our Q3 plan. TL;DR + 5 bullets per category.\"",
             "correct": true,
             "feedback": "Audience, priorities, format — now the AI knows what to emphasize."
-          },
-          {
-            "text": "\"Important parts please.\"",
-            "correct": false,
-            "feedback": "Too vague — \"important to whom, for what?\""
           }
         ]
       },
@@ -1252,20 +1252,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "A summary is most useful when the prompt specifies:",
         "options": [
           {
-            "text": "How long the input document is.",
+            "text": "Whether it was written by a human.",
             "correct": false
-          },
-          {
-            "text": "The audience and what they need to decide.",
-            "correct": true
           },
           {
             "text": "The formatting of the input.",
             "correct": false
           },
           {
-            "text": "Whether it was written by a human.",
+            "text": "How long the input document is.",
             "correct": false
+          },
+          {
+            "text": "The audience and what they need to decide.",
+            "correct": true
           }
         ],
         "answerNote": "Every summary is a summary for someone. Tell the AI who."
@@ -1302,6 +1302,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You're brainstorming subject lines for a webinar invite. Best prompt?",
         "options": [
           {
+            "text": "\"Some subject line ideas please.\"",
+            "correct": false,
+            "feedback": "Better than nothing, but you'll get a default grab-bag."
+          },
+          {
             "text": "\"Write a subject line.\"",
             "correct": false,
             "feedback": "One generic option. Hard to iterate from."
@@ -1310,11 +1315,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Give me 15 subject lines for a webinar titled 'AI for Sales Leaders.' Audience: sales VPs. Under 8 words. No emojis. Don't say 'supercharge.'\"",
             "correct": true,
             "feedback": "Quantity, audience, constraints, and anti-patterns. Now you have something to pick from."
-          },
-          {
-            "text": "\"Some subject line ideas please.\"",
-            "correct": false,
-            "feedback": "Better than nothing, but you'll get a default grab-bag."
           }
         ]
       },
@@ -1323,7 +1323,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The most underrated move in brainstorming with AI is:",
         "options": [
           {
-            "text": "Asking for a single perfect answer.",
+            "text": "Letting the AI decide for you.",
             "correct": false
           },
           {
@@ -1331,7 +1331,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Letting the AI decide for you.",
+            "text": "Asking for a single perfect answer.",
             "correct": false
           },
           {
@@ -1373,14 +1373,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which statement best describes what an AI chatbot does?",
         "options": [
           {
-            "text": "Searches the internet and returns results.",
-            "correct": false,
-            "feedback": "That's a search engine, not a chatbot by default."
-          },
-          {
             "text": "Predicts the next word repeatedly to generate a response to your prompt.",
             "correct": true,
             "feedback": "Correct. The rest of this course builds on that one mental model."
+          },
+          {
+            "text": "Searches the internet and returns results.",
+            "correct": false,
+            "feedback": "That's a search engine, not a chatbot by default."
           },
           {
             "text": "Retrieves exact answers from a database.",
@@ -1394,7 +1394,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You're about to send a chatbot a question for the first time at work. What's the single most important thing to get right?",
         "options": [
           {
-            "text": "Saying please.",
+            "text": "Keeping the message under 20 words.",
             "correct": false
           },
           {
@@ -1402,11 +1402,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Using formal English.",
+            "text": "Saying please.",
             "correct": false
           },
           {
-            "text": "Keeping the message under 20 words.",
+            "text": "Using formal English.",
             "correct": false
           }
         ],
@@ -1449,14 +1449,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Not an ICEF element, and unlikely to help."
           },
           {
-            "text": "Context: the customer name, what they bought, what the outcome was, their quote.",
-            "correct": true,
-            "feedback": "Context is carrying this ask. Without it, the AI has to invent the story."
-          },
-          {
             "text": "An apology for the short prompt.",
             "correct": false,
             "feedback": "Doesn't affect output."
+          },
+          {
+            "text": "Context: the customer name, what they bought, what the outcome was, their quote.",
+            "correct": true,
+            "feedback": "Context is carrying this ask. Without it, the AI has to invent the story."
           }
         ]
       },
@@ -1465,19 +1465,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The \"F\" in ICEF stands for:",
         "options": [
           {
-            "text": "Friendly.",
-            "correct": false
-          },
-          {
             "text": "Format.",
             "correct": true
           },
           {
-            "text": "Feedback.",
+            "text": "Fast.",
             "correct": false
           },
           {
-            "text": "Fast.",
+            "text": "Friendly.",
+            "correct": false
+          },
+          {
+            "text": "Feedback.",
             "correct": false
           }
         ],
@@ -1520,14 +1520,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Too generic — you'll get polite surface-level notes."
           },
           {
-            "text": "\"You are an early-stage VC who's seen 200 pitches this quarter and is tired of weak market-sizing claims.\"",
-            "correct": true,
-            "feedback": "Specific, skeptical, pointed. Feedback will bite in the right places."
-          },
-          {
             "text": "\"You are a nice human.\"",
             "correct": false,
             "feedback": "Won't push back when the deck needs it to."
+          },
+          {
+            "text": "\"You are an early-stage VC who's seen 200 pitches this quarter and is tired of weak market-sizing claims.\"",
+            "correct": true,
+            "feedback": "Specific, skeptical, pointed. Feedback will bite in the right places."
           }
         ]
       },
@@ -1536,20 +1536,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The main value of the \"You are...\" opening is:",
         "options": [
           {
-            "text": "It makes the AI believe it's that person.",
-            "correct": false
-          },
-          {
-            "text": "It primes the style, priorities, and vocabulary of the response.",
-            "correct": true
-          },
-          {
             "text": "It's required for the AI to work.",
             "correct": false
           },
           {
             "text": "It speeds up the response.",
             "correct": false
+          },
+          {
+            "text": "It makes the AI believe it's that person.",
+            "correct": false
+          },
+          {
+            "text": "It primes the style, priorities, and vocabulary of the response.",
+            "correct": true
           }
         ],
         "answerNote": "The AI isn't becoming anyone — you're just tilting the probability of the kind of response you'll get."
@@ -1586,6 +1586,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You're teaching the AI your brand voice. Which set of examples works best?",
         "options": [
           {
+            "text": "The entire brand guidelines doc as a 30-page PDF.",
+            "correct": false,
+            "feedback": "Length dilutes. Short, specific, consistent examples beat bulk."
+          },
+          {
             "text": "One paragraph you love, one you hate.",
             "correct": false,
             "feedback": "Mixed signals. The AI may average the two or pick the wrong one."
@@ -1594,11 +1599,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Three paragraphs you all love, consistent in voice.",
             "correct": true,
             "feedback": "Tightly clustered examples teach a clear pattern."
-          },
-          {
-            "text": "The entire brand guidelines doc as a 30-page PDF.",
-            "correct": false,
-            "feedback": "Length dilutes. Short, specific, consistent examples beat bulk."
           }
         ]
       },
@@ -1607,19 +1607,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Examples in a prompt work best when:",
         "options": [
           {
-            "text": "They're intentionally contradictory so the AI sees the range.",
-            "correct": false
-          },
-          {
             "text": "They're all clearly in the style or structure you want.",
             "correct": true
           },
           {
-            "text": "There are at least 10.",
+            "text": "They're intentionally contradictory so the AI sees the range.",
             "correct": false
           },
           {
             "text": "You describe them in words instead of pasting them.",
+            "correct": false
+          },
+          {
+            "text": "There are at least 10.",
             "correct": false
           }
         ],
@@ -1657,6 +1657,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You want a list of 10 target accounts to evaluate. Which format request is clearest?",
         "options": [
           {
+            "text": "\"A markdown table with columns: Account, Industry, Est. Revenue, Reason to Prioritize. 10 rows.\"",
+            "correct": true,
+            "feedback": "Column-specific table. Paste it straight into a doc."
+          },
+          {
             "text": "\"Give me some accounts to look at.\"",
             "correct": false,
             "feedback": "Vague — you'll get a paragraph."
@@ -1665,11 +1670,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"List 10 accounts.\"",
             "correct": false,
             "feedback": "Better, but no structure for what to evaluate."
-          },
-          {
-            "text": "\"A markdown table with columns: Account, Industry, Est. Revenue, Reason to Prioritize. 10 rows.\"",
-            "correct": true,
-            "feedback": "Column-specific table. Paste it straight into a doc."
           }
         ]
       },
@@ -1678,7 +1678,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The biggest reason to specify format in a prompt is:",
         "options": [
           {
-            "text": "It makes the AI run faster.",
+            "text": "The AI refuses to respond otherwise.",
             "correct": false
           },
           {
@@ -1686,11 +1686,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "It's required by most AI tools.",
+            "text": "It makes the AI run faster.",
             "correct": false
           },
           {
-            "text": "The AI refuses to respond otherwise.",
+            "text": "It's required by most AI tools.",
             "correct": false
           }
         ],
@@ -1728,9 +1728,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You need a 500-word blog post arguing for investing in sales training. Best prompt?",
         "options": [
           {
-            "text": "\"Write a blog post about sales training.\"",
+            "text": "\"Write something inspiring about sales.\"",
             "correct": false,
-            "feedback": "Generic. The output will feel like a million others."
+            "feedback": "\"Inspiring\" is code for \"generic.\""
           },
           {
             "text": "\"Turn these bullets into a 500-word post: (1) untrained reps cost X per deal (2) good training pays back in 90 days (3) the real blocker is enablement ownership. Voice: punchy, B2B, first-person.\"",
@@ -1738,9 +1738,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Yours in shape, AI's in execution. Cleanest handoff."
           },
           {
-            "text": "\"Write something inspiring about sales.\"",
+            "text": "\"Write a blog post about sales training.\"",
             "correct": false,
-            "feedback": "\"Inspiring\" is code for \"generic.\""
+            "feedback": "Generic. The output will feel like a million others."
           }
         ]
       },
@@ -1753,12 +1753,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Dump your bullets first, then ask AI to shape them.",
-            "correct": true
-          },
-          {
             "text": "Write the full draft yourself and skip AI.",
             "correct": false
+          },
+          {
+            "text": "Dump your bullets first, then ask AI to shape them.",
+            "correct": true
           },
           {
             "text": "Ask for five different drafts and average them.",
@@ -1799,9 +1799,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You pasted a 600-word memo and want it punchier. Best edit instruction?",
         "options": [
           {
-            "text": "\"Make it better.\"",
+            "text": "\"Add more detail.\"",
             "correct": false,
-            "feedback": "Vague. \"Better\" in what direction?"
+            "feedback": "Opposite of shortening — AI will lengthen."
           },
           {
             "text": "\"Cut to 300 words. Keep all three recommendations and the tone. Remove filler adverbs and rhetorical questions.\"",
@@ -1809,9 +1809,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Specific length + specific protections + specific removals. Sharp ask."
           },
           {
-            "text": "\"Add more detail.\"",
+            "text": "\"Make it better.\"",
             "correct": false,
-            "feedback": "Opposite of shortening — AI will lengthen."
+            "feedback": "Vague. \"Better\" in what direction?"
           }
         ]
       },
@@ -1820,12 +1820,12 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The phrase \"cut without losing X\" works because:",
         "options": [
           {
-            "text": "It makes the AI run slower.",
-            "correct": false
-          },
-          {
             "text": "It protects the content that matters from over-aggressive trimming.",
             "correct": true
+          },
+          {
+            "text": "It makes the AI run slower.",
+            "correct": false
           },
           {
             "text": "It's required syntax.",
@@ -1870,9 +1870,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You want a draft to sound more like a peer and less like a press release. Best instruction?",
         "options": [
           {
-            "text": "\"Make it less corporate.\"",
+            "text": "\"Make it cooler.\"",
             "correct": false,
-            "feedback": "Directional but vague — the AI picks a point."
+            "feedback": "What's \"cool\"? The AI will pick a genre at random."
           },
           {
             "text": "\"Rewrite like a message from a trusted peer over Slack. First person, no buzzwords, contractions OK, one small joke allowed.\"",
@@ -1880,9 +1880,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Reference + constraints + permissions. Now the AI has a target."
           },
           {
-            "text": "\"Make it cooler.\"",
+            "text": "\"Make it less corporate.\"",
             "correct": false,
-            "feedback": "What's \"cool\"? The AI will pick a genre at random."
+            "feedback": "Directional but vague — the AI picks a point."
           }
         ]
       },
@@ -1899,11 +1899,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Add more exclamation points.",
+            "text": "Tell it to \"be creative.\"",
             "correct": false
           },
           {
-            "text": "Tell it to \"be creative.\"",
+            "text": "Add more exclamation points.",
             "correct": false
           }
         ],
@@ -1941,6 +1941,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You've drafted a LinkedIn post with AI and want it to sound like you. Best next move?",
         "options": [
           {
+            "text": "Capitalize the first word of every sentence for emphasis.",
+            "correct": false,
+            "feedback": "Doesn't change voice; standard style."
+          },
+          {
             "text": "Add three emojis.",
             "correct": false,
             "feedback": "Might match your style, but doesn't defeat AI flatness."
@@ -1949,11 +1954,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Replace two sentences with a short specific story from your last project.",
             "correct": true,
             "feedback": "Specific lived detail is the AI's weakness and your strength."
-          },
-          {
-            "text": "Capitalize the first word of every sentence for emphasis.",
-            "correct": false,
-            "feedback": "Doesn't change voice; standard style."
           }
         ]
       },
@@ -1962,15 +1962,15 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The thing AI-drafted writing is most likely to lack is:",
         "options": [
           {
-            "text": "Grammatical correctness.",
-            "correct": false
-          },
-          {
             "text": "Specific lived details and strong opinions.",
             "correct": true
           },
           {
             "text": "Word variety.",
+            "correct": false
+          },
+          {
+            "text": "Grammatical correctness.",
             "correct": false
           },
           {
@@ -2012,11 +2012,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You need to know your company's current PTO policy. Best first stop?",
         "options": [
           {
-            "text": "A general AI chatbot.",
-            "correct": false,
-            "feedback": "It has no access to your policy. It might guess what a generic policy looks like."
-          },
-          {
             "text": "Your HR portal or a search of your company's internal docs.",
             "correct": true,
             "feedback": "Primary source. AI can later explain it in plain English if needed."
@@ -2025,6 +2020,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Your coworker.",
             "correct": false,
             "feedback": "Fine for a vibe check, bad for a definitive answer."
+          },
+          {
+            "text": "A general AI chatbot.",
+            "correct": false,
+            "feedback": "It has no access to your policy. It might guess what a generic policy looks like."
           }
         ]
       },
@@ -2037,12 +2037,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "When you need to understand the shape of a concept or compare tradeoffs.",
-            "correct": true
-          },
-          {
             "text": "When you need a specific official document.",
             "correct": false
+          },
+          {
+            "text": "When you need to understand the shape of a concept or compare tradeoffs.",
+            "correct": true
           },
           {
             "text": "When you need live prices.",
@@ -2088,14 +2088,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "SEO can float anything. You need the source."
           },
           {
-            "text": "Find two independent reports from named industry analysts or bodies.",
-            "correct": true,
-            "feedback": "Triangulation with named sources gives you a defensible number."
-          },
-          {
             "text": "Ask the same AI again to confirm.",
             "correct": false,
             "feedback": "Self-confirmation isn't verification."
+          },
+          {
+            "text": "Find two independent reports from named industry analysts or bodies.",
+            "correct": true,
+            "feedback": "Triangulation with named sources gives you a defensible number."
           }
         ]
       },
@@ -2104,19 +2104,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Triangulating sources works because:",
         "options": [
           {
-            "text": "It's faster than checking one source.",
-            "correct": false
-          },
-          {
             "text": "Two sources that independently agree are more reliable than one.",
             "correct": true
           },
           {
-            "text": "It scares the AI into being correct.",
+            "text": "It's faster than checking one source.",
             "correct": false
           },
           {
             "text": "It's legally required.",
+            "correct": false
+          },
+          {
+            "text": "It scares the AI into being correct.",
             "correct": false
           }
         ],
@@ -2159,14 +2159,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Gives you three summaries, no synthesis."
           },
           {
-            "text": "\"What's the pattern across all three? Where do they disagree? Which is most applicable to a mid-market SaaS?\"",
-            "correct": true,
-            "feedback": "Cross-article comparison + applied filter. Now you're synthesizing."
-          },
-          {
             "text": "\"Are these good?\"",
             "correct": false,
             "feedback": "Subjective and vague."
+          },
+          {
+            "text": "\"What's the pattern across all three? Where do they disagree? Which is most applicable to a mid-market SaaS?\"",
+            "correct": true,
+            "feedback": "Cross-article comparison + applied filter. Now you're synthesizing."
           }
         ]
       },
@@ -2179,15 +2179,15 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
+            "text": "A request for confidence scores.",
+            "correct": false
+          },
+          {
             "text": "An instruction to compare across sources, not just summarize each.",
             "correct": true
           },
           {
             "text": "A strict word limit.",
-            "correct": false
-          },
-          {
-            "text": "A request for confidence scores.",
             "correct": false
           }
         ],
@@ -2230,14 +2230,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "General explanations of common concepts are low-risk."
           },
           {
-            "text": "(b) — specific attributed stats are exactly where hallucinations live.",
-            "correct": true,
-            "feedback": "Right. Specific + attributed = highest hallucination risk. Always verify."
-          },
-          {
             "text": "(c) — AI can't give recommendations.",
             "correct": false,
             "feedback": "It can; they're just usually common-sense."
+          },
+          {
+            "text": "(b) — specific attributed stats are exactly where hallucinations live.",
+            "correct": true,
+            "feedback": "Right. Specific + attributed = highest hallucination risk. Always verify."
           }
         ]
       },
@@ -2245,10 +2245,6 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "The \"plausible but wrong\" failure mode is most dangerous when:",
         "options": [
-          {
-            "text": "The answer is obviously strange.",
-            "correct": false
-          },
           {
             "text": "The answer reads smoothly and only one small piece is false.",
             "correct": true
@@ -2259,6 +2255,10 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "The AI has thinking mode off.",
+            "correct": false
+          },
+          {
+            "text": "The answer is obviously strange.",
             "correct": false
           }
         ],
@@ -2296,9 +2296,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which meeting summary format is most actionable for next week?",
         "options": [
           {
-            "text": "A chronological recap of what everyone said.",
+            "text": "A list of attendees.",
             "correct": false,
-            "feedback": "You already lived the meeting."
+            "feedback": "Useful for records, not for action."
           },
           {
             "text": "\"Decisions / Open questions / Action items (owner + due) / Changes from last week.\"",
@@ -2306,9 +2306,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Exactly — a summary structured around \"what happens next.\""
           },
           {
-            "text": "A list of attendees.",
+            "text": "A chronological recap of what everyone said.",
             "correct": false,
-            "feedback": "Useful for records, not for action."
+            "feedback": "You already lived the meeting."
           }
         ]
       },
@@ -2317,20 +2317,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The most neglected part of a meeting summary is:",
         "options": [
           {
-            "text": "The date.",
+            "text": "The meeting title.",
             "correct": false
           },
           {
-            "text": "What changed since the last meeting.",
-            "correct": true
+            "text": "The date.",
+            "correct": false
           },
           {
             "text": "The attendee list.",
             "correct": false
           },
           {
-            "text": "The meeting title.",
-            "correct": false
+            "text": "What changed since the last meeting.",
+            "correct": true
           }
         ],
         "answerNote": "\"What changed\" is the thread that connects summaries. Without it, each meeting feels disconnected."
@@ -2367,14 +2367,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "After a meeting, which prompt pulls the most useful action items?",
         "options": [
           {
-            "text": "\"What did we discuss?\"",
-            "correct": false,
-            "feedback": "Gives you a recap, not actions."
-          },
-          {
             "text": "\"List every action item from this transcript. Columns: Action, Owner, Due, Status. If owner or due is missing, mark TBD.\"",
             "correct": true,
             "feedback": "Structured, exhaustive, and it flags what's missing."
+          },
+          {
+            "text": "\"What did we discuss?\"",
+            "correct": false,
+            "feedback": "Gives you a recap, not actions."
           },
           {
             "text": "\"What should we do next?\"",
@@ -2388,19 +2388,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why ask the AI to flag missing owners/dates?",
         "options": [
           {
-            "text": "To make the output longer.",
-            "correct": false
-          },
-          {
             "text": "So you know which items still need someone to commit.",
             "correct": true
+          },
+          {
+            "text": "The AI works better that way.",
+            "correct": false
           },
           {
             "text": "It looks better.",
             "correct": false
           },
           {
-            "text": "The AI works better that way.",
+            "text": "To make the output longer.",
             "correct": false
           }
         ],
@@ -2438,6 +2438,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You've written a technical spec; your CEO needs to understand the ask. Best prompt?",
         "options": [
           {
+            "text": "\"Make it shorter.\"",
+            "correct": false,
+            "feedback": "Fine if that's the only ask, but audience context is doing the work here."
+          },
+          {
             "text": "\"Make it easier to read.\"",
             "correct": false,
             "feedback": "Generic — may flatten too much."
@@ -2446,11 +2451,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Rewrite for our CEO. He knows our business model, doesn't need implementation detail. Protect: the $ ask, the timeline, the three risks. Goal: approve next steps.\"",
             "correct": true,
             "feedback": "Audience + protections + goal. Now the translation has a target."
-          },
-          {
-            "text": "\"Make it shorter.\"",
-            "correct": false,
-            "feedback": "Fine if that's the only ask, but audience context is doing the work here."
           }
         ]
       },
@@ -2459,20 +2459,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The hidden danger of \"translate this for executives\" is:",
         "options": [
           {
-            "text": "It takes too long.",
+            "text": "The tone becomes too casual.",
             "correct": false
           },
           {
-            "text": "It may strip out a key detail that actually mattered for the decision.",
-            "correct": true
+            "text": "It takes too long.",
+            "correct": false
           },
           {
             "text": "The AI refuses.",
             "correct": false
           },
           {
-            "text": "The tone becomes too casual.",
-            "correct": false
+            "text": "It may strip out a key detail that actually mattered for the decision.",
+            "correct": true
           }
         ],
         "answerNote": "\"Translate, keep X\" is safer than \"translate.\" Detail erosion is where these prompts go wrong."
@@ -2514,14 +2514,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Minimal effect."
           },
           {
-            "text": "Pasting 3–5 of your actual past emails and asking it to match that voice.",
-            "correct": true,
-            "feedback": "Examples > adjectives. Your voice becomes a clear target."
-          },
-          {
             "text": "Asking it to \"be friendly.\"",
             "correct": false,
             "feedback": "Too vague, drifts into chatbot generic."
+          },
+          {
+            "text": "Pasting 3–5 of your actual past emails and asking it to match that voice.",
+            "correct": true,
+            "feedback": "Examples > adjectives. Your voice becomes a clear target."
           }
         ]
       },
@@ -2530,7 +2530,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why are AI-drafted replies usually better than AI-drafted openers?",
         "options": [
           {
-            "text": "Replies are inherently shorter.",
+            "text": "The AI is trained specifically on replies.",
             "correct": false
           },
           {
@@ -2538,7 +2538,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "The AI is trained specifically on replies.",
+            "text": "Replies are inherently shorter.",
             "correct": false
           },
           {
@@ -2580,14 +2580,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You want a formula to count renewals in Q1. Best ask?",
         "options": [
           {
-            "text": "\"Give me a Q1 renewal formula.\"",
-            "correct": false,
-            "feedback": "No data context — the formula will miss the target."
-          },
-          {
             "text": "\"In Google Sheets. Column A is customer name, column D is renewal date. I want a COUNTIF or equivalent that counts renewals where D is between 2026-01-01 and 2026-03-31.\"",
             "correct": true,
             "feedback": "Tool + columns + date range. The formula will land."
+          },
+          {
+            "text": "\"Give me a Q1 renewal formula.\"",
+            "correct": false,
+            "feedback": "No data context — the formula will miss the target."
           },
           {
             "text": "\"Count renewals.\"",
@@ -2601,7 +2601,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the most common AI-generated-formula error?",
         "options": [
           {
-            "text": "The wrong function.",
+            "text": "Missing parentheses.",
             "correct": false
           },
           {
@@ -2609,11 +2609,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Too many arguments.",
+            "text": "The wrong function.",
             "correct": false
           },
           {
-            "text": "Missing parentheses.",
+            "text": "Too many arguments.",
             "correct": false
           }
         ],
@@ -2656,14 +2656,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Too long, risks data leaks, and AI will likely drop rows."
           },
           {
-            "text": "Paste 20 representative rows and ask for a cleaning recipe — formulas or steps you'll apply yourself.",
-            "correct": true,
-            "feedback": "Teaches the model the shape, then you run the recipe locally."
-          },
-          {
             "text": "Ask it to \"figure out what's wrong.\"",
             "correct": false,
             "feedback": "Too open-ended."
+          },
+          {
+            "text": "Paste 20 representative rows and ask for a cleaning recipe — formulas or steps you'll apply yourself.",
+            "correct": true,
+            "feedback": "Teaches the model the shape, then you run the recipe locally."
           }
         ]
       },
@@ -2680,11 +2680,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "It's required by law.",
+            "text": "AI can't read CSVs.",
             "correct": false
           },
           {
-            "text": "AI can't read CSVs.",
+            "text": "It's required by law.",
             "correct": false
           }
         ],
@@ -2722,14 +2722,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You've pasted a revenue-by-segment table. Best follow-up?",
         "options": [
           {
-            "text": "\"Describe the data.\"",
-            "correct": false,
-            "feedback": "Generic — you get a restatement of the table."
-          },
-          {
             "text": "\"I'm deciding Q2 investment. What 3 patterns are most actionable? What 3 findings would change my decision?\"",
             "correct": true,
             "feedback": "Goal-oriented. Output will be usable, not decorative."
+          },
+          {
+            "text": "\"Describe the data.\"",
+            "correct": false,
+            "feedback": "Generic — you get a restatement of the table."
           },
           {
             "text": "\"Anything cool in here?\"",
@@ -2743,6 +2743,10 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What should you never take from AI at face value on data?",
         "options": [
           {
+            "text": "The row order.",
+            "correct": false
+          },
+          {
             "text": "The shape of the data.",
             "correct": false
           },
@@ -2752,10 +2756,6 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "The column names.",
-            "correct": false
-          },
-          {
-            "text": "The row order.",
             "correct": false
           }
         ],
@@ -2793,6 +2793,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "AI tells you the average deal size is $42,300 across 12 deals. What do you do?",
         "options": [
           {
+            "text": "Ask the AI if it's sure.",
+            "correct": false,
+            "feedback": "AI almost always says yes."
+          },
+          {
             "text": "Trust it — it's a clear number.",
             "correct": false,
             "feedback": "AI's simple averages are often wrong by a few dollars to a few thousand."
@@ -2801,11 +2806,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Recompute: sum of the deals divided by 12, in a spreadsheet.",
             "correct": true,
             "feedback": "Yes — re-running the math is the only reliable check."
-          },
-          {
-            "text": "Ask the AI if it's sure.",
-            "correct": false,
-            "feedback": "AI almost always says yes."
           }
         ]
       },
@@ -2814,12 +2814,12 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "AI is least reliable at:",
         "options": [
           {
-            "text": "Explaining general concepts.",
-            "correct": false
-          },
-          {
             "text": "Arithmetic, especially with decimals, percentages, or sums across many rows.",
             "correct": true
+          },
+          {
+            "text": "Explaining general concepts.",
+            "correct": false
           },
           {
             "text": "Drafting emails.",
@@ -2864,6 +2864,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Your AI draft is \"fine but bland.\" Best follow-up?",
         "options": [
           {
+            "text": "\"Rewrite it entirely.\"",
+            "correct": false,
+            "feedback": "Fine, but you'll likely get another \"fine but bland\" draft."
+          },
+          {
             "text": "\"Make it better.\"",
             "correct": false,
             "feedback": "Vague. The AI will make a minor tweak and call it done."
@@ -2872,11 +2877,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"What are the three weakest sentences, and what would a tough editor replace them with?\"",
             "correct": true,
             "feedback": "Forces diagnosis + prescription. The rewrite will have bite."
-          },
-          {
-            "text": "\"Rewrite it entirely.\"",
-            "correct": false,
-            "feedback": "Fine, but you'll likely get another \"fine but bland\" draft."
           }
         ]
       },
@@ -2889,16 +2889,16 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "It forces the AI to find and address weaknesses it wouldn't spot otherwise.",
-            "correct": true
-          },
-          {
             "text": "It's required by the model.",
             "correct": false
           },
           {
             "text": "It doubles the output length.",
             "correct": false
+          },
+          {
+            "text": "It forces the AI to find and address weaknesses it wouldn't spot otherwise.",
+            "correct": true
           }
         ],
         "answerNote": "First drafts defend themselves. Critique-then-rewrite surfaces the flaws and fixes them in one move."
@@ -2935,9 +2935,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You need a polished 2-page proposal. Best prompt strategy?",
         "options": [
           {
-            "text": "One big prompt: \"Write a 2-page proposal.\"",
+            "text": "Skip AI, write it manually.",
             "correct": false,
-            "feedback": "Too much to get right in one shot. You'll spend more time editing."
+            "feedback": "Fine for some tasks, but the chain pattern is usually faster and better."
           },
           {
             "text": "Chain: outline → draft → critique → revise. Four short asks.",
@@ -2945,9 +2945,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Four short prompts produce a sharper result than one massive one."
           },
           {
-            "text": "Skip AI, write it manually.",
+            "text": "One big prompt: \"Write a 2-page proposal.\"",
             "correct": false,
-            "feedback": "Fine for some tasks, but the chain pattern is usually faster and better."
+            "feedback": "Too much to get right in one shot. You'll spend more time editing."
           }
         ]
       },
@@ -2956,7 +2956,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Chain-of-asks works best because:",
         "options": [
           {
-            "text": "AI charges per prompt, so more prompts = more value.",
+            "text": "AI gets bored in long prompts.",
             "correct": false
           },
           {
@@ -2968,7 +2968,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "AI gets bored in long prompts.",
+            "text": "AI charges per prompt, so more prompts = more value.",
             "correct": false
           }
         ],
@@ -3006,9 +3006,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You've iterated 4 times and each version is worse. What do you do?",
         "options": [
           {
-            "text": "Try 5 more times — it'll come around.",
+            "text": "Give up.",
             "correct": false,
-            "feedback": "Diminishing returns. Prior context is poisoning the results."
+            "feedback": "Drastic."
           },
           {
             "text": "Start a fresh chat with a tighter prompt that captures what you learned.",
@@ -3016,9 +3016,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Clean context + refined prompt. Usually faster than pushing through."
           },
           {
-            "text": "Give up.",
+            "text": "Try 5 more times — it'll come around.",
             "correct": false,
-            "feedback": "Drastic."
+            "feedback": "Diminishing returns. Prior context is poisoning the results."
           }
         ]
       },
@@ -3027,20 +3027,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The cost of pushing through a bad conversation is:",
         "options": [
           {
-            "text": "Nothing — context never hurts.",
+            "text": "The AI remembers your frustration.",
             "correct": false
-          },
-          {
-            "text": "Bad earlier attempts bias later attempts in the same direction.",
-            "correct": true
           },
           {
             "text": "It costs more money.",
             "correct": false
           },
           {
-            "text": "The AI remembers your frustration.",
+            "text": "Nothing — context never hurts.",
             "correct": false
+          },
+          {
+            "text": "Bad earlier attempts bias later attempts in the same direction.",
+            "correct": true
           }
         ],
         "answerNote": "Context is usually helpful, but polluted context actively hurts. Fresh starts are a valid move."
@@ -3082,14 +3082,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Won't change output quality."
           },
           {
-            "text": "Add ICEF: instruction, context, examples (if useful), format.",
-            "correct": true,
-            "feedback": "The sturdy four-legged prompt. Beats most tricks."
-          },
-          {
             "text": "Add more words.",
             "correct": false,
             "feedback": "More ≠ better."
+          },
+          {
+            "text": "Add ICEF: instruction, context, examples (if useful), format.",
+            "correct": true,
+            "feedback": "The sturdy four-legged prompt. Beats most tricks."
           }
         ]
       },
@@ -3098,20 +3098,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which of these is the single biggest leverage move when iterating with AI?",
         "options": [
           {
-            "text": "Asking the same thing again.",
+            "text": "Starting a fresh chat after every response.",
             "correct": false
           },
           {
-            "text": "Asking the AI to critique its own output, then rewrite.",
-            "correct": true
-          },
-          {
-            "text": "Starting a fresh chat after every response.",
+            "text": "Asking the same thing again.",
             "correct": false
           },
           {
             "text": "Switching to a different AI tool.",
             "correct": false
+          },
+          {
+            "text": "Asking the AI to critique its own output, then rewrite.",
+            "correct": true
           }
         ],
         "answerNote": "Self-critique compounds quality. It's the one move that reliably takes output from \"OK\" to \"actually good.\""
@@ -3148,9 +3148,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "AI gives you a specific claim: \"Your prospect led the Acme acquisition in Q3.\" What do you do?",
         "options": [
           {
-            "text": "Open your email with it.",
+            "text": "Ask the AI if it's sure.",
             "correct": false,
-            "feedback": "If it's wrong, the call's over."
+            "feedback": "AI almost always says yes."
           },
           {
             "text": "Verify it on LinkedIn or a press release first. If you can't, don't use it.",
@@ -3158,9 +3158,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Specific attributed claims are the most hallucination-prone."
           },
           {
-            "text": "Ask the AI if it's sure.",
+            "text": "Open your email with it.",
             "correct": false,
-            "feedback": "AI almost always says yes."
+            "feedback": "If it's wrong, the call's over."
           }
         ]
       },
@@ -3169,12 +3169,12 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "AI is best at which part of account research?",
         "options": [
           {
-            "text": "Finding recent news.",
-            "correct": false
-          },
-          {
             "text": "Synthesizing priorities from role and visible context into hooks.",
             "correct": true
+          },
+          {
+            "text": "Finding recent news.",
+            "correct": false
           },
           {
             "text": "Pulling exact firmographic numbers.",
@@ -3219,11 +3219,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which is the most useful prep output AI can give you before a disco call?",
         "options": [
           {
-            "text": "A generic script.",
-            "correct": false,
-            "feedback": "Generic scripts sound generic."
-          },
-          {
             "text": "Discovery questions tailored to their likely priorities, plus objection-likelihood.",
             "correct": true,
             "feedback": "Personalized question bank is where AI prep earns its keep."
@@ -3232,6 +3227,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "A list of their competitors.",
             "correct": false,
             "feedback": "Useful sometimes, rarely the top ask."
+          },
+          {
+            "text": "A generic script.",
+            "correct": false,
+            "feedback": "Generic scripts sound generic."
           }
         ]
       },
@@ -3240,20 +3240,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why include prior context in every pre-call prep prompt?",
         "options": [
           {
-            "text": "So the AI charges less.",
+            "text": "Because prospects expect it.",
             "correct": false
           },
           {
-            "text": "So the prep builds on what's already been said instead of starting generic.",
-            "correct": true
+            "text": "So the AI charges less.",
+            "correct": false
           },
           {
             "text": "So the AI doesn't forget the deal size.",
             "correct": false
           },
           {
-            "text": "Because prospects expect it.",
-            "correct": false
+            "text": "So the prep builds on what's already been said instead of starting generic.",
+            "correct": true
           }
         ],
         "answerNote": "Prior context is the difference between \"a call prep\" and \"your call prep.\" Paste in the thread, the notes, the last emails — all of it."
@@ -3290,6 +3290,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Prospect says \"Your price is too high.\" Best prep prompt?",
         "options": [
           {
+            "text": "\"How do I get them to pay more?\"",
+            "correct": false,
+            "feedback": "Hostile frame."
+          },
+          {
             "text": "\"Give me a response to price objections.\"",
             "correct": false,
             "feedback": "Too generic — you'll get the default scripts everyone uses."
@@ -3298,11 +3303,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Objection: 'Too expensive.' We're 30% above Competitor X at similar ACV. My honest take: our ROI story isn't landing. 3 responses, including one that surfaces whether price is actually the blocker.\"",
             "correct": true,
             "feedback": "Specific, honest, and asks for diagnostic response — not just deflection."
-          },
-          {
-            "text": "\"How do I get them to pay more?\"",
-            "correct": false,
-            "feedback": "Hostile frame."
           }
         ]
       },
@@ -3311,19 +3311,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the signal that an objection is a real dealbreaker vs a soft one?",
         "options": [
           {
-            "text": "The prospect raises their voice.",
-            "correct": false
-          },
-          {
             "text": "They repeat the same objection multiple times and won't discuss alternatives.",
             "correct": true
+          },
+          {
+            "text": "They pause before responding.",
+            "correct": false
           },
           {
             "text": "They ask one follow-up question.",
             "correct": false
           },
           {
-            "text": "They pause before responding.",
+            "text": "The prospect raises their voice.",
             "correct": false
           }
         ],
@@ -3361,9 +3361,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "A prospect said \"let me check internally\" two weeks ago and went silent. Best follow-up?",
         "options": [
           {
-            "text": "\"Just checking in — any update?\"",
+            "text": "Call them unannounced.",
             "correct": false,
-            "feedback": "Weak. No new value."
+            "feedback": "Escalation is warranted sometimes but rarely the next move after \"let me check internally.\""
           },
           {
             "text": "Send a short customer case study from a similar-sized company with a 1-sentence note on why it's relevant.",
@@ -3371,9 +3371,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Brings new value, respects their timing, invites engagement."
           },
           {
-            "text": "Call them unannounced.",
+            "text": "\"Just checking in — any update?\"",
             "correct": false,
-            "feedback": "Escalation is warranted sometimes but rarely the next move after \"let me check internally.\""
+            "feedback": "Weak. No new value."
           }
         ]
       },
@@ -3386,12 +3386,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Is there one thing in this message that's useful even if they don't reply?",
-            "correct": true
-          },
-          {
             "text": "Is it under 50 words?",
             "correct": false
+          },
+          {
+            "text": "Is there one thing in this message that's useful even if they don't reply?",
+            "correct": true
           },
           {
             "text": "Does it ask for a meeting?",
@@ -3432,9 +3432,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You want AI to help maintain your CRM. Safest option?",
         "options": [
           {
-            "text": "Paste all deal data into a free public chatbot.",
+            "text": "Email deal summaries to yourself and have AI read your email.",
             "correct": false,
-            "feedback": "Data risk. Deal data is sensitive."
+            "feedback": "Still exposes data if the AI is a public chatbot."
           },
           {
             "text": "Use your CRM's built-in AI (Salesforce Einstein, HubSpot Copilot, etc.) or your company's approved tool.",
@@ -3442,9 +3442,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Data stays inside the system with appropriate agreements."
           },
           {
-            "text": "Email deal summaries to yourself and have AI read your email.",
+            "text": "Paste all deal data into a free public chatbot.",
             "correct": false,
-            "feedback": "Still exposes data if the AI is a public chatbot."
+            "feedback": "Data risk. Deal data is sensitive."
           }
         ]
       },
@@ -3452,10 +3452,6 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "What's the main risk of pasting deal data into a public chatbot?",
         "options": [
-          {
-            "text": "The AI will give bad advice.",
-            "correct": false
-          },
           {
             "text": "The data leaves your company's approved systems and may be logged or used in training.",
             "correct": true
@@ -3466,6 +3462,10 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "The data will be wrong.",
+            "correct": false
+          },
+          {
+            "text": "The AI will give bad advice.",
             "correct": false
           }
         ],
@@ -3508,14 +3508,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "AI is great here."
           },
           {
-            "text": "Drafting follow-up emails.",
-            "correct": false,
-            "feedback": "AI-drafted + human-reviewed works well."
-          },
-          {
             "text": "The final negotiation / close language on a material deal.",
             "correct": true,
             "feedback": "Too much rides on nuance. AI drafts help; you own the wording."
+          },
+          {
+            "text": "Drafting follow-up emails.",
+            "correct": false,
+            "feedback": "AI-drafted + human-reviewed works well."
           }
         ]
       },
@@ -3528,16 +3528,16 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "It can't read live human signals — tone, hesitation, the unspoken.",
-            "correct": true
+            "text": "It's too expensive.",
+            "correct": false
           },
           {
             "text": "It can't access LinkedIn.",
             "correct": false
           },
           {
-            "text": "It's too expensive.",
-            "correct": false
+            "text": "It can't read live human signals — tone, hesitation, the unspoken.",
+            "correct": true
           }
         ],
         "answerNote": "Live human dynamics — tone, relationship, trust — are exactly what AI can't capture. That's where your edge stays."
@@ -3574,6 +3574,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which campaign brief prompt produces the most useful output?",
         "options": [
           {
+            "text": "\"Some marketing ideas.\"",
+            "correct": false,
+            "feedback": "Vague."
+          },
+          {
             "text": "\"Write me a campaign brief for our launch.\"",
             "correct": false,
             "feedback": "Generic. The AI has to invent the audience and goal."
@@ -3582,11 +3587,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Campaign brief. Product: [X]. Audience: [Y, with pain points Z]. Goal: [measurable]. Channels: [list]. Brand no-gos: [list]. KPIs: [list].\"",
             "correct": true,
             "feedback": "Enough context that the brief will reflect your actual situation."
-          },
-          {
-            "text": "\"Some marketing ideas.\"",
-            "correct": false,
-            "feedback": "Vague."
           }
         ]
       },
@@ -3595,16 +3595,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What part of a brief should NOT be AI-generated on autopilot?",
         "options": [
           {
+            "text": "The audience description.",
+            "correct": false
+          },
+          {
             "text": "The KPIs list.",
             "correct": false
           },
           {
             "text": "The strategic POV — why this campaign, why now.",
             "correct": true
-          },
-          {
-            "text": "The audience description.",
-            "correct": false
           },
           {
             "text": "The channel list.",
@@ -3645,6 +3645,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You're writing Facebook ad headlines. Best AI strategy?",
         "options": [
           {
+            "text": "Ask for one \"perfect\" headline.",
+            "correct": false,
+            "feedback": "There's no single perfect headline; there are 3 that test well on your audience."
+          },
+          {
             "text": "Ask for 3 options, pick the best.",
             "correct": false,
             "feedback": "Too few. You miss the option space."
@@ -3653,11 +3658,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Ask for 20 with varied angles + constraints, then pick 3–5 to test, then feed winners back.",
             "correct": true,
             "feedback": "Breadth to discover, depth to compound."
-          },
-          {
-            "text": "Ask for one \"perfect\" headline.",
-            "correct": false,
-            "feedback": "There's no single perfect headline; there are 3 that test well on your audience."
           }
         ]
       },
@@ -3665,10 +3665,6 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "Why feed winning variants back into AI as examples?",
         "options": [
-          {
-            "text": "To make the AI proud.",
-            "correct": false
-          },
           {
             "text": "Because future variants will tilt toward the patterns that actually worked.",
             "correct": true
@@ -3679,6 +3675,10 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "It's a legal requirement.",
+            "correct": false
+          },
+          {
+            "text": "To make the AI proud.",
             "correct": false
           }
         ],
@@ -3716,11 +3716,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Best way to teach AI your brand voice?",
         "options": [
           {
-            "text": "Describe it with adjectives (\"warm, confident, smart\").",
-            "correct": false,
-            "feedback": "Vague — AI picks a generic version of those adjectives."
-          },
-          {
             "text": "Paste 3–5 examples you love and 2 you hate, with a one-line summary.",
             "correct": true,
             "feedback": "Pattern over adjectives, always."
@@ -3729,6 +3724,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Rely on the AI to pick it up from your first prompt.",
             "correct": false,
             "feedback": "It won't — each session starts fresh."
+          },
+          {
+            "text": "Describe it with adjectives (\"warm, confident, smart\").",
+            "correct": false,
+            "feedback": "Vague — AI picks a generic version of those adjectives."
           }
         ]
       },
@@ -3737,19 +3737,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why audit AI-generated copy for brand voice?",
         "options": [
           {
-            "text": "To charge extra for the service.",
-            "correct": false
-          },
-          {
             "text": "Because voice drifts over multiple sessions and subtle drift compounds.",
             "correct": true
           },
           {
-            "text": "Because the AI is mean.",
+            "text": "To charge extra for the service.",
             "correct": false
           },
           {
             "text": "Because it's legally required.",
+            "correct": false
+          },
+          {
+            "text": "Because the AI is mean.",
             "correct": false
           }
         ],
@@ -3808,6 +3808,10 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The danger of relying on AI for competitive intel is:",
         "options": [
           {
+            "text": "It refuses to mention competitors.",
+            "correct": false
+          },
+          {
             "text": "It's too slow.",
             "correct": false
           },
@@ -3817,10 +3821,6 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "It's too expensive.",
-            "correct": false
-          },
-          {
-            "text": "It refuses to mention competitors.",
             "correct": false
           }
         ],
@@ -3863,14 +3863,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "No data, no grounding."
           },
           {
-            "text": "\"Here are my 6 campaigns with their variants and results (including losses). What patterns emerge? What should I double down on or stop?\"",
-            "correct": true,
-            "feedback": "Grounded in your real data, asks for both \"more\" and \"less\" signals."
-          },
-          {
             "text": "\"Review my marketing.\"",
             "correct": false,
             "feedback": "Too vague."
+          },
+          {
+            "text": "\"Here are my 6 campaigns with their variants and results (including losses). What patterns emerge? What should I double down on or stop?\"",
+            "correct": true,
+            "feedback": "Grounded in your real data, asks for both \"more\" and \"less\" signals."
           }
         ]
       },
@@ -3879,7 +3879,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why include losing campaigns in your retros?",
         "options": [
           {
-            "text": "For paperwork.",
+            "text": "To look humble.",
             "correct": false
           },
           {
@@ -3887,11 +3887,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "It's required.",
+            "text": "For paperwork.",
             "correct": false
           },
           {
-            "text": "To look humble.",
+            "text": "It's required.",
             "correct": false
           }
         ],
@@ -3929,11 +3929,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The first thing in every QBR should be:",
         "options": [
           {
-            "text": "Your company's latest feature.",
-            "correct": false,
-            "feedback": "Customer doesn't care about your feature until you've reframed it around their goal."
-          },
-          {
             "text": "The customer's original goal and how it's tracking.",
             "correct": true,
             "feedback": "Grounds the whole conversation in what they actually bought."
@@ -3942,6 +3937,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "A thank-you slide.",
             "correct": false,
             "feedback": "Optional courtesy, not a lead."
+          },
+          {
+            "text": "Your company's latest feature.",
+            "correct": false,
+            "feedback": "Customer doesn't care about your feature until you've reframed it around their goal."
           }
         ]
       },
@@ -3950,19 +3950,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why end with mutual asks?",
         "options": [
           {
-            "text": "To pad the deck.",
-            "correct": false
-          },
-          {
             "text": "Because QBRs without next steps become status updates with no accountability.",
             "correct": true
           },
           {
-            "text": "Because it's legally required.",
+            "text": "Because that's the norm in some industries.",
             "correct": false
           },
           {
-            "text": "Because that's the norm in some industries.",
+            "text": "To pad the deck.",
+            "correct": false
+          },
+          {
+            "text": "Because it's legally required.",
             "correct": false
           }
         ],
@@ -4000,11 +4000,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's most useful about an AI-assisted health score?",
         "options": [
           {
-            "text": "The number itself.",
-            "correct": false,
-            "feedback": "Numbers without reasons are just vibes."
-          },
-          {
             "text": "The reasons behind the score and what changed since last time.",
             "correct": true,
             "feedback": "Exactly. The score is a signal; the reasons + delta tell the CSM whether to act, and how. That's what turns health scoring into a decision tool."
@@ -4013,6 +4008,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "The color coding.",
             "correct": false,
             "feedback": "Optional visual."
+          },
+          {
+            "text": "The number itself.",
+            "correct": false,
+            "feedback": "Numbers without reasons are just vibes."
           }
         ]
       },
@@ -4021,20 +4021,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why use a consistent rubric in every scoring session?",
         "options": [
           {
-            "text": "To save time.",
+            "text": "Because AI can't invent one.",
             "correct": false
           },
           {
-            "text": "So scores are comparable across customers and across time periods.",
-            "correct": true
-          },
-          {
-            "text": "Because AI can't invent one.",
+            "text": "To save time.",
             "correct": false
           },
           {
             "text": "Because it's legally required.",
             "correct": false
+          },
+          {
+            "text": "So scores are comparable across customers and across time periods.",
+            "correct": true
           }
         ],
         "answerNote": "Without a rubric, every score is a one-off judgment. With one, you can compare and notice trends."
@@ -4071,14 +4071,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the most common renewal-email mistake AI enables?",
         "options": [
           {
-            "text": "Being too short.",
-            "correct": false,
-            "feedback": "Short is usually fine."
-          },
-          {
             "text": "Overclaiming results or stating outcomes that aren't backed by data.",
             "correct": true,
             "feedback": "Every stat needs a source the customer will recognize. Overclaim kills trust."
+          },
+          {
+            "text": "Being too short.",
+            "correct": false,
+            "feedback": "Short is usually fine."
           },
           {
             "text": "Using the word \"renewal.\"",
@@ -4092,15 +4092,15 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why draft different versions for different stakeholders?",
         "options": [
           {
-            "text": "To take more time.",
-            "correct": false
-          },
-          {
             "text": "Because each stakeholder cares about different outcomes and speaks different vocabulary.",
             "correct": true
           },
           {
             "text": "Because AI bills per message.",
+            "correct": false
+          },
+          {
+            "text": "To take more time.",
             "correct": false
           },
           {
@@ -4147,14 +4147,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Long and polite can bury the ask."
           },
           {
-            "text": "Draft the hard ask first in 2 sentences. Then ask AI for empathy + next-step language to wrap it.",
-            "correct": true,
-            "feedback": "Clarity first, empathy scaffolding around it."
-          },
-          {
             "text": "Use AI to avoid mentioning the number.",
             "correct": false,
             "feedback": "Customers resent obfuscation."
+          },
+          {
+            "text": "Draft the hard ask first in 2 sentences. Then ask AI for empathy + next-step language to wrap it.",
+            "correct": true,
+            "feedback": "Clarity first, empathy scaffolding around it."
           }
         ]
       },
@@ -4163,19 +4163,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What is AI worst at in hard conversations?",
         "options": [
           {
-            "text": "Writing sympathetic language.",
-            "correct": false
-          },
-          {
             "text": "Knowing how direct to be, based on this specific customer and relationship.",
             "correct": true
+          },
+          {
+            "text": "Structuring the message.",
+            "correct": false
           },
           {
             "text": "Getting the facts right.",
             "correct": false
           },
           {
-            "text": "Structuring the message.",
+            "text": "Writing sympathetic language.",
             "correct": false
           }
         ],
@@ -4213,9 +4213,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "During an escalation, what's the first AI task?",
         "options": [
           {
-            "text": "Draft the apology email.",
+            "text": "Blame the customer.",
             "correct": false,
-            "feedback": "Before you apologize, know what happened."
+            "feedback": "Not a strategy."
           },
           {
             "text": "Structure a timeline + impact + options brief so you can make a clear decision.",
@@ -4223,9 +4223,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Decision-ready structure comes first. Communication flows from it."
           },
           {
-            "text": "Blame the customer.",
+            "text": "Draft the apology email.",
             "correct": false,
-            "feedback": "Not a strategy."
+            "feedback": "Before you apologize, know what happened."
           }
         ]
       },
@@ -4242,11 +4242,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Because it's legally required.",
+            "text": "Because AI enjoys it.",
             "correct": false
           },
           {
-            "text": "Because AI enjoys it.",
+            "text": "Because it's legally required.",
             "correct": false
           }
         ],
@@ -4289,14 +4289,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "The value is in using it."
           },
           {
-            "text": "Share it with the team for corrections and use it to spot bottlenecks.",
-            "correct": true,
-            "feedback": "Map as a conversation starter."
-          },
-          {
             "text": "Build elaborate automation before validating it with people.",
             "correct": false,
             "feedback": "Premature automation."
+          },
+          {
+            "text": "Share it with the team for corrections and use it to spot bottlenecks.",
+            "correct": true,
+            "feedback": "Map as a conversation starter."
           }
         ]
       },
@@ -4305,7 +4305,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why share the AI-generated process map with the team?",
         "options": [
           {
-            "text": "For social approval.",
+            "text": "Because it's required.",
             "correct": false
           },
           {
@@ -4313,11 +4313,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Because AI said to.",
+            "text": "For social approval.",
             "correct": false
           },
           {
-            "text": "Because it's required.",
+            "text": "Because AI said to.",
             "correct": false
           }
         ],
@@ -4355,14 +4355,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which is the best automation candidate?",
         "options": [
           {
-            "text": "Deciding whether a customer is a strategic fit.",
-            "correct": false,
-            "feedback": "Judgment-heavy. Don't automate."
-          },
-          {
             "text": "Generating a meeting-notes → action-items draft from Zoom transcripts.",
             "correct": true,
             "feedback": "High frequency, low variance, low judgment. Ideal."
+          },
+          {
+            "text": "Deciding whether a customer is a strategic fit.",
+            "correct": false,
+            "feedback": "Judgment-heavy. Don't automate."
           },
           {
             "text": "Sending hard feedback to reports.",
@@ -4376,7 +4376,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The biggest hidden cost of automating a judgment step is:",
         "options": [
           {
-            "text": "Time to implement.",
+            "text": "Training.",
+            "correct": false
+          },
+          {
+            "text": "Software license fees.",
             "correct": false
           },
           {
@@ -4384,11 +4388,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Software license fees.",
-            "correct": false
-          },
-          {
-            "text": "Training.",
+            "text": "Time to implement.",
             "correct": false
           }
         ],
@@ -4431,14 +4431,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Every project has this. No signal."
           },
           {
-            "text": "\"Dependency on vendor X's API. Early warning: API response time >1s. Owner: Priya.\"",
-            "correct": true,
-            "feedback": "Specific, measurable, ownable."
-          },
-          {
             "text": "\"Schedule risk.\"",
             "correct": false,
             "feedback": "Vague."
+          },
+          {
+            "text": "\"Dependency on vendor X's API. Early warning: API response time >1s. Owner: Priya.\"",
+            "correct": true,
+            "feedback": "Specific, measurable, ownable."
           }
         ]
       },
@@ -4447,20 +4447,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the purpose of an \"early warning signal\"?",
         "options": [
           {
-            "text": "To look comprehensive.",
+            "text": "To assign blame later.",
             "correct": false
           },
           {
-            "text": "To spot risks materializing while you still have time to respond.",
-            "correct": true
-          },
-          {
-            "text": "To assign blame later.",
+            "text": "To look comprehensive.",
             "correct": false
           },
           {
             "text": "To shorten the document.",
             "correct": false
+          },
+          {
+            "text": "To spot risks materializing while you still have time to respond.",
+            "correct": true
           }
         ],
         "answerNote": "Early warnings convert \"we didn't see it coming\" into \"we saw it three weeks out and moved.\""
@@ -4497,6 +4497,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "In a weekly status update, where should \"at risk\" items go?",
         "options": [
           {
+            "text": "Hidden in an appendix.",
+            "correct": false,
+            "feedback": "Worst option."
+          },
+          {
             "text": "Last — so people see the good news first.",
             "correct": false,
             "feedback": "Burying bad news = trust erosion."
@@ -4505,11 +4510,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Top — so stakeholders act on them before the week ends.",
             "correct": true,
             "feedback": "Actionable information goes first."
-          },
-          {
-            "text": "Hidden in an appendix.",
-            "correct": false,
-            "feedback": "Worst option."
           }
         ]
       },
@@ -4518,19 +4518,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why write different status formats for different audiences?",
         "options": [
           {
-            "text": "To bill for more work.",
-            "correct": false
-          },
-          {
             "text": "Because each audience reads differently and acts on different signals.",
             "correct": true
           },
           {
-            "text": "Because AI is cheap.",
+            "text": "Because it's required.",
             "correct": false
           },
           {
-            "text": "Because it's required.",
+            "text": "To bill for more work.",
+            "correct": false
+          },
+          {
+            "text": "Because AI is cheap.",
             "correct": false
           }
         ],
@@ -4573,14 +4573,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "You've forgotten half the details."
           },
           {
-            "text": "Immediately after doing it the first time — while the edge cases are fresh.",
-            "correct": true,
-            "feedback": "The gotchas fade fast. Capture them hot."
-          },
-          {
             "text": "Never — if the team needs to know, they'll ask.",
             "correct": false,
             "feedback": "Tribal knowledge doesn't scale."
+          },
+          {
+            "text": "Immediately after doing it the first time — while the edge cases are fresh.",
+            "correct": true,
+            "feedback": "The gotchas fade fast. Capture them hot."
           }
         ]
       },
@@ -4588,6 +4588,10 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "Why include \"why not\" alternatives in SOPs?",
         "options": [
+          {
+            "text": "Because it's required.",
+            "correct": false
+          },
           {
             "text": "To pad the document.",
             "correct": false
@@ -4598,10 +4602,6 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Because AI insists.",
-            "correct": false
-          },
-          {
-            "text": "Because it's required.",
             "correct": false
           }
         ],
@@ -4639,9 +4639,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's AI's right role in contract review?",
         "options": [
           {
-            "text": "Final approver of whether to sign.",
+            "text": "Sign the contract on your behalf.",
             "correct": false,
-            "feedback": "Never. Too much at stake."
+            "feedback": "Not even technically possible, and definitely not sensible."
           },
           {
             "text": "Summarize, flag, and generate questions for a human (ideally legal) to resolve.",
@@ -4649,9 +4649,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Thinking partner, not decider."
           },
           {
-            "text": "Sign the contract on your behalf.",
+            "text": "Final approver of whether to sign.",
             "correct": false,
-            "feedback": "Not even technically possible, and definitely not sensible."
+            "feedback": "Never. Too much at stake."
           }
         ]
       },
@@ -4660,7 +4660,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which is the biggest risk of pasting a contract into a public chatbot?",
         "options": [
           {
-            "text": "It might give bad summaries.",
+            "text": "The AI will refuse.",
+            "correct": false
+          },
+          {
+            "text": "The contract will be invalid.",
             "correct": false
           },
           {
@@ -4668,11 +4672,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "The contract will be invalid.",
-            "correct": false
-          },
-          {
-            "text": "The AI will refuse.",
+            "text": "It might give bad summaries.",
             "correct": false
           }
         ],
@@ -4715,14 +4715,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Invented causation compounds."
           },
           {
-            "text": "Rewrite to \"Revenue dropped 8%; cause not yet clear. Hypothesis to investigate: Q4 seasonality.\"",
-            "correct": true,
-            "feedback": "Honest framing. Actionable."
-          },
-          {
             "text": "Delete the line.",
             "correct": false,
             "feedback": "Hides the miss instead of surfacing it."
+          },
+          {
+            "text": "Rewrite to \"Revenue dropped 8%; cause not yet clear. Hypothesis to investigate: Q4 seasonality.\"",
+            "correct": true,
+            "feedback": "Honest framing. Actionable."
           }
         ]
       },
@@ -4731,7 +4731,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The main risk of AI-generated forecast narratives is:",
         "options": [
           {
-            "text": "They're too short.",
+            "text": "They're too optimistic.",
             "correct": false
           },
           {
@@ -4739,11 +4739,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "They're full of jargon.",
+            "text": "They're too short.",
             "correct": false
           },
           {
-            "text": "They're too optimistic.",
+            "text": "They're full of jargon.",
             "correct": false
           }
         ],
@@ -4781,14 +4781,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Two chatbots disagree on whether your expense is reimbursable. What do you do?",
         "options": [
           {
-            "text": "Pick the one that approves it.",
-            "correct": false,
-            "feedback": "Confirmation bias + real risk."
-          },
-          {
             "text": "Ask finance before submitting.",
             "correct": true,
             "feedback": "Disagreement = signal to escalate."
+          },
+          {
+            "text": "Pick the one that approves it.",
+            "correct": false,
+            "feedback": "Confirmation bias + real risk."
           },
           {
             "text": "Submit and hope.",
@@ -4802,15 +4802,15 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What identifiers should you strip before asking AI about an expense?",
         "options": [
           {
-            "text": "The amount.",
-            "correct": false
-          },
-          {
             "text": "Employee ID, credit card number, home address, customer names.",
             "correct": true
           },
           {
             "text": "The date.",
+            "correct": false
+          },
+          {
+            "text": "The amount.",
             "correct": false
           },
           {
@@ -4852,6 +4852,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "A vendor emails you asking you to wire payment to a new account. What do you do?",
         "options": [
           {
+            "text": "Reply to confirm.",
+            "correct": false,
+            "feedback": "Reply chain may be compromised."
+          },
+          {
             "text": "Wire it — they're an existing vendor.",
             "correct": false,
             "feedback": "Textbook BEC fraud pattern. Always verify out-of-band."
@@ -4860,11 +4865,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Verify via a known phone number and escalate to finance/CISO before doing anything.",
             "correct": true,
             "feedback": "Right. Out-of-band verification + escalation."
-          },
-          {
-            "text": "Reply to confirm.",
-            "correct": false,
-            "feedback": "Reply chain may be compromised."
           }
         ]
       },
@@ -4872,6 +4872,10 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "What's AI's role in red-flag escalations?",
         "options": [
+          {
+            "text": "Stay out entirely.",
+            "correct": false
+          },
           {
             "text": "Decide whether to escalate.",
             "correct": false
@@ -4882,10 +4886,6 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Handle the response.",
-            "correct": false
-          },
-          {
-            "text": "Stay out entirely.",
             "correct": false
           }
         ],
@@ -4944,15 +4944,15 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The safest AI usage pattern for legal-adjacent work is:",
         "options": [
           {
-            "text": "AI replaces legal for small matters.",
-            "correct": false
-          },
-          {
             "text": "AI preps questions and flags clauses; legal retains decision rights.",
             "correct": true
           },
           {
             "text": "Legal reviews AI, AI reviews legal.",
+            "correct": false
+          },
+          {
+            "text": "AI replaces legal for small matters.",
             "correct": false
           },
           {
@@ -4994,9 +4994,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which is most OK to paste into a public chatbot?",
         "options": [
           {
-            "text": "Your company's unreleased roadmap.",
+            "text": "Sales leads spreadsheet.",
             "correct": false,
-            "feedback": "Internal — approved tools only."
+            "feedback": "Contains PII and business-sensitive info. Approved tools only."
           },
           {
             "text": "Your company's published annual report.",
@@ -5004,9 +5004,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Already public. Fine."
           },
           {
-            "text": "Sales leads spreadsheet.",
+            "text": "Your company's unreleased roadmap.",
             "correct": false,
-            "feedback": "Contains PII and business-sensitive info. Approved tools only."
+            "feedback": "Internal — approved tools only."
           }
         ]
       },
@@ -5019,15 +5019,15 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
+            "text": "Follow peers' habits.",
+            "correct": false
+          },
+          {
             "text": "Ask IT or legal for a written data-sensitivity + approved-tool guide.",
             "correct": true
           },
           {
             "text": "Assume all public tools are fine for anonymized data.",
-            "correct": false
-          },
-          {
-            "text": "Follow peers' habits.",
             "correct": false
           }
         ],
@@ -5065,9 +5065,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You want AI to help draft a tough customer email. What's the safest move?",
         "options": [
           {
-            "text": "Paste the full thread with real name and account.",
+            "text": "Make up a fictional customer with different details.",
             "correct": false,
-            "feedback": "PII exposure."
+            "feedback": "Loses specificity. Redaction is cleaner."
           },
           {
             "text": "Redact to \"Customer A, account A,\" keep the substance, ask for drafting help.",
@@ -5075,9 +5075,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Redaction preserves the ask while protecting the customer."
           },
           {
-            "text": "Make up a fictional customer with different details.",
+            "text": "Paste the full thread with real name and account.",
             "correct": false,
-            "feedback": "Loses specificity. Redaction is cleaner."
+            "feedback": "PII exposure."
           }
         ]
       },
@@ -5090,15 +5090,15 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
+            "text": "Delete the chat after.",
+            "correct": false
+          },
+          {
             "text": "Use an approved tool with data agreements, or redact before sending.",
             "correct": true
           },
           {
             "text": "Ask the AI to promise not to save it.",
-            "correct": false
-          },
-          {
-            "text": "Delete the chat after.",
             "correct": false
           }
         ],
@@ -5136,9 +5136,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You're about to paste a draft product roadmap into a public chatbot for writing help. What do you do?",
         "options": [
           {
-            "text": "Paste it — you need help fast.",
+            "text": "Paste only the headings.",
             "correct": false,
-            "feedback": "Roadmap = strategic, internal. Don't paste into public tools."
+            "feedback": "Even headings can leak intent. Better: structural-only redaction."
           },
           {
             "text": "Strip out specific feature names and dates, paste the structural shell, ask for help.",
@@ -5146,9 +5146,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Structure help without exposing the strategic content."
           },
           {
-            "text": "Paste only the headings.",
+            "text": "Paste it — you need help fast.",
             "correct": false,
-            "feedback": "Even headings can leak intent. Better: structural-only redaction."
+            "feedback": "Roadmap = strategic, internal. Don't paste into public tools."
           }
         ]
       },
@@ -5161,16 +5161,16 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Reduces data-sensitivity judgment to a concrete, memorable question.",
-            "correct": true
-          },
-          {
             "text": "Involves your competitor.",
             "correct": false
           },
           {
             "text": "Is part of most AI policies.",
             "correct": false
+          },
+          {
+            "text": "Reduces data-sensitivity judgment to a concrete, memorable question.",
+            "correct": true
           }
         ],
         "answerNote": "Abstract policy is easy to forget. \"Would I be OK if this leaked?\" is the same test in a form that actually stays in your head."
@@ -5207,11 +5207,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Your company-approved Copilot can't do the task you need. What next?",
         "options": [
           {
-            "text": "Paste confidential data into a public chatbot.",
-            "correct": false,
-            "feedback": "Bypassing IT controls = policy violation."
-          },
-          {
             "text": "File a ticket, and in the meantime use the public tool only on redacted / public data.",
             "correct": true,
             "feedback": "Flag the gap, work within policy in the interim."
@@ -5220,6 +5215,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Ignore the task.",
             "correct": false,
             "feedback": "Avoidance isn't a strategy."
+          },
+          {
+            "text": "Paste confidential data into a public chatbot.",
+            "correct": false,
+            "feedback": "Bypassing IT controls = policy violation."
           }
         ]
       },
@@ -5228,7 +5228,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why do approved AI tools sometimes lag consumer ones?",
         "options": [
           {
-            "text": "Because the vendors are lazy.",
+            "text": "Because IT is too cautious.",
             "correct": false
           },
           {
@@ -5236,7 +5236,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Because IT is too cautious.",
+            "text": "Because the vendors are lazy.",
             "correct": false
           },
           {
@@ -5278,11 +5278,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You just realized you pasted a confidential contract into a public chatbot. What's the first action?",
         "options": [
           {
-            "text": "Delete the chat and hope for the best.",
-            "correct": false,
-            "feedback": "Chats may persist in logs."
-          },
-          {
             "text": "Escalate to your manager + security/privacy same day with what was pasted and when.",
             "correct": true,
             "feedback": "Early disclosure is the correct move."
@@ -5291,6 +5286,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Wait to see if it matters.",
             "correct": false,
             "feedback": "Waiting compounds risk."
+          },
+          {
+            "text": "Delete the chat and hope for the best.",
+            "correct": false,
+            "feedback": "Chats may persist in logs."
           }
         ]
       },
@@ -5299,19 +5299,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why is early disclosure better than late disclosure after an AI exposure?",
         "options": [
           {
-            "text": "It's more professional.",
-            "correct": false
-          },
-          {
             "text": "It gives the company time to respond while the window is still open and is usually treated leniently.",
             "correct": true
           },
           {
-            "text": "It's required by law in all cases.",
+            "text": "It's more professional.",
             "correct": false
           },
           {
             "text": "It gets you promoted.",
+            "correct": false
+          },
+          {
+            "text": "It's required by law in all cases.",
             "correct": false
           }
         ],
@@ -5354,14 +5354,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Not the theme."
           },
           {
-            "text": "AI helps you prep, structure, and draft; humans own the judgment and decisions.",
-            "correct": true,
-            "feedback": "Exactly the through-line."
-          },
-          {
             "text": "AI replaces humans in all commercial roles.",
             "correct": false,
             "feedback": "Not what 103 teaches."
+          },
+          {
+            "text": "AI helps you prep, structure, and draft; humans own the judgment and decisions.",
+            "correct": true,
+            "feedback": "Exactly the through-line."
           }
         ]
       },
@@ -5370,7 +5370,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The single most important guardrail across all commercial AI use is:",
         "options": [
           {
-            "text": "Always use the newest model.",
+            "text": "Always share your chats.",
+            "correct": false
+          },
+          {
+            "text": "Prefer image models.",
             "correct": false
           },
           {
@@ -5378,11 +5382,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Always share your chats.",
-            "correct": false
-          },
-          {
-            "text": "Prefer image models.",
+            "text": "Always use the newest model.",
             "correct": false
           }
         ],
@@ -5420,6 +5420,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which workflow is the best AI-capstone candidate?",
         "options": [
           {
+            "text": "Something highly visible but rarely done.",
+            "correct": false,
+            "feedback": "Visibility ≠ leverage."
+          },
+          {
             "text": "A task you do once a year.",
             "correct": false,
             "feedback": "Low frequency = low compounding."
@@ -5428,11 +5433,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "A painful weekly task that 4 people on your team also do.",
             "correct": true,
             "feedback": "High frequency, high pain, high reach. Maximum leverage."
-          },
-          {
-            "text": "Something highly visible but rarely done.",
-            "correct": false,
-            "feedback": "Visibility ≠ leverage."
           }
         ]
       },
@@ -5441,7 +5441,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The leverage formula for picking a capstone is roughly:",
         "options": [
           {
-            "text": "Novelty × buzz.",
+            "text": "How impressive it sounds in a demo.",
+            "correct": false
+          },
+          {
+            "text": "Complexity × visibility.",
             "correct": false
           },
           {
@@ -5449,11 +5453,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Complexity × visibility.",
-            "correct": false
-          },
-          {
-            "text": "How impressive it sounds in a demo.",
+            "text": "Novelty × buzz.",
             "correct": false
           }
         ],
@@ -5496,14 +5496,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Too vague."
           },
           {
-            "text": "\"Saves ~108 hours/year across 5 people. Also lifts quality on a task that's visible to customers.\"",
-            "correct": true,
-            "feedback": "Time + quality + reach, quantified."
-          },
-          {
             "text": "\"AI will do the whole thing.\"",
             "correct": false,
             "feedback": "Overclaim."
+          },
+          {
+            "text": "\"Saves ~108 hours/year across 5 people. Also lifts quality on a task that's visible to customers.\"",
+            "correct": true,
+            "feedback": "Time + quality + reach, quantified."
           }
         ]
       },
@@ -5516,12 +5516,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Because time saved ceilings out; quality lift compounds.",
-            "correct": true
-          },
-          {
             "text": "Because it's required.",
             "correct": false
+          },
+          {
+            "text": "Because time saved ceilings out; quality lift compounds.",
+            "correct": true
           },
           {
             "text": "To sound more sophisticated.",
@@ -5562,6 +5562,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which is the better capstone wedge?",
         "options": [
           {
+            "text": "\"Use AI everywhere.\"",
+            "correct": false,
+            "feedback": "Not a wedge, not a plan."
+          },
+          {
             "text": "\"Build our AI-powered sales workflow.\"",
             "correct": false,
             "feedback": "Too broad. Never ships."
@@ -5570,11 +5575,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Turn Zoom call transcripts into tagged CRM action items, with 90%+ accuracy.\"",
             "correct": true,
             "feedback": "Narrow, measurable, checkable."
-          },
-          {
-            "text": "\"Use AI everywhere.\"",
-            "correct": false,
-            "feedback": "Not a wedge, not a plan."
           }
         ]
       },
@@ -5587,16 +5587,16 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "You can't measure whether it worked, and nothing ever ships.",
-            "correct": true
+            "text": "AI refuses to do it.",
+            "correct": false
           },
           {
             "text": "It costs too much.",
             "correct": false
           },
           {
-            "text": "AI refuses to do it.",
-            "correct": false
+            "text": "You can't measure whether it worked, and nothing ever ships.",
+            "correct": true
           }
         ],
         "answerNote": "Narrow + measurable beats big + impressive. A shipped wedge compounds; a half-finished grand plan just sits."
@@ -5638,14 +5638,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Usually there are too many."
           },
           {
-            "text": "Skipping the user interview and assuming you know the pain.",
-            "correct": true,
-            "feedback": "Writing-down-the-obvious-pain ≠ knowing-the-real-pain."
-          },
-          {
             "text": "Talking to the sponsor too often.",
             "correct": false,
             "feedback": "Not usually the problem."
+          },
+          {
+            "text": "Skipping the user interview and assuming you know the pain.",
+            "correct": true,
+            "feedback": "Writing-down-the-obvious-pain ≠ knowing-the-real-pain."
           }
         ]
       },
@@ -5658,12 +5658,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "To know the exact lines the project can't cross, and notice them early.",
-            "correct": true
-          },
-          {
             "text": "Because it's standard paperwork.",
             "correct": false
+          },
+          {
+            "text": "To know the exact lines the project can't cross, and notice them early.",
+            "correct": true
           },
           {
             "text": "Because AI needs it.",
@@ -5704,6 +5704,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "A stakeholder says \"while we're at it, could it also handle Y?\" What's the right response?",
         "options": [
           {
+            "text": "Ignore them.",
+            "correct": false,
+            "feedback": "Harms the relationship; ignoring stakeholders is not scoping."
+          },
+          {
             "text": "\"Sure, I'll add it.\"",
             "correct": false,
             "feedback": "Scope creep kills projects."
@@ -5712,11 +5717,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Parking lot for phase 2 — we'll ship the wedge first.\"",
             "correct": true,
             "feedback": "Honor the request, protect the wedge."
-          },
-          {
-            "text": "Ignore them.",
-            "correct": false,
-            "feedback": "Harms the relationship; ignoring stakeholders is not scoping."
           }
         ]
       },
@@ -5725,20 +5725,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The biggest source of capstone failure is:",
         "options": [
           {
-            "text": "Bad AI models.",
+            "text": "Cost overruns.",
             "correct": false
           },
           {
-            "text": "Scope creep that stretches the wedge until nothing ships.",
-            "correct": true
+            "text": "Bad AI models.",
+            "correct": false
           },
           {
             "text": "Too much documentation.",
             "correct": false
           },
           {
-            "text": "Cost overruns.",
-            "correct": false
+            "text": "Scope creep that stretches the wedge until nothing ships.",
+            "correct": true
           }
         ],
         "answerNote": "Scope discipline isn't refusing ideas — it's queuing them. \"Yes, later\" beats \"yes, now, and miss the deadline.\""
@@ -5775,11 +5775,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which is the clearest red flag?",
         "options": [
           {
-            "text": "The sponsor is busy.",
-            "correct": false,
-            "feedback": "Common, not a red flag."
-          },
-          {
             "text": "The user can't describe what a good output looks like.",
             "correct": true,
             "feedback": "You can't build or evaluate against a moving target."
@@ -5788,6 +5783,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "The project name is boring.",
             "correct": false,
             "feedback": "Not a signal."
+          },
+          {
+            "text": "The sponsor is busy.",
+            "correct": false,
+            "feedback": "Common, not a red flag."
           }
         ]
       },
@@ -5796,19 +5796,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "AI's weakest spot in \"solving\" a workflow is:",
         "options": [
           {
-            "text": "Long documents.",
-            "correct": false
-          },
-          {
             "text": "Human-motivation problems disguised as tooling problems.",
             "correct": true
+          },
+          {
+            "text": "English.",
+            "correct": false
           },
           {
             "text": "Structured data.",
             "correct": false
           },
           {
-            "text": "English.",
+            "text": "Long documents.",
             "correct": false
           }
         ],
@@ -5846,9 +5846,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why circulate the capstone brief before building?",
         "options": [
           {
-            "text": "To demonstrate thoroughness.",
+            "text": "Because it's required.",
             "correct": false,
-            "feedback": "Theater, not value."
+            "feedback": "Not everywhere."
           },
           {
             "text": "To surface misalignments in writing before they become expensive in code.",
@@ -5856,9 +5856,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Misalignments caught early cost minutes; caught late cost weeks."
           },
           {
-            "text": "Because it's required.",
+            "text": "To demonstrate thoroughness.",
             "correct": false,
-            "feedback": "Not everywhere."
+            "feedback": "Theater, not value."
           }
         ]
       },
@@ -5867,20 +5867,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The brief is most valuable because:",
         "options": [
           {
-            "text": "It's pretty.",
-            "correct": false
-          },
-          {
-            "text": "It's the reference when mid-build disagreements need to be resolved.",
-            "correct": true
-          },
-          {
             "text": "It's what the AI trains on.",
             "correct": false
           },
           {
             "text": "It counts toward certification.",
             "correct": false
+          },
+          {
+            "text": "It's pretty.",
+            "correct": false
+          },
+          {
+            "text": "It's the reference when mid-build disagreements need to be resolved.",
+            "correct": true
           }
         ],
         "answerNote": "Unwritten agreements rot. The brief locks in what you agreed, so disagreements have a shared truth to resolve against."
@@ -5917,14 +5917,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "For a v1 workflow that turns meeting transcripts into CRM updates, best interface?",
         "options": [
           {
-            "text": "Magically connect to Zoom + Salesforce and do everything silently.",
-            "correct": false,
-            "feedback": "Too many integration points at v1. Low validation signal."
-          },
-          {
             "text": "User pastes transcript, reviews structured output, clicks \"apply to CRM.\"",
             "correct": true,
             "feedback": "Simple, observable, iterable."
+          },
+          {
+            "text": "Magically connect to Zoom + Salesforce and do everything silently.",
+            "correct": false,
+            "feedback": "Too many integration points at v1. Low validation signal."
           },
           {
             "text": "Ask users to type out structured updates by hand.",
@@ -5938,7 +5938,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why label handoffs in a workflow?",
         "options": [
           {
-            "text": "To sound technical.",
+            "text": "Because it's required.",
             "correct": false
           },
           {
@@ -5946,11 +5946,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Because it's required.",
+            "text": "To slow users down.",
             "correct": false
           },
           {
-            "text": "To slow users down.",
+            "text": "To sound technical.",
             "correct": false
           }
         ],
@@ -5988,11 +5988,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Your AI generates customer-facing emails. Best HITL pattern?",
         "options": [
           {
-            "text": "Fully autonomous — it's faster.",
-            "correct": false,
-            "feedback": "Customer-facing means blast radius is high. Human review before send."
-          },
-          {
             "text": "Draft-and-approve — every email reviewed by a human before it goes out.",
             "correct": true,
             "feedback": "High blast radius justifies the review cost."
@@ -6001,6 +5996,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Act-with-exception-review.",
             "correct": false,
             "feedback": "Acceptable for lower-blast-radius tasks, not customer emails."
+          },
+          {
+            "text": "Fully autonomous — it's faster.",
+            "correct": false,
+            "feedback": "Customer-facing means blast radius is high. Human review before send."
           }
         ]
       },
@@ -6009,20 +6009,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The test for \"how much human review do I need\" is:",
         "options": [
           {
-            "text": "Whatever the vendor recommends.",
-            "correct": false
-          },
-          {
-            "text": "How much damage a single bad AI output can do before a human catches it.",
-            "correct": true
-          },
-          {
             "text": "How fast the AI runs.",
             "correct": false
           },
           {
             "text": "How fancy the UX looks.",
             "correct": false
+          },
+          {
+            "text": "Whatever the vendor recommends.",
+            "correct": false
+          },
+          {
+            "text": "How much damage a single bad AI output can do before a human catches it.",
+            "correct": true
           }
         ],
         "answerNote": "Blast radius picks the pattern. Low-stakes → more autonomy; high-stakes → more review."
@@ -6059,14 +6059,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You changed the prompt. What do you do before shipping the new version?",
         "options": [
           {
-            "text": "Check one or two outputs informally, ship if they look fine.",
-            "correct": false,
-            "feedback": "Two-case checks are not evals."
-          },
-          {
             "text": "Rerun your 20–50 eval cases; ensure no regression before shipping.",
             "correct": true,
             "feedback": "Small eval battery catches regressions cheaply."
+          },
+          {
+            "text": "Check one or two outputs informally, ship if they look fine.",
+            "correct": false,
+            "feedback": "Two-case checks are not evals."
           },
           {
             "text": "Skip evals and monitor in production.",
@@ -6080,19 +6080,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Guardrails are to evals as:",
         "options": [
           {
-            "text": "Tests are to production: they replace it.",
-            "correct": false
-          },
-          {
             "text": "Speed bumps are to road tests: runtime checks vs offline validation.",
             "correct": true
+          },
+          {
+            "text": "Weather forecasts are to actual weather.",
+            "correct": false
           },
           {
             "text": "Interviews are to resumes.",
             "correct": false
           },
           {
-            "text": "Weather forecasts are to actual weather.",
+            "text": "Tests are to production: they replace it.",
             "correct": false
           }
         ],
@@ -6130,6 +6130,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which cost driver is most often underestimated?",
         "options": [
           {
+            "text": "Latency.",
+            "correct": false,
+            "feedback": "Latency is a UX concern, not a cost driver — you'd add caching or change models, not pay more. Human review minutes are the sneaky line item."
+          },
+          {
+            "text": "Storage.",
+            "correct": false,
+            "feedback": "Storage costs are small relative to inference and human review. Real bills stack up from tokens and reviewer time, not disk."
+          },
+          {
             "text": "Token costs.",
             "correct": false,
             "feedback": "Often overestimated, actually."
@@ -6138,16 +6148,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Human review minutes in \"AI with human approval\" workflows.",
             "correct": true,
             "feedback": "Senior-reviewer time is the silent budget killer."
-          },
-          {
-            "text": "Storage.",
-            "correct": false,
-            "feedback": "Storage costs are small relative to inference and human review. Real bills stack up from tokens and reviewer time, not disk."
-          },
-          {
-            "text": "Latency.",
-            "correct": false,
-            "feedback": "Latency is a UX concern, not a cost driver — you'd add caching or change models, not pay more. Human review minutes are the sneaky line item."
           }
         ]
       },
@@ -6156,19 +6156,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "A workflow \"obviously\" saves time. What's the honest next step?",
         "options": [
           {
-            "text": "Launch it.",
-            "correct": false
-          },
-          {
             "text": "Cost-model it: tokens + review minutes × volume, compare to value created.",
             "correct": true
           },
           {
-            "text": "Ask the AI what it thinks.",
+            "text": "Launch it.",
             "correct": false
           },
           {
             "text": "Skip modeling for v1.",
+            "correct": false
+          },
+          {
+            "text": "Ask the AI what it thinks.",
             "correct": false
           }
         ],
@@ -6206,9 +6206,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the right moment to write the spec?",
         "options": [
           {
-            "text": "After the prototype works.",
+            "text": "Never — just ship.",
             "correct": false,
-            "feedback": "You skipped design — the prototype is scaffolding, not a system."
+            "feedback": "Unrepeatable; no accountability."
           },
           {
             "text": "After the brief is agreed and before serious build work.",
@@ -6216,9 +6216,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Cheap to change in doc form; expensive to change once built."
           },
           {
-            "text": "Never — just ship.",
+            "text": "After the prototype works.",
             "correct": false,
-            "feedback": "Unrepeatable; no accountability."
+            "feedback": "You skipped design — the prototype is scaffolding, not a system."
           }
         ]
       },
@@ -6227,20 +6227,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "A boring spec is:",
         "options": [
           {
-            "text": "A bad sign.",
+            "text": "Uncommon.",
             "correct": false
-          },
-          {
-            "text": "A good sign — it means no ambiguity is being hidden behind marketing language.",
-            "correct": true
           },
           {
             "text": "Required by ISO.",
             "correct": false
           },
           {
-            "text": "Uncommon.",
+            "text": "A bad sign.",
             "correct": false
+          },
+          {
+            "text": "A good sign — it means no ambiguity is being hidden behind marketing language.",
+            "correct": true
           }
         ],
         "answerNote": "Specs sell themselves when they're honest. If yours relies on exciting language to sell the plan, the plan probably isn't strong enough yet."
@@ -6277,6 +6277,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Your AI workflow occasionally times out. Best fallback?",
         "options": [
           {
+            "text": "Crash silently.",
+            "correct": false,
+            "feedback": "Worst option."
+          },
+          {
             "text": "Retry 100 times.",
             "correct": false,
             "feedback": "Amplifies the outage."
@@ -6285,11 +6290,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Time out gracefully after 2 retries, surface to a human queue for the manual process.",
             "correct": true,
             "feedback": "Degrades to manual — workflow still functions during outages."
-          },
-          {
-            "text": "Crash silently.",
-            "correct": false,
-            "feedback": "Worst option."
           }
         ]
       },
@@ -6298,7 +6298,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The safest fallback for an AI workflow is usually:",
         "options": [
           {
-            "text": "A different AI model.",
+            "text": "Exponential retry forever.",
+            "correct": false
+          },
+          {
+            "text": "Deleting the input.",
             "correct": false
           },
           {
@@ -6306,11 +6310,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Exponential retry forever.",
-            "correct": false
-          },
-          {
-            "text": "Deleting the input.",
+            "text": "A different AI model.",
             "correct": false
           }
         ],
@@ -6348,11 +6348,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "No feedback by the deadline. What do you do?",
         "options": [
           {
-            "text": "Wait indefinitely.",
-            "correct": false,
-            "feedback": "Projects stall. Move forward."
-          },
-          {
             "text": "Treat as approved, document that you did, and move to build.",
             "correct": true,
             "feedback": "Documented silence = approval. Stakeholders who care will push back in writing."
@@ -6361,6 +6356,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Chase individually forever.",
             "correct": false,
             "feedback": "Exhausting and rarely productive."
+          },
+          {
+            "text": "Wait indefinitely.",
+            "correct": false,
+            "feedback": "Projects stall. Move forward."
           }
         ]
       },
@@ -6419,6 +6419,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Best tool choice for a v1 capstone?",
         "options": [
           {
+            "text": "Whatever's newest on TechCrunch.",
+            "correct": false,
+            "feedback": "Hype ≠ fit."
+          },
+          {
             "text": "Custom LangChain pipeline on a new AWS account.",
             "correct": false,
             "feedback": "Too much yak-shaving for v1."
@@ -6427,11 +6432,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Company Copilot + Zapier + Google Sheet.",
             "correct": true,
             "feedback": "Ships fast. Validates the workflow. Then you can invest in better tooling."
-          },
-          {
-            "text": "Whatever's newest on TechCrunch.",
-            "correct": false,
-            "feedback": "Hype ≠ fit."
           }
         ]
       },
@@ -6440,19 +6440,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The main reason to avoid new frameworks on your first capstone:",
         "options": [
           {
-            "text": "They're all bad.",
-            "correct": false
-          },
-          {
             "text": "The learning cost delays validation of the underlying workflow.",
             "correct": true
           },
           {
-            "text": "They're illegal.",
+            "text": "They're all bad.",
             "correct": false
           },
           {
             "text": "They're too expensive.",
+            "correct": false
+          },
+          {
+            "text": "They're illegal.",
             "correct": false
           }
         ],
@@ -6490,11 +6490,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You improved your prompt and quality's up 15%. What do you do?",
         "options": [
           {
-            "text": "Ship it without notes.",
-            "correct": false,
-            "feedback": "Lost institutional memory."
-          },
-          {
             "text": "Version it, changelog the improvement, rerun evals before shipping.",
             "correct": true,
             "feedback": "Version + evals = durable improvement."
@@ -6503,6 +6498,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Rewrite the whole system from scratch.",
             "correct": false,
             "feedback": "Throw-the-baby-out-with-the-bathwater."
+          },
+          {
+            "text": "Ship it without notes.",
+            "correct": false,
+            "feedback": "Lost institutional memory."
           }
         ]
       },
@@ -6515,15 +6515,15 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
+            "text": "Production prompts need to be approved by legal.",
+            "correct": false
+          },
+          {
             "text": "Production prompts are versioned, evaluated, and structured around stable frames.",
             "correct": true
           },
           {
             "text": "Production prompts use different words.",
-            "correct": false
-          },
-          {
-            "text": "Production prompts need to be approved by legal.",
             "correct": false
           }
         ],
@@ -6561,24 +6561,24 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why test with real historical data instead of synthetic examples?",
         "options": [
           {
-            "text": "Real data is longer.",
-            "correct": false,
-            "feedback": "Not the point."
-          },
-          {
             "text": "Real data contains the weirdness and edge cases you haven't imagined.",
             "correct": true,
             "feedback": "Reality always has edges you didn't plan for."
           },
           {
-            "text": "Synthetic data is expensive.",
-            "correct": false,
-            "feedback": "Synthetic data is usually cheap. The point isn't cost — real data exposes the weirdness (typos, half-filled forms, edge cases) you'd never invent."
-          },
-          {
             "text": "Compliance requires it.",
             "correct": false,
             "feedback": "Compliance usually pushes toward synthetic or redacted data, not real. Test with real because real contains the mess you haven't imagined."
+          },
+          {
+            "text": "Real data is longer.",
+            "correct": false,
+            "feedback": "Not the point."
+          },
+          {
+            "text": "Synthetic data is expensive.",
+            "correct": false,
+            "feedback": "Synthetic data is usually cheap. The point isn't cost — real data exposes the weirdness (typos, half-filled forms, edge cases) you'd never invent."
           }
         ]
       },
@@ -6586,6 +6586,10 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "Systematic errors are more dangerous than random ones because:",
         "options": [
+          {
+            "text": "They're undetectable.",
+            "correct": false
+          },
           {
             "text": "They sound worse.",
             "correct": false
@@ -6596,10 +6600,6 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "They're rare.",
-            "correct": false
-          },
-          {
-            "text": "They're undetectable.",
             "correct": false
           }
         ],
@@ -6666,11 +6666,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "It's legally required.",
+            "text": "It impresses stakeholders.",
             "correct": false
           },
           {
-            "text": "It impresses stakeholders.",
+            "text": "It's legally required.",
             "correct": false
           }
         ],
@@ -6713,14 +6713,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "You'll miss real ones."
           },
           {
-            "text": "Tune thresholds; only alert on issues that actually need response.",
-            "correct": true,
-            "feedback": "Alert hygiene matters — alert fatigue is a real failure mode."
-          },
-          {
             "text": "Disable alerts.",
             "correct": false,
             "feedback": "Dangerous."
+          },
+          {
+            "text": "Tune thresholds; only alert on issues that actually need response.",
+            "correct": true,
+            "feedback": "Alert hygiene matters — alert fatigue is a real failure mode."
           }
         ]
       },
@@ -6728,6 +6728,10 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "Which metric catches silent quality drift?",
         "options": [
+          {
+            "text": "Uptime.",
+            "correct": false
+          },
           {
             "text": "Volume.",
             "correct": false
@@ -6738,10 +6742,6 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Token count.",
-            "correct": false
-          },
-          {
-            "text": "Uptime.",
             "correct": false
           }
         ],
@@ -6784,14 +6784,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "That's not a defense."
           },
           {
-            "text": "Add output-format validation — reject outputs that deviate from the expected schema.",
-            "correct": true,
-            "feedback": "Validates what ends up downstream, regardless of what the user tried."
-          },
-          {
             "text": "Log everything and hope nothing happens.",
             "correct": false,
             "feedback": "Logging is for forensics, not prevention."
+          },
+          {
+            "text": "Add output-format validation — reject outputs that deviate from the expected schema.",
+            "correct": true,
+            "feedback": "Validates what ends up downstream, regardless of what the user tried."
           }
         ]
       },
@@ -6800,7 +6800,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The worst time to discover a security issue is:",
         "options": [
           {
-            "text": "During the security review.",
+            "text": "Never.",
             "correct": false
           },
           {
@@ -6808,7 +6808,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Never.",
+            "text": "During the security review.",
             "correct": false
           },
           {
@@ -6871,6 +6871,10 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Dogfooding primarily catches:",
         "options": [
           {
+            "text": "Cost overruns.",
+            "correct": false
+          },
+          {
             "text": "Bad tests.",
             "correct": false
           },
@@ -6880,10 +6884,6 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Legal issues.",
-            "correct": false
-          },
-          {
-            "text": "Cost overruns.",
             "correct": false
           }
         ],
@@ -6921,6 +6921,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Best sequence for rolling out a new AI workflow?",
         "options": [
           {
+            "text": "Skeptics first, to prove it works.",
+            "correct": false,
+            "feedback": "Skeptics are hardest to convert; let early adopters earn their trust first."
+          },
+          {
             "text": "Whole team at once.",
             "correct": false,
             "feedback": "Harder to iterate, more exposure if something breaks."
@@ -6929,11 +6934,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Early adopters first, then gradually expand with their endorsement.",
             "correct": true,
             "feedback": "Social proof + iteration room."
-          },
-          {
-            "text": "Skeptics first, to prove it works.",
-            "correct": false,
-            "feedback": "Skeptics are hardest to convert; let early adopters earn their trust first."
           }
         ]
       },
@@ -7013,20 +7013,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The point of office hours after launch is:",
         "options": [
           {
-            "text": "To fill time.",
-            "correct": false
-          },
-          {
-            "text": "To catch confusion early, before it becomes silent abandonment.",
-            "correct": true
-          },
-          {
             "text": "To keep you employed.",
             "correct": false
           },
           {
             "text": "Because it's required.",
             "correct": false
+          },
+          {
+            "text": "To fill time.",
+            "correct": false
+          },
+          {
+            "text": "To catch confusion early, before it becomes silent abandonment.",
+            "correct": true
           }
         ],
         "answerNote": "Silent abandonment is the #1 adoption killer. Office hours give people a frictionless way to ask questions without feeling dumb."
@@ -7063,6 +7063,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the single most-read section of an SOP?",
         "options": [
           {
+            "text": "The acknowledgements.",
+            "correct": false,
+            "feedback": "Acknowledgements are rarely read. Put your energy into escalation paths and failure-mode handling — that's what people hit the SOP for."
+          },
+          {
+            "text": "The table of contents.",
+            "correct": false,
+            "feedback": "TOC is a way-finder, not a destination. Readers use it to jump straight to escalation/troubleshooting sections — write those first."
+          },
+          {
             "text": "The intro.",
             "correct": false,
             "feedback": "Most people skip the intro and jump to the thing they need. The \"what to do when X breaks\" section is where people actually land."
@@ -7071,16 +7081,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"What to do when X breaks\" / escalation.",
             "correct": true,
             "feedback": "People read SOPs under stress. Escalation is the most-read part."
-          },
-          {
-            "text": "The table of contents.",
-            "correct": false,
-            "feedback": "TOC is a way-finder, not a destination. Readers use it to jump straight to escalation/troubleshooting sections — write those first."
-          },
-          {
-            "text": "The acknowledgements.",
-            "correct": false,
-            "feedback": "Acknowledgements are rarely read. Put your energy into escalation paths and failure-mode handling — that's what people hit the SOP for."
           }
         ]
       },
@@ -7097,11 +7097,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Because AI versions change.",
+            "text": "It's required.",
             "correct": false
           },
           {
-            "text": "It's required.",
+            "text": "Because AI versions change.",
             "correct": false
           }
         ],
@@ -7139,9 +7139,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Reach is growing but depth is flat — each user tries it once and stops. What does that signal?",
         "options": [
           {
-            "text": "Low adoption — kill the project.",
+            "text": "People don't know how to use it.",
             "correct": false,
-            "feedback": "Too early to conclude."
+            "feedback": "If reach is growing, they're getting onboarded. The problem is post-onboarding."
           },
           {
             "text": "The workflow doesn't fit the real job enough for repeat use — iterate on the UX or scope.",
@@ -7149,9 +7149,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Depth flat = fit problem, not interest problem."
           },
           {
-            "text": "People don't know how to use it.",
+            "text": "Low adoption — kill the project.",
             "correct": false,
-            "feedback": "If reach is growing, they're getting onboarded. The problem is post-onboarding."
+            "feedback": "Too early to conclude."
           }
         ]
       },
@@ -7160,7 +7160,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The most actionable adoption metric is:",
         "options": [
           {
-            "text": "Total clicks.",
+            "text": "Number of Slack mentions.",
             "correct": false
           },
           {
@@ -7168,7 +7168,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Number of Slack mentions.",
+            "text": "Total clicks.",
             "correct": false
           },
           {
@@ -7210,6 +7210,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "A skeptic says \"I've tried it; my way is faster.\" What's the best move?",
         "options": [
           {
+            "text": "Force-adopt it.",
+            "correct": false,
+            "feedback": "Creates resentment and quiet sabotage."
+          },
+          {
             "text": "Tell them they're wrong.",
             "correct": false,
             "feedback": "Damages the relationship. Rarely persuasive."
@@ -7218,11 +7223,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Offer to timebox both approaches together and compare honestly.",
             "correct": true,
             "feedback": "Honest test + respect for their expertise."
-          },
-          {
-            "text": "Force-adopt it.",
-            "correct": false,
-            "feedback": "Creates resentment and quiet sabotage."
           }
         ]
       },
@@ -7235,12 +7235,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Honestly acknowledging the concern, showing that the workflow elevates, not replaces, their role.",
-            "correct": true
-          },
-          {
             "text": "Avoiding the topic.",
             "correct": false
+          },
+          {
+            "text": "Honestly acknowledging the concern, showing that the workflow elevates, not replaces, their role.",
+            "correct": true
           },
           {
             "text": "Escalating to HR.",
@@ -7302,20 +7302,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why write a public retro at day 30?",
         "options": [
           {
-            "text": "To look transparent.",
+            "text": "To assign blame.",
             "correct": false
           },
           {
-            "text": "Because honesty earned here buys credibility for your next capstone.",
-            "correct": true
+            "text": "To look transparent.",
+            "correct": false
           },
           {
             "text": "It's required.",
             "correct": false
           },
           {
-            "text": "To assign blame.",
-            "correct": false
+            "text": "Because honesty earned here buys credibility for your next capstone.",
+            "correct": true
           }
         ],
         "answerNote": "Credibility is the currency of future launches. A real retro — including misses — spends this currency well."
@@ -7352,6 +7352,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why set quality thresholds that trigger a review?",
         "options": [
           {
+            "text": "For audit.",
+            "correct": false,
+            "feedback": "Audit trails are a byproduct, not the reason. Thresholds exist to surface drift early so you can intervene before the business feels it."
+          },
+          {
             "text": "To make dashboards look fancy.",
             "correct": false,
             "feedback": "Not the point."
@@ -7365,11 +7370,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Because AI requires it.",
             "correct": false,
             "feedback": "AI doesn't require thresholds — they're a human choice. You set them so you catch quality drops before users or stakeholders do."
-          },
-          {
-            "text": "For audit.",
-            "correct": false,
-            "feedback": "Audit trails are a byproduct, not the reason. Thresholds exist to surface drift early so you can intervene before the business feels it."
           }
         ]
       },
@@ -7382,15 +7382,15 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
+            "text": "AI can't handle it.",
+            "correct": false
+          },
+          {
             "text": "Alert fatigue — nobody reads any of them.",
             "correct": true
           },
           {
             "text": "It's slower.",
-            "correct": false
-          },
-          {
-            "text": "AI can't handle it.",
             "correct": false
           }
         ],
@@ -7433,14 +7433,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Exhausting and destabilizing."
           },
           {
-            "text": "Fixed cadence (monthly/quarterly) with small improvements each time.",
-            "correct": true,
-            "feedback": "Sustainable + compounds."
-          },
-          {
             "text": "None — ship once, walk away.",
             "correct": false,
             "feedback": "Workflows rot."
+          },
+          {
+            "text": "Fixed cadence (monthly/quarterly) with small improvements each time.",
+            "correct": true,
+            "feedback": "Sustainable + compounds."
           }
         ]
       },
@@ -7449,12 +7449,12 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Big re-designs between rituals are risky because:",
         "options": [
           {
-            "text": "They're expensive.",
-            "correct": false
-          },
-          {
             "text": "They re-introduce bugs the previous iterations had already fixed.",
             "correct": true
+          },
+          {
+            "text": "They're expensive.",
+            "correct": false
           },
           {
             "text": "They require more approvals.",
@@ -7525,12 +7525,12 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Diversifying AI vendors is most valuable for:",
         "options": [
           {
-            "text": "Cost reduction.",
-            "correct": false
-          },
-          {
             "text": "Critical workflows where a single vendor outage or deprecation would halt operations.",
             "correct": true
+          },
+          {
+            "text": "Cost reduction.",
+            "correct": false
           },
           {
             "text": "Looking sophisticated.",
@@ -7575,14 +7575,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Your team wants to make one step fully autonomous. What's the first question?",
         "options": [
           {
-            "text": "Will it save time?",
-            "correct": false,
-            "feedback": "Yes — but it's the wrong first question."
-          },
-          {
             "text": "What's the cost of a single bad AI decision on this step, at scale?",
             "correct": true,
             "feedback": "Blast radius picks the pattern, always."
+          },
+          {
+            "text": "Will it save time?",
+            "correct": false,
+            "feedback": "Yes — but it's the wrong first question."
           },
           {
             "text": "Can we afford the tokens?",
@@ -7605,16 +7605,16 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Because human contact with the workflow keeps institutional knowledge current.",
-            "correct": true
-          },
-          {
             "text": "Because AI refuses full autonomy.",
             "correct": false
           },
           {
             "text": "Because it's legally required.",
             "correct": false
+          },
+          {
+            "text": "Because human contact with the workflow keeps institutional knowledge current.",
+            "correct": true
           }
         ],
         "answerNote": "Workflows become invisible when humans stop touching them. Invisible workflows drift without anyone noticing until something big breaks."
@@ -7672,19 +7672,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why deprecate openly rather than quietly?",
         "options": [
           {
-            "text": "For dramatic effect.",
-            "correct": false
-          },
-          {
             "text": "To preserve trust — teams remember how retirements were handled.",
             "correct": true
           },
           {
-            "text": "To bill for it.",
+            "text": "For dramatic effect.",
             "correct": false
           },
           {
             "text": "Because it's required.",
+            "correct": false
+          },
+          {
+            "text": "To bill for it.",
             "correct": false
           }
         ],
@@ -7722,6 +7722,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the highest-leverage follow-up to shipping a capstone?",
         "options": [
           {
+            "text": "Celebrating for two months.",
+            "correct": false,
+            "feedback": "Fine briefly, not as a strategy."
+          },
+          {
             "text": "Starting the next one immediately without reflection.",
             "correct": false,
             "feedback": "Loses the learnings."
@@ -7730,11 +7735,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Writing a retro + sharing learnings before starting the next capstone.",
             "correct": true,
             "feedback": "Captures the learning, compounds for the team."
-          },
-          {
-            "text": "Celebrating for two months.",
-            "correct": false,
-            "feedback": "Fine briefly, not as a strategy."
           }
         ]
       },
@@ -7747,12 +7747,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "A library of working workflows that compound across the team.",
-            "correct": true
-          },
-          {
             "text": "Impressive demos.",
             "correct": false
+          },
+          {
+            "text": "A library of working workflows that compound across the team.",
+            "correct": true
           },
           {
             "text": "Headcount reduction.",
@@ -7798,14 +7798,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Wastes attention."
           },
           {
-            "text": "The problem, stated simply, so the audience knows why they should listen.",
-            "correct": true,
-            "feedback": "Problem-first focus rules."
-          },
-          {
             "text": "A funny joke.",
             "correct": false,
             "feedback": "Can backfire."
+          },
+          {
+            "text": "The problem, stated simply, so the audience knows why they should listen.",
+            "correct": true,
+            "feedback": "Problem-first focus rules."
           }
         ]
       },
@@ -7814,20 +7814,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Live demos are worth the risk because:",
         "options": [
           {
-            "text": "They're shorter.",
-            "correct": false
-          },
-          {
-            "text": "They prove the workflow actually works, not just that you built slides about it.",
-            "correct": true
-          },
-          {
             "text": "They're easier than slides.",
             "correct": false
           },
           {
             "text": "The audience expects them.",
             "correct": false
+          },
+          {
+            "text": "They're shorter.",
+            "correct": false
+          },
+          {
+            "text": "They prove the workflow actually works, not just that you built slides about it.",
+            "correct": true
           }
         ],
         "answerNote": "Credibility at the end of a capstone comes from working software, not from narration. Show, don't tell."
@@ -7864,14 +7864,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Best peer-review mix for a capstone?",
         "options": [
           {
-            "text": "Three people who already agree with you.",
-            "correct": false,
-            "feedback": "You'll learn nothing."
-          },
-          {
             "text": "A user, a skeptic, and an enthusiast — each flags different blind spots.",
             "correct": true,
             "feedback": "Diverse lenses catch more."
+          },
+          {
+            "text": "Three people who already agree with you.",
+            "correct": false,
+            "feedback": "You'll learn nothing."
           },
           {
             "text": "Just one person you trust.",
@@ -7885,19 +7885,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the point of saying \"no\" in writing to peer feedback?",
         "options": [
           {
-            "text": "To end conversations.",
-            "correct": false
-          },
-          {
             "text": "To document the trade-off reasoning; future reviewers know what's been considered.",
             "correct": true
+          },
+          {
+            "text": "Because it's polite.",
+            "correct": false
           },
           {
             "text": "To discourage future feedback.",
             "correct": false
           },
           {
-            "text": "Because it's polite.",
+            "text": "To end conversations.",
             "correct": false
           }
         ],
@@ -7956,12 +7956,12 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The definition of \"self-serve onboarding\" for your workflow:",
         "options": [
           {
-            "text": "A 30-minute meeting with you.",
-            "correct": false
-          },
-          {
             "text": "A new user reaching first success in <15 minutes without your involvement.",
             "correct": true
+          },
+          {
+            "text": "A 30-minute meeting with you.",
+            "correct": false
           },
           {
             "text": "A 100-page manual.",
@@ -8006,9 +8006,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Best path to scale a working team workflow company-wide?",
         "options": [
           {
-            "text": "Launch to every team simultaneously.",
+            "text": "Let each team build their own.",
             "correct": false,
-            "feedback": "Untested assumptions everywhere at once."
+            "feedback": "Duplicated effort; no compounding."
           },
           {
             "text": "Validate with one adjacent team first; learn what's transferable; customize; then expand.",
@@ -8016,9 +8016,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Iteration over a broadcast launch."
           },
           {
-            "text": "Let each team build their own.",
+            "text": "Launch to every team simultaneously.",
             "correct": false,
-            "feedback": "Duplicated effort; no compounding."
+            "feedback": "Untested assumptions everywhere at once."
           }
         ]
       },
@@ -8027,16 +8027,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The main risk of direct company-wide launch from team success:",
         "options": [
           {
+            "text": "Too much feedback.",
+            "correct": false
+          },
+          {
             "text": "Cost.",
             "correct": false
           },
           {
             "text": "Team-specific assumptions baked into the workflow fail in different contexts.",
             "correct": true
-          },
-          {
-            "text": "Too much feedback.",
-            "correct": false
           },
           {
             "text": "Vendor issues.",
@@ -8077,6 +8077,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which is a safer bet about AI's next 12 months?",
         "options": [
           {
+            "text": "AI will replace all human judgment.",
+            "correct": false,
+            "feedback": "Neither technically imminent nor socially desirable."
+          },
+          {
             "text": "Hallucinations will be fully eliminated.",
             "correct": false,
             "feedback": "Unlikely — structural to how models work."
@@ -8085,11 +8090,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Context windows will continue to grow and inference will continue to get cheaper.",
             "correct": true,
             "feedback": "Both trends are steady and predictable."
-          },
-          {
-            "text": "AI will replace all human judgment.",
-            "correct": false,
-            "feedback": "Neither technically imminent nor socially desirable."
           }
         ]
       },
@@ -8097,10 +8097,6 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "Workflows should be designed to:",
         "options": [
-          {
-            "text": "Last unchanged for 10 years.",
-            "correct": false
-          },
           {
             "text": "Absorb model improvements (cheaper, smarter, longer context) over time.",
             "correct": true
@@ -8111,6 +8107,10 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Avoid dependencies on model updates.",
+            "correct": false
+          },
+          {
+            "text": "Last unchanged for 10 years.",
             "correct": false
           }
         ],
@@ -8148,6 +8148,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which habit best sustains long-term AI fluency?",
         "options": [
           {
+            "text": "Subscribe to every newsletter.",
+            "correct": false,
+            "feedback": "Noise."
+          },
+          {
             "text": "Attend every AI conference.",
             "correct": false,
             "feedback": "Expensive and passive."
@@ -8156,11 +8161,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "One new use, one reflection, one share, every week. Consistent, compounding.",
             "correct": true,
             "feedback": "Reps beat events."
-          },
-          {
-            "text": "Subscribe to every newsletter.",
-            "correct": false,
-            "feedback": "Noise."
           }
         ]
       },
@@ -8169,19 +8169,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why is teaching others part of your own practice?",
         "options": [
           {
-            "text": "It impresses others.",
-            "correct": false
-          },
-          {
             "text": "Teaching forces you to structure your understanding and exposes gaps you didn't know you had.",
             "correct": true
           },
           {
-            "text": "It's required.",
+            "text": "It impresses others.",
             "correct": false
           },
           {
             "text": "It generates income.",
+            "correct": false
+          },
+          {
+            "text": "It's required.",
             "correct": false
           }
         ],
@@ -8219,6 +8219,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which of these is the most durable capstone skill?",
         "options": [
           {
+            "text": "Writing the longest prompt.",
+            "correct": false,
+            "feedback": "Not a skill."
+          },
+          {
             "text": "Knowing the latest model.",
             "correct": false,
             "feedback": "Models change constantly."
@@ -8227,11 +8232,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "The discipline of scoping, building, evaluating, rolling out, and sustaining a workflow.",
             "correct": true,
             "feedback": "The skill is transferable. Model-du-jour is not."
-          },
-          {
-            "text": "Writing the longest prompt.",
-            "correct": false,
-            "feedback": "Not a skill."
           }
         ]
       },
@@ -8244,12 +8244,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Proof to yourself and your team that you can ship an AI workflow that actually gets used.",
-            "correct": true
-          },
-          {
             "text": "The demo video.",
             "correct": false
+          },
+          {
+            "text": "Proof to yourself and your team that you can ship an AI workflow that actually gets used.",
+            "correct": true
           },
           {
             "text": "The slides.",
@@ -8290,9 +8290,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which of these is Copilot's main advantage over a general chatbot like ChatGPT.com?",
         "options": [
           {
-            "text": "It's faster.",
+            "text": "It uses a better AI model.",
             "correct": false,
-            "feedback": "Performance varies; not the defining difference."
+            "feedback": "The underlying model is comparable. Access to YOUR data is the real edge."
           },
           {
             "text": "It can see your emails, documents, and meetings across Microsoft 365.",
@@ -8300,9 +8300,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Exactly. Context from your actual work = answers grounded in your reality, not generic text."
           },
           {
-            "text": "It uses a better AI model.",
+            "text": "It's faster.",
             "correct": false,
-            "feedback": "The underlying model is comparable. Access to YOUR data is the real edge."
+            "feedback": "Performance varies; not the defining difference."
           }
         ]
       },
@@ -8315,12 +8315,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "An AI assistant built into Microsoft 365 apps, with access to your company data.",
-            "correct": true
-          },
-          {
             "text": "A replacement for Microsoft Word.",
             "correct": false
+          },
+          {
+            "text": "An AI assistant built into Microsoft 365 apps, with access to your company data.",
+            "correct": true
           },
           {
             "text": "A search engine for the public web.",
@@ -8382,16 +8382,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "If Copilot doesn't appear where you expect in a Microsoft 365 app, the most likely reason is:",
         "options": [
           {
+            "text": "You need to be on Windows.",
+            "correct": false
+          },
+          {
             "text": "The app is broken.",
             "correct": false
           },
           {
             "text": "Your IT team hasn't enabled Copilot for that app or for your account.",
             "correct": true
-          },
-          {
-            "text": "You need to be on Windows.",
-            "correct": false
           },
           {
             "text": "You need to restart your computer.",
@@ -8453,16 +8453,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Who decides what data Copilot can see at your company?",
         "options": [
           {
-            "text": "You, the end user.",
-            "correct": false
-          },
-          {
             "text": "Microsoft.",
             "correct": false
           },
           {
             "text": "Your IT / Microsoft 365 admin team, via tenant settings.",
             "correct": true
+          },
+          {
+            "text": "You, the end user.",
+            "correct": false
           },
           {
             "text": "Copilot itself.",
@@ -8503,6 +8503,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which of these is the best first prompt for Copilot?",
         "options": [
           {
+            "text": "\"Make me a genius.\"",
+            "correct": false,
+            "feedback": "Flattering, but not actionable."
+          },
+          {
             "text": "\"Do something.\"",
             "correct": false,
             "feedback": "Too vague. Copilot needs a specific task to work on."
@@ -8511,11 +8516,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Write a 150-word draft email to my manager asking for feedback on this week's plan.\"",
             "correct": true,
             "feedback": "Specific task, audience, length. Copilot can run with this."
-          },
-          {
-            "text": "\"Make me a genius.\"",
-            "correct": false,
-            "feedback": "Flattering, but not actionable."
           }
         ]
       },
@@ -8524,7 +8524,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "When the first response isn't quite right, what's the fastest fix?",
         "options": [
           {
-            "text": "Retype your request from scratch in a new Copilot session.",
+            "text": "Ask it if it is sure.",
             "correct": false
           },
           {
@@ -8536,7 +8536,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Ask it if it is sure.",
+            "text": "Retype your request from scratch in a new Copilot session.",
             "correct": false
           }
         ],
@@ -8574,6 +8574,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You need to draft a reply to a customer email thread. Which tool is best?",
         "options": [
           {
+            "text": "A word processor with no AI.",
+            "correct": false,
+            "feedback": "Slow and manual."
+          },
+          {
             "text": "ChatGPT (you paste the thread into it).",
             "correct": false,
             "feedback": "Works, but exposes customer content to a public chatbot. Use Copilot instead."
@@ -8582,11 +8587,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Copilot in Outlook — it already has the thread and your company's context.",
             "correct": true,
             "feedback": "Exactly. Copilot has the thread; no pasting, no data leaving approved systems."
-          },
-          {
-            "text": "A word processor with no AI.",
-            "correct": false,
-            "feedback": "Slow and manual."
           }
         ]
       },
@@ -8595,15 +8595,15 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "When is ChatGPT or Claude a better choice than Copilot?",
         "options": [
           {
-            "text": "Always.",
-            "correct": false
-          },
-          {
             "text": "When your task doesn't require work data — general research, brainstorming, drafting on neutral topics.",
             "correct": true
           },
           {
             "text": "Never.",
+            "correct": false
+          },
+          {
+            "text": "Always.",
             "correct": false
           },
           {
@@ -8670,12 +8670,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Read it end to end and replace generic lines with specific ones only you know.",
-            "correct": true
-          },
-          {
             "text": "Translate it to another language.",
             "correct": false
+          },
+          {
+            "text": "Read it end to end and replace generic lines with specific ones only you know.",
+            "correct": true
           },
           {
             "text": "Shorten it to one sentence.",
@@ -8721,14 +8721,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Too vague; Copilot won't know your position."
           },
           {
-            "text": "Ask Copilot to summarize the thread first, then use \"Draft with Copilot\" with your 1-sentence intent.",
-            "correct": true,
-            "feedback": "Two moves: understand the context, then shape the reply. Fast and grounded."
-          },
-          {
             "text": "Forward the thread to ChatGPT.",
             "correct": false,
             "feedback": "Exposes the thread to a public chatbot. And Copilot already has it."
+          },
+          {
+            "text": "Ask Copilot to summarize the thread first, then use \"Draft with Copilot\" with your 1-sentence intent.",
+            "correct": true,
+            "feedback": "Two moves: understand the context, then shape the reply. Fast and grounded."
           }
         ]
       },
@@ -8737,12 +8737,12 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The biggest time-saver Copilot brings to Outlook is:",
         "options": [
           {
-            "text": "Automatic spam filtering.",
-            "correct": false
-          },
-          {
             "text": "Turning 10 minutes of reading into a 30-second summary + faster drafts.",
             "correct": true
+          },
+          {
+            "text": "Automatic spam filtering.",
+            "correct": false
           },
           {
             "text": "Rewriting everyone else's emails.",
@@ -8792,14 +8792,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "You were there; you don't need a transcript in summary form."
           },
           {
-            "text": "Decisions made + action items with owners + open questions.",
-            "correct": true,
-            "feedback": "Right. A summary that tells you what to do next beats one that just replays the meeting."
-          },
-          {
             "text": "A word cloud.",
             "correct": false,
             "feedback": "Pretty, not useful."
+          },
+          {
+            "text": "Decisions made + action items with owners + open questions.",
+            "correct": true,
+            "feedback": "Right. A summary that tells you what to do next beats one that just replays the meeting."
           }
         ]
       },
@@ -8808,19 +8808,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Copilot's meeting summary depends on:",
         "options": [
           {
-            "text": "Your IT admin enabling Copilot in Teams, AND the meeting being recorded or transcripted.",
-            "correct": true
+            "text": "Everyone in the meeting speaking English.",
+            "correct": false
           },
           {
-            "text": "Nothing — it works on any meeting.",
-            "correct": false
+            "text": "Your IT admin enabling Copilot in Teams, AND the meeting being recorded or transcripted.",
+            "correct": true
           },
           {
             "text": "The meeting being over an hour long.",
             "correct": false
           },
           {
-            "text": "Everyone in the meeting speaking English.",
+            "text": "Nothing — it works on any meeting.",
             "correct": false
           }
         ],
@@ -8863,14 +8863,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Generic. You'll get a template."
           },
           {
-            "text": "\"Create a 10-slide deck for the board based on this Word doc (attached). Include an executive summary slide, 3 deal-focused slides, 2 risk slides, and next-steps.\"",
-            "correct": true,
-            "feedback": "Source + structure + slide count + audience. Copilot has the raw material and the shape."
-          },
-          {
             "text": "\"Make something impressive.\"",
             "correct": false,
             "feedback": "Subjective and vague."
+          },
+          {
+            "text": "\"Create a 10-slide deck for the board based on this Word doc (attached). Include an executive summary slide, 3 deal-focused slides, 2 risk slides, and next-steps.\"",
+            "correct": true,
+            "feedback": "Source + structure + slide count + audience. Copilot has the raw material and the shape."
           }
         ]
       },
@@ -8879,20 +8879,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The single biggest Copilot PowerPoint pitfall is:",
         "options": [
           {
-            "text": "It generates too few slides.",
-            "correct": false
-          },
-          {
-            "text": "Assuming the generated deck is ready to present without your editing pass.",
-            "correct": true
-          },
-          {
             "text": "It only supports English.",
             "correct": false
           },
           {
             "text": "It's too slow.",
             "correct": false
+          },
+          {
+            "text": "It generates too few slides.",
+            "correct": false
+          },
+          {
+            "text": "Assuming the generated deck is ready to present without your editing pass.",
+            "correct": true
           }
         ],
         "answerNote": "AI drafts are drafts. Edit them the way you'd edit your own. The deck going up on screen has your name on it."
@@ -8934,14 +8934,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Too vague."
           },
           {
-            "text": "\"Find the Excel spreadsheet Priya sent me with Q2 forecasts, in the last two weeks.\"",
-            "correct": true,
-            "feedback": "Person + topic + timeframe. Copilot can narrow precisely."
-          },
-          {
             "text": "\"Give me all Excel files.\"",
             "correct": false,
             "feedback": "Too broad to be useful."
+          },
+          {
+            "text": "\"Find the Excel spreadsheet Priya sent me with Q2 forecasts, in the last two weeks.\"",
+            "correct": true,
+            "feedback": "Person + topic + timeframe. Copilot can narrow precisely."
           }
         ]
       },
@@ -8954,16 +8954,16 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "It's integrated with Microsoft Graph — the service that indexes your company's Microsoft 365 data.",
-            "correct": true
+            "text": "You have to upload them manually.",
+            "correct": false
           },
           {
             "text": "Microsoft employees read them for you.",
             "correct": false
           },
           {
-            "text": "You have to upload them manually.",
-            "correct": false
+            "text": "It's integrated with Microsoft Graph — the service that indexes your company's Microsoft 365 data.",
+            "correct": true
           }
         ],
         "answerNote": "Microsoft Graph is the plumbing. Copilot asks Graph; Graph returns what you already have access to (nothing you didn't). That's how the search + grounding magic works."
@@ -9005,14 +9005,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Irrelevant to content."
           },
           {
-            "text": "Your customer segment, the tone they respond to, and what you want them to DO after reading.",
-            "correct": true,
-            "feedback": "Audience + tone + CTA — the three things that shape every good announcement."
-          },
-          {
             "text": "The weather.",
             "correct": false,
             "feedback": "Not a factor."
+          },
+          {
+            "text": "Your customer segment, the tone they respond to, and what you want them to DO after reading.",
+            "correct": true,
+            "feedback": "Audience + tone + CTA — the three things that shape every good announcement."
           }
         ]
       },
@@ -9021,7 +9021,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The highest-leverage habit for better Copilot output is:",
         "options": [
           {
-            "text": "Using all capital letters.",
+            "text": "Writing very long prompts.",
             "correct": false
           },
           {
@@ -9033,7 +9033,7 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Writing very long prompts.",
+            "text": "Using all capital letters.",
             "correct": false
           }
         ],
@@ -9076,14 +9076,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Not quite."
           },
           {
-            "text": "Opens a context/reference picker — files, meetings, people — to anchor your prompt to specific data.",
-            "correct": true,
-            "feedback": "Yes. References are what turn a general question into a grounded one."
-          },
-          {
             "text": "Deletes the prompt.",
             "correct": false,
             "feedback": "Nope."
+          },
+          {
+            "text": "Opens a context/reference picker — files, meetings, people — to anchor your prompt to specific data.",
+            "correct": true,
+            "feedback": "Yes. References are what turn a general question into a grounded one."
           }
         ]
       },
@@ -9092,20 +9092,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why use references instead of describing the file in prose?",
         "options": [
           {
-            "text": "It sounds more technical.",
+            "text": "It saves API costs.",
             "correct": false
-          },
-          {
-            "text": "Copilot knows exactly which file/person/meeting you mean — less ambiguity, more accuracy.",
-            "correct": true
           },
           {
             "text": "It's required by Microsoft.",
             "correct": false
           },
           {
-            "text": "It saves API costs.",
+            "text": "It sounds more technical.",
             "correct": false
+          },
+          {
+            "text": "Copilot knows exactly which file/person/meeting you mean — less ambiguity, more accuracy.",
+            "correct": true
           }
         ],
         "answerNote": "References eliminate guesswork. A /file beats \"the document I was working on yesterday\" every time."
@@ -9163,19 +9163,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The main advantage of iteration over re-prompting is:",
         "options": [
           {
-            "text": "Cheaper.",
-            "correct": false
-          },
-          {
             "text": "You don't have to re-explain context; Copilot remembers the conversation.",
             "correct": true
           },
           {
-            "text": "It produces longer output.",
+            "text": "Microsoft requires it.",
             "correct": false
           },
           {
-            "text": "Microsoft requires it.",
+            "text": "Cheaper.",
+            "correct": false
+          },
+          {
+            "text": "It produces longer output.",
             "correct": false
           }
         ],
@@ -9218,14 +9218,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "General topic. Either tool works."
           },
           {
-            "text": "\"Draft a reply to the customer email from Acme in my inbox, in the same tone as my previous replies to them.\"",
-            "correct": true,
-            "feedback": "Requires access to YOUR inbox and YOUR past style. ChatGPT cannot; Copilot can."
-          },
-          {
             "text": "Brainstorming names for a hypothetical pet.",
             "correct": false,
             "feedback": "No company context needed. Either works."
+          },
+          {
+            "text": "\"Draft a reply to the customer email from Acme in my inbox, in the same tone as my previous replies to them.\"",
+            "correct": true,
+            "feedback": "Requires access to YOUR inbox and YOUR past style. ChatGPT cannot; Copilot can."
           }
         ]
       },
@@ -9234,20 +9234,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What makes Copilot safer than pasting into ChatGPT for company-confidential content?",
         "options": [
           {
-            "text": "Nothing — they're the same.",
+            "text": "ChatGPT is blocked at the firewall.",
             "correct": false
-          },
-          {
-            "text": "Copilot operates inside your company's tenant with data agreements in place; content stays in Microsoft 365.",
-            "correct": true
           },
           {
             "text": "Microsoft hides everything.",
             "correct": false
           },
           {
-            "text": "ChatGPT is blocked at the firewall.",
+            "text": "Nothing — they're the same.",
             "correct": false
+          },
+          {
+            "text": "Copilot operates inside your company's tenant with data agreements in place; content stays in Microsoft 365.",
+            "correct": true
           }
         ],
         "answerNote": "Data-agreement infrastructure is the real difference. Copilot = contractual protection Microsoft + your company set up. Public chatbot = neither."
@@ -9284,11 +9284,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which task is MOST at risk of hallucination in Copilot?",
         "options": [
           {
-            "text": "Drafting a polite email.",
-            "correct": false,
-            "feedback": "Low risk — Copilot is grounded in the thread."
-          },
-          {
             "text": "\"What are the top 5 peer-reviewed papers on enterprise AI adoption, with citations?\"",
             "correct": true,
             "feedback": "Academic citations are the top hallucination category. Verify before using."
@@ -9297,6 +9292,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Summarizing a Word document.",
             "correct": false,
             "feedback": "Grounded summaries are low risk if the input is real."
+          },
+          {
+            "text": "Drafting a polite email.",
+            "correct": false,
+            "feedback": "Low risk — Copilot is grounded in the thread."
           }
         ]
       },
@@ -9305,16 +9305,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Copilot cannot, by default:",
         "options": [
           {
+            "text": "Send emails on your behalf without explicit action.",
+            "correct": true
+          },
+          {
             "text": "Read files you share access to.",
             "correct": false
           },
           {
             "text": "Draft replies in Outlook.",
             "correct": false
-          },
-          {
-            "text": "Send emails on your behalf without explicit action.",
-            "correct": true
           },
           {
             "text": "Summarize meetings.",
@@ -9360,14 +9360,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Medical info is typically restricted data with extra rules."
           },
           {
-            "text": "Check your company's data policy for restricted/regulated content rules before proceeding.",
-            "correct": true,
-            "feedback": "Regulated data often has additional controls even within Copilot."
-          },
-          {
             "text": "Copy it to ChatGPT first to get ideas.",
             "correct": false,
             "feedback": "Worst option — out of approved systems entirely."
+          },
+          {
+            "text": "Check your company's data policy for restricted/regulated content rules before proceeding.",
+            "correct": true,
+            "feedback": "Regulated data often has additional controls even within Copilot."
           }
         ]
       },
@@ -9426,11 +9426,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Copilot in Teams isn't generating meeting summaries, even though the button exists. What's the most likely cause?",
         "options": [
           {
-            "text": "Copilot is broken.",
-            "correct": false,
-            "feedback": "Rarely the issue."
-          },
-          {
             "text": "Meeting transcription is off at the tenant level, or not enabled for this meeting.",
             "correct": true,
             "feedback": "No transcription = no data for Copilot to summarize. Config issue, not software."
@@ -9439,6 +9434,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "You're offline.",
             "correct": false,
             "feedback": "Possible but unlikely for this specific symptom."
+          },
+          {
+            "text": "Copilot is broken.",
+            "correct": false,
+            "feedback": "Rarely the issue."
           }
         ]
       },
@@ -9447,16 +9447,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The right move when Copilot can't access data you expected it to see:",
         "options": [
           {
-            "text": "Copy the data manually.",
-            "correct": false
+            "text": "File a specific ticket with IT explaining what you tried and what Copilot said.",
+            "correct": true
           },
           {
             "text": "Work around with a different tool.",
             "correct": false
           },
           {
-            "text": "File a specific ticket with IT explaining what you tried and what Copilot said.",
-            "correct": true
+            "text": "Copy the data manually.",
+            "correct": false
           },
           {
             "text": "Escalate to your CEO.",
@@ -9497,6 +9497,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You want to store a long password securely. Where should it go?",
         "options": [
           {
+            "text": "In a sticky note under your keyboard.",
+            "correct": false,
+            "feedback": "A classic, and still wrong."
+          },
+          {
             "text": "In a Copilot chat, as a note to yourself.",
             "correct": false,
             "feedback": "Never. Passwords belong in a password manager."
@@ -9505,11 +9510,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "In your company-approved password manager (1Password, LastPass, Azure Key Vault, etc.).",
             "correct": true,
             "feedback": "Right tool, built for this purpose."
-          },
-          {
-            "text": "In a sticky note under your keyboard.",
-            "correct": false,
-            "feedback": "A classic, and still wrong."
           }
         ]
       },
@@ -9517,6 +9517,10 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "The \"don't paste into Copilot\" list is:",
         "options": [
+          {
+            "text": "Different every month.",
+            "correct": false
+          },
           {
             "text": "Very long — basically everything is unsafe.",
             "correct": false
@@ -9527,10 +9531,6 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Not defined anywhere.",
-            "correct": false
-          },
-          {
-            "text": "Different every month.",
             "correct": false
           }
         ],
@@ -9568,9 +9568,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Copilot just surfaced a coworker's confidential HR file in response to your prompt, which you shouldn't have had access to. What do you do?",
         "options": [
           {
-            "text": "Close the chat and forget it.",
+            "text": "Share it with the coworker involved so they know.",
             "correct": false,
-            "feedback": "Permission leak — has to be investigated."
+            "feedback": "Let Security handle the response; don't expand the incident."
           },
           {
             "text": "Take a screenshot, stop interacting, escalate to Security (not just IT) immediately.",
@@ -9578,9 +9578,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Potential access-control issue. Document, escalate, don't touch further."
           },
           {
-            "text": "Share it with the coworker involved so they know.",
+            "text": "Close the chat and forget it.",
             "correct": false,
-            "feedback": "Let Security handle the response; don't expand the incident."
+            "feedback": "Permission leak — has to be investigated."
           }
         ]
       },
@@ -9588,10 +9588,6 @@ export const LESSONS: Record<string, Lesson> = {
         "type": "quiz",
         "prompt": "The anatomy of a good Copilot ticket to IT:",
         "options": [
-          {
-            "text": "\"Copilot is broken.\"",
-            "correct": false
-          },
           {
             "text": "\"In [app], I tried [X], expected [Y], got [Z]. Screenshot attached.\"",
             "correct": true
@@ -9602,6 +9598,10 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "\"Fix it today.\"",
+            "correct": false
+          },
+          {
+            "text": "\"Copilot is broken.\"",
             "correct": false
           }
         ],
@@ -9660,20 +9660,20 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Copilot is the right tool over ChatGPT when:",
         "options": [
           {
-            "text": "Always.",
-            "correct": false
-          },
-          {
-            "text": "The task requires access to your company's data — emails, docs, meetings.",
-            "correct": true
-          },
-          {
             "text": "Never — ChatGPT is always better.",
             "correct": false
           },
           {
             "text": "Only on Fridays.",
             "correct": false
+          },
+          {
+            "text": "Always.",
+            "correct": false
+          },
+          {
+            "text": "The task requires access to your company's data — emails, docs, meetings.",
+            "correct": true
           }
         ],
         "answerNote": "Use the right tool for the task: Copilot for work-data tasks, general AI for independent tasks. Both live in your toolkit."
@@ -9710,6 +9710,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Why does Copilot in Excel work better when your data is formatted as an Excel table?",
         "options": [
           {
+            "text": "Tables are faster in Excel.",
+            "correct": false,
+            "feedback": "Marginal performance gain, not the reason Copilot improves."
+          },
+          {
             "text": "Tables look prettier.",
             "correct": false,
             "feedback": "Aesthetics don't affect Copilot behavior."
@@ -9718,11 +9723,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Copilot can reliably identify columns, data types, and the structure of your data.",
             "correct": true,
             "feedback": "Structure = reliability. Raw cells are harder for AI to reason about."
-          },
-          {
-            "text": "Tables are faster in Excel.",
-            "correct": false,
-            "feedback": "Marginal performance gain, not the reason Copilot improves."
           }
         ]
       },
@@ -9735,12 +9735,12 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "An Excel license with Copilot enabled and, usually, a cloud-saved file.",
-            "correct": true
-          },
-          {
             "text": "A Windows PC only.",
             "correct": false
+          },
+          {
+            "text": "An Excel license with Copilot enabled and, usually, a cloud-saved file.",
+            "correct": true
           },
           {
             "text": "Nothing — it's always on.",
@@ -9786,14 +9786,14 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Too vague."
           },
           {
-            "text": "\"Which rows have revenue greater than $10,000?\"",
-            "correct": true,
-            "feedback": "Specific, measurable, unambiguous."
-          },
-          {
             "text": "\"Analyze the data.\"",
             "correct": false,
             "feedback": "Broad and subjective."
+          },
+          {
+            "text": "\"Which rows have revenue greater than $10,000?\"",
+            "correct": true,
+            "feedback": "Specific, measurable, unambiguous."
           }
         ]
       },
@@ -9802,7 +9802,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The single most common Excel + Copilot mistake:",
         "options": [
           {
-            "text": "Using too few rows.",
+            "text": "Using the wrong font.",
             "correct": false
           },
           {
@@ -9810,11 +9810,11 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Using the wrong font.",
+            "text": "Asking in lowercase.",
             "correct": false
           },
           {
-            "text": "Asking in lowercase.",
+            "text": "Using too few rows.",
             "correct": false
           }
         ],
@@ -9852,6 +9852,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Best prompt for a conditional count?",
         "options": [
           {
+            "text": "\"COUNTIF.\"",
+            "correct": false,
+            "feedback": "A function name alone isn't a task."
+          },
+          {
             "text": "\"Make a formula.\"",
             "correct": false,
             "feedback": "Vague."
@@ -9860,11 +9865,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "\"Write a formula to count the rows where column B equals \"Enterprise\" and column D (renewal date) falls within Q2 2026.\"",
             "correct": true,
             "feedback": "Task + columns + criteria + timeframe. Copilot can nail it."
-          },
-          {
-            "text": "\"COUNTIF.\"",
-            "correct": false,
-            "feedback": "A function name alone isn't a task."
           }
         ]
       },
@@ -9873,19 +9873,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the safest verification step after Copilot writes a formula?",
         "options": [
           {
-            "text": "Paste it everywhere immediately.",
-            "correct": false
-          },
-          {
             "text": "Run it on a small subset and spot-check that the result matches what you'd expect by hand.",
             "correct": true
           },
           {
-            "text": "Ask Copilot if the formula is correct.",
+            "text": "Delete it and start over.",
             "correct": false
           },
           {
-            "text": "Delete it and start over.",
+            "text": "Paste it everywhere immediately.",
+            "correct": false
+          },
+          {
+            "text": "Ask Copilot if the formula is correct.",
             "correct": false
           }
         ],
@@ -9994,9 +9994,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You have a customer list with mixed capitalization, extra whitespace, and possible duplicates. Best Copilot strategy?",
         "options": [
           {
-            "text": "\"Fix all the problems.\"",
+            "text": "Start deleting rows.",
             "correct": false,
-            "feedback": "Too broad. Copilot may miss things or change something you didn't want changed."
+            "feedback": "Destructive and impatient."
           },
           {
             "text": "\"Identify the top data quality issues in columns B-D. I'll apply fixes one at a time after I review them.\"",
@@ -10004,9 +10004,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Plan first, apply incrementally. Controlled and auditable."
           },
           {
-            "text": "Start deleting rows.",
+            "text": "\"Fix all the problems.\"",
             "correct": false,
-            "feedback": "Destructive and impatient."
+            "feedback": "Too broad. Copilot may miss things or change something you didn't want changed."
           }
         ]
       },
@@ -10015,19 +10015,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The biggest risk of AI-powered data cleaning is:",
         "options": [
           {
-            "text": "It's too slow.",
-            "correct": false
-          },
-          {
             "text": "It \"fixes\" things that looked wrong but were actually intentional distinctions (merging separate entities, etc.).",
             "correct": true
+          },
+          {
+            "text": "It can only handle numbers.",
+            "correct": false
           },
           {
             "text": "The file becomes too small.",
             "correct": false
           },
           {
-            "text": "It can only handle numbers.",
+            "text": "It's too slow.",
             "correct": false
           }
         ],
@@ -10065,9 +10065,9 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You want all renewals in Q2 2026. Best prompt?",
         "options": [
           {
-            "text": "\"Show me Q2 renewals.\"",
+            "text": "\"Renewals.\"",
             "correct": false,
-            "feedback": "Which year? Copilot might guess wrong."
+            "feedback": "Too vague."
           },
           {
             "text": "\"Show me only rows where the renewal date is between 2026-04-01 and 2026-06-30.\"",
@@ -10075,9 +10075,9 @@ export const LESSONS: Record<string, Lesson> = {
             "feedback": "Exact date range = exact filter."
           },
           {
-            "text": "\"Renewals.\"",
+            "text": "\"Show me Q2 renewals.\"",
             "correct": false,
-            "feedback": "Too vague."
+            "feedback": "Which year? Copilot might guess wrong."
           }
         ]
       },
@@ -10086,19 +10086,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Chained natural-language filters in Copilot are useful because:",
         "options": [
           {
-            "text": "They're faster than checkboxes.",
-            "correct": false
-          },
-          {
             "text": "You can refine your view incrementally in conversation without rebuilding filter UI each time.",
             "correct": true
           },
           {
-            "text": "Copilot gives discounts for longer chains.",
+            "text": "They're faster than checkboxes.",
             "correct": false
           },
           {
             "text": "It's required for Excel.",
+            "correct": false
+          },
+          {
+            "text": "Copilot gives discounts for longer chains.",
             "correct": false
           }
         ],
@@ -10157,10 +10157,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What's the reliable verification step for a Copilot-generated pivot?",
         "options": [
           {
-            "text": "Trust the totals.",
-            "correct": false
-          },
-          {
             "text": "Spot-check at least one or two totals against the raw data.",
             "correct": true
           },
@@ -10170,6 +10166,10 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Count rows instead.",
+            "correct": false
+          },
+          {
+            "text": "Trust the totals.",
             "correct": false
           }
         ],
@@ -10228,10 +10228,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What should you do when you're unsure what chart type to use?",
         "options": [
           {
-            "text": "Guess.",
-            "correct": false
-          },
-          {
             "text": "Ask Copilot to recommend a chart type for your goal (trend over time, comparison, distribution, etc.).",
             "correct": true
           },
@@ -10241,6 +10237,10 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             "text": "Skip the chart.",
+            "correct": false
+          },
+          {
+            "text": "Guess.",
             "correct": false
           }
         ],
@@ -10278,11 +10278,6 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Which task is best suited to a Copilot + Power Query workflow?",
         "options": [
           {
-            "text": "A one-time analysis of today's spreadsheet.",
-            "correct": false,
-            "feedback": "Power Query overkill. Regular Copilot is fine."
-          },
-          {
             "text": "Monthly reconciliation that joins 3 CSV files, filters, and summarizes — same process every time.",
             "correct": true,
             "feedback": "Repeating pipelines are exactly what Power Query (+ Copilot's help) is for."
@@ -10291,6 +10286,11 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Writing a chart title.",
             "correct": false,
             "feedback": "Way out of scope."
+          },
+          {
+            "text": "A one-time analysis of today's spreadsheet.",
+            "correct": false,
+            "feedback": "Power Query overkill. Regular Copilot is fine."
           }
         ]
       },
@@ -10299,16 +10299,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "What does Copilot contribute to a Power Query workflow?",
         "options": [
           {
+            "text": "It runs faster than Power Query.",
+            "correct": false
+          },
+          {
             "text": "It replaces Power Query.",
             "correct": false
           },
           {
             "text": "It helps you write the M code steps in plain English, speeding up setup.",
             "correct": true
-          },
-          {
-            "text": "It runs faster than Power Query.",
-            "correct": false
           },
           {
             "text": "Nothing — they're separate.",
@@ -10349,14 +10349,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You want \"for each customer, their most recent order amount.\" What's the best Copilot approach?",
         "options": [
           {
-            "text": "Tell Copilot \"use VLOOKUP.\"",
-            "correct": false,
-            "feedback": "Constraining too early — VLOOKUP may not be the best choice."
-          },
-          {
             "text": "Describe the INTENT (\"for each customer, their most recent order\") and let Copilot pick the function.",
             "correct": true,
             "feedback": "Intent first, function second. Copilot knows the full modern toolbox."
+          },
+          {
+            "text": "Tell Copilot \"use VLOOKUP.\"",
+            "correct": false,
+            "feedback": "Constraining too early — VLOOKUP may not be the best choice."
           },
           {
             "text": "Write it yourself from scratch.",
@@ -10370,19 +10370,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The benefit of Copilot knowing modern Excel functions is:",
         "options": [
           {
-            "text": "You don't have to memorize every function yourself.",
-            "correct": true
-          },
-          {
             "text": "It makes Excel faster.",
             "correct": false
           },
           {
-            "text": "Nothing.",
+            "text": "It automatically avoids bugs.",
             "correct": false
           },
           {
-            "text": "It automatically avoids bugs.",
+            "text": "You don't have to memorize every function yourself.",
+            "correct": true
+          },
+          {
+            "text": "Nothing.",
             "correct": false
           }
         ],
@@ -10420,14 +10420,14 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "You need the total revenue for Q2. Safest Copilot approach?",
         "options": [
           {
-            "text": "\"What's our Q2 revenue?\" — use the answer.",
-            "correct": false,
-            "feedback": "Answer may be wrong; chat arithmetic is unreliable."
-          },
-          {
             "text": "\"Write a formula that sums column C where quarter = Q2 2026.\" Run the formula; use the result.",
             "correct": true,
             "feedback": "Formula in a cell = Excel does the math, not the AI."
+          },
+          {
+            "text": "\"What's our Q2 revenue?\" — use the answer.",
+            "correct": false,
+            "feedback": "Answer may be wrong; chat arithmetic is unreliable."
           },
           {
             "text": "Calculate it by hand.",
@@ -10441,19 +10441,19 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Copilot's weakest math is:",
         "options": [
           {
-            "text": "Simple addition of 3 numbers.",
-            "correct": false
-          },
-          {
             "text": "Arithmetic over many rows, especially with percentages, compounded growth, or partial data.",
             "correct": true
           },
           {
-            "text": "Reading the time.",
+            "text": "Counting days.",
             "correct": false
           },
           {
-            "text": "Counting days.",
+            "text": "Simple addition of 3 numbers.",
+            "correct": false
+          },
+          {
+            "text": "Reading the time.",
             "correct": false
           }
         ],
@@ -10491,6 +10491,11 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The single most important habit from this course:",
         "options": [
           {
+            "text": "Always use Power Query.",
+            "correct": false,
+            "feedback": "Overkill for one-off work."
+          },
+          {
             "text": "Use lots of charts.",
             "correct": false,
             "feedback": "Useful but not the main thing."
@@ -10499,11 +10504,6 @@ export const LESSONS: Record<string, Lesson> = {
             "text": "Push arithmetic into formulas rather than relying on chat-pane numbers.",
             "correct": true,
             "feedback": "The reliability upgrade that carries across every Excel task."
-          },
-          {
-            "text": "Always use Power Query.",
-            "correct": false,
-            "feedback": "Overkill for one-off work."
           }
         ]
       },
@@ -10512,16 +10512,16 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "When Copilot generates a formula, you should:",
         "options": [
           {
+            "text": "Delete it and start over.",
+            "correct": false
+          },
+          {
             "text": "Paste it everywhere and move on.",
             "correct": false
           },
           {
             "text": "Read its explanation, verify assumptions, and spot-check on a small data range before trusting it at scale.",
             "correct": true
-          },
-          {
-            "text": "Delete it and start over.",
-            "correct": false
           },
           {
             "text": "Ask Copilot if it's sure.",
@@ -10533,1891 +10533,2275 @@ export const LESSONS: Record<string, Lesson> = {
     ]
   },
   "203-0-0": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 0,
-      "lessonIdx": 0,
-      "moduleName": "What's Gemini?",
-      "lessonIndex": 1,
-      "totalInModule": 5,
-      "title": "What is Google Gemini?",
-      "steps": [
-        {
-          "type": "read",
-          "title": "What is Google Gemini?",
-          "body": [
-            "Gemini is Google's family of AI models and the chatbot product built on top of them. If you've used ChatGPT or Claude, the interface will feel familiar: you type, it writes back, you iterate. The twist is that Gemini is deeply plugged into Google Workspace — Gmail, Docs, Sheets, Slides, Drive, Calendar, Meet.",
-            "Under the hood there isn't one 'Gemini' — there's a family: Gemini Pro for most work, Gemini Flash for fast cheap answers, and bigger models for hard reasoning. You rarely pick the model yourself; the product routes your request to whichever one fits.",
-            "The same Gemini powers the chatbot at gemini.google.com, the 'Help me write' buttons in Gmail and Docs, and the Gemini side panel that lives inside Workspace apps. Three entry points, one assistant, one login."
-          ],
-          "callout": {
-            "label": "Mental model",
-            "text": "Gemini = Google's ChatGPT, but with a direct line into your Gmail, Docs, Sheets, and Drive when your account is set up for it."
-          }
-        },
-        {
-          "type": "engage",
-          "title": "What makes Gemini different?",
-          "prompt": "You're deciding between ChatGPT and Gemini for the same task. When does Gemini have the clearest edge?",
-          "options": [
-            {
-              "text": "When the task needs context from your Gmail, Docs, or Drive files.",
-              "correct": true,
-              "feedback": "Exactly. The deep Workspace integration is Gemini's real edge — it can read your actual work, not just generic text."
-            },
-            {
-              "text": "When you need code written in an obscure language.",
-              "correct": false,
-              "feedback": "All three (Gemini, ChatGPT, Claude) handle code well. Not a Gemini-specific win."
-            },
-            {
-              "text": "When you want it to browse the public web.",
-              "correct": false,
-              "feedback": "All the majors can do this now. Less of a differentiator than Workspace access."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "Gemini is best described as:",
-          "options": [
-            { "text": "A Google-branded clone of ChatGPT with nothing special.", "correct": false },
-            { "text": "Google's AI assistant, with its own models and tight integration into Gmail, Docs, Sheets, and Drive.", "correct": true },
-            { "text": "A replacement for Google Search.", "correct": false },
-            { "text": "A desktop app you install separately.", "correct": false }
-          ],
-          "answerNote": "Gemini is a product (chatbot + in-app assistant) powered by Google's own models, with Workspace integration as its signature feature."
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 0,
+    "lessonIdx": 0,
+    "moduleName": "What's Gemini?",
+    "lessonIndex": 1,
+    "totalInModule": 5,
+    "title": "What is Google Gemini?",
+    "steps": [
+      {
+        "type": "read",
+        "title": "What is Google Gemini?",
+        "body": [
+          "Gemini is Google's family of AI models and the chatbot product built on top of them. If you've used ChatGPT or Claude, the interface will feel familiar: you type, it writes back, you iterate. The twist is that Gemini is deeply plugged into Google Workspace — Gmail, Docs, Sheets, Slides, Drive, Calendar, Meet.",
+          "Under the hood there isn't one 'Gemini' — there's a family: Gemini Pro for most work, Gemini Flash for fast cheap answers, and bigger models for hard reasoning. You rarely pick the model yourself; the product routes your request to whichever one fits.",
+          "The same Gemini powers the chatbot at gemini.google.com, the 'Help me write' buttons in Gmail and Docs, and the Gemini side panel that lives inside Workspace apps. Three entry points, one assistant, one login."
+        ],
+        "callout": {
+          "label": "Mental model",
+          "text": "Gemini = Google's ChatGPT, but with a direct line into your Gmail, Docs, Sheets, and Drive when your account is set up for it."
         }
-      ]
-    },
-    "203-0-1": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 0,
-      "lessonIdx": 1,
-      "moduleName": "What's Gemini?",
-      "lessonIndex": 2,
-      "totalInModule": 5,
-      "title": "Where Gemini lives: Workspace + web",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Where Gemini lives: Workspace + web",
-          "body": [
-            "You'll meet Gemini in three places. First, gemini.google.com — the standalone chatbot, a blank chat window, the closest analog to ChatGPT. Second, inside Workspace apps — look for the small Gemini icon (a four-point sparkle) in Gmail, Docs, Sheets, Slides, and the side panel in Meet.",
-            "Third, on your phone — the Gemini app on Android (and inside the Google app on iOS) replaces or sits alongside Google Assistant. It can read your screen, help with photos, and pick up where a web conversation left off.",
-            "Your company's IT team controls which of these work for your Workspace account. The standalone chatbot often works with a personal Google account even when Workspace features are locked down — but that's a separate mode with different data rules (more on that in Module 4)."
-          ],
-          "callout": {
-            "label": "Where to look",
-            "text": "Standalone: gemini.google.com. Inside Gmail/Docs/Sheets/Slides: the sparkle icon or side panel. On mobile: the Gemini app."
+      },
+      {
+        "type": "engage",
+        "title": "What makes Gemini different?",
+        "prompt": "You're deciding between ChatGPT and Gemini for the same task. When does Gemini have the clearest edge?",
+        "options": [
+          {
+            "text": "When you need code written in an obscure language.",
+            "correct": false,
+            "feedback": "All three (Gemini, ChatGPT, Claude) handle code well. Not a Gemini-specific win."
+          },
+          {
+            "text": "When the task needs context from your Gmail, Docs, or Drive files.",
+            "correct": true,
+            "feedback": "Exactly. The deep Workspace integration is Gemini's real edge — it can read your actual work, not just generic text."
+          },
+          {
+            "text": "When you want it to browse the public web.",
+            "correct": false,
+            "feedback": "All the majors can do this now. Less of a differentiator than Workspace access."
           }
-        },
-        {
-          "type": "engage",
-          "title": "Where would you summarize a Google Doc?",
-          "prompt": "You're reading a long strategy doc in Google Docs and want a quick summary. Where's the fastest path?",
-          "options": [
-            {
-              "text": "Copy the whole doc, paste it into gemini.google.com, and ask for a summary.",
-              "correct": false,
-              "feedback": "That works, but it's the slow way — and you lose the doc's formatting and any attached comments."
-            },
-            {
-              "text": "Click the Gemini sparkle icon inside the doc and ask for a summary.",
-              "correct": true,
-              "feedback": "Much faster. Gemini reads the doc in place, so no copy-paste, and it can reference headings and comments."
-            },
-            {
-              "text": "Export the doc to PDF first, then ask Gemini about the PDF.",
-              "correct": false,
-              "feedback": "Overkill. The in-doc Gemini already has full access to the live document."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "If you don't see a Gemini icon in a Workspace app you expected, the most likely reason is:",
-          "options": [
-            { "text": "The app is broken.", "correct": false },
-            { "text": "Your Workspace admin hasn't enabled Gemini for your account or your org's plan doesn't include it.", "correct": true },
-            { "text": "You need to install a browser extension.", "correct": false },
-            { "text": "It only works on certain operating systems.", "correct": false }
-          ],
-          "answerNote": "Workspace Gemini is controlled by admins and depends on the plan (Business/Enterprise with AI, or the Gemini Business/Enterprise add-on). Ask IT if it's not showing up."
-        }
-      ]
-    },
-    "203-0-2": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 0,
-      "lessonIdx": 2,
-      "moduleName": "What's Gemini?",
-      "lessonIndex": 3,
-      "totalInModule": 5,
-      "title": "Free vs Gemini Advanced",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Free vs Gemini Advanced",
-          "body": [
-            "The free tier (any Google account, at gemini.google.com) gets you the default Gemini model, decent speed, and core features — chat, image upload, basic file reads. Enough to do real work. Fine for drafting emails, summaries, brainstorming.",
-            "Gemini Advanced (bundled with the Google AI Pro / AI Ultra personal plans, or with the Workspace Gemini add-on for businesses) unlocks the top-tier model, longer context, deeper reasoning, and the Gems feature — custom Gemini personas you save for reuse. Worth it if you're using Gemini every day or need it to chew through long documents.",
-            "If your company is on Workspace with Gemini enabled, you usually already have Advanced-equivalent features inside the Workspace apps — no extra subscription needed. Ask IT if you're not sure."
-          ],
-          "callout": {
-            "label": "Rule of thumb",
-            "text": "Daily user or long-document work? Advanced is worth the cost. Occasional help? The free tier is genuinely useful."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "Gemini is best described as:",
+        "options": [
+          {
+            "text": "Google's AI assistant, with its own models and tight integration into Gmail, Docs, Sheets, and Drive.",
+            "correct": true
+          },
+          {
+            "text": "A Google-branded clone of ChatGPT with nothing special.",
+            "correct": false
+          },
+          {
+            "text": "A desktop app you install separately.",
+            "correct": false
+          },
+          {
+            "text": "A replacement for Google Search.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "Which plan do you need?",
-          "prompt": "Your team is on Google Workspace Business with Gemini enabled. Should you also buy a personal Google AI Pro subscription?",
-          "options": [
-            {
-              "text": "Yes, always — personal plans are better.",
-              "correct": false,
-              "feedback": "Not if you already have Workspace Gemini. You'd be paying twice for overlapping features."
-            },
-            {
-              "text": "No — Workspace Gemini already covers the advanced features for work tasks.",
-              "correct": true,
-              "feedback": "Right. And using the personal plan for work data can actually violate your company's data policies."
-            },
-            {
-              "text": "Only if you want to use Gemini at the weekend.",
-              "correct": false,
-              "feedback": "You can use the free tier for personal use; no need to double up."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The biggest reason to upgrade from free to Gemini Advanced is:",
-          "options": [
-            { "text": "Prettier UI.", "correct": false },
-            { "text": "Access to the top-tier model, longer context, and saved Gems for repeated tasks.", "correct": true },
-            { "text": "Unlocks Google Search.", "correct": false },
-            { "text": "Nothing — they're identical.", "correct": false }
-          ],
-          "answerNote": "Advanced gets you the smarter model, more room per conversation, and reusable personas (Gems). That's the pitch."
+        ],
+        "answerNote": "Gemini is a product (chatbot + in-app assistant) powered by Google's own models, with Workspace integration as its signature feature."
+      }
+    ]
+  },
+  "203-0-1": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 0,
+    "lessonIdx": 1,
+    "moduleName": "What's Gemini?",
+    "lessonIndex": 2,
+    "totalInModule": 5,
+    "title": "Where Gemini lives: Workspace + web",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Where Gemini lives: Workspace + web",
+        "body": [
+          "You'll meet Gemini in three places. First, gemini.google.com — the standalone chatbot, a blank chat window, the closest analog to ChatGPT. Second, inside Workspace apps — look for the small Gemini icon (a four-point sparkle) in Gmail, Docs, Sheets, Slides, and the side panel in Meet.",
+          "Third, on your phone — the Gemini app on Android (and inside the Google app on iOS) replaces or sits alongside Google Assistant. It can read your screen, help with photos, and pick up where a web conversation left off.",
+          "Your company's IT team controls which of these work for your Workspace account. The standalone chatbot often works with a personal Google account even when Workspace features are locked down — but that's a separate mode with different data rules (more on that in Module 4)."
+        ],
+        "callout": {
+          "label": "Where to look",
+          "text": "Standalone: gemini.google.com. Inside Gmail/Docs/Sheets/Slides: the sparkle icon or side panel. On mobile: the Gemini app."
         }
-      ]
-    },
-    "203-0-3": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 0,
-      "lessonIdx": 3,
-      "moduleName": "What's Gemini?",
-      "lessonIndex": 4,
-      "totalInModule": 5,
-      "title": "Your first conversation with Gemini",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Your first conversation with Gemini",
-          "body": [
-            "Open gemini.google.com signed into the Google account you want it to use. You land on a blank prompt box. Type a request in normal language — you don't need a special syntax. A good starter prompt names who you are, what you need, and the format you want.",
-            "Try something real: 'I'm a marketing manager. Draft a 3-sentence email to a client explaining we need to delay their campaign review by one week. Warm, not apologetic.' You'll get a draft in seconds. Don't accept the first output — refine it.",
-            "Two controls worth knowing right away. The regenerate button gives you alternate versions of the same answer (useful when it's close but not quite right). The edit-prompt button lets you tweak your question and try again without starting over."
-          ],
-          "callout": {
-            "label": "First-prompt recipe",
-            "text": "[Who you are] + [What you want] + [Format/length/tone]. Three ingredients beat one vague ask every time."
+      },
+      {
+        "type": "engage",
+        "title": "Where would you summarize a Google Doc?",
+        "prompt": "You're reading a long strategy doc in Google Docs and want a quick summary. Where's the fastest path?",
+        "options": [
+          {
+            "text": "Click the Gemini sparkle icon inside the doc and ask for a summary.",
+            "correct": true,
+            "feedback": "Much faster. Gemini reads the doc in place, so no copy-paste, and it can reference headings and comments."
+          },
+          {
+            "text": "Copy the whole doc, paste it into gemini.google.com, and ask for a summary.",
+            "correct": false,
+            "feedback": "That works, but it's the slow way — and you lose the doc's formatting and any attached comments."
+          },
+          {
+            "text": "Export the doc to PDF first, then ask Gemini about the PDF.",
+            "correct": false,
+            "feedback": "Overkill. The in-doc Gemini already has full access to the live document."
           }
-        },
-        {
-          "type": "engage",
-          "title": "Pick the better starter prompt",
-          "prompt": "You want Gemini to help write a thank-you note. Which prompt works better?",
-          "options": [
-            {
-              "text": "\"Write a thank you note.\"",
-              "correct": false,
-              "feedback": "Too vague. Gemini will guess at the context, tone, and length — and probably guess wrong."
-            },
-            {
-              "text": "\"I'm an account manager. Write a 4-sentence thank-you note to a client who just renewed a $50k contract. Warm but professional, mention their team's patience on integration.\"",
-              "correct": true,
-              "feedback": "Clear role, clear task, clear constraints. You'll get a usable draft on the first try."
-            },
-            {
-              "text": "\"Thanks.\"",
-              "correct": false,
-              "feedback": "Not even a prompt. Gemini doesn't know what you want."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The most common reason a first prompt fails is:",
-          "options": [
-            { "text": "Gemini is broken.", "correct": false },
-            { "text": "The prompt was too short and didn't give Gemini enough context to know what 'good' looks like.", "correct": true },
-            { "text": "You need a special keyword.", "correct": false },
-            { "text": "You haven't paid yet.", "correct": false }
-          ],
-          "answerNote": "90% of 'Gemini isn't useful' complaints are just under-specified prompts. Tell it who you are, what you want, and what format."
-        }
-      ]
-    },
-    "203-0-4": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 0,
-      "lessonIdx": 4,
-      "moduleName": "What's Gemini?",
-      "lessonIndex": 5,
-      "totalInModule": 5,
-      "title": "Gemini vs ChatGPT vs Copilot",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Gemini vs ChatGPT vs Copilot",
-          "body": [
-            "All three — Gemini, ChatGPT, Copilot — are chatbots. For pure chat, they're close enough that your prompt technique matters more than your tool choice. Where they diverge is integration.",
-            "Gemini owns Workspace (Gmail, Docs, Sheets, Drive, Meet). Copilot owns Microsoft 365 (Outlook, Word, Excel, Teams, OneDrive). ChatGPT owns neither deeply but is the most flexible standalone — connectors, custom GPTs, a huge ecosystem of external tools.",
-            "The practical rule: if your team lives in Google Workspace, Gemini gives you the biggest leverage because it sees your actual work. If you also need a tool for generic tasks outside your inbox — research, brainstorming, coding help — keep ChatGPT or Claude open in a tab too. Nobody is forcing you to pick just one."
-          ],
-          "callout": {
-            "label": "Don't over-index on the chat engine",
-            "text": "The real difference is which apps the assistant can see. Pick the one wired to the tools you actually work in."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "If you don't see a Gemini icon in a Workspace app you expected, the most likely reason is:",
+        "options": [
+          {
+            "text": "Your Workspace admin hasn't enabled Gemini for your account or your org's plan doesn't include it.",
+            "correct": true
+          },
+          {
+            "text": "The app is broken.",
+            "correct": false
+          },
+          {
+            "text": "You need to install a browser extension.",
+            "correct": false
+          },
+          {
+            "text": "It only works on certain operating systems.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "Which tool for the job?",
-          "prompt": "You need to summarize last week's Gmail threads and post the summary into a Google Doc. Which tool wins?",
-          "options": [
-            {
-              "text": "ChatGPT — copy the emails in one by one.",
-              "correct": false,
-              "feedback": "Works, but you're doing manual copy-paste work the AI should be doing. Very slow."
-            },
-            {
-              "text": "Gemini — it can search Gmail and write to Docs natively.",
-              "correct": true,
-              "feedback": "Exactly. Gemini lives inside Workspace, so it reads the emails and writes to the doc in one flow."
-            },
-            {
-              "text": "Copilot — it handles everything.",
-              "correct": false,
-              "feedback": "Copilot doesn't have access to Gmail or Google Docs. Wrong ecosystem."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "Which is the cleanest one-line distinction between the three?",
-          "options": [
-            { "text": "Gemini = Google Workspace. Copilot = Microsoft 365. ChatGPT = standalone and most flexible.", "correct": true },
-            { "text": "They're identical.", "correct": false },
-            { "text": "ChatGPT is smarter than both.", "correct": false },
-            { "text": "Only one is free.", "correct": false }
-          ],
-          "answerNote": "The integration defines the tool. Pick the one wired into the apps your team already uses."
+        ],
+        "answerNote": "Workspace Gemini is controlled by admins and depends on the plan (Business/Enterprise with AI, or the Gemini Business/Enterprise add-on). Ask IT if it's not showing up."
+      }
+    ]
+  },
+  "203-0-2": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 0,
+    "lessonIdx": 2,
+    "moduleName": "What's Gemini?",
+    "lessonIndex": 3,
+    "totalInModule": 5,
+    "title": "Free vs Gemini Advanced",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Free vs Gemini Advanced",
+        "body": [
+          "The free tier (any Google account, at gemini.google.com) gets you the default Gemini model, decent speed, and core features — chat, image upload, basic file reads. Enough to do real work. Fine for drafting emails, summaries, brainstorming.",
+          "Gemini Advanced (bundled with the Google AI Pro / AI Ultra personal plans, or with the Workspace Gemini add-on for businesses) unlocks the top-tier model, longer context, deeper reasoning, and the Gems feature — custom Gemini personas you save for reuse. Worth it if you're using Gemini every day or need it to chew through long documents.",
+          "If your company is on Workspace with Gemini enabled, you usually already have Advanced-equivalent features inside the Workspace apps — no extra subscription needed. Ask IT if you're not sure."
+        ],
+        "callout": {
+          "label": "Rule of thumb",
+          "text": "Daily user or long-document work? Advanced is worth the cost. Occasional help? The free tier is genuinely useful."
         }
-      ]
-    },
-    "203-1-0": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 1,
-      "lessonIdx": 0,
-      "moduleName": "Gemini in everyday work",
-      "lessonIndex": 1,
-      "totalInModule": 5,
-      "title": "Drafting & triaging Gmail",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Drafting & triaging Gmail",
-          "body": [
-            "In Gmail, Gemini shows up two ways. First, a 'Help me write' button in the compose window — tell it what you want to say and it drafts the email. Second, the Gemini side panel (the sparkle icon in the top-right) — a chat that can see your whole inbox.",
-            "Drafting in the compose window works best when you give it a sentence of intent, not just a topic. 'Tell John we need to push the kickoff to next Thursday because Priya is out sick' beats 'reschedule email.' You can also ask for polish: 'formalize this,' 'shorten to 3 sentences,' 'make it warmer.'",
-            "The side panel is where triage lives. Ask 'summarize the unread emails from Acme Corp this week' and it'll read the relevant threads and give you a bullet-list. 'Draft a reply to the most recent one' chains naturally. This is where you save serious time each morning."
-          ],
-          "callout": {
-            "label": "Morning inbox routine",
-            "text": "Open the side panel. 'What do I need to respond to today?' Let Gemini do the triage. Then draft replies together."
+      },
+      {
+        "type": "engage",
+        "title": "Which plan do you need?",
+        "prompt": "Your team is on Google Workspace Business with Gemini enabled. Should you also buy a personal Google AI Pro subscription?",
+        "options": [
+          {
+            "text": "Only if you want to use Gemini at the weekend.",
+            "correct": false,
+            "feedback": "You can use the free tier for personal use; no need to double up."
+          },
+          {
+            "text": "Yes, always — personal plans are better.",
+            "correct": false,
+            "feedback": "Not if you already have Workspace Gemini. You'd be paying twice for overlapping features."
+          },
+          {
+            "text": "No — Workspace Gemini already covers the advanced features for work tasks.",
+            "correct": true,
+            "feedback": "Right. And using the personal plan for work data can actually violate your company's data policies."
           }
-        },
-        {
-          "type": "engage",
-          "title": "Which Gmail task is Gemini strongest at?",
-          "prompt": "You have 47 unread emails from a week off. Which use of Gemini gets you back up to speed fastest?",
-          "options": [
-            {
-              "text": "Read each email yourself; ask Gemini to draft replies.",
-              "correct": false,
-              "feedback": "You're still doing the slow part. Let Gemini read and prioritize first."
-            },
-            {
-              "text": "Ask the Gemini side panel to summarize the week's unread threads and flag the ones that actually need a response.",
-              "correct": true,
-              "feedback": "Right. Gemini reads 47 emails in seconds and hands you a ranked list. You only open the ones that matter."
-            },
-            {
-              "text": "Mark them all as read.",
-              "correct": false,
-              "feedback": "Tempting, but risky — you might miss a real ask."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "When drafting an email with 'Help me write,' the single most useful thing to include is:",
-          "options": [
-            { "text": "Your signature.", "correct": false },
-            { "text": "A one-sentence intent — what you want to say and to whom, with any constraints on tone or length.", "correct": true },
-            { "text": "The recipient's full name.", "correct": false },
-            { "text": "A subject line.", "correct": false }
-          ],
-          "answerNote": "Intent beats instruction. 'What do I want this email to accomplish' is the prompt; everything else Gemini can infer or you can tweak."
-        }
-      ]
-    },
-    "203-1-1": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 1,
-      "lessonIdx": 1,
-      "moduleName": "Gemini in everyday work",
-      "lessonIndex": 2,
-      "totalInModule": 5,
-      "title": "Writing in Google Docs",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Writing in Google Docs",
-          "body": [
-            "Inside Docs, Gemini is a side panel plus inline prompts. Click the sparkle icon in a blank line and you'll see 'Help me write.' Type a prompt — 'first draft of a Q3 strategy recap' — and it drops a draft right where your cursor is.",
-            "On existing text, highlight a paragraph and ask for a rewrite: 'shorten,' 'make it less formal,' 'turn into 5 bullets.' Gemini edits in place. You can always undo. The side panel handles the bigger stuff: 'summarize this whole doc in 200 words,' 'list every action item mentioned,' 'who's named and what are they each responsible for.'",
-            "Where Docs Gemini shines: it can reference other files. '@File-name' pulls another Drive doc into the conversation. Ask it to 'rewrite this intro to match the tone of @ACME-One-Pager' and it'll actually pattern-match the style."
-          ],
-          "callout": {
-            "label": "The trick",
-            "text": "Write a bad first draft fast, highlight it, and ask Gemini to tighten. Editing is a better use of AI than drafting from nothing."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The biggest reason to upgrade from free to Gemini Advanced is:",
+        "options": [
+          {
+            "text": "Prettier UI.",
+            "correct": false
+          },
+          {
+            "text": "Access to the top-tier model, longer context, and saved Gems for repeated tasks.",
+            "correct": true
+          },
+          {
+            "text": "Nothing — they're identical.",
+            "correct": false
+          },
+          {
+            "text": "Unlocks Google Search.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "How do you match the tone of another doc?",
-          "prompt": "You want the new memo to read like a previous one your CEO wrote. Best approach?",
-          "options": [
-            {
-              "text": "Paste the whole previous memo into your prompt.",
-              "correct": false,
-              "feedback": "Works but clumsy. There's a better way."
-            },
-            {
-              "text": "Use @ to reference the previous doc directly in your prompt: 'rewrite to match the tone of @CEO-Memo-Q1.'",
-              "correct": true,
-              "feedback": "Right. Gemini pulls the file in natively, no copy-paste, and matches the style more reliably."
-            },
-            {
-              "text": "Give up and write it yourself.",
-              "correct": false,
-              "feedback": "Lazy. Gemini can do this well if you give it the reference."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The highest-leverage use of Gemini inside a Google Doc is usually:",
-          "options": [
-            { "text": "Generating a document from scratch.", "correct": false },
-            { "text": "Editing, tightening, and restructuring your existing draft — with inline highlights.", "correct": true },
-            { "text": "Spell-check.", "correct": false },
-            { "text": "Changing fonts.", "correct": false }
-          ],
-          "answerNote": "Use your brain for the raw ideas; use Gemini for the revision pass. That's the split where AI adds most value in Docs."
+        ],
+        "answerNote": "Advanced gets you the smarter model, more room per conversation, and reusable personas (Gems). That's the pitch."
+      }
+    ]
+  },
+  "203-0-3": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 0,
+    "lessonIdx": 3,
+    "moduleName": "What's Gemini?",
+    "lessonIndex": 4,
+    "totalInModule": 5,
+    "title": "Your first conversation with Gemini",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Your first conversation with Gemini",
+        "body": [
+          "Open gemini.google.com signed into the Google account you want it to use. You land on a blank prompt box. Type a request in normal language — you don't need a special syntax. A good starter prompt names who you are, what you need, and the format you want.",
+          "Try something real: 'I'm a marketing manager. Draft a 3-sentence email to a client explaining we need to delay their campaign review by one week. Warm, not apologetic.' You'll get a draft in seconds. Don't accept the first output — refine it.",
+          "Two controls worth knowing right away. The regenerate button gives you alternate versions of the same answer (useful when it's close but not quite right). The edit-prompt button lets you tweak your question and try again without starting over."
+        ],
+        "callout": {
+          "label": "First-prompt recipe",
+          "text": "[Who you are] + [What you want] + [Format/length/tone]. Three ingredients beat one vague ask every time."
         }
-      ]
-    },
-    "203-1-2": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 1,
-      "lessonIdx": 2,
-      "moduleName": "Gemini in everyday work",
-      "lessonIndex": 3,
-      "totalInModule": 5,
-      "title": "Building decks in Slides",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Building decks in Slides",
-          "body": [
-            "Inside Google Slides, Gemini can generate a whole deck from a prompt. Open a blank presentation, click the sparkle icon, and describe what you want: '5-slide overview of our Q4 goals: title, 3 pillars, one slide each, closing CTA.' It produces a draft deck with slide titles, bullets, and speaker notes.",
-            "The output isn't production-ready — think of it as a rough scaffold. Layouts are basic, images are generic. Your job is to rewrite copy, swap in real data, and add brand visuals. You saved an hour; you didn't save the whole job.",
-            "A more realistic workflow: outline the deck in a Doc first (or in the Gemini chat), reference it in Slides with @, and ask Gemini to generate a deck from that outline. You get a deck that actually reflects your thinking, not a generic template."
-          ],
-          "callout": {
-            "label": "Reality check",
-            "text": "Gemini gives you the 40% draft in 60 seconds. The last 60% — the visuals, the data, the polish — is still your job."
+      },
+      {
+        "type": "engage",
+        "title": "Pick the better starter prompt",
+        "prompt": "You want Gemini to help write a thank-you note. Which prompt works better?",
+        "options": [
+          {
+            "text": "\"Write a thank you note.\"",
+            "correct": false,
+            "feedback": "Too vague. Gemini will guess at the context, tone, and length — and probably guess wrong."
+          },
+          {
+            "text": "\"I'm an account manager. Write a 4-sentence thank-you note to a client who just renewed a $50k contract. Warm but professional, mention their team's patience on integration.\"",
+            "correct": true,
+            "feedback": "Clear role, clear task, clear constraints. You'll get a usable draft on the first try."
+          },
+          {
+            "text": "\"Thanks.\"",
+            "correct": false,
+            "feedback": "Not even a prompt. Gemini doesn't know what you want."
           }
-        },
-        {
-          "type": "engage",
-          "title": "Best workflow for a board deck?",
-          "prompt": "You need a 10-slide board update by Friday. Smartest use of Gemini?",
-          "options": [
-            {
-              "text": "Ask Gemini to 'make me a board deck' and submit whatever it produces.",
-              "correct": false,
-              "feedback": "Way too generic. The deck won't reflect your specifics and the board will see that."
-            },
-            {
-              "text": "Outline the key points in a Doc, then have Gemini generate a structured deck from that outline, then manually rewrite and add charts.",
-              "correct": true,
-              "feedback": "Right. Structured input → structured output. Then you polish. That's where humans still beat AI."
-            },
-            {
-              "text": "Don't use Gemini. Build it from scratch.",
-              "correct": false,
-              "feedback": "You're leaving free time on the table. The scaffolding is exactly what AI is good at."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "Gemini-generated slide decks are best thought of as:",
-          "options": [
-            { "text": "Finished presentations, ready to ship.", "correct": false },
-            { "text": "A fast structural scaffold you then rewrite, re-fact-check, and re-visualize.", "correct": true },
-            { "text": "A replacement for your design team.", "correct": false },
-            { "text": "Only good for internal use.", "correct": false }
-          ],
-          "answerNote": "Scaffold, not ship. That's the honest read on AI-generated decks today."
-        }
-      ]
-    },
-    "203-1-3": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 1,
-      "lessonIdx": 3,
-      "moduleName": "Gemini in everyday work",
-      "lessonIndex": 4,
-      "totalInModule": 5,
-      "title": "Meet notes & summaries",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Meet notes & summaries",
-          "body": [
-            "In Google Meet, 'Take notes with Gemini' is a button inside the meeting. Turn it on (everyone gets notified it's recording notes) and Gemini transcribes, summarizes, and pulls out action items. The output lands as a Google Doc in your Drive, usually within a few minutes of the meeting ending.",
-            "The summary structure is consistent: meeting title, attendees, a short summary paragraph, a bulleted 'discussion' section, and an 'action items' list with owners (when names are mentioned). You can then ask Gemini in the chat to rework the notes — 'make the action items more specific' or 'add a one-line decision log at the top.'",
-            "Limits worth knowing: Gemini catches what's said clearly, but it misses sarcasm, ambiguity, and fast cross-talk. Always skim the summary before forwarding. And if someone says 'don't put this in the notes,' Gemini will usually put it in the notes — it's not smart about discretion."
-          ],
-          "callout": {
-            "label": "Trust but verify",
-            "text": "Read the summary before forwarding. AI transcription is ~95% accurate, and the 5% often includes names, numbers, and dollar amounts."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The most common reason a first prompt fails is:",
+        "options": [
+          {
+            "text": "The prompt was too short and didn't give Gemini enough context to know what 'good' looks like.",
+            "correct": true
+          },
+          {
+            "text": "You need a special keyword.",
+            "correct": false
+          },
+          {
+            "text": "You haven't paid yet.",
+            "correct": false
+          },
+          {
+            "text": "Gemini is broken.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "What's the right review step?",
-          "prompt": "Gemini generated a 2-page summary of your client call. What do you do before sending it out?",
-          "options": [
-            {
-              "text": "Forward it as-is.",
-              "correct": false,
-              "feedback": "Risky. Errors in names, numbers, and commitments are the ones that embarrass you."
-            },
-            {
-              "text": "Skim it for name/number errors, fix action item owners, and cut any off-the-record material before sharing.",
-              "correct": true,
-              "feedback": "Three-minute review, huge savings in rework and trust."
-            },
-            {
-              "text": "Rewrite it from scratch.",
-              "correct": false,
-              "feedback": "Defeats the purpose of using Gemini in the first place."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The most common errors in Gemini Meet summaries are:",
-          "options": [
-            { "text": "Grammar mistakes.", "correct": false },
-            { "text": "Misattributed names, wrong dollar amounts, and missed decisions that were said in passing.", "correct": true },
-            { "text": "Profanity.", "correct": false },
-            { "text": "Font problems.", "correct": false }
-          ],
-          "answerNote": "AI transcription is great on structure, fallible on specifics. The 'who said what' and 'how much' always need human eyes."
+        ],
+        "answerNote": "90% of 'Gemini isn't useful' complaints are just under-specified prompts. Tell it who you are, what you want, and what format."
+      }
+    ]
+  },
+  "203-0-4": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 0,
+    "lessonIdx": 4,
+    "moduleName": "What's Gemini?",
+    "lessonIndex": 5,
+    "totalInModule": 5,
+    "title": "Gemini vs ChatGPT vs Copilot",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Gemini vs ChatGPT vs Copilot",
+        "body": [
+          "All three — Gemini, ChatGPT, Copilot — are chatbots. For pure chat, they're close enough that your prompt technique matters more than your tool choice. Where they diverge is integration.",
+          "Gemini owns Workspace (Gmail, Docs, Sheets, Drive, Meet). Copilot owns Microsoft 365 (Outlook, Word, Excel, Teams, OneDrive). ChatGPT owns neither deeply but is the most flexible standalone — connectors, custom GPTs, a huge ecosystem of external tools.",
+          "The practical rule: if your team lives in Google Workspace, Gemini gives you the biggest leverage because it sees your actual work. If you also need a tool for generic tasks outside your inbox — research, brainstorming, coding help — keep ChatGPT or Claude open in a tab too. Nobody is forcing you to pick just one."
+        ],
+        "callout": {
+          "label": "Don't over-index on the chat engine",
+          "text": "The real difference is which apps the assistant can see. Pick the one wired to the tools you actually work in."
         }
-      ]
-    },
-    "203-1-4": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 1,
-      "lessonIdx": 4,
-      "moduleName": "Gemini in everyday work",
-      "lessonIndex": 5,
-      "totalInModule": 5,
-      "title": "Searching across Drive",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Searching across Drive",
-          "body": [
-            "The Gemini chat at gemini.google.com (with Workspace access enabled) can search your entire Google Drive. Ask 'find the latest pricing proposal I sent to Acme' and it'll return the file plus a one-line summary. 'What did I say in my last 1:1 notes about the Q3 hiring plan' works the same way.",
-            "This beats Drive's built-in search because it understands meaning, not just keywords. 'That doc about the integration risks' finds the file even when it's titled 'Project Lighthouse Review' and the word 'integration' never appears in the title.",
-            "A natural chain is: find → summarize → extract. 'Find my notes from last week's marketing offsite, summarize the top 3 decisions, and pull any action items assigned to me.' Three tasks, one prompt, one minute."
-          ],
-          "callout": {
-            "label": "Try this today",
-            "text": "'What was the outcome of my most recent meeting with [name]?' Then: 'Draft a follow-up email based on that.' You'll feel the leverage immediately."
+      },
+      {
+        "type": "engage",
+        "title": "Which tool for the job?",
+        "prompt": "You need to summarize last week's Gmail threads and post the summary into a Google Doc. Which tool wins?",
+        "options": [
+          {
+            "text": "Gemini — it can search Gmail and write to Docs natively.",
+            "correct": true,
+            "feedback": "Exactly. Gemini lives inside Workspace, so it reads the emails and writes to the doc in one flow."
+          },
+          {
+            "text": "ChatGPT — copy the emails in one by one.",
+            "correct": false,
+            "feedback": "Works, but you're doing manual copy-paste work the AI should be doing. Very slow."
+          },
+          {
+            "text": "Copilot — it handles everything.",
+            "correct": false,
+            "feedback": "Copilot doesn't have access to Gmail or Google Docs. Wrong ecosystem."
           }
-        },
-        {
-          "type": "engage",
-          "title": "The right tool for fuzzy-memory search",
-          "prompt": "You remember a doc from 'a few weeks ago about vendor pricing' but can't remember the title. What works best?",
-          "options": [
-            {
-              "text": "Scroll through Drive manually.",
-              "correct": false,
-              "feedback": "Slow and you might miss it."
-            },
-            {
-              "text": "Ask Gemini: 'find the doc from the last few weeks about vendor pricing.'",
-              "correct": true,
-              "feedback": "Gemini understands the meaning of the request, not just keywords. It'll find the right file even with vague wording."
-            },
-            {
-              "text": "Search Drive for the word 'vendor.'",
-              "correct": false,
-              "feedback": "Works if that word is in the doc, but keyword search is brittle on fuzzy memory."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The biggest reason to search Drive via Gemini instead of Drive's own search box is:",
-          "options": [
-            { "text": "It's prettier.", "correct": false },
-            { "text": "Gemini understands the meaning of your request and can chain search with summarization and extraction.", "correct": true },
-            { "text": "It's the only way to find shared files.", "correct": false },
-            { "text": "Faster typing.", "correct": false }
-          ],
-          "answerNote": "Semantic search + summarize + extract, all in one prompt. That's the compound win."
-        }
-      ]
-    },
-    "203-2-0": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 2,
-      "lessonIdx": 0,
-      "moduleName": "Prompting Gemini well",
-      "lessonIndex": 1,
-      "totalInModule": 5,
-      "title": "Using @references for files & people",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Using @references for files & people",
-          "body": [
-            "The @ symbol is Gemini's most underused trick. Type @ in a Gemini prompt and you get a picker — files, people, events, sometimes emails. Picking one pastes a live reference into the prompt. Gemini then reads the referenced thing before answering.",
-            "Examples. '@Q3-forecast-v2 — summarize the three biggest risks.' Gemini opens the sheet, finds risks, answers. '@Priya — draft a follow-up message thanking her for the handoff.' Gemini writes a personal note knowing who Priya is in your org. '@yesterday's-offsite-meeting — list the action items assigned to me.'",
-            "@-references beat copy-paste because Gemini sees the file as it is now, not as it was when you copied. Rename a section, fix a typo, add a row — the reference updates automatically on your next prompt."
-          ],
-          "callout": {
-            "label": "The habit",
-            "text": "Anytime you'd paste a chunk of a doc into a prompt, try @ first. Faster, cleaner, and the AI sees the current version."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "Which is the cleanest one-line distinction between the three?",
+        "options": [
+          {
+            "text": "ChatGPT is smarter than both.",
+            "correct": false
+          },
+          {
+            "text": "Only one is free.",
+            "correct": false
+          },
+          {
+            "text": "Gemini = Google Workspace. Copilot = Microsoft 365. ChatGPT = standalone and most flexible.",
+            "correct": true
+          },
+          {
+            "text": "They're identical.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "Which prompt uses @ correctly?",
-          "prompt": "You want Gemini to write a client update based on yesterday's meeting notes doc. Best phrasing?",
-          "options": [
-            {
-              "text": "\"Write a client update based on the meeting.\"",
-              "correct": false,
-              "feedback": "No reference — Gemini has no idea which meeting or what was discussed."
-            },
-            {
-              "text": "\"Based on @Client-Meeting-Notes-2026-04-22, draft a 4-sentence update email to the client covering the three decisions.\"",
-              "correct": true,
-              "feedback": "Clear reference, clear format, clear focus. This is the pattern to copy."
-            },
-            {
-              "text": "Paste the full doc text into the prompt and say 'write an update.'",
-              "correct": false,
-              "feedback": "Works, but slower and less reliable than @. And doesn't update if you edit the doc."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The main advantage of @-referencing a file over copy-pasting is:",
-          "options": [
-            { "text": "It looks more professional.", "correct": false },
-            { "text": "Gemini reads the live, current version and the reference updates if you edit the file.", "correct": true },
-            { "text": "It's required by Google.", "correct": false },
-            { "text": "It saves storage.", "correct": false }
-          ],
-          "answerNote": "Live reference = always-current context. Copy-paste = a frozen snapshot that goes stale."
+        ],
+        "answerNote": "The integration defines the tool. Pick the one wired into the apps your team already uses."
+      }
+    ]
+  },
+  "203-1-0": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 1,
+    "lessonIdx": 0,
+    "moduleName": "Gemini in everyday work",
+    "lessonIndex": 1,
+    "totalInModule": 5,
+    "title": "Drafting & triaging Gmail",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Drafting & triaging Gmail",
+        "body": [
+          "In Gmail, Gemini shows up two ways. First, a 'Help me write' button in the compose window — tell it what you want to say and it drafts the email. Second, the Gemini side panel (the sparkle icon in the top-right) — a chat that can see your whole inbox.",
+          "Drafting in the compose window works best when you give it a sentence of intent, not just a topic. 'Tell John we need to push the kickoff to next Thursday because Priya is out sick' beats 'reschedule email.' You can also ask for polish: 'formalize this,' 'shorten to 3 sentences,' 'make it warmer.'",
+          "The side panel is where triage lives. Ask 'summarize the unread emails from Acme Corp this week' and it'll read the relevant threads and give you a bullet-list. 'Draft a reply to the most recent one' chains naturally. This is where you save serious time each morning."
+        ],
+        "callout": {
+          "label": "Morning inbox routine",
+          "text": "Open the side panel. 'What do I need to respond to today?' Let Gemini do the triage. Then draft replies together."
         }
-      ]
-    },
-    "203-2-1": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 2,
-      "lessonIdx": 1,
-      "moduleName": "Prompting Gemini well",
-      "lessonIndex": 2,
-      "totalInModule": 5,
-      "title": "Multimodal: images, PDFs, screenshots",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Multimodal: images, PDFs, screenshots",
-          "body": [
-            "Gemini reads pictures. Drop a screenshot of an error message into the chat and ask 'what's going on here and how do I fix it.' Paste a photo of a whiteboard and ask Gemini to transcribe the scribbled diagram as a structured list. Upload a PDF invoice and ask for a summary with total, vendor, and due date extracted.",
-            "This is called multimodal — one model, multiple input types. Good uses: reading charts in screenshots, pulling data from receipts, summarizing photographed documents, decoding UI bugs, translating text on signs or menus in photos.",
-            "Limits. Small text in blurry images fails. Complex charts with dense data often miss nuances. Don't use Gemini as a source of truth when the numbers really matter — always verify extracted data against the source. Good for triage and drafting, not for final accounting."
-          ],
-          "callout": {
-            "label": "Best use cases",
-            "text": "Screenshots → structured output. Photos of whiteboards → text. PDFs → summaries + key-field extraction. All 10x faster than retyping."
+      },
+      {
+        "type": "engage",
+        "title": "Which Gmail task is Gemini strongest at?",
+        "prompt": "You have 47 unread emails from a week off. Which use of Gemini gets you back up to speed fastest?",
+        "options": [
+          {
+            "text": "Read each email yourself; ask Gemini to draft replies.",
+            "correct": false,
+            "feedback": "You're still doing the slow part. Let Gemini read and prioritize first."
+          },
+          {
+            "text": "Ask the Gemini side panel to summarize the week's unread threads and flag the ones that actually need a response.",
+            "correct": true,
+            "feedback": "Right. Gemini reads 47 emails in seconds and hands you a ranked list. You only open the ones that matter."
+          },
+          {
+            "text": "Mark them all as read.",
+            "correct": false,
+            "feedback": "Tempting, but risky — you might miss a real ask."
           }
-        },
-        {
-          "type": "engage",
-          "title": "The right tool for a scanned invoice",
-          "prompt": "A vendor emailed you a scanned PDF invoice. You need the vendor name, total, and due date in a spreadsheet row. Best approach?",
-          "options": [
-            {
-              "text": "Manually read and type it into the sheet.",
-              "correct": false,
-              "feedback": "Works, but slow and error-prone when you're doing 20 a day."
-            },
-            {
-              "text": "Upload the PDF to Gemini, ask for vendor, total, and due date in a 'vendor | total | due' format, then paste into your sheet.",
-              "correct": true,
-              "feedback": "30 seconds vs. 3 minutes. Just verify the number against the PDF before filing."
-            },
-            {
-              "text": "Forward it to accounting and wait.",
-              "correct": false,
-              "feedback": "Solves your day but not your workflow. Gemini lets you handle this yourself."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "When extracting data from images with Gemini, you should always:",
-          "options": [
-            { "text": "Trust the output completely.", "correct": false },
-            { "text": "Spot-check extracted numbers and names against the original image before using them in anything that matters.", "correct": true },
-            { "text": "Use only Gemini Ultra.", "correct": false },
-            { "text": "Convert the image to black and white first.", "correct": false }
-          ],
-          "answerNote": "Good for triage. Always verify before the number or name enters a contract, a spreadsheet total, or an external email."
-        }
-      ]
-    },
-    "203-2-2": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 2,
-      "lessonIdx": 2,
-      "moduleName": "Prompting Gemini well",
-      "lessonIndex": 3,
-      "totalInModule": 5,
-      "title": "Iterating: regenerate & compare",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Iterating: regenerate & compare",
-          "body": [
-            "The first answer is rarely the best answer. Gemini has two iteration tools: regenerate and 'show drafts.' Regenerate gives you a fresh attempt at the same prompt. Show drafts (in the chat, via the three-dot menu on the response) gives you 2–3 alternate versions side by side — pick the one closest to what you wanted.",
-            "A better technique than blind regeneration is targeted refinement. Don't just ask again — tell Gemini what was wrong. 'This is too formal — soften it.' 'The middle paragraph is off-topic; drop it.' 'Shorter, and don't start with \"I hope you're well.\"' Each refinement gets closer to the version you'd have written yourself.",
-            "Know when to cut losses. If after three rounds of refinement the answer still isn't right, start a fresh conversation with a better prompt. Don't keep fighting with a bad first attempt — Gemini can get stuck in its own context."
-          ],
-          "callout": {
-            "label": "The 3-round rule",
-            "text": "If three rounds of refinement haven't gotten you there, start over with a sharper prompt. Don't drag a stuck conversation to the finish line."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "When drafting an email with 'Help me write,' the single most useful thing to include is:",
+        "options": [
+          {
+            "text": "A subject line.",
+            "correct": false
+          },
+          {
+            "text": "Your signature.",
+            "correct": false
+          },
+          {
+            "text": "A one-sentence intent — what you want to say and to whom, with any constraints on tone or length.",
+            "correct": true
+          },
+          {
+            "text": "The recipient's full name.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "The response isn't right. What next?",
-          "prompt": "Gemini's first draft is close but the tone is too stiff. Best next move?",
-          "options": [
-            {
-              "text": "Regenerate and hope.",
-              "correct": false,
-              "feedback": "You might get lucky, but you'll probably get a slightly different version of the same wrong tone."
-            },
-            {
-              "text": "Tell Gemini specifically: 'soften the tone — warmer, more like a colleague than a corporate memo.'",
-              "correct": true,
-              "feedback": "Targeted refinement beats random regeneration every time."
-            },
-            {
-              "text": "Give up and write it yourself.",
-              "correct": false,
-              "feedback": "Sometimes the right call, but not the first move. Try one sharp refinement first."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "If you've refined the same prompt 3+ times and it's still wrong, the smart move is:",
-          "options": [
-            { "text": "Keep refining.", "correct": false },
-            { "text": "Start a new chat with a tighter initial prompt — the old conversation may be stuck in its own wrong context.", "correct": true },
-            { "text": "Escalate to support.", "correct": false },
-            { "text": "Wait an hour and try again.", "correct": false }
-          ],
-          "answerNote": "Bad context compounds. A fresh, better prompt is faster than fighting a stuck conversation."
+        ],
+        "answerNote": "Intent beats instruction. 'What do I want this email to accomplish' is the prompt; everything else Gemini can infer or you can tweak."
+      }
+    ]
+  },
+  "203-1-1": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 1,
+    "lessonIdx": 1,
+    "moduleName": "Gemini in everyday work",
+    "lessonIndex": 2,
+    "totalInModule": 5,
+    "title": "Writing in Google Docs",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Writing in Google Docs",
+        "body": [
+          "Inside Docs, Gemini is a side panel plus inline prompts. Click the sparkle icon in a blank line and you'll see 'Help me write.' Type a prompt — 'first draft of a Q3 strategy recap' — and it drops a draft right where your cursor is.",
+          "On existing text, highlight a paragraph and ask for a rewrite: 'shorten,' 'make it less formal,' 'turn into 5 bullets.' Gemini edits in place. You can always undo. The side panel handles the bigger stuff: 'summarize this whole doc in 200 words,' 'list every action item mentioned,' 'who's named and what are they each responsible for.'",
+          "Where Docs Gemini shines: it can reference other files. '@File-name' pulls another Drive doc into the conversation. Ask it to 'rewrite this intro to match the tone of @ACME-One-Pager' and it'll actually pattern-match the style."
+        ],
+        "callout": {
+          "label": "The trick",
+          "text": "Write a bad first draft fast, highlight it, and ask Gemini to tighten. Editing is a better use of AI than drafting from nothing."
         }
-      ]
-    },
-    "203-2-3": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 2,
-      "lessonIdx": 3,
-      "moduleName": "Prompting Gemini well",
-      "lessonIndex": 4,
-      "totalInModule": 5,
-      "title": "When Gemini beats general AI",
-      "steps": [
-        {
-          "type": "read",
-          "title": "When Gemini beats general AI",
-          "body": [
-            "Gemini beats a generic chatbot (ChatGPT, Claude) whenever the answer depends on your Workspace context. 'What did we agree with Acme on their renewal' only Gemini can answer from your actual Gmail and Drive. 'Draft an agenda from last week's offsite notes' same story.",
-            "It also wins on any task where the output needs to go back into Workspace. Writing a doc, generating a slide deck, filling a sheet — Gemini doesn't need you to copy-paste the result, it writes in place.",
-            "Where it doesn't win: pure reasoning, coding help outside your repo, obscure knowledge, creative writing at the bleeding edge. ChatGPT and Claude are fine — sometimes better — for generic tasks. Gemini's moat is your data, not its raw intelligence."
-          ],
-          "callout": {
-            "label": "The fork in the road",
-            "text": "Does this task need YOUR files, emails, or calendar? → Gemini. Is it a generic research/creative/coding task? → ChatGPT or Claude is fine."
+      },
+      {
+        "type": "engage",
+        "title": "How do you match the tone of another doc?",
+        "prompt": "You want the new memo to read like a previous one your CEO wrote. Best approach?",
+        "options": [
+          {
+            "text": "Give up and write it yourself.",
+            "correct": false,
+            "feedback": "Lazy. Gemini can do this well if you give it the reference."
+          },
+          {
+            "text": "Paste the whole previous memo into your prompt.",
+            "correct": false,
+            "feedback": "Works but clumsy. There's a better way."
+          },
+          {
+            "text": "Use @ to reference the previous doc directly in your prompt: 'rewrite to match the tone of @CEO-Memo-Q1.'",
+            "correct": true,
+            "feedback": "Right. Gemini pulls the file in natively, no copy-paste, and matches the style more reliably."
           }
-        },
-        {
-          "type": "engage",
-          "title": "Gemini or ChatGPT?",
-          "prompt": "Task: 'Research three competitors we don't have internal notes on and summarize their positioning.' Best tool?",
-          "options": [
-            {
-              "text": "Gemini — it's the Google tool.",
-              "correct": false,
-              "feedback": "For generic research with no Workspace context, Gemini has no moat."
-            },
-            {
-              "text": "ChatGPT or Claude — generic research tasks don't need Workspace integration.",
-              "correct": true,
-              "feedback": "Right. Use Gemini when your data matters; use general tools for generic knowledge work."
-            },
-            {
-              "text": "Always Gemini.",
-              "correct": false,
-              "feedback": "Tool choice should match the task. One-size-fits-all thinking leaves performance on the table."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "Gemini's clearest moat is:",
-          "options": [
-            { "text": "Smarter base model.", "correct": false },
-            { "text": "Direct, authenticated access to your own emails, docs, sheets, meetings, and Drive.", "correct": true },
-            { "text": "Nicer UI.", "correct": false },
-            { "text": "It's free.", "correct": false }
-          ],
-          "answerNote": "Raw intelligence is a commodity across the big models. Your data is the differentiator, and Gemini is wired to yours."
-        }
-      ]
-    },
-    "203-2-4": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 2,
-      "lessonIdx": 4,
-      "moduleName": "Prompting Gemini well",
-      "lessonIndex": 5,
-      "totalInModule": 5,
-      "title": "Gemini's real limits",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Gemini's real limits",
-          "body": [
-            "Gemini hallucinates. Confidently and regularly. It will cite studies that don't exist, quote people who didn't say it, and invent technical specifications. The failure mode is always the same: plausible-sounding wrong. Every fact, every name, every number you use externally — verify.",
-            "Gemini has a knowledge cutoff for non-Workspace info. Recent world events, new product releases, this week's earnings — unless you explicitly ask it to search the web (or your Drive), it's answering from training data that's weeks or months old.",
-            "Gemini doesn't see your entire Workspace. Admin settings, per-user permissions, and plan limits all gate what it can read. If it says 'I don't have access to that file' it may be real, not a bug. And anything in a private personal account won't show up at all — Gemini respects the account boundary."
-          ],
-          "callout": {
-            "label": "The posture",
-            "text": "Trust Gemini for structure and speed. Verify it for facts, names, numbers, and quotes. That posture alone prevents 95% of problems."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The highest-leverage use of Gemini inside a Google Doc is usually:",
+        "options": [
+          {
+            "text": "Spell-check.",
+            "correct": false
+          },
+          {
+            "text": "Changing fonts.",
+            "correct": false
+          },
+          {
+            "text": "Editing, tightening, and restructuring your existing draft — with inline highlights.",
+            "correct": true
+          },
+          {
+            "text": "Generating a document from scratch.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "Which answer do you trust most?",
-          "prompt": "Gemini gives you these three pieces of information. Which should you verify before using?",
-          "options": [
-            {
-              "text": "A rough outline structure for your presentation.",
-              "correct": false,
-              "feedback": "Structure is low-risk — worst case you adjust it. Verify the facts inside it, not the outline itself."
-            },
-            {
-              "text": "A specific statistic with a cited source (\"42% of enterprises use AI, per Gartner 2026\").",
-              "correct": true,
-              "feedback": "Exactly the kind of thing that's most often hallucinated. Check the source before quoting."
-            },
-            {
-              "text": "A grammatical correction to your draft.",
-              "correct": false,
-              "feedback": "Grammar is low-stakes and easy to spot-check. Not the hallucination risk."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The three things you must always verify in Gemini's output are:",
-          "options": [
-            { "text": "Spelling, grammar, and punctuation.", "correct": false },
-            { "text": "Facts, names, and numbers — especially any specific statistic, citation, or proper noun.", "correct": true },
-            { "text": "The length.", "correct": false },
-            { "text": "Formatting.", "correct": false }
-          ],
-          "answerNote": "Facts, names, numbers. If any of those are wrong in an external-facing document, you pay the cost, not the AI."
+        ],
+        "answerNote": "Use your brain for the raw ideas; use Gemini for the revision pass. That's the split where AI adds most value in Docs."
+      }
+    ]
+  },
+  "203-1-2": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 1,
+    "lessonIdx": 2,
+    "moduleName": "Gemini in everyday work",
+    "lessonIndex": 3,
+    "totalInModule": 5,
+    "title": "Building decks in Slides",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Building decks in Slides",
+        "body": [
+          "Inside Google Slides, Gemini can generate a whole deck from a prompt. Open a blank presentation, click the sparkle icon, and describe what you want: '5-slide overview of our Q4 goals: title, 3 pillars, one slide each, closing CTA.' It produces a draft deck with slide titles, bullets, and speaker notes.",
+          "The output isn't production-ready — think of it as a rough scaffold. Layouts are basic, images are generic. Your job is to rewrite copy, swap in real data, and add brand visuals. You saved an hour; you didn't save the whole job.",
+          "A more realistic workflow: outline the deck in a Doc first (or in the Gemini chat), reference it in Slides with @, and ask Gemini to generate a deck from that outline. You get a deck that actually reflects your thinking, not a generic template."
+        ],
+        "callout": {
+          "label": "Reality check",
+          "text": "Gemini gives you the 40% draft in 60 seconds. The last 60% — the visuals, the data, the polish — is still your job."
         }
-      ]
-    },
-    "203-3-0": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 3,
-      "lessonIdx": 0,
-      "moduleName": "Safe at work",
-      "lessonIndex": 1,
-      "totalInModule": 5,
-      "title": "Personal vs Workspace accounts",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Personal vs Workspace accounts",
-          "body": [
-            "You probably have two Google accounts: your personal gmail.com and your work Workspace account (@yourcompany.com). They're separate universes with separate rules. Gemini behaves differently in each.",
-            "Personal account Gemini (free or paid via Google One AI) can use your chats to improve Google's models unless you turn off activity saving. Nothing you type should be considered private. Fine for general questions, bad for anything confidential.",
-            "Workspace Gemini (on a paid Business/Enterprise plan with Gemini enabled) has contractual protections: your prompts and data are not used to train Google's models, your admin controls data access, and outputs are logged per your org's retention policy. It's the right place to do work."
-          ],
-          "callout": {
-            "label": "The one rule",
-            "text": "Work tasks? Use your Workspace account. Personal curiosity? Use your personal account. Don't mix — especially don't paste work data into personal Gemini."
+      },
+      {
+        "type": "engage",
+        "title": "Best workflow for a board deck?",
+        "prompt": "You need a 10-slide board update by Friday. Smartest use of Gemini?",
+        "options": [
+          {
+            "text": "Don't use Gemini. Build it from scratch.",
+            "correct": false,
+            "feedback": "You're leaving free time on the table. The scaffolding is exactly what AI is good at."
+          },
+          {
+            "text": "Outline the key points in a Doc, then have Gemini generate a structured deck from that outline, then manually rewrite and add charts.",
+            "correct": true,
+            "feedback": "Right. Structured input → structured output. Then you polish. That's where humans still beat AI."
+          },
+          {
+            "text": "Ask Gemini to 'make me a board deck' and submit whatever it produces.",
+            "correct": false,
+            "feedback": "Way too generic. The deck won't reflect your specifics and the board will see that."
           }
-        },
-        {
-          "type": "engage",
-          "title": "Where do you ask about a client deal?",
-          "prompt": "You want Gemini to help you plan talking points for a client call about their renewal. Which account do you use?",
-          "options": [
-            {
-              "text": "Your personal gmail.com account.",
-              "correct": false,
-              "feedback": "Major risk. Client information in a personal AI account may violate your company's data policy and your client's contract."
-            },
-            {
-              "text": "Your work Workspace account, where prompts are covered by your company's data agreement with Google.",
-              "correct": true,
-              "feedback": "Right. Work context → work account. Always."
-            },
-            {
-              "text": "Doesn't matter — they're the same tool.",
-              "correct": false,
-              "feedback": "It matters a lot. Data policy, retention, and training-usage rules differ between the two."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The key difference between personal and Workspace Gemini is:",
-          "options": [
-            { "text": "Personal Gemini is prettier.", "correct": false },
-            { "text": "Workspace Gemini has contractual data protections (no training on your data, admin controls, retention); personal Gemini does not.", "correct": true },
-            { "text": "They use different models.", "correct": false },
-            { "text": "Only Workspace has image generation.", "correct": false }
-          ],
-          "answerNote": "Data treatment is the difference. For anything work-related, the work account is non-negotiable."
-        }
-      ]
-    },
-    "203-3-1": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 3,
-      "lessonIdx": 1,
-      "moduleName": "Safe at work",
-      "lessonIndex": 2,
-      "totalInModule": 5,
-      "title": "What IT admins can control",
-      "steps": [
-        {
-          "type": "read",
-          "title": "What IT admins can control",
-          "body": [
-            "Your Workspace admin has a dashboard of Gemini controls. They decide whether Gemini is turned on at all, which users or groups can use it, which features are enabled (image generation, web browsing, Gems), and how long conversations are retained.",
-            "Admins can also set data boundaries — for example, restricting which Drive folders Gemini can search, or blocking @-references to sensitive shared drives. If a feature seems missing, it's often policy, not a bug. Asking IT 'is this turned on for my account' is usually the first-line debugging question.",
-            "What admins typically can't see: the exact text of your individual prompts and answers, unless they've specifically enabled audit logging. Default settings preserve user privacy for normal activity; targeted audit requires a policy trigger or an investigation."
-          ],
-          "callout": {
-            "label": "Check before you blame",
-            "text": "Gemini acting 'broken'? Before filing a bug, ask IT whether the feature is enabled for your account. Most 'broken' is 'off by policy.'"
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "Gemini-generated slide decks are best thought of as:",
+        "options": [
+          {
+            "text": "A replacement for your design team.",
+            "correct": false
+          },
+          {
+            "text": "Finished presentations, ready to ship.",
+            "correct": false
+          },
+          {
+            "text": "Only good for internal use.",
+            "correct": false
+          },
+          {
+            "text": "A fast structural scaffold you then rewrite, re-fact-check, and re-visualize.",
+            "correct": true
           }
-        },
-        {
-          "type": "engage",
-          "title": "The @-reference button isn't there",
-          "prompt": "You try to @-reference a Drive file in a Gemini prompt but the @ picker shows nothing. What's the most likely reason?",
-          "options": [
-            {
-              "text": "Your browser is out of date.",
-              "correct": false,
-              "feedback": "Rarely the cause. Browser issues are usually visual, not feature-level."
-            },
-            {
-              "text": "Your Workspace admin has restricted Drive access for Gemini, or you're signed into a personal account without Workspace-level features.",
-              "correct": true,
-              "feedback": "Right. Admin policy or wrong-account is 90% of 'a feature is missing.'"
-            },
-            {
-              "text": "Gemini is in maintenance mode.",
-              "correct": false,
-              "feedback": "Unlikely and would be visible as a global banner."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The default level of visibility your admin has into your individual Gemini prompts is:",
-          "options": [
-            { "text": "Every prompt, in real time.", "correct": false },
-            { "text": "Generally limited; targeted audit is possible but not the default. They see aggregate usage, not your specific conversations.", "correct": true },
-            { "text": "Nothing — fully private.", "correct": false },
-            { "text": "Everything, forever.", "correct": false }
-          ],
-          "answerNote": "Trust-but-verify applies to both directions. Admins set policy; they don't typically snoop on your chats without reason."
+        ],
+        "answerNote": "Scaffold, not ship. That's the honest read on AI-generated decks today."
+      }
+    ]
+  },
+  "203-1-3": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 1,
+    "lessonIdx": 3,
+    "moduleName": "Gemini in everyday work",
+    "lessonIndex": 4,
+    "totalInModule": 5,
+    "title": "Meet notes & summaries",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Meet notes & summaries",
+        "body": [
+          "In Google Meet, 'Take notes with Gemini' is a button inside the meeting. Turn it on (everyone gets notified it's recording notes) and Gemini transcribes, summarizes, and pulls out action items. The output lands as a Google Doc in your Drive, usually within a few minutes of the meeting ending.",
+          "The summary structure is consistent: meeting title, attendees, a short summary paragraph, a bulleted 'discussion' section, and an 'action items' list with owners (when names are mentioned). You can then ask Gemini in the chat to rework the notes — 'make the action items more specific' or 'add a one-line decision log at the top.'",
+          "Limits worth knowing: Gemini catches what's said clearly, but it misses sarcasm, ambiguity, and fast cross-talk. Always skim the summary before forwarding. And if someone says 'don't put this in the notes,' Gemini will usually put it in the notes — it's not smart about discretion."
+        ],
+        "callout": {
+          "label": "Trust but verify",
+          "text": "Read the summary before forwarding. AI transcription is ~95% accurate, and the 5% often includes names, numbers, and dollar amounts."
         }
-      ]
-    },
-    "203-3-2": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 3,
-      "lessonIdx": 2,
-      "moduleName": "Safe at work",
-      "lessonIndex": 3,
-      "totalInModule": 5,
-      "title": "What not to paste into personal Gemini",
-      "steps": [
-        {
-          "type": "read",
-          "title": "What not to paste into personal Gemini",
-          "body": [
-            "Never paste customer data into personal Gemini. Customer names, emails, contract terms, health info, financial details — any of it. Even if the chat feels private, your activity history is part of the training signal unless you've disabled it, and your employer's contracts with customers almost certainly forbid it.",
-            "Don't paste internal strategy, pricing roadmaps, legal drafts, or anything under NDA. Even innocuous-seeming excerpts ('here's our Q3 planning doc, summarize it') can leak competitive info if activity saving is on or if a future training run ingests it.",
-            "The safe test: would you be comfortable if this prompt appeared in a competitor's email, a journalist's article, or a customer's inbox tomorrow? If no, don't paste it. Use work Gemini or don't use AI for this task."
-          ],
-          "callout": {
-            "label": "The paste test",
-            "text": "Before pasting into personal AI: 'would I be okay if this appeared in a competitor's email tomorrow?' No? Don't paste."
+      },
+      {
+        "type": "engage",
+        "title": "What's the right review step?",
+        "prompt": "Gemini generated a 2-page summary of your client call. What do you do before sending it out?",
+        "options": [
+          {
+            "text": "Skim it for name/number errors, fix action item owners, and cut any off-the-record material before sharing.",
+            "correct": true,
+            "feedback": "Three-minute review, huge savings in rework and trust."
+          },
+          {
+            "text": "Rewrite it from scratch.",
+            "correct": false,
+            "feedback": "Defeats the purpose of using Gemini in the first place."
+          },
+          {
+            "text": "Forward it as-is.",
+            "correct": false,
+            "feedback": "Risky. Errors in names, numbers, and commitments are the ones that embarrass you."
           }
-        },
-        {
-          "type": "engage",
-          "title": "What's paste-safe in personal Gemini?",
-          "prompt": "Which of these is safe to paste into personal (non-Workspace) Gemini for help?",
-          "options": [
-            {
-              "text": "A customer's support ticket to draft a reply.",
-              "correct": false,
-              "feedback": "Customer data. Use work Gemini; this is not a personal-account task."
-            },
-            {
-              "text": "A public blog post you're editing for clarity.",
-              "correct": true,
-              "feedback": "Public material is fine. The post is already going to be world-readable anyway."
-            },
-            {
-              "text": "Your company's Q3 internal memo.",
-              "correct": false,
-              "feedback": "Internal = confidential by default. Work account or nothing."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The line between 'fine to paste' and 'don't paste' in personal Gemini is:",
-          "options": [
-            { "text": "Length of the text.", "correct": false },
-            { "text": "Whether the content is public / non-sensitive vs. internal, customer, or confidential.", "correct": true },
-            { "text": "Whether you're logged in.", "correct": false },
-            { "text": "Whether the prompt contains names.", "correct": false }
-          ],
-          "answerNote": "Public: fine. Internal or customer-touching: work account only. That's the whole rule."
-        }
-      ]
-    },
-    "203-3-3": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 3,
-      "lessonIdx": 3,
-      "moduleName": "Safe at work",
-      "lessonIndex": 4,
-      "totalInModule": 5,
-      "title": "When to escalate to IT",
-      "steps": [
-        {
-          "type": "read",
-          "title": "When to escalate to IT",
-          "body": [
-            "Most Gemini issues are user error or admin policy. Before filing a ticket, check: right account? Feature enabled? Tried a fresh conversation? Read the error message carefully? If the answer is yes to all and something still seems wrong, escalate.",
-            "Real escalation cases: Gemini returned content from a Drive folder you didn't know it had access to (possible permission misconfiguration), an output included someone else's data (serious), an error mentions rate limits or access controls (admin needs to adjust), or you accidentally pasted sensitive info and want it purged.",
-            "When you file the ticket, include: exact prompt, exact response or error, time, account you were using, and what you expected vs. what happened. 'Gemini is broken' gets the ticket deprioritized. Specifics get it fixed."
-          ],
-          "callout": {
-            "label": "Escalation checklist",
-            "text": "Account right? Feature on? Fresh chat? Specific error? If yes to all → ticket IT with: prompt, response, timestamp, account, expected behavior."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The most common errors in Gemini Meet summaries are:",
+        "options": [
+          {
+            "text": "Grammar mistakes.",
+            "correct": false
+          },
+          {
+            "text": "Font problems.",
+            "correct": false
+          },
+          {
+            "text": "Profanity.",
+            "correct": false
+          },
+          {
+            "text": "Misattributed names, wrong dollar amounts, and missed decisions that were said in passing.",
+            "correct": true
           }
-        },
-        {
-          "type": "engage",
-          "title": "Escalate or debug?",
-          "prompt": "Gemini just returned someone else's meeting notes when you asked about your own. What do you do first?",
-          "options": [
-            {
-              "text": "Close the tab and try again.",
-              "correct": false,
-              "feedback": "Possible cross-contamination is a security issue, not a 'retry' issue."
-            },
-            {
-              "text": "Screenshot the output, note the exact prompt and timestamp, then immediately escalate to IT as a potential access-control issue.",
-              "correct": true,
-              "feedback": "Right. Unauthorized data exposure is a 'file it now' situation. Preserve evidence, report fast."
-            },
-            {
-              "text": "Send the notes to the right owner as a courtesy.",
-              "correct": false,
-              "feedback": "Well-intentioned but wrong. Propagating unauthorized content extends the exposure. IT handles this."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "A good IT ticket for a Gemini issue always includes:",
-          "options": [
-            { "text": "An apology.", "correct": false },
-            { "text": "Exact prompt, exact response/error, timestamp, account used, and expected vs. actual behavior.", "correct": true },
-            { "text": "A screenshot only.", "correct": false },
-            { "text": "Nothing — just 'it's broken.'", "correct": false }
-          ],
-          "answerNote": "Specifics get the ticket resolved. Vague tickets go to the back of the queue."
+        ],
+        "answerNote": "AI transcription is great on structure, fallible on specifics. The 'who said what' and 'how much' always need human eyes."
+      }
+    ]
+  },
+  "203-1-4": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 1,
+    "lessonIdx": 4,
+    "moduleName": "Gemini in everyday work",
+    "lessonIndex": 5,
+    "totalInModule": 5,
+    "title": "Searching across Drive",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Searching across Drive",
+        "body": [
+          "The Gemini chat at gemini.google.com (with Workspace access enabled) can search your entire Google Drive. Ask 'find the latest pricing proposal I sent to Acme' and it'll return the file plus a one-line summary. 'What did I say in my last 1:1 notes about the Q3 hiring plan' works the same way.",
+          "This beats Drive's built-in search because it understands meaning, not just keywords. 'That doc about the integration risks' finds the file even when it's titled 'Project Lighthouse Review' and the word 'integration' never appears in the title.",
+          "A natural chain is: find → summarize → extract. 'Find my notes from last week's marketing offsite, summarize the top 3 decisions, and pull any action items assigned to me.' Three tasks, one prompt, one minute."
+        ],
+        "callout": {
+          "label": "Try this today",
+          "text": "'What was the outcome of my most recent meeting with [name]?' Then: 'Draft a follow-up email based on that.' You'll feel the leverage immediately."
         }
-      ]
-    },
-    "203-3-4": {
-      "courseId": 203,
-      "courseCode": "GEM·101",
-      "suite": "plus",
-      "moduleIdx": 3,
-      "lessonIdx": 4,
-      "moduleName": "Safe at work",
-      "lessonIndex": 5,
-      "totalInModule": 5,
-      "title": "Certification quiz",
-      "steps": [
-        {
-          "type": "read",
-          "title": "You've reached the end.",
-          "body": [
-            "Twenty lessons done. You now know how Gemini fits into Workspace, where to find it in each app, how to prompt it for real output, and which rules keep you safe with company data.",
-            "The short summary: Gemini's superpower is your own data. Use @-references and the side panel to pull in files and context. Verify facts, names, and numbers before sending anything external. Keep work tasks in your work account. Escalate security or access issues fast.",
-            "One last quick check, then a certification quiz to lock it in."
-          ],
-          "callout": {
-            "label": "Ready?",
-            "text": "Next step: the certification quiz. 10 questions. Pass to earn your Gemini 101 certificate."
+      },
+      {
+        "type": "engage",
+        "title": "The right tool for fuzzy-memory search",
+        "prompt": "You remember a doc from 'a few weeks ago about vendor pricing' but can't remember the title. What works best?",
+        "options": [
+          {
+            "text": "Search Drive for the word 'vendor.'",
+            "correct": false,
+            "feedback": "Works if that word is in the doc, but keyword search is brittle on fuzzy memory."
+          },
+          {
+            "text": "Scroll through Drive manually.",
+            "correct": false,
+            "feedback": "Slow and you might miss it."
+          },
+          {
+            "text": "Ask Gemini: 'find the doc from the last few weeks about vendor pricing.'",
+            "correct": true,
+            "feedback": "Gemini understands the meaning of the request, not just keywords. It'll find the right file even with vague wording."
           }
-        },
-        {
-          "type": "engage",
-          "title": "One-line summary of Gemini 101",
-          "prompt": "If you had to tell a coworker the single most useful thing from this course, it would be:",
-          "options": [
-            {
-              "text": "\"Gemini uses a better model than ChatGPT.\"",
-              "correct": false,
-              "feedback": "Not really the point, and it's model-dependent."
-            },
-            {
-              "text": "\"The @-reference trick — it lets Gemini read your live files instead of making you copy-paste. Huge time-saver.\"",
-              "correct": true,
-              "feedback": "Exactly. @ is the single technique that distinguishes 'occasional Gemini user' from 'daily Gemini user.'"
-            },
-            {
-              "text": "\"Gemini is free.\"",
-              "correct": false,
-              "feedback": "Partly — but it's not the takeaway that changes how people work."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "Before you take the certification quiz, the safest attitude toward a Gemini output is:",
-          "options": [
-            { "text": "Trust it and ship.", "correct": false },
-            { "text": "Use its structure and speed, verify its facts, names, and numbers — every single time.", "correct": true },
-            { "text": "Ignore it.", "correct": false },
-            { "text": "Only trust numbered lists.", "correct": false }
-          ],
-          "answerNote": "Structure free, facts earned. That posture serves you forever."
-        }
-      ]
-    },
-    "204-0-0": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 0,
-      "lessonIdx": 0,
-      "moduleName": "Gemini in Sheets basics",
-      "lessonIndex": 1,
-      "totalInModule": 4,
-      "title": "Opening the Gemini side panel",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Opening the Gemini side panel",
-          "body": [
-            "Open any Google Sheet with a Workspace account that has Gemini enabled. In the top-right corner, look for the four-point sparkle icon (Gemini). Click it. A side panel slides open — that's your chat with Gemini about this specific sheet.",
-            "The side panel already knows what sheet you're in. You don't need to describe it; you can just ask 'summarize this data' and Gemini reads the active tab. It sees your column headers, your data, and (to some extent) your formatting.",
-            "There's also inline help: on a blank cell, the sparkle option in the insert menu lets Gemini generate a formula or a value. Most of the power, though, is in the side panel — that's where you iterate, ask follow-ups, and work through multi-step analysis."
-          ],
-          "callout": {
-            "label": "Two entry points",
-            "text": "Side panel (sparkle icon, top-right) for chat + analysis. Inline sparkle in cells for one-off formulas and values."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The biggest reason to search Drive via Gemini instead of Drive's own search box is:",
+        "options": [
+          {
+            "text": "Gemini understands the meaning of your request and can chain search with summarization and extraction.",
+            "correct": true
+          },
+          {
+            "text": "Faster typing.",
+            "correct": false
+          },
+          {
+            "text": "It's prettier.",
+            "correct": false
+          },
+          {
+            "text": "It's the only way to find shared files.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "Side panel or inline?",
-          "prompt": "You want to generate a SUMIFS formula to total revenue for a specific region. Best starting point?",
-          "options": [
-            {
-              "text": "Inline sparkle in the target cell.",
-              "correct": true,
-              "feedback": "Right. One-shot formula generation is exactly what inline is designed for. Fast and contextual."
-            },
-            {
-              "text": "Open the side panel, describe the sheet in detail, then ask.",
-              "correct": false,
-              "feedback": "Overkill for a single formula. Side panel shines for multi-step analysis, not quick formula writes."
-            },
-            {
-              "text": "Open gemini.google.com in a new tab.",
-              "correct": false,
-              "feedback": "You lose the live sheet context. Slower and less accurate."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The main advantage of the Gemini side panel inside Sheets vs. using gemini.google.com in another tab is:",
-          "options": [
-            { "text": "Less scrolling.", "correct": false },
-            { "text": "Gemini already sees the current sheet — columns, data, formatting — so you don't need to describe it.", "correct": true },
-            { "text": "It's cheaper.", "correct": false },
-            { "text": "Different model.", "correct": false }
-          ],
-          "answerNote": "Live context is the whole point. Side panel reads your sheet; standalone Gemini doesn't."
+        ],
+        "answerNote": "Semantic search + summarize + extract, all in one prompt. That's the compound win."
+      }
+    ]
+  },
+  "203-2-0": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 2,
+    "lessonIdx": 0,
+    "moduleName": "Prompting Gemini well",
+    "lessonIndex": 1,
+    "totalInModule": 5,
+    "title": "Using @references for files & people",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Using @references for files & people",
+        "body": [
+          "The @ symbol is Gemini's most underused trick. Type @ in a Gemini prompt and you get a picker — files, people, events, sometimes emails. Picking one pastes a live reference into the prompt. Gemini then reads the referenced thing before answering.",
+          "Examples. '@Q3-forecast-v2 — summarize the three biggest risks.' Gemini opens the sheet, finds risks, answers. '@Priya — draft a follow-up message thanking her for the handoff.' Gemini writes a personal note knowing who Priya is in your org. '@yesterday's-offsite-meeting — list the action items assigned to me.'",
+          "@-references beat copy-paste because Gemini sees the file as it is now, not as it was when you copied. Rename a section, fix a typo, add a row — the reference updates automatically on your next prompt."
+        ],
+        "callout": {
+          "label": "The habit",
+          "text": "Anytime you'd paste a chunk of a doc into a prompt, try @ first. Faster, cleaner, and the AI sees the current version."
         }
-      ]
-    },
-    "204-0-1": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 0,
-      "lessonIdx": 1,
-      "moduleName": "Gemini in Sheets basics",
-      "lessonIndex": 2,
-      "totalInModule": 4,
-      "title": "Plain-English asks",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Plain-English asks",
-          "body": [
-            "You don't need to know formula syntax to ask Gemini for analysis. 'What's the average deal size by region' works. So does 'which customers churned in March' and 'which row has the highest margin.' Gemini reads your headers and translates into the right formulas or filters.",
-            "When your data uses business words ('MRR,' 'CAC,' 'pipeline'), lean into it. 'Show me the top 10 opportunities by weighted pipeline value' uses your column names and your lingo — Gemini usually picks the right fields.",
-            "Be explicit about output format when it matters. 'Give me a single number,' 'give me a ranked list with the top 5,' 'insert the result into cell G2.' Gemini will often just put the answer in the chat — tell it to write into the sheet if that's what you want."
-          ],
-          "callout": {
-            "label": "Say what you want",
-            "text": "Natural words for the question + explicit output format = consistent, usable answers. 'Tell me X as a ranked list in column H.'"
+      },
+      {
+        "type": "engage",
+        "title": "Which prompt uses @ correctly?",
+        "prompt": "You want Gemini to write a client update based on yesterday's meeting notes doc. Best phrasing?",
+        "options": [
+          {
+            "text": "\"Write a client update based on the meeting.\"",
+            "correct": false,
+            "feedback": "No reference — Gemini has no idea which meeting or what was discussed."
+          },
+          {
+            "text": "Paste the full doc text into the prompt and say 'write an update.'",
+            "correct": false,
+            "feedback": "Works, but slower and less reliable than @. And doesn't update if you edit the doc."
+          },
+          {
+            "text": "\"Based on @Client-Meeting-Notes-2026-04-22, draft a 4-sentence update email to the client covering the three decisions.\"",
+            "correct": true,
+            "feedback": "Clear reference, clear format, clear focus. This is the pattern to copy."
           }
-        },
-        {
-          "type": "engage",
-          "title": "Better phrasing",
-          "prompt": "You have a 500-row sales sheet with columns for rep, region, deal size, and close date. You want top performers. Best ask?",
-          "options": [
-            {
-              "text": "\"Who's best?\"",
-              "correct": false,
-              "feedback": "Too vague. Gemini has to guess at 'best' — deal count? revenue? win rate?"
-            },
-            {
-              "text": "\"Rank reps by total deal size for deals closed in Q1 2026. Return a table with rep name and total, top 10 only.\"",
-              "correct": true,
-              "feedback": "Clear fields, clear metric, clear time range, clear format. This is the pattern."
-            },
-            {
-              "text": "\"Show me sales.\"",
-              "correct": false,
-              "feedback": "No metric, no format, no filter. You'll get something, but not what you want."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "When asking Gemini to analyze a sheet, the most reliable prompt structure is:",
-          "options": [
-            { "text": "[Question] only.", "correct": false },
-            { "text": "[What to analyze] + [what filter/time range] + [what format of output].", "correct": true },
-            { "text": "[Cell address].", "correct": false },
-            { "text": "[Formula name].", "correct": false }
-          ],
-          "answerNote": "Three ingredients — analysis, filter, format — make the difference between useful output and 'meh.'"
-        }
-      ]
-    },
-    "204-0-2": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 0,
-      "lessonIdx": 2,
-      "moduleName": "Gemini in Sheets basics",
-      "lessonIndex": 3,
-      "totalInModule": 4,
-      "title": "Generating tables from a prompt",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Generating tables from a prompt",
-          "body": [
-            "You can go the other direction too — ask Gemini to build a table from nothing. 'Create a 5-column tracker for Q3 marketing campaigns with: campaign name, channel, budget, owner, start date, status (dropdown).' Gemini drafts the structure, including headers and dropdown values.",
-            "Insert it with 'add this to the sheet starting at A1' (or wherever). Gemini writes the headers, sets up formatting, and drops in a couple example rows if you ask. Not production-ready, but an excellent starting scaffold — maybe 10 minutes of setup in 20 seconds.",
-            "Where this shines: intake forms, basic CRMs, content calendars, tracking dashboards. Anywhere you'd otherwise start by drawing a table in your head and typing headers one by one. Let Gemini make the skeleton; you fill in the real rows."
-          ],
-          "callout": {
-            "label": "Where it's best",
-            "text": "New tracker / form / simple dashboard? Describe the columns and let Gemini generate it. Spend your brain on the data, not the scaffold."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The main advantage of @-referencing a file over copy-pasting is:",
+        "options": [
+          {
+            "text": "It looks more professional.",
+            "correct": false
+          },
+          {
+            "text": "It's required by Google.",
+            "correct": false
+          },
+          {
+            "text": "Gemini reads the live, current version and the reference updates if you edit the file.",
+            "correct": true
+          },
+          {
+            "text": "It saves storage.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "What's Gemini best at generating?",
-          "prompt": "You need to stand up a new quarterly OKR tracker today. Best use of Gemini?",
-          "options": [
-            {
-              "text": "Have it generate the full list of your company's OKRs.",
-              "correct": false,
-              "feedback": "It can't know your real OKRs. That's your job."
-            },
-            {
-              "text": "Have it generate the table structure — columns, dropdowns, formatting — and then you fill in the actual OKRs.",
-              "correct": true,
-              "feedback": "Right. Scaffold from AI, substance from you. Fast and safe."
-            },
-            {
-              "text": "Generate everything and review later.",
-              "correct": false,
-              "feedback": "You'll end up with generic-sounding OKRs that aren't yours. Bad signal to your team."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "Gemini-generated tables in Sheets are best used as:",
-          "options": [
-            { "text": "Final production trackers.", "correct": false },
-            { "text": "Structural scaffolds — columns, dropdowns, basic formatting — that you then fill with real data.", "correct": true },
-            { "text": "Reports.", "correct": false },
-            { "text": "Historical archives.", "correct": false }
-          ],
-          "answerNote": "Structure from AI, substance from you. That split scales."
+        ],
+        "answerNote": "Live reference = always-current context. Copy-paste = a frozen snapshot that goes stale."
+      }
+    ]
+  },
+  "203-2-1": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 2,
+    "lessonIdx": 1,
+    "moduleName": "Prompting Gemini well",
+    "lessonIndex": 2,
+    "totalInModule": 5,
+    "title": "Multimodal: images, PDFs, screenshots",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Multimodal: images, PDFs, screenshots",
+        "body": [
+          "Gemini reads pictures. Drop a screenshot of an error message into the chat and ask 'what's going on here and how do I fix it.' Paste a photo of a whiteboard and ask Gemini to transcribe the scribbled diagram as a structured list. Upload a PDF invoice and ask for a summary with total, vendor, and due date extracted.",
+          "This is called multimodal — one model, multiple input types. Good uses: reading charts in screenshots, pulling data from receipts, summarizing photographed documents, decoding UI bugs, translating text on signs or menus in photos.",
+          "Limits. Small text in blurry images fails. Complex charts with dense data often miss nuances. Don't use Gemini as a source of truth when the numbers really matter — always verify extracted data against the source. Good for triage and drafting, not for final accounting."
+        ],
+        "callout": {
+          "label": "Best use cases",
+          "text": "Screenshots → structured output. Photos of whiteboards → text. PDFs → summaries + key-field extraction. All 10x faster than retyping."
         }
-      ]
-    },
-    "204-0-3": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 0,
-      "lessonIdx": 3,
-      "moduleName": "Gemini in Sheets basics",
-      "lessonIndex": 4,
-      "totalInModule": 4,
-      "title": "Reading AI-generated explanations",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Reading AI-generated explanations",
-          "body": [
-            "When Gemini generates a formula, it usually includes a plain-English explanation. Don't skip it. The explanation tells you what the formula is doing, what cells it's referencing, and what happens if your data changes shape. That last part matters — will this break if you add a column?",
-            "Example. You ask for a formula and Gemini returns =ARRAYFORMULA(IF(B2:B=\"closed-won\", D2:D, 0)). The explanation says 'this returns the deal value in column D for every row where column B is \"closed-won,\" and 0 otherwise, for the full column range.' Now you know: adding rows = fine. Renaming the status column = will break.",
-            "If there's no explanation, ask for one. 'Explain this formula step by step' or 'walk me through what this does for row 5.' Five seconds of explanation saves fifty minutes of debugging when a column moves."
-          ],
-          "callout": {
-            "label": "The rule",
-            "text": "Never paste a Gemini formula you don't understand. Read the explanation first, or ask for one."
+      },
+      {
+        "type": "engage",
+        "title": "The right tool for a scanned invoice",
+        "prompt": "A vendor emailed you a scanned PDF invoice. You need the vendor name, total, and due date in a spreadsheet row. Best approach?",
+        "options": [
+          {
+            "text": "Upload the PDF to Gemini, ask for vendor, total, and due date in a 'vendor | total | due' format, then paste into your sheet.",
+            "correct": true,
+            "feedback": "30 seconds vs. 3 minutes. Just verify the number against the PDF before filing."
+          },
+          {
+            "text": "Manually read and type it into the sheet.",
+            "correct": false,
+            "feedback": "Works, but slow and error-prone when you're doing 20 a day."
+          },
+          {
+            "text": "Forward it to accounting and wait.",
+            "correct": false,
+            "feedback": "Solves your day but not your workflow. Gemini lets you handle this yourself."
           }
-        },
-        {
-          "type": "engage",
-          "title": "Ship it or ask?",
-          "prompt": "Gemini generates a QUERY formula that looks complicated but returns the right answer on the sample data. What now?",
-          "options": [
-            {
-              "text": "Ship it — it works.",
-              "correct": false,
-              "feedback": "Works today on this data. Fails silently tomorrow when the data shape changes, and you won't know why."
-            },
-            {
-              "text": "Ask Gemini to explain what each part of the formula does and when it might break, then document at least the key dependencies.",
-              "correct": true,
-              "feedback": "30 seconds now, hours saved later. Especially valuable for formulas that go into shared or recurring sheets."
-            },
-            {
-              "text": "Rewrite it yourself without using Gemini.",
-              "correct": false,
-              "feedback": "Wastes the work Gemini already did. Understand it, don't redo it."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The highest-value habit when accepting a Gemini-generated formula is:",
-          "options": [
-            { "text": "Running it against the sample data.", "correct": false },
-            { "text": "Reading or asking for a plain-English explanation before pasting — so you know what it does and what breaks it.", "correct": true },
-            { "text": "Changing the font color.", "correct": false },
-            { "text": "Adding a comment.", "correct": false }
-          ],
-          "answerNote": "Understand first, paste second. AI formulas that are shipped without comprehension become silent time bombs."
-        }
-      ]
-    },
-    "204-1-0": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 1,
-      "lessonIdx": 0,
-      "moduleName": "Cleaning & analysis",
-      "lessonIndex": 1,
-      "totalInModule": 4,
-      "title": "Normalizing messy data",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Normalizing messy data",
-          "body": [
-            "Real sheets are messy. Names formatted three different ways, dates as strings, phone numbers with and without dashes, state names mixed with codes. Gemini handles this in plain English. 'Standardize column B — full names in Title Case, no extra spaces.' 'Convert column D to ISO dates (YYYY-MM-DD).' 'Normalize column F to 2-letter state codes.'",
-            "It works on ambiguous inputs too. A column with 'NY,' 'New York,' 'new york city,' and 'n.y.' becomes 'NY' across the board. Gemini is reliable on the common cases; give it a visual scan when done, especially for entries that weren't obvious (foreign cities, ambiguous abbreviations).",
-            "When the transformation is complex, ask Gemini to do it in a new column instead of overwriting. You keep the raw column for reference and a clean column for use. Gemini will typically suggest this pattern anyway — take it."
-          ],
-          "callout": {
-            "label": "Cleaning habit",
-            "text": "Transform into a new column, not in place. Keep the raw. Faster to trust, easier to fix if Gemini mis-guesses something."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "When extracting data from images with Gemini, you should always:",
+        "options": [
+          {
+            "text": "Trust the output completely.",
+            "correct": false
+          },
+          {
+            "text": "Use only Gemini Ultra.",
+            "correct": false
+          },
+          {
+            "text": "Spot-check extracted numbers and names against the original image before using them in anything that matters.",
+            "correct": true
+          },
+          {
+            "text": "Convert the image to black and white first.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "Where do you put the clean data?",
-          "prompt": "Your raw column has inconsistent date formats. You ask Gemini to standardize. Where should the clean version go?",
-          "options": [
-            {
-              "text": "Overwrite the raw column.",
-              "correct": false,
-              "feedback": "You lose the original. If Gemini gets one wrong, you have no way to trace back."
-            },
-            {
-              "text": "A new adjacent column — raw in A, clean in B.",
-              "correct": true,
-              "feedback": "Right. Keeps the original as the source of truth; clean column is for consumption."
-            },
-            {
-              "text": "A new sheet entirely.",
-              "correct": false,
-              "feedback": "Sometimes appropriate but usually overkill. Side-by-side is faster to scan."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The biggest risk with AI-driven data cleaning is:",
-          "options": [
-            { "text": "It's slow.", "correct": false },
-            { "text": "Silent mis-guesses on ambiguous rows (abbreviations, foreign names) that look plausible but are wrong.", "correct": true },
-            { "text": "It always fails loudly.", "correct": false },
-            { "text": "It changes font colors.", "correct": false }
-          ],
-          "answerNote": "Plausible-but-wrong is the whole danger. Keep the raw column, spot-check the edge cases, trust the common ones."
+        ],
+        "answerNote": "Good for triage. Always verify before the number or name enters a contract, a spreadsheet total, or an external email."
+      }
+    ]
+  },
+  "203-2-2": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 2,
+    "lessonIdx": 2,
+    "moduleName": "Prompting Gemini well",
+    "lessonIndex": 3,
+    "totalInModule": 5,
+    "title": "Iterating: regenerate & compare",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Iterating: regenerate & compare",
+        "body": [
+          "The first answer is rarely the best answer. Gemini has two iteration tools: regenerate and 'show drafts.' Regenerate gives you a fresh attempt at the same prompt. Show drafts (in the chat, via the three-dot menu on the response) gives you 2–3 alternate versions side by side — pick the one closest to what you wanted.",
+          "A better technique than blind regeneration is targeted refinement. Don't just ask again — tell Gemini what was wrong. 'This is too formal — soften it.' 'The middle paragraph is off-topic; drop it.' 'Shorter, and don't start with \"I hope you're well.\"' Each refinement gets closer to the version you'd have written yourself.",
+          "Know when to cut losses. If after three rounds of refinement the answer still isn't right, start a fresh conversation with a better prompt. Don't keep fighting with a bad first attempt — Gemini can get stuck in its own context."
+        ],
+        "callout": {
+          "label": "The 3-round rule",
+          "text": "If three rounds of refinement haven't gotten you there, start over with a sharper prompt. Don't drag a stuck conversation to the finish line."
         }
-      ]
-    },
-    "204-1-1": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 1,
-      "lessonIdx": 1,
-      "moduleName": "Cleaning & analysis",
-      "lessonIndex": 2,
-      "totalInModule": 4,
-      "title": "Natural-language filters & sorts",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Natural-language filters & sorts",
-          "body": [
-            "Instead of building filter views by hand, describe what you want. 'Show me rows where deal size is above $50k and status is not closed-lost.' Gemini either gives you a FILTER or QUERY formula you can paste into a new tab, or applies a filter view directly — depends on your permission level and the sheet structure.",
-            "Multi-condition sorts are just as easy. 'Sort by region, then descending by MRR, then by account name.' Gemini sets it up. Where it's useful: stakeholder reviews, where you need a specific cut of the data for a specific meeting, then revert to the raw view.",
-            "For recurring filters (you look at the same cut every Monday), save the resulting formula or filter view. Gemini can regenerate on demand, but a saved view is one click the next time. Reserve AI for new cuts you haven't done before."
-          ],
-          "callout": {
-            "label": "When AI beats manual filters",
-            "text": "Complex, multi-condition, one-off asks. Stuff you'd spend 5 minutes clicking through filter dialogs to set up."
+      },
+      {
+        "type": "engage",
+        "title": "The response isn't right. What next?",
+        "prompt": "Gemini's first draft is close but the tone is too stiff. Best next move?",
+        "options": [
+          {
+            "text": "Give up and write it yourself.",
+            "correct": false,
+            "feedback": "Sometimes the right call, but not the first move. Try one sharp refinement first."
+          },
+          {
+            "text": "Tell Gemini specifically: 'soften the tone — warmer, more like a colleague than a corporate memo.'",
+            "correct": true,
+            "feedback": "Targeted refinement beats random regeneration every time."
+          },
+          {
+            "text": "Regenerate and hope.",
+            "correct": false,
+            "feedback": "You might get lucky, but you'll probably get a slightly different version of the same wrong tone."
           }
-        },
-        {
-          "type": "engage",
-          "title": "Where does Gemini help most?",
-          "prompt": "You need to answer: 'Which enterprise accounts in EMEA had an NPS score over 8 AND were flagged for expansion in Q2?' Best use of Gemini?",
-          "options": [
-            {
-              "text": "Ask Gemini to produce a QUERY or FILTER formula capturing all conditions and the output format you need.",
-              "correct": true,
-              "feedback": "Right. Multi-condition logical asks are exactly where natural-language filtering beats clicking through menus."
-            },
-            {
-              "text": "Build nested AutoFilters by hand.",
-              "correct": false,
-              "feedback": "Works but you'll spend 5-10 minutes setting it up. Gemini does it in 20 seconds."
-            },
-            {
-              "text": "Export to CSV and use Python.",
-              "correct": false,
-              "feedback": "Way overkill for a sheet-level question."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The kind of filter Gemini is best at is:",
-          "options": [
-            { "text": "One-column one-value.", "correct": false },
-            { "text": "Multi-condition, multi-column, with sort order — the kind that takes 5 minutes to set up manually.", "correct": true },
-            { "text": "No filter.", "correct": false },
-            { "text": "Only numeric.", "correct": false }
-          ],
-          "answerNote": "Complex asks are where the natural-language interface actually beats the UI. Simple one-off filters, just use the menus."
-        }
-      ]
-    },
-    "204-1-2": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 1,
-      "lessonIdx": 2,
-      "moduleName": "Cleaning & analysis",
-      "lessonIndex": 3,
-      "totalInModule": 4,
-      "title": "Pivot tables via Gemini",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Pivot tables via Gemini",
-          "body": [
-            "Pivot tables are powerful and their menu is confusing. Gemini shortcuts both. 'Create a pivot table on the current sheet: rows by region, columns by quarter, values sum of revenue.' Gemini creates it on a new tab, ready to use.",
-            "Follow-ups chain naturally. 'Now add a column for average deal size.' 'Filter to customers with more than 3 renewals.' 'Sort descending by Q4 revenue.' Each turn refines the pivot without you touching the UI.",
-            "A practical trick: if the pivot looks almost right but one grouping is off, don't keep prompting — just grab the pivot options panel that Gemini placed next to it and tweak the one field by hand. Use Gemini to build the scaffold, finger controls to refine the detail."
-          ],
-          "callout": {
-            "label": "The hybrid play",
-            "text": "Gemini to build the pivot, UI to refine it. Talking to AI for every small tweak is slower than one click in the right menu."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "If you've refined the same prompt 3+ times and it's still wrong, the smart move is:",
+        "options": [
+          {
+            "text": "Escalate to support.",
+            "correct": false
+          },
+          {
+            "text": "Wait an hour and try again.",
+            "correct": false
+          },
+          {
+            "text": "Keep refining.",
+            "correct": false
+          },
+          {
+            "text": "Start a new chat with a tighter initial prompt — the old conversation may be stuck in its own wrong context.",
+            "correct": true
           }
-        },
-        {
-          "type": "engage",
-          "title": "When to switch from Gemini to the UI",
-          "prompt": "Your pivot is 90% right but you want to change the column-grouping from month to quarter. Best next move?",
-          "options": [
-            {
-              "text": "Ask Gemini to regenerate it with quarters.",
-              "correct": false,
-              "feedback": "It'll work but you'll rebuild the whole pivot just to swap one field. Slower than the UI."
-            },
-            {
-              "text": "Open the pivot options panel and change the date grouping field to 'quarter' in one click.",
-              "correct": true,
-              "feedback": "Right. AI for the scaffold, direct UI for small tweaks. That's the efficient loop."
-            },
-            {
-              "text": "Delete the pivot and start over.",
-              "correct": false,
-              "feedback": "Worst option. You lose all the setup for no reason."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The best way to use Gemini with pivot tables is:",
-          "options": [
-            { "text": "Talk to Gemini for every adjustment.", "correct": false },
-            { "text": "Use Gemini to create the initial pivot and major restructurings; use the pivot options panel for small tweaks.", "correct": true },
-            { "text": "Avoid pivots entirely.", "correct": false },
-            { "text": "Always regenerate from scratch.", "correct": false }
-          ],
-          "answerNote": "Big structure from AI, small changes from the UI. Match the tool to the size of the edit."
+        ],
+        "answerNote": "Bad context compounds. A fresh, better prompt is faster than fighting a stuck conversation."
+      }
+    ]
+  },
+  "203-2-3": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 2,
+    "lessonIdx": 3,
+    "moduleName": "Prompting Gemini well",
+    "lessonIndex": 4,
+    "totalInModule": 5,
+    "title": "When Gemini beats general AI",
+    "steps": [
+      {
+        "type": "read",
+        "title": "When Gemini beats general AI",
+        "body": [
+          "Gemini beats a generic chatbot (ChatGPT, Claude) whenever the answer depends on your Workspace context. 'What did we agree with Acme on their renewal' only Gemini can answer from your actual Gmail and Drive. 'Draft an agenda from last week's offsite notes' same story.",
+          "It also wins on any task where the output needs to go back into Workspace. Writing a doc, generating a slide deck, filling a sheet — Gemini doesn't need you to copy-paste the result, it writes in place.",
+          "Where it doesn't win: pure reasoning, coding help outside your repo, obscure knowledge, creative writing at the bleeding edge. ChatGPT and Claude are fine — sometimes better — for generic tasks. Gemini's moat is your data, not its raw intelligence."
+        ],
+        "callout": {
+          "label": "The fork in the road",
+          "text": "Does this task need YOUR files, emails, or calendar? → Gemini. Is it a generic research/creative/coding task? → ChatGPT or Claude is fine."
         }
-      ]
-    },
-    "204-1-3": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 1,
-      "lessonIdx": 3,
-      "moduleName": "Cleaning & analysis",
-      "lessonIndex": 4,
-      "totalInModule": 4,
-      "title": "Charts from prompts",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Charts from prompts",
-          "body": [
-            "Ask Gemini for a chart and describe what you want: 'line chart of monthly revenue for 2026, with a trend line.' 'Bar chart of top 10 reps by closed-won, with each rep's quota as a dashed reference line.' Gemini inserts the chart, usually on the current tab near the source data.",
-            "Styling is where Gemini is weakest. Defaults are fine but not beautiful — think Google's built-in chart look. If you need a polished chart for a board deck, plan to hand-tune colors, labels, and axis formatting yourself. Or generate the chart, then ask Gemini for suggested improvements, one at a time.",
-            "When the prompt is ambiguous, Gemini will guess at chart type. Say what you want: line, bar, stacked bar, scatter, pie, sparkline. Ambiguity often yields a column chart when you wanted a line — specify to save a round trip."
-          ],
-          "callout": {
-            "label": "Be explicit",
-            "text": "Name the chart type. Name the reference lines. Name the labels. Ambiguity guessed-at wastes a round trip."
+      },
+      {
+        "type": "engage",
+        "title": "Gemini or ChatGPT?",
+        "prompt": "Task: 'Research three competitors we don't have internal notes on and summarize their positioning.' Best tool?",
+        "options": [
+          {
+            "text": "Always Gemini.",
+            "correct": false,
+            "feedback": "Tool choice should match the task. One-size-fits-all thinking leaves performance on the table."
+          },
+          {
+            "text": "ChatGPT or Claude — generic research tasks don't need Workspace integration.",
+            "correct": true,
+            "feedback": "Right. Use Gemini when your data matters; use general tools for generic knowledge work."
+          },
+          {
+            "text": "Gemini — it's the Google tool.",
+            "correct": false,
+            "feedback": "For generic research with no Workspace context, Gemini has no moat."
           }
-        },
-        {
-          "type": "engage",
-          "title": "The chart came back wrong — what first?",
-          "prompt": "You asked for a trend chart; Gemini produced a column chart. Best next move?",
-          "options": [
-            {
-              "text": "Regenerate and hope.",
-              "correct": false,
-              "feedback": "Rarely works. Be specific about what you want."
-            },
-            {
-              "text": "Tell Gemini: 'change to a line chart with a linear trend line; keep the same data and axes.'",
-              "correct": true,
-              "feedback": "Right. Targeted correction beats random regeneration."
-            },
-            {
-              "text": "Delete the chart and make one by hand.",
-              "correct": false,
-              "feedback": "You leave AI's value on the table. Targeted correction is faster."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The biggest weakness of Gemini-generated charts is:",
-          "options": [
-            { "text": "Wrong data.", "correct": false },
-            { "text": "Default styling — fine for internal use, not polished enough for external-facing decks without hand-tuning.", "correct": true },
-            { "text": "Insane colors.", "correct": false },
-            { "text": "Always pie charts.", "correct": false }
-          ],
-          "answerNote": "Structure free, polish earned. For board-grade visuals, plan to tune the labels, colors, and axes yourself."
-        }
-      ]
-    },
-    "204-2-0": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 2,
-      "lessonIdx": 0,
-      "moduleName": "Pro moves",
-      "lessonIndex": 1,
-      "totalInModule": 4,
-      "title": "Apps Script with Gemini",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Apps Script with Gemini",
-          "body": [
-            "Apps Script is Google's scripting language for Workspace — lightweight JavaScript that automates Sheets, Docs, Gmail, and more. You don't need to be a programmer. You describe what you want in the Gemini side panel, it produces the code, you paste it into Tools → Apps Script and run it.",
-            "Good starter asks. 'Write an Apps Script that sends me an email every Monday at 9am with a summary of the 'pipeline' tab.' 'When someone adds a row to this sheet, auto-fill column G with today's date.' 'Move any row where status = \"closed\" to a separate tab called Archive.'",
-            "Always read Gemini's explanation before running the script. Scripts have write access to your data and can send emails on your behalf — harmless bugs become embarrassing, real bugs become data-loss. Test on a copy of the sheet first, not production data."
-          ],
-          "callout": {
-            "label": "Safety rule",
-            "text": "Test every AI-generated Apps Script on a copy first. It has real write access to your data. Bugs here have real consequences."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "Gemini's clearest moat is:",
+        "options": [
+          {
+            "text": "It's free.",
+            "correct": false
+          },
+          {
+            "text": "Smarter base model.",
+            "correct": false
+          },
+          {
+            "text": "Nicer UI.",
+            "correct": false
+          },
+          {
+            "text": "Direct, authenticated access to your own emails, docs, sheets, meetings, and Drive.",
+            "correct": true
           }
-        },
-        {
-          "type": "engage",
-          "title": "The right starter automation",
-          "prompt": "Your team manually copies 'closed' deals to an archive tab every week. Best use of Gemini + Apps Script?",
-          "options": [
-            {
-              "text": "Keep doing it manually.",
-              "correct": false,
-              "feedback": "Exactly the kind of task this automates away."
-            },
-            {
-              "text": "Ask Gemini to write an Apps Script that moves rows to Archive when status = 'closed,' test it on a copy of the sheet, then deploy.",
-              "correct": true,
-              "feedback": "Right. Describe the rule, test the script, then run it on real data. One-time setup, permanent time save."
-            },
-            {
-              "text": "Ask Gemini to delete the closed deals.",
-              "correct": false,
-              "feedback": "Never. Archive, never delete. Data that looks useless today often matters tomorrow."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "Before running a Gemini-generated Apps Script on a production sheet, you should:",
-          "options": [
-            { "text": "Nothing — it's AI, it's correct.", "correct": false },
-            { "text": "Read the explanation, test on a copy of the sheet, verify the outcome, then deploy to production.", "correct": true },
-            { "text": "Email it to IT for review.", "correct": false },
-            { "text": "Run it at midnight.", "correct": false }
-          ],
-          "answerNote": "Scripts have write access. Test on a copy is a non-negotiable one-minute habit that prevents disasters."
+        ],
+        "answerNote": "Raw intelligence is a commodity across the big models. Your data is the differentiator, and Gemini is wired to yours."
+      }
+    ]
+  },
+  "203-2-4": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 2,
+    "lessonIdx": 4,
+    "moduleName": "Prompting Gemini well",
+    "lessonIndex": 5,
+    "totalInModule": 5,
+    "title": "Gemini's real limits",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Gemini's real limits",
+        "body": [
+          "Gemini hallucinates. Confidently and regularly. It will cite studies that don't exist, quote people who didn't say it, and invent technical specifications. The failure mode is always the same: plausible-sounding wrong. Every fact, every name, every number you use externally — verify.",
+          "Gemini has a knowledge cutoff for non-Workspace info. Recent world events, new product releases, this week's earnings — unless you explicitly ask it to search the web (or your Drive), it's answering from training data that's weeks or months old.",
+          "Gemini doesn't see your entire Workspace. Admin settings, per-user permissions, and plan limits all gate what it can read. If it says 'I don't have access to that file' it may be real, not a bug. And anything in a private personal account won't show up at all — Gemini respects the account boundary."
+        ],
+        "callout": {
+          "label": "The posture",
+          "text": "Trust Gemini for structure and speed. Verify it for facts, names, numbers, and quotes. That posture alone prevents 95% of problems."
         }
-      ]
-    },
-    "204-2-1": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 2,
-      "lessonIdx": 1,
-      "moduleName": "Pro moves",
-      "lessonIndex": 2,
-      "totalInModule": 4,
-      "title": "Advanced formulas & array logic",
-      "steps": [
-        {
-          "type": "read",
-          "title": "Advanced formulas & array logic",
-          "body": [
-            "Gemini is extremely good at the formulas most people avoid. QUERY with nested conditions. ARRAYFORMULA to apply a formula to an entire column in one cell. REGEXEXTRACT for pulling substrings out of messy text. LAMBDA for defining reusable functions inside a sheet. Describe the result you want; Gemini writes the formula.",
-            "A useful pattern: 'generate an ARRAYFORMULA in cell C2 that, for every row, returns the deal value from column D if status in column B is \"closed-won\" and the close date in column E is in 2026.' Gemini writes it, tests it, and explains it. Faster than you could construct the syntax.",
-            "The win isn't that Gemini writes formulas you couldn't write — it's that it writes them in 10 seconds instead of you spending 10 minutes rifling through docs and nesting parentheses. Reserve your brain for the business logic; let Gemini handle the syntax."
-          ],
-          "callout": {
-            "label": "Brain vs syntax",
-            "text": "Business logic is hard and human. Syntax is mechanical and AI-solvable. Split the work accordingly."
+      },
+      {
+        "type": "engage",
+        "title": "Which answer do you trust most?",
+        "prompt": "Gemini gives you these three pieces of information. Which should you verify before using?",
+        "options": [
+          {
+            "text": "A grammatical correction to your draft.",
+            "correct": false,
+            "feedback": "Grammar is low-stakes and easy to spot-check. Not the hallucination risk."
+          },
+          {
+            "text": "A specific statistic with a cited source (\"42% of enterprises use AI, per Gartner 2026\").",
+            "correct": true,
+            "feedback": "Exactly the kind of thing that's most often hallucinated. Check the source before quoting."
+          },
+          {
+            "text": "A rough outline structure for your presentation.",
+            "correct": false,
+            "feedback": "Structure is low-risk — worst case you adjust it. Verify the facts inside it, not the outline itself."
           }
-        },
-        {
-          "type": "engage",
-          "title": "The right task to delegate",
-          "prompt": "You need a formula that pulls the email-domain from each row's email column (e.g. 'acme.com' from 'alice@acme.com'). Best approach?",
-          "options": [
-            {
-              "text": "Search online for a REGEXEXTRACT formula pattern.",
-              "correct": false,
-              "feedback": "Works but slow and you copy someone else's formula that may or may not fit your data."
-            },
-            {
-              "text": "Ask Gemini: 'in column C, ARRAYFORMULA that extracts the domain (everything after @) from the email in column B.' Review, paste, verify on two rows.",
-              "correct": true,
-              "feedback": "30 seconds. Gemini handles syntax; you verify the result matches expectations."
-            },
-            {
-              "text": "Do it by hand, one cell at a time.",
-              "correct": false,
-              "feedback": "Fine for 5 rows, impossible for 5,000. Delegate the syntax."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "The highest-leverage category of Sheets work to delegate to Gemini is:",
-          "options": [
-            { "text": "Font selection.", "correct": false },
-            { "text": "Complex formula construction (QUERY, ARRAYFORMULA, REGEX, LAMBDA) where syntax is mechanical but error-prone.", "correct": true },
-            { "text": "Chart colors.", "correct": false },
-            { "text": "Row height.", "correct": false }
-          ],
-          "answerNote": "Syntax is the sweet spot. Your judgment on the business question; AI's speed on the formula. Biggest time-saver in this course."
-        }
-      ]
-    },
-    "204-2-2": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 2,
-      "lessonIdx": 2,
-      "moduleName": "Pro moves",
-      "lessonIndex": 3,
-      "totalInModule": 4,
-      "title": "AI math gotchas + verification",
-      "steps": [
-        {
-          "type": "read",
-          "title": "AI math gotchas + verification",
-          "body": [
-            "Gemini does math, and sometimes gets it wrong — especially when asked to reason in the chat rather than via a formula. If you ask 'what's the total revenue in column D,' Gemini may answer in prose using arithmetic it did in its head. That arithmetic is not always reliable.",
-            "The fix: whenever the answer is a number that matters, insist on a formula, not a reasoned answer. 'Give me a SUM formula for column D' always returns a verifiable cell reference. 'What's the total' may return a number Gemini computed incorrectly.",
-            "Same principle for percentages, growth rates, averages, medians. If it matters in a report, it goes through a formula. Gemini's chat math is fine for rough estimates, not for anything you're presenting, signing, or billing against."
-          ],
-          "callout": {
-            "label": "Cardinal rule",
-            "text": "Important number? It comes from a formula, not a chat answer. Always."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The three things you must always verify in Gemini's output are:",
+        "options": [
+          {
+            "text": "Facts, names, and numbers — especially any specific statistic, citation, or proper noun.",
+            "correct": true
+          },
+          {
+            "text": "The length.",
+            "correct": false
+          },
+          {
+            "text": "Spelling, grammar, and punctuation.",
+            "correct": false
+          },
+          {
+            "text": "Formatting.",
+            "correct": false
           }
-        },
-        {
-          "type": "engage",
-          "title": "Which answer do you trust?",
-          "prompt": "You asked Gemini for Q3 pipeline totals. Which response do you trust more?",
-          "options": [
-            {
-              "text": "A chat reply saying \"The Q3 total is $2,847,300.\"",
-              "correct": false,
-              "feedback": "Could be right, could be Gemini doing arithmetic in its head. You have no way to verify without recomputing."
-            },
-            {
-              "text": "A formula like =SUMIF(B:B,\"Q3\",D:D) inserted in a cell, returning $2,847,300.",
-              "correct": true,
-              "feedback": "Right. The formula is auditable — you see the cell range, you see the logic. The number is reproducible."
-            },
-            {
-              "text": "They're equivalent.",
-              "correct": false,
-              "feedback": "Feels equivalent. Isn't. Formula = verifiable; chat = trust-me."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "When you need a number from Gemini that will end up in a report or meeting, you should:",
-          "options": [
-            { "text": "Trust the chat output.", "correct": false },
-            { "text": "Always get it via a formula in a cell so the math is verifiable and reproducible.", "correct": true },
-            { "text": "Run it twice and average the answers.", "correct": false },
-            { "text": "Round to the nearest thousand.", "correct": false }
-          ],
-          "answerNote": "Verifiable beats confident. A formula in a cell you can audit; a chat number you cannot."
+        ],
+        "answerNote": "Facts, names, numbers. If any of those are wrong in an external-facing document, you pay the cost, not the AI."
+      }
+    ]
+  },
+  "203-3-0": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 3,
+    "lessonIdx": 0,
+    "moduleName": "Safe at work",
+    "lessonIndex": 1,
+    "totalInModule": 5,
+    "title": "Personal vs Workspace accounts",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Personal vs Workspace accounts",
+        "body": [
+          "You probably have two Google accounts: your personal gmail.com and your work Workspace account (@yourcompany.com). They're separate universes with separate rules. Gemini behaves differently in each.",
+          "Personal account Gemini (free or paid via Google One AI) can use your chats to improve Google's models unless you turn off activity saving. Nothing you type should be considered private. Fine for general questions, bad for anything confidential.",
+          "Workspace Gemini (on a paid Business/Enterprise plan with Gemini enabled) has contractual protections: your prompts and data are not used to train Google's models, your admin controls data access, and outputs are logged per your org's retention policy. It's the right place to do work."
+        ],
+        "callout": {
+          "label": "The one rule",
+          "text": "Work tasks? Use your Workspace account. Personal curiosity? Use your personal account. Don't mix — especially don't paste work data into personal Gemini."
         }
-      ]
-    },
-    "204-2-3": {
-      "courseId": 204,
-      "courseCode": "GEM·SHT",
-      "suite": "plus",
-      "moduleIdx": 2,
-      "lessonIdx": 3,
-      "moduleName": "Pro moves",
-      "lessonIndex": 4,
-      "totalInModule": 4,
-      "title": "Certification quiz",
-      "steps": [
-        {
-          "type": "read",
-          "title": "You've reached the end.",
-          "body": [
-            "Twelve lessons down. You can now navigate the Gemini side panel in Sheets, describe asks in plain English, generate tables and formulas, clean messy data, build pivots and charts, and automate workflows with Apps Script — all without writing a line of syntax by hand.",
-            "The through-line of this course: Gemini handles the mechanics (syntax, structure, scaffolds) while you handle the judgment (which metric, which filter, which chart, whether the answer makes sense). Together it's 10x faster than either alone.",
-            "One recap engage-check, then the certification quiz."
-          ],
-          "callout": {
-            "label": "Core habit",
-            "text": "Ask in plain English. Get the formula, chart, or script. Read the explanation. Verify on 2-3 rows. Ship."
+      },
+      {
+        "type": "engage",
+        "title": "Where do you ask about a client deal?",
+        "prompt": "You want Gemini to help you plan talking points for a client call about their renewal. Which account do you use?",
+        "options": [
+          {
+            "text": "Your work Workspace account, where prompts are covered by your company's data agreement with Google.",
+            "correct": true,
+            "feedback": "Right. Work context → work account. Always."
+          },
+          {
+            "text": "Doesn't matter — they're the same tool.",
+            "correct": false,
+            "feedback": "It matters a lot. Data policy, retention, and training-usage rules differ between the two."
+          },
+          {
+            "text": "Your personal gmail.com account.",
+            "correct": false,
+            "feedback": "Major risk. Client information in a personal AI account may violate your company's data policy and your client's contract."
           }
-        },
-        {
-          "type": "engage",
-          "title": "The one habit that prevents disasters",
-          "prompt": "If you could make your team adopt one discipline from this course, which matters most?",
-          "options": [
-            {
-              "text": "Always use Gemini's side panel, never inline.",
-              "correct": false,
-              "feedback": "Both have their place. Not a universal rule."
-            },
-            {
-              "text": "Never trust a number from chat — always convert it to a verifiable formula in a cell, and test AI-generated scripts on a copy first.",
-              "correct": true,
-              "feedback": "Right. This single habit separates teams that scale AI safely from teams that get burned by silent errors."
-            },
-            {
-              "text": "Use Advanced only.",
-              "correct": false,
-              "feedback": "Plan choice is organizational, not a discipline."
-            }
-          ]
-        },
-        {
-          "type": "quiz",
-          "prompt": "Your one-line rule for Gemini inside Sheets is:",
-          "options": [
-            { "text": "Trust and ship.", "correct": false },
-            { "text": "Plain-English ask, read the explanation, verify against the source, ship — and never trust chat math for anything that ends in a report.", "correct": true },
-            { "text": "Only use it for cleaning data.", "correct": false },
-            { "text": "Ask twice, average the answers.", "correct": false }
-          ],
-          "answerNote": "The formula-not-chat rule alone prevents most embarrassing mistakes. That plus 'test scripts on copies' and you're good."
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The key difference between personal and Workspace Gemini is:",
+        "options": [
+          {
+            "text": "Only Workspace has image generation.",
+            "correct": false
+          },
+          {
+            "text": "Personal Gemini is prettier.",
+            "correct": false
+          },
+          {
+            "text": "They use different models.",
+            "correct": false
+          },
+          {
+            "text": "Workspace Gemini has contractual data protections (no training on your data, admin controls, retention); personal Gemini does not.",
+            "correct": true
+          }
+        ],
+        "answerNote": "Data treatment is the difference. For anything work-related, the work account is non-negotiable."
+      }
+    ]
+  },
+  "203-3-1": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 3,
+    "lessonIdx": 1,
+    "moduleName": "Safe at work",
+    "lessonIndex": 2,
+    "totalInModule": 5,
+    "title": "What IT admins can control",
+    "steps": [
+      {
+        "type": "read",
+        "title": "What IT admins can control",
+        "body": [
+          "Your Workspace admin has a dashboard of Gemini controls. They decide whether Gemini is turned on at all, which users or groups can use it, which features are enabled (image generation, web browsing, Gems), and how long conversations are retained.",
+          "Admins can also set data boundaries — for example, restricting which Drive folders Gemini can search, or blocking @-references to sensitive shared drives. If a feature seems missing, it's often policy, not a bug. Asking IT 'is this turned on for my account' is usually the first-line debugging question.",
+          "What admins typically can't see: the exact text of your individual prompts and answers, unless they've specifically enabled audit logging. Default settings preserve user privacy for normal activity; targeted audit requires a policy trigger or an investigation."
+        ],
+        "callout": {
+          "label": "Check before you blame",
+          "text": "Gemini acting 'broken'? Before filing a bug, ask IT whether the feature is enabled for your account. Most 'broken' is 'off by policy.'"
         }
-      ]
-    }
+      },
+      {
+        "type": "engage",
+        "title": "The @-reference button isn't there",
+        "prompt": "You try to @-reference a Drive file in a Gemini prompt but the @ picker shows nothing. What's the most likely reason?",
+        "options": [
+          {
+            "text": "Your Workspace admin has restricted Drive access for Gemini, or you're signed into a personal account without Workspace-level features.",
+            "correct": true,
+            "feedback": "Right. Admin policy or wrong-account is 90% of 'a feature is missing.'"
+          },
+          {
+            "text": "Gemini is in maintenance mode.",
+            "correct": false,
+            "feedback": "Unlikely and would be visible as a global banner."
+          },
+          {
+            "text": "Your browser is out of date.",
+            "correct": false,
+            "feedback": "Rarely the cause. Browser issues are usually visual, not feature-level."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The default level of visibility your admin has into your individual Gemini prompts is:",
+        "options": [
+          {
+            "text": "Generally limited; targeted audit is possible but not the default. They see aggregate usage, not your specific conversations.",
+            "correct": true
+          },
+          {
+            "text": "Nothing — fully private.",
+            "correct": false
+          },
+          {
+            "text": "Every prompt, in real time.",
+            "correct": false
+          },
+          {
+            "text": "Everything, forever.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Trust-but-verify applies to both directions. Admins set policy; they don't typically snoop on your chats without reason."
+      }
+    ]
+  },
+  "203-3-2": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 3,
+    "lessonIdx": 2,
+    "moduleName": "Safe at work",
+    "lessonIndex": 3,
+    "totalInModule": 5,
+    "title": "What not to paste into personal Gemini",
+    "steps": [
+      {
+        "type": "read",
+        "title": "What not to paste into personal Gemini",
+        "body": [
+          "Never paste customer data into personal Gemini. Customer names, emails, contract terms, health info, financial details — any of it. Even if the chat feels private, your activity history is part of the training signal unless you've disabled it, and your employer's contracts with customers almost certainly forbid it.",
+          "Don't paste internal strategy, pricing roadmaps, legal drafts, or anything under NDA. Even innocuous-seeming excerpts ('here's our Q3 planning doc, summarize it') can leak competitive info if activity saving is on or if a future training run ingests it.",
+          "The safe test: would you be comfortable if this prompt appeared in a competitor's email, a journalist's article, or a customer's inbox tomorrow? If no, don't paste it. Use work Gemini or don't use AI for this task."
+        ],
+        "callout": {
+          "label": "The paste test",
+          "text": "Before pasting into personal AI: 'would I be okay if this appeared in a competitor's email tomorrow?' No? Don't paste."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "What's paste-safe in personal Gemini?",
+        "prompt": "Which of these is safe to paste into personal (non-Workspace) Gemini for help?",
+        "options": [
+          {
+            "text": "A customer's support ticket to draft a reply.",
+            "correct": false,
+            "feedback": "Customer data. Use work Gemini; this is not a personal-account task."
+          },
+          {
+            "text": "Your company's Q3 internal memo.",
+            "correct": false,
+            "feedback": "Internal = confidential by default. Work account or nothing."
+          },
+          {
+            "text": "A public blog post you're editing for clarity.",
+            "correct": true,
+            "feedback": "Public material is fine. The post is already going to be world-readable anyway."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The line between 'fine to paste' and 'don't paste' in personal Gemini is:",
+        "options": [
+          {
+            "text": "Length of the text.",
+            "correct": false
+          },
+          {
+            "text": "Whether you're logged in.",
+            "correct": false
+          },
+          {
+            "text": "Whether the content is public / non-sensitive vs. internal, customer, or confidential.",
+            "correct": true
+          },
+          {
+            "text": "Whether the prompt contains names.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Public: fine. Internal or customer-touching: work account only. That's the whole rule."
+      }
+    ]
+  },
+  "203-3-3": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 3,
+    "lessonIdx": 3,
+    "moduleName": "Safe at work",
+    "lessonIndex": 4,
+    "totalInModule": 5,
+    "title": "When to escalate to IT",
+    "steps": [
+      {
+        "type": "read",
+        "title": "When to escalate to IT",
+        "body": [
+          "Most Gemini issues are user error or admin policy. Before filing a ticket, check: right account? Feature enabled? Tried a fresh conversation? Read the error message carefully? If the answer is yes to all and something still seems wrong, escalate.",
+          "Real escalation cases: Gemini returned content from a Drive folder you didn't know it had access to (possible permission misconfiguration), an output included someone else's data (serious), an error mentions rate limits or access controls (admin needs to adjust), or you accidentally pasted sensitive info and want it purged.",
+          "When you file the ticket, include: exact prompt, exact response or error, time, account you were using, and what you expected vs. what happened. 'Gemini is broken' gets the ticket deprioritized. Specifics get it fixed."
+        ],
+        "callout": {
+          "label": "Escalation checklist",
+          "text": "Account right? Feature on? Fresh chat? Specific error? If yes to all → ticket IT with: prompt, response, timestamp, account, expected behavior."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "Escalate or debug?",
+        "prompt": "Gemini just returned someone else's meeting notes when you asked about your own. What do you do first?",
+        "options": [
+          {
+            "text": "Close the tab and try again.",
+            "correct": false,
+            "feedback": "Possible cross-contamination is a security issue, not a 'retry' issue."
+          },
+          {
+            "text": "Send the notes to the right owner as a courtesy.",
+            "correct": false,
+            "feedback": "Well-intentioned but wrong. Propagating unauthorized content extends the exposure. IT handles this."
+          },
+          {
+            "text": "Screenshot the output, note the exact prompt and timestamp, then immediately escalate to IT as a potential access-control issue.",
+            "correct": true,
+            "feedback": "Right. Unauthorized data exposure is a 'file it now' situation. Preserve evidence, report fast."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "A good IT ticket for a Gemini issue always includes:",
+        "options": [
+          {
+            "text": "Exact prompt, exact response/error, timestamp, account used, and expected vs. actual behavior.",
+            "correct": true
+          },
+          {
+            "text": "A screenshot only.",
+            "correct": false
+          },
+          {
+            "text": "An apology.",
+            "correct": false
+          },
+          {
+            "text": "Nothing — just 'it's broken.'",
+            "correct": false
+          }
+        ],
+        "answerNote": "Specifics get the ticket resolved. Vague tickets go to the back of the queue."
+      }
+    ]
+  },
+  "203-3-4": {
+    "courseId": 203,
+    "courseCode": "GEM·101",
+    "suite": "plus",
+    "moduleIdx": 3,
+    "lessonIdx": 4,
+    "moduleName": "Safe at work",
+    "lessonIndex": 5,
+    "totalInModule": 5,
+    "title": "Certification quiz",
+    "steps": [
+      {
+        "type": "read",
+        "title": "You've reached the end.",
+        "body": [
+          "Twenty lessons done. You now know how Gemini fits into Workspace, where to find it in each app, how to prompt it for real output, and which rules keep you safe with company data.",
+          "The short summary: Gemini's superpower is your own data. Use @-references and the side panel to pull in files and context. Verify facts, names, and numbers before sending anything external. Keep work tasks in your work account. Escalate security or access issues fast.",
+          "One last quick check, then a certification quiz to lock it in."
+        ],
+        "callout": {
+          "label": "Ready?",
+          "text": "Next step: the certification quiz. 10 questions. Pass to earn your Gemini 101 certificate."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "One-line summary of Gemini 101",
+        "prompt": "If you had to tell a coworker the single most useful thing from this course, it would be:",
+        "options": [
+          {
+            "text": "\"The @-reference trick — it lets Gemini read your live files instead of making you copy-paste. Huge time-saver.\"",
+            "correct": true,
+            "feedback": "Exactly. @ is the single technique that distinguishes 'occasional Gemini user' from 'daily Gemini user.'"
+          },
+          {
+            "text": "\"Gemini uses a better model than ChatGPT.\"",
+            "correct": false,
+            "feedback": "Not really the point, and it's model-dependent."
+          },
+          {
+            "text": "\"Gemini is free.\"",
+            "correct": false,
+            "feedback": "Partly — but it's not the takeaway that changes how people work."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "Before you take the certification quiz, the safest attitude toward a Gemini output is:",
+        "options": [
+          {
+            "text": "Trust it and ship.",
+            "correct": false
+          },
+          {
+            "text": "Only trust numbered lists.",
+            "correct": false
+          },
+          {
+            "text": "Use its structure and speed, verify its facts, names, and numbers — every single time.",
+            "correct": true
+          },
+          {
+            "text": "Ignore it.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Structure free, facts earned. That posture serves you forever."
+      }
+    ]
+  },
+  "204-0-0": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 0,
+    "lessonIdx": 0,
+    "moduleName": "Gemini in Sheets basics",
+    "lessonIndex": 1,
+    "totalInModule": 4,
+    "title": "Opening the Gemini side panel",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Opening the Gemini side panel",
+        "body": [
+          "Open any Google Sheet with a Workspace account that has Gemini enabled. In the top-right corner, look for the four-point sparkle icon (Gemini). Click it. A side panel slides open — that's your chat with Gemini about this specific sheet.",
+          "The side panel already knows what sheet you're in. You don't need to describe it; you can just ask 'summarize this data' and Gemini reads the active tab. It sees your column headers, your data, and (to some extent) your formatting.",
+          "There's also inline help: on a blank cell, the sparkle option in the insert menu lets Gemini generate a formula or a value. Most of the power, though, is in the side panel — that's where you iterate, ask follow-ups, and work through multi-step analysis."
+        ],
+        "callout": {
+          "label": "Two entry points",
+          "text": "Side panel (sparkle icon, top-right) for chat + analysis. Inline sparkle in cells for one-off formulas and values."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "Side panel or inline?",
+        "prompt": "You want to generate a SUMIFS formula to total revenue for a specific region. Best starting point?",
+        "options": [
+          {
+            "text": "Open gemini.google.com in a new tab.",
+            "correct": false,
+            "feedback": "You lose the live sheet context. Slower and less accurate."
+          },
+          {
+            "text": "Inline sparkle in the target cell.",
+            "correct": true,
+            "feedback": "Right. One-shot formula generation is exactly what inline is designed for. Fast and contextual."
+          },
+          {
+            "text": "Open the side panel, describe the sheet in detail, then ask.",
+            "correct": false,
+            "feedback": "Overkill for a single formula. Side panel shines for multi-step analysis, not quick formula writes."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The main advantage of the Gemini side panel inside Sheets vs. using gemini.google.com in another tab is:",
+        "options": [
+          {
+            "text": "Gemini already sees the current sheet — columns, data, formatting — so you don't need to describe it.",
+            "correct": true
+          },
+          {
+            "text": "Different model.",
+            "correct": false
+          },
+          {
+            "text": "Less scrolling.",
+            "correct": false
+          },
+          {
+            "text": "It's cheaper.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Live context is the whole point. Side panel reads your sheet; standalone Gemini doesn't."
+      }
+    ]
+  },
+  "204-0-1": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 0,
+    "lessonIdx": 1,
+    "moduleName": "Gemini in Sheets basics",
+    "lessonIndex": 2,
+    "totalInModule": 4,
+    "title": "Plain-English asks",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Plain-English asks",
+        "body": [
+          "You don't need to know formula syntax to ask Gemini for analysis. 'What's the average deal size by region' works. So does 'which customers churned in March' and 'which row has the highest margin.' Gemini reads your headers and translates into the right formulas or filters.",
+          "When your data uses business words ('MRR,' 'CAC,' 'pipeline'), lean into it. 'Show me the top 10 opportunities by weighted pipeline value' uses your column names and your lingo — Gemini usually picks the right fields.",
+          "Be explicit about output format when it matters. 'Give me a single number,' 'give me a ranked list with the top 5,' 'insert the result into cell G2.' Gemini will often just put the answer in the chat — tell it to write into the sheet if that's what you want."
+        ],
+        "callout": {
+          "label": "Say what you want",
+          "text": "Natural words for the question + explicit output format = consistent, usable answers. 'Tell me X as a ranked list in column H.'"
+        }
+      },
+      {
+        "type": "engage",
+        "title": "Better phrasing",
+        "prompt": "You have a 500-row sales sheet with columns for rep, region, deal size, and close date. You want top performers. Best ask?",
+        "options": [
+          {
+            "text": "\"Rank reps by total deal size for deals closed in Q1 2026. Return a table with rep name and total, top 10 only.\"",
+            "correct": true,
+            "feedback": "Clear fields, clear metric, clear time range, clear format. This is the pattern."
+          },
+          {
+            "text": "\"Who's best?\"",
+            "correct": false,
+            "feedback": "Too vague. Gemini has to guess at 'best' — deal count? revenue? win rate?"
+          },
+          {
+            "text": "\"Show me sales.\"",
+            "correct": false,
+            "feedback": "No metric, no format, no filter. You'll get something, but not what you want."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "When asking Gemini to analyze a sheet, the most reliable prompt structure is:",
+        "options": [
+          {
+            "text": "[Question] only.",
+            "correct": false
+          },
+          {
+            "text": "[Formula name].",
+            "correct": false
+          },
+          {
+            "text": "[Cell address].",
+            "correct": false
+          },
+          {
+            "text": "[What to analyze] + [what filter/time range] + [what format of output].",
+            "correct": true
+          }
+        ],
+        "answerNote": "Three ingredients — analysis, filter, format — make the difference between useful output and 'meh.'"
+      }
+    ]
+  },
+  "204-0-2": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 0,
+    "lessonIdx": 2,
+    "moduleName": "Gemini in Sheets basics",
+    "lessonIndex": 3,
+    "totalInModule": 4,
+    "title": "Generating tables from a prompt",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Generating tables from a prompt",
+        "body": [
+          "You can go the other direction too — ask Gemini to build a table from nothing. 'Create a 5-column tracker for Q3 marketing campaigns with: campaign name, channel, budget, owner, start date, status (dropdown).' Gemini drafts the structure, including headers and dropdown values.",
+          "Insert it with 'add this to the sheet starting at A1' (or wherever). Gemini writes the headers, sets up formatting, and drops in a couple example rows if you ask. Not production-ready, but an excellent starting scaffold — maybe 10 minutes of setup in 20 seconds.",
+          "Where this shines: intake forms, basic CRMs, content calendars, tracking dashboards. Anywhere you'd otherwise start by drawing a table in your head and typing headers one by one. Let Gemini make the skeleton; you fill in the real rows."
+        ],
+        "callout": {
+          "label": "Where it's best",
+          "text": "New tracker / form / simple dashboard? Describe the columns and let Gemini generate it. Spend your brain on the data, not the scaffold."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "What's Gemini best at generating?",
+        "prompt": "You need to stand up a new quarterly OKR tracker today. Best use of Gemini?",
+        "options": [
+          {
+            "text": "Have it generate the table structure — columns, dropdowns, formatting — and then you fill in the actual OKRs.",
+            "correct": true,
+            "feedback": "Right. Scaffold from AI, substance from you. Fast and safe."
+          },
+          {
+            "text": "Generate everything and review later.",
+            "correct": false,
+            "feedback": "You'll end up with generic-sounding OKRs that aren't yours. Bad signal to your team."
+          },
+          {
+            "text": "Have it generate the full list of your company's OKRs.",
+            "correct": false,
+            "feedback": "It can't know your real OKRs. That's your job."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "Gemini-generated tables in Sheets are best used as:",
+        "options": [
+          {
+            "text": "Reports.",
+            "correct": false
+          },
+          {
+            "text": "Final production trackers.",
+            "correct": false
+          },
+          {
+            "text": "Historical archives.",
+            "correct": false
+          },
+          {
+            "text": "Structural scaffolds — columns, dropdowns, basic formatting — that you then fill with real data.",
+            "correct": true
+          }
+        ],
+        "answerNote": "Structure from AI, substance from you. That split scales."
+      }
+    ]
+  },
+  "204-0-3": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 0,
+    "lessonIdx": 3,
+    "moduleName": "Gemini in Sheets basics",
+    "lessonIndex": 4,
+    "totalInModule": 4,
+    "title": "Reading AI-generated explanations",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Reading AI-generated explanations",
+        "body": [
+          "When Gemini generates a formula, it usually includes a plain-English explanation. Don't skip it. The explanation tells you what the formula is doing, what cells it's referencing, and what happens if your data changes shape. That last part matters — will this break if you add a column?",
+          "Example. You ask for a formula and Gemini returns =ARRAYFORMULA(IF(B2:B=\"closed-won\", D2:D, 0)). The explanation says 'this returns the deal value in column D for every row where column B is \"closed-won,\" and 0 otherwise, for the full column range.' Now you know: adding rows = fine. Renaming the status column = will break.",
+          "If there's no explanation, ask for one. 'Explain this formula step by step' or 'walk me through what this does for row 5.' Five seconds of explanation saves fifty minutes of debugging when a column moves."
+        ],
+        "callout": {
+          "label": "The rule",
+          "text": "Never paste a Gemini formula you don't understand. Read the explanation first, or ask for one."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "Ship it or ask?",
+        "prompt": "Gemini generates a QUERY formula that looks complicated but returns the right answer on the sample data. What now?",
+        "options": [
+          {
+            "text": "Ship it — it works.",
+            "correct": false,
+            "feedback": "Works today on this data. Fails silently tomorrow when the data shape changes, and you won't know why."
+          },
+          {
+            "text": "Ask Gemini to explain what each part of the formula does and when it might break, then document at least the key dependencies.",
+            "correct": true,
+            "feedback": "30 seconds now, hours saved later. Especially valuable for formulas that go into shared or recurring sheets."
+          },
+          {
+            "text": "Rewrite it yourself without using Gemini.",
+            "correct": false,
+            "feedback": "Wastes the work Gemini already did. Understand it, don't redo it."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The highest-value habit when accepting a Gemini-generated formula is:",
+        "options": [
+          {
+            "text": "Reading or asking for a plain-English explanation before pasting — so you know what it does and what breaks it.",
+            "correct": true
+          },
+          {
+            "text": "Changing the font color.",
+            "correct": false
+          },
+          {
+            "text": "Running it against the sample data.",
+            "correct": false
+          },
+          {
+            "text": "Adding a comment.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Understand first, paste second. AI formulas that are shipped without comprehension become silent time bombs."
+      }
+    ]
+  },
+  "204-1-0": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 1,
+    "lessonIdx": 0,
+    "moduleName": "Cleaning & analysis",
+    "lessonIndex": 1,
+    "totalInModule": 4,
+    "title": "Normalizing messy data",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Normalizing messy data",
+        "body": [
+          "Real sheets are messy. Names formatted three different ways, dates as strings, phone numbers with and without dashes, state names mixed with codes. Gemini handles this in plain English. 'Standardize column B — full names in Title Case, no extra spaces.' 'Convert column D to ISO dates (YYYY-MM-DD).' 'Normalize column F to 2-letter state codes.'",
+          "It works on ambiguous inputs too. A column with 'NY,' 'New York,' 'new york city,' and 'n.y.' becomes 'NY' across the board. Gemini is reliable on the common cases; give it a visual scan when done, especially for entries that weren't obvious (foreign cities, ambiguous abbreviations).",
+          "When the transformation is complex, ask Gemini to do it in a new column instead of overwriting. You keep the raw column for reference and a clean column for use. Gemini will typically suggest this pattern anyway — take it."
+        ],
+        "callout": {
+          "label": "Cleaning habit",
+          "text": "Transform into a new column, not in place. Keep the raw. Faster to trust, easier to fix if Gemini mis-guesses something."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "Where do you put the clean data?",
+        "prompt": "Your raw column has inconsistent date formats. You ask Gemini to standardize. Where should the clean version go?",
+        "options": [
+          {
+            "text": "Overwrite the raw column.",
+            "correct": false,
+            "feedback": "You lose the original. If Gemini gets one wrong, you have no way to trace back."
+          },
+          {
+            "text": "A new sheet entirely.",
+            "correct": false,
+            "feedback": "Sometimes appropriate but usually overkill. Side-by-side is faster to scan."
+          },
+          {
+            "text": "A new adjacent column — raw in A, clean in B.",
+            "correct": true,
+            "feedback": "Right. Keeps the original as the source of truth; clean column is for consumption."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The biggest risk with AI-driven data cleaning is:",
+        "options": [
+          {
+            "text": "It's slow.",
+            "correct": false
+          },
+          {
+            "text": "It changes font colors.",
+            "correct": false
+          },
+          {
+            "text": "Silent mis-guesses on ambiguous rows (abbreviations, foreign names) that look plausible but are wrong.",
+            "correct": true
+          },
+          {
+            "text": "It always fails loudly.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Plausible-but-wrong is the whole danger. Keep the raw column, spot-check the edge cases, trust the common ones."
+      }
+    ]
+  },
+  "204-1-1": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 1,
+    "lessonIdx": 1,
+    "moduleName": "Cleaning & analysis",
+    "lessonIndex": 2,
+    "totalInModule": 4,
+    "title": "Natural-language filters & sorts",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Natural-language filters & sorts",
+        "body": [
+          "Instead of building filter views by hand, describe what you want. 'Show me rows where deal size is above $50k and status is not closed-lost.' Gemini either gives you a FILTER or QUERY formula you can paste into a new tab, or applies a filter view directly — depends on your permission level and the sheet structure.",
+          "Multi-condition sorts are just as easy. 'Sort by region, then descending by MRR, then by account name.' Gemini sets it up. Where it's useful: stakeholder reviews, where you need a specific cut of the data for a specific meeting, then revert to the raw view.",
+          "For recurring filters (you look at the same cut every Monday), save the resulting formula or filter view. Gemini can regenerate on demand, but a saved view is one click the next time. Reserve AI for new cuts you haven't done before."
+        ],
+        "callout": {
+          "label": "When AI beats manual filters",
+          "text": "Complex, multi-condition, one-off asks. Stuff you'd spend 5 minutes clicking through filter dialogs to set up."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "Where does Gemini help most?",
+        "prompt": "You need to answer: 'Which enterprise accounts in EMEA had an NPS score over 8 AND were flagged for expansion in Q2?' Best use of Gemini?",
+        "options": [
+          {
+            "text": "Build nested AutoFilters by hand.",
+            "correct": false,
+            "feedback": "Works but you'll spend 5-10 minutes setting it up. Gemini does it in 20 seconds."
+          },
+          {
+            "text": "Export to CSV and use Python.",
+            "correct": false,
+            "feedback": "Way overkill for a sheet-level question."
+          },
+          {
+            "text": "Ask Gemini to produce a QUERY or FILTER formula capturing all conditions and the output format you need.",
+            "correct": true,
+            "feedback": "Right. Multi-condition logical asks are exactly where natural-language filtering beats clicking through menus."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The kind of filter Gemini is best at is:",
+        "options": [
+          {
+            "text": "One-column one-value.",
+            "correct": false
+          },
+          {
+            "text": "Only numeric.",
+            "correct": false
+          },
+          {
+            "text": "Multi-condition, multi-column, with sort order — the kind that takes 5 minutes to set up manually.",
+            "correct": true
+          },
+          {
+            "text": "No filter.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Complex asks are where the natural-language interface actually beats the UI. Simple one-off filters, just use the menus."
+      }
+    ]
+  },
+  "204-1-2": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 1,
+    "lessonIdx": 2,
+    "moduleName": "Cleaning & analysis",
+    "lessonIndex": 3,
+    "totalInModule": 4,
+    "title": "Pivot tables via Gemini",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Pivot tables via Gemini",
+        "body": [
+          "Pivot tables are powerful and their menu is confusing. Gemini shortcuts both. 'Create a pivot table on the current sheet: rows by region, columns by quarter, values sum of revenue.' Gemini creates it on a new tab, ready to use.",
+          "Follow-ups chain naturally. 'Now add a column for average deal size.' 'Filter to customers with more than 3 renewals.' 'Sort descending by Q4 revenue.' Each turn refines the pivot without you touching the UI.",
+          "A practical trick: if the pivot looks almost right but one grouping is off, don't keep prompting — just grab the pivot options panel that Gemini placed next to it and tweak the one field by hand. Use Gemini to build the scaffold, finger controls to refine the detail."
+        ],
+        "callout": {
+          "label": "The hybrid play",
+          "text": "Gemini to build the pivot, UI to refine it. Talking to AI for every small tweak is slower than one click in the right menu."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "When to switch from Gemini to the UI",
+        "prompt": "Your pivot is 90% right but you want to change the column-grouping from month to quarter. Best next move?",
+        "options": [
+          {
+            "text": "Ask Gemini to regenerate it with quarters.",
+            "correct": false,
+            "feedback": "It'll work but you'll rebuild the whole pivot just to swap one field. Slower than the UI."
+          },
+          {
+            "text": "Open the pivot options panel and change the date grouping field to 'quarter' in one click.",
+            "correct": true,
+            "feedback": "Right. AI for the scaffold, direct UI for small tweaks. That's the efficient loop."
+          },
+          {
+            "text": "Delete the pivot and start over.",
+            "correct": false,
+            "feedback": "Worst option. You lose all the setup for no reason."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The best way to use Gemini with pivot tables is:",
+        "options": [
+          {
+            "text": "Always regenerate from scratch.",
+            "correct": false
+          },
+          {
+            "text": "Avoid pivots entirely.",
+            "correct": false
+          },
+          {
+            "text": "Use Gemini to create the initial pivot and major restructurings; use the pivot options panel for small tweaks.",
+            "correct": true
+          },
+          {
+            "text": "Talk to Gemini for every adjustment.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Big structure from AI, small changes from the UI. Match the tool to the size of the edit."
+      }
+    ]
+  },
+  "204-1-3": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 1,
+    "lessonIdx": 3,
+    "moduleName": "Cleaning & analysis",
+    "lessonIndex": 4,
+    "totalInModule": 4,
+    "title": "Charts from prompts",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Charts from prompts",
+        "body": [
+          "Ask Gemini for a chart and describe what you want: 'line chart of monthly revenue for 2026, with a trend line.' 'Bar chart of top 10 reps by closed-won, with each rep's quota as a dashed reference line.' Gemini inserts the chart, usually on the current tab near the source data.",
+          "Styling is where Gemini is weakest. Defaults are fine but not beautiful — think Google's built-in chart look. If you need a polished chart for a board deck, plan to hand-tune colors, labels, and axis formatting yourself. Or generate the chart, then ask Gemini for suggested improvements, one at a time.",
+          "When the prompt is ambiguous, Gemini will guess at chart type. Say what you want: line, bar, stacked bar, scatter, pie, sparkline. Ambiguity often yields a column chart when you wanted a line — specify to save a round trip."
+        ],
+        "callout": {
+          "label": "Be explicit",
+          "text": "Name the chart type. Name the reference lines. Name the labels. Ambiguity guessed-at wastes a round trip."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "The chart came back wrong — what first?",
+        "prompt": "You asked for a trend chart; Gemini produced a column chart. Best next move?",
+        "options": [
+          {
+            "text": "Tell Gemini: 'change to a line chart with a linear trend line; keep the same data and axes.'",
+            "correct": true,
+            "feedback": "Right. Targeted correction beats random regeneration."
+          },
+          {
+            "text": "Delete the chart and make one by hand.",
+            "correct": false,
+            "feedback": "You leave AI's value on the table. Targeted correction is faster."
+          },
+          {
+            "text": "Regenerate and hope.",
+            "correct": false,
+            "feedback": "Rarely works. Be specific about what you want."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The biggest weakness of Gemini-generated charts is:",
+        "options": [
+          {
+            "text": "Insane colors.",
+            "correct": false
+          },
+          {
+            "text": "Wrong data.",
+            "correct": false
+          },
+          {
+            "text": "Default styling — fine for internal use, not polished enough for external-facing decks without hand-tuning.",
+            "correct": true
+          },
+          {
+            "text": "Always pie charts.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Structure free, polish earned. For board-grade visuals, plan to tune the labels, colors, and axes yourself."
+      }
+    ]
+  },
+  "204-2-0": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 2,
+    "lessonIdx": 0,
+    "moduleName": "Pro moves",
+    "lessonIndex": 1,
+    "totalInModule": 4,
+    "title": "Apps Script with Gemini",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Apps Script with Gemini",
+        "body": [
+          "Apps Script is Google's scripting language for Workspace — lightweight JavaScript that automates Sheets, Docs, Gmail, and more. You don't need to be a programmer. You describe what you want in the Gemini side panel, it produces the code, you paste it into Tools → Apps Script and run it.",
+          "Good starter asks. 'Write an Apps Script that sends me an email every Monday at 9am with a summary of the 'pipeline' tab.' 'When someone adds a row to this sheet, auto-fill column G with today's date.' 'Move any row where status = \"closed\" to a separate tab called Archive.'",
+          "Always read Gemini's explanation before running the script. Scripts have write access to your data and can send emails on your behalf — harmless bugs become embarrassing, real bugs become data-loss. Test on a copy of the sheet first, not production data."
+        ],
+        "callout": {
+          "label": "Safety rule",
+          "text": "Test every AI-generated Apps Script on a copy first. It has real write access to your data. Bugs here have real consequences."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "The right starter automation",
+        "prompt": "Your team manually copies 'closed' deals to an archive tab every week. Best use of Gemini + Apps Script?",
+        "options": [
+          {
+            "text": "Keep doing it manually.",
+            "correct": false,
+            "feedback": "Exactly the kind of task this automates away."
+          },
+          {
+            "text": "Ask Gemini to delete the closed deals.",
+            "correct": false,
+            "feedback": "Never. Archive, never delete. Data that looks useless today often matters tomorrow."
+          },
+          {
+            "text": "Ask Gemini to write an Apps Script that moves rows to Archive when status = 'closed,' test it on a copy of the sheet, then deploy.",
+            "correct": true,
+            "feedback": "Right. Describe the rule, test the script, then run it on real data. One-time setup, permanent time save."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "Before running a Gemini-generated Apps Script on a production sheet, you should:",
+        "options": [
+          {
+            "text": "Email it to IT for review.",
+            "correct": false
+          },
+          {
+            "text": "Read the explanation, test on a copy of the sheet, verify the outcome, then deploy to production.",
+            "correct": true
+          },
+          {
+            "text": "Run it at midnight.",
+            "correct": false
+          },
+          {
+            "text": "Nothing — it's AI, it's correct.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Scripts have write access. Test on a copy is a non-negotiable one-minute habit that prevents disasters."
+      }
+    ]
+  },
+  "204-2-1": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 2,
+    "lessonIdx": 1,
+    "moduleName": "Pro moves",
+    "lessonIndex": 2,
+    "totalInModule": 4,
+    "title": "Advanced formulas & array logic",
+    "steps": [
+      {
+        "type": "read",
+        "title": "Advanced formulas & array logic",
+        "body": [
+          "Gemini is extremely good at the formulas most people avoid. QUERY with nested conditions. ARRAYFORMULA to apply a formula to an entire column in one cell. REGEXEXTRACT for pulling substrings out of messy text. LAMBDA for defining reusable functions inside a sheet. Describe the result you want; Gemini writes the formula.",
+          "A useful pattern: 'generate an ARRAYFORMULA in cell C2 that, for every row, returns the deal value from column D if status in column B is \"closed-won\" and the close date in column E is in 2026.' Gemini writes it, tests it, and explains it. Faster than you could construct the syntax.",
+          "The win isn't that Gemini writes formulas you couldn't write — it's that it writes them in 10 seconds instead of you spending 10 minutes rifling through docs and nesting parentheses. Reserve your brain for the business logic; let Gemini handle the syntax."
+        ],
+        "callout": {
+          "label": "Brain vs syntax",
+          "text": "Business logic is hard and human. Syntax is mechanical and AI-solvable. Split the work accordingly."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "The right task to delegate",
+        "prompt": "You need a formula that pulls the email-domain from each row's email column (e.g. 'acme.com' from 'alice@acme.com'). Best approach?",
+        "options": [
+          {
+            "text": "Do it by hand, one cell at a time.",
+            "correct": false,
+            "feedback": "Fine for 5 rows, impossible for 5,000. Delegate the syntax."
+          },
+          {
+            "text": "Search online for a REGEXEXTRACT formula pattern.",
+            "correct": false,
+            "feedback": "Works but slow and you copy someone else's formula that may or may not fit your data."
+          },
+          {
+            "text": "Ask Gemini: 'in column C, ARRAYFORMULA that extracts the domain (everything after @) from the email in column B.' Review, paste, verify on two rows.",
+            "correct": true,
+            "feedback": "30 seconds. Gemini handles syntax; you verify the result matches expectations."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "The highest-leverage category of Sheets work to delegate to Gemini is:",
+        "options": [
+          {
+            "text": "Complex formula construction (QUERY, ARRAYFORMULA, REGEX, LAMBDA) where syntax is mechanical but error-prone.",
+            "correct": true
+          },
+          {
+            "text": "Font selection.",
+            "correct": false
+          },
+          {
+            "text": "Row height.",
+            "correct": false
+          },
+          {
+            "text": "Chart colors.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Syntax is the sweet spot. Your judgment on the business question; AI's speed on the formula. Biggest time-saver in this course."
+      }
+    ]
+  },
+  "204-2-2": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 2,
+    "lessonIdx": 2,
+    "moduleName": "Pro moves",
+    "lessonIndex": 3,
+    "totalInModule": 4,
+    "title": "AI math gotchas + verification",
+    "steps": [
+      {
+        "type": "read",
+        "title": "AI math gotchas + verification",
+        "body": [
+          "Gemini does math, and sometimes gets it wrong — especially when asked to reason in the chat rather than via a formula. If you ask 'what's the total revenue in column D,' Gemini may answer in prose using arithmetic it did in its head. That arithmetic is not always reliable.",
+          "The fix: whenever the answer is a number that matters, insist on a formula, not a reasoned answer. 'Give me a SUM formula for column D' always returns a verifiable cell reference. 'What's the total' may return a number Gemini computed incorrectly.",
+          "Same principle for percentages, growth rates, averages, medians. If it matters in a report, it goes through a formula. Gemini's chat math is fine for rough estimates, not for anything you're presenting, signing, or billing against."
+        ],
+        "callout": {
+          "label": "Cardinal rule",
+          "text": "Important number? It comes from a formula, not a chat answer. Always."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "Which answer do you trust?",
+        "prompt": "You asked Gemini for Q3 pipeline totals. Which response do you trust more?",
+        "options": [
+          {
+            "text": "A chat reply saying \"The Q3 total is $2,847,300.\"",
+            "correct": false,
+            "feedback": "Could be right, could be Gemini doing arithmetic in its head. You have no way to verify without recomputing."
+          },
+          {
+            "text": "A formula like =SUMIF(B:B,\"Q3\",D:D) inserted in a cell, returning $2,847,300.",
+            "correct": true,
+            "feedback": "Right. The formula is auditable — you see the cell range, you see the logic. The number is reproducible."
+          },
+          {
+            "text": "They're equivalent.",
+            "correct": false,
+            "feedback": "Feels equivalent. Isn't. Formula = verifiable; chat = trust-me."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "When you need a number from Gemini that will end up in a report or meeting, you should:",
+        "options": [
+          {
+            "text": "Round to the nearest thousand.",
+            "correct": false
+          },
+          {
+            "text": "Run it twice and average the answers.",
+            "correct": false
+          },
+          {
+            "text": "Trust the chat output.",
+            "correct": false
+          },
+          {
+            "text": "Always get it via a formula in a cell so the math is verifiable and reproducible.",
+            "correct": true
+          }
+        ],
+        "answerNote": "Verifiable beats confident. A formula in a cell you can audit; a chat number you cannot."
+      }
+    ]
+  },
+  "204-2-3": {
+    "courseId": 204,
+    "courseCode": "GEM·SHT",
+    "suite": "plus",
+    "moduleIdx": 2,
+    "lessonIdx": 3,
+    "moduleName": "Pro moves",
+    "lessonIndex": 4,
+    "totalInModule": 4,
+    "title": "Certification quiz",
+    "steps": [
+      {
+        "type": "read",
+        "title": "You've reached the end.",
+        "body": [
+          "Twelve lessons down. You can now navigate the Gemini side panel in Sheets, describe asks in plain English, generate tables and formulas, clean messy data, build pivots and charts, and automate workflows with Apps Script — all without writing a line of syntax by hand.",
+          "The through-line of this course: Gemini handles the mechanics (syntax, structure, scaffolds) while you handle the judgment (which metric, which filter, which chart, whether the answer makes sense). Together it's 10x faster than either alone.",
+          "One recap engage-check, then the certification quiz."
+        ],
+        "callout": {
+          "label": "Core habit",
+          "text": "Ask in plain English. Get the formula, chart, or script. Read the explanation. Verify on 2-3 rows. Ship."
+        }
+      },
+      {
+        "type": "engage",
+        "title": "The one habit that prevents disasters",
+        "prompt": "If you could make your team adopt one discipline from this course, which matters most?",
+        "options": [
+          {
+            "text": "Never trust a number from chat — always convert it to a verifiable formula in a cell, and test AI-generated scripts on a copy first.",
+            "correct": true,
+            "feedback": "Right. This single habit separates teams that scale AI safely from teams that get burned by silent errors."
+          },
+          {
+            "text": "Always use Gemini's side panel, never inline.",
+            "correct": false,
+            "feedback": "Both have their place. Not a universal rule."
+          },
+          {
+            "text": "Use Advanced only.",
+            "correct": false,
+            "feedback": "Plan choice is organizational, not a discipline."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "prompt": "Your one-line rule for Gemini inside Sheets is:",
+        "options": [
+          {
+            "text": "Trust and ship.",
+            "correct": false
+          },
+          {
+            "text": "Ask twice, average the answers.",
+            "correct": false
+          },
+          {
+            "text": "Plain-English ask, read the explanation, verify against the source, ship — and never trust chat math for anything that ends in a report.",
+            "correct": true
+          },
+          {
+            "text": "Only use it for cleaning data.",
+            "correct": false
+          }
+        ],
+        "answerNote": "The formula-not-chat rule alone prevents most embarrassing mistakes. That plus 'test scripts on copies' and you're good."
+      }
+    ]
+  }
 };
