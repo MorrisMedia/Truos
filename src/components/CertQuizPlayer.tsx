@@ -11,11 +11,13 @@ import { Icons } from './icons';
 interface Props {
   course: Course;
   questions: CertQuestion[];
+  hasPaidEntitlement?: boolean;
 }
 
 type Phase = 'intro' | 'quiz' | 'results';
 
-export function CertQuizPlayer({ course, questions }: Props) {
+export function CertQuizPlayer({ course, questions, hasPaidEntitlement = true }: Props) {
+  const certPaywalled = course.tier === 'free' && !hasPaidEntitlement;
   const router = useRouter();
   const [phase, setPhase] = useState<Phase>('intro');
   const [qIdx, setQIdx] = useState(0);
@@ -23,6 +25,7 @@ export function CertQuizPlayer({ course, questions }: Props) {
   const [submitted, setSubmitted] = useState(false);
   const [answers, setAnswers] = useState<(number | null)[]>(() => new Array(questions.length).fill(null));
   const [finalizing, setFinalizing] = useState(false);
+  const [certError, setCertError] = useState<'upgrade' | 'generic' | null>(null);
 
   const q = questions[qIdx];
   const progress = ((qIdx + (submitted ? 1 : 0.3)) / questions.length) * 100;
@@ -50,6 +53,7 @@ export function CertQuizPlayer({ course, questions }: Props) {
   const finalize = async () => {
     if (!passed || finalizing) return;
     setFinalizing(true);
+    setCertError(null);
     try {
       const res = await fetch('/api/cert-quiz', {
         method: 'POST',
@@ -60,8 +64,13 @@ export function CertQuizPlayer({ course, questions }: Props) {
         router.push(`/certificates/${course.id}`);
         return;
       }
+      if (res.status === 402) {
+        setCertError('upgrade');
+      } else {
+        setCertError('generic');
+      }
     } catch {
-      /* ignore */
+      setCertError('generic');
     }
     setFinalizing(false);
   };
@@ -97,6 +106,23 @@ export function CertQuizPlayer({ course, questions }: Props) {
               <li>At the end you&apos;ll get your score and, if you passed, your certificate.</li>
             </ul>
           </div>
+          {certPaywalled && (
+            <div className="panel" style={{
+              padding: 20, textAlign: 'left', marginBottom: 32,
+              background: 'color-mix(in oklab, var(--accent) 6%, var(--bg-panel))',
+              borderColor: 'rgba(212,245,71,0.25)',
+            }}>
+              <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 10 }}>🎓 CERTIFICATE REQUIRES A PAID PLAN</div>
+              <p style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.6, margin: 0 }}>
+                This course is free and you can take the quiz for practice. The Truos credential
+                itself unlocks with any paid course (from $249) — which also unlocks certs for every
+                free course you complete.
+              </p>
+              <div style={{ marginTop: 12, display: 'flex', gap: 10 }}>
+                <Link className="btn btn-ghost btn-sm" href="/#pricing">See paid plans →</Link>
+              </div>
+            </div>
+          )}
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
             <Link className="btn btn-ghost" href={`/courses/${course.id}`}>Back to course</Link>
             <button className="btn btn-primary btn-lg" onClick={() => setPhase('quiz')}>
@@ -154,12 +180,40 @@ export function CertQuizPlayer({ course, questions }: Props) {
             })}
           </div>
 
+          {passed && certError === 'upgrade' && (
+            <div className="panel" style={{
+              padding: 24, marginBottom: 24,
+              background: 'color-mix(in oklab, var(--accent) 6%, var(--bg-panel))',
+              borderColor: 'rgba(212,245,71,0.25)',
+            }}>
+              <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 10 }}>🎓 CERTIFICATE UNLOCK REQUIRED</div>
+              <h3 style={{ fontSize: 20, marginBottom: 8, letterSpacing: '-0.02em' }}>
+                You passed — nice. Your certificate is waiting.
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: 14.5, lineHeight: 1.6, marginBottom: 16 }}>
+                {course.code} content is free, but the Truos credential is reserved for paid members.
+                Any paid course (from $249) unlocks the certificate for this course — and every free course
+                you complete after. One-time payment, lifetime cert access.
+              </p>
+              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                <Link className="btn btn-primary" href="/#pricing">See paid plans →</Link>
+                <Link className="btn btn-ghost" href="/plus">Browse Truos+</Link>
+              </div>
+            </div>
+          )}
+          {certError === 'generic' && (
+            <div style={{ padding: 14, marginBottom: 20, borderRadius: 8, background: 'color-mix(in oklab, var(--warn) 10%, transparent)', fontSize: 14, color: 'var(--warn)' }}>
+              Couldn&apos;t issue the certificate right now. Please try again in a moment.
+            </div>
+          )}
           <div style={{ display: 'flex', gap: 12 }}>
             <Link className="btn btn-ghost" href={`/courses/${course.id}`}>Back to course</Link>
             {passed ? (
-              <button className="btn btn-primary btn-lg" onClick={finalize} disabled={finalizing}>
-                {finalizing ? 'Issuing certificate…' : 'Claim my certificate'} {Icons.arrow}
-              </button>
+              certError === 'upgrade' ? null : (
+                <button className="btn btn-primary btn-lg" onClick={finalize} disabled={finalizing}>
+                  {finalizing ? 'Issuing certificate…' : 'Claim my certificate'} {Icons.arrow}
+                </button>
+              )
             ) : (
               <button className="btn btn-primary" onClick={retry}>Retake the quiz {Icons.arrow}</button>
             )}

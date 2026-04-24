@@ -55,7 +55,34 @@ export default async function CertQuizPage({ params }: { params: { id: string } 
   const seed = Math.abs(hash(session.user.id + ':' + courseId));
   const questions = pickCertQuestions(courseId, seed, CERT_QUIZ_QUESTION_COUNT);
 
-  return <CertQuizPlayer course={course} questions={questions} />;
+  // Free-course cert gate preview: check up front if the user will be able to claim
+  // the certificate at the end, so we can set expectations before they start.
+  let hasPaidEntitlement = true;
+  if (course.tier === 'free') {
+    const now = new Date();
+    const entCount = await prisma.courseEntitlement.count({
+      where: {
+        userId: session.user.id,
+        OR: [{ expiresAt: null }, { expiresAt: { gt: now } }],
+      },
+    });
+    hasPaidEntitlement = entCount > 0;
+    if (!hasPaidEntitlement) {
+      const user = await prisma.user.findUnique({ where: { id: session.user.id }, select: { orgId: true } });
+      if (user?.orgId) {
+        const sub = await prisma.subscription.count({
+          where: {
+            orgId: user.orgId,
+            status: { in: ['active', 'trialing'] },
+            currentPeriodEnd: { gt: now },
+          },
+        });
+        hasPaidEntitlement = sub > 0;
+      }
+    }
+  }
+
+  return <CertQuizPlayer course={course} questions={questions} hasPaidEntitlement={hasPaidEntitlement} />;
 }
 
 function hash(s: string): number {

@@ -45,6 +45,38 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'lessons_incomplete', completed, totalLessons }, { status: 400 });
   }
 
+  // Free-course cert gate: preserves the "AI Mastery" brand by requiring any paid entitlement.
+  // Course content stays free; the credential is earned by buying in somewhere.
+  if (course.tier === 'free') {
+    const now = new Date();
+    const paidEntitlement = await prisma.courseEntitlement.count({
+      where: {
+        userId: session.user.id,
+        OR: [{ expiresAt: null }, { expiresAt: { gt: now } }],
+      },
+    });
+    let hasPaid = paidEntitlement > 0;
+    if (!hasPaid) {
+      const user = await prisma.user.findUnique({ where: { id: session.user.id }, select: { orgId: true } });
+      if (user?.orgId) {
+        const sub = await prisma.subscription.count({
+          where: {
+            orgId: user.orgId,
+            status: { in: ['active', 'trialing'] },
+            currentPeriodEnd: { gt: now },
+          },
+        });
+        hasPaid = sub > 0;
+      }
+    }
+    if (!hasPaid) {
+      return NextResponse.json(
+        { error: 'cert_requires_upgrade', upgradeUrl: '/#pricing' },
+        { status: 402 },
+      );
+    }
+  }
+
   // Issue or fetch the cert
   const existing = await prisma.certificate.findUnique({
     where: { userId_courseId: { userId: session.user.id, courseId } },
