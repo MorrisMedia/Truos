@@ -435,64 +435,78 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 3,
     "totalInModule": 4,
     "title": "Why AI confidently makes stuff up",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "The three studies",
+        "scenario": "You ask AI for three studies on remote work productivity. It gives you three, complete with authors, journals, and years.",
+        "prompt": "Before you paste those citations into your report, what would you check first — and why?"
+      },
+      {
         "type": "understand",
-        "title": "Why AI confidently makes stuff up",
+        "title": "It's not lying. It's guessing.",
         "body": [
-          "The industry word for this is hallucination: when a chatbot says something false with total confidence. It happens because the model is trained to produce plausible text. When it doesn't know the answer, 'I don't know' is a perfectly plausible response — but so is a made-up one.",
-          "Hallucinations are most common around specific facts: dates, numbers, names, citations, and quotations. They're least common around general explanations and common knowledge. A chatbot explaining how photosynthesis works is probably fine. A chatbot quoting a specific legal case is suspect.",
-          "The fix isn't to give up on AI — it's to use it where hallucination doesn't cost you much (drafting, brainstorming, summarizing text you gave it) and to verify when it does (facts, claims, anything you'll put your name on)."
+          "AI does not look up facts. It predicts the next word that sounds right, based on patterns in its training.",
+          "When it knows, it sounds confident. When it doesn't know, it also sounds confident. The tone never changes, so the reader can't tell the difference."
         ],
         "analogy": {
-          "label": "Hallucination-prone tasks",
-          "text": "Citations. Stats. Quotes. Case law. Product specs. Historical dates. Anyone's quote. Always verify these."
+          "label": "Mental model",
+          "text": "Think of a bright junior on day one. They want to impress you, so when you ask a question they can't answer, they guess — in the same calm voice they use for things they actually know."
         }
       },
       {
+        "type": "learn",
+        "title": "Where it breaks most",
+        "body": [
+          "Hallucinations cluster around specifics: names, dates, numbers, quotes, case law, research citations, product features, internal policies. The more exact the detail, the higher the risk. Vague summaries are usually fine. A quoted statistic with a source often isn't."
+        ],
+        "watchFor": "If the output has a name, a number, or a citation, treat it as a claim to verify — not a fact to trust."
+      },
+      {
         "type": "apply",
-        "title": "Which task is safest from hallucinations?",
-        "scenario": "Which task has the lowest risk of AI hallucination?",
+        "title": "Handle a suspicious citation",
+        "scenario": "AI drafts a client memo citing 'Harvard Business Review, 2022: 67% of hybrid teams outperform remote-only teams.' The number is perfect for your argument. Deadline is in an hour.",
         "options": [
           {
-            "text": "Asking it to rewrite an email you pasted in, in a friendlier tone.",
+            "text": "Paste it in. HBR is reputable, and AI rarely invents sources from major publications.",
+            "correct": false,
+            "feedback": "AI invents plausible sources from major publications constantly — the more credible the name, the more confidently it fabricates."
+          },
+          {
+            "text": "Ask the AI if it's sure the citation is real.",
+            "correct": false,
+            "feedback": "The model has no memory of where facts came from, so it will often confirm its own fabrication with equal confidence."
+          },
+          {
+            "text": "Search HBR directly for the article and the 67% figure before it goes in the memo.",
             "correct": true,
-            "feedback": "Low risk. It's working on text you provided, not inventing facts."
-          },
-          {
-            "text": "Asking for yesterday's stock prices.",
-            "correct": false,
-            "feedback": "It probably doesn't know them, and may guess confidently."
-          },
-          {
-            "text": "Asking for a list of 10 peer-reviewed papers on a niche topic.",
-            "correct": false,
-            "feedback": "High risk. Citations are the #1 hallucination category."
+            "feedback": "Right. Specific numbers with specific sources are the highest-risk output — always verify at the original source."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "Hallucinations happen because the model is optimizing for:",
+        "prompt": "Why does AI produce confident but false answers?",
         "options": [
           {
-            "text": "Helpfulness — even when it doesn't know the answer.",
-            "correct": false
-          },
-          {
-            "text": "Plausibility. A fake citation looks like a real one.",
+            "text": "It predicts plausible-sounding text, and its tone doesn't change when it's unsure.",
             "correct": true
           },
           {
-            "text": "Speed over accuracy.",
+            "text": "Its training data is full of lies it repeats back.",
             "correct": false
           },
           {
-            "text": "Truth.",
+            "text": "It's trying to please the user, so it bends the truth on purpose.",
+            "correct": false
+          },
+          {
+            "text": "It runs out of memory mid-answer and fills the gap with guesses.",
             "correct": false
           }
         ],
-        "answerNote": "Plausibility is the target. Truth is a happy side effect most of the time — but not always."
+        "answerNote": "AI generates language by pattern, not by looking things up. It sounds equally sure whether it knows or is guessing — which is why specifics need to be verified, not trusted."
       }
     ]
   },
