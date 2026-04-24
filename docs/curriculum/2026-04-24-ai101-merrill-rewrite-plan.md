@@ -2125,7 +2125,7 @@ cd /tmp/Truos && git push origin main
 - [ ] **Step 5: Wait for Vercel deploy, then verify production**
 
 ```bash
-export VERCEL_TOKEN=$(grep VERCEL_TOKEN= ~/openclaw/.env | cut -d= -f2-)
+export VERCEL_TOKEN=$(grep '^VERCEL_TOKEN=' ~/openclaw/.env | cut -d= -f2-)
 sleep 60
 until state=$(curl -s "https://api.vercel.com/v6/deployments?projectId=prj_9bsLJwIo7QtCkegkQxjf2Cd9VM4Q&teamId=team_i6aRa1BfpZGNFOr8rM1yTyGS&limit=1" -H "Authorization: Bearer $VERCEL_TOKEN" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['deployments'][0]['state'])") && [ "$state" != "BUILDING" ] && [ "$state" != "QUEUED" ] && [ "$state" != "INITIALIZING" ]; do
   echo "state=$state"; sleep 10
