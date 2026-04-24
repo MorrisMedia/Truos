@@ -227,17 +227,19 @@ Linked from site footer. Referenced in Enterprise sales-page copy.
 
 ---
 
-## Open questions flagged for review
+## Resolved (formerly open) decisions
 
-1. **Lesson execution order.** I lean "rewrite Lesson 6 (hallucinations) first as the voice reference test; review; lock voice; then rewrite the remaining 19 in module order." Marshall's "rewrite the entire thing for 101" suggests no pilot stage — but writing 2 lessons and a 10-minute review before burning 18 more is cheap insurance. Default: write Lesson 6 and Lesson 1 first; Marshall reviews voice; bulk the remaining 18.
+1. **Lesson execution order: Lesson 6 + Lesson 1 as voice reference, then bulk the remaining 18.**
+   Lesson 6 ("Why AI confidently makes stuff up" — hallucinations) goes first because it's the hardest conceptual lesson and the biggest test of analogy craft. Lesson 1 ("What is AI?") goes second because it's the most-read lesson and needs the full Feynman-in-Stripe voice nailed. Marshall reviews both before any of the remaining 18 are written. Review gate exists as a checkpoint in the implementation plan.
 
-2. **Module Recap question count.** Proposing 4 (one per lesson in the module). Could be 3 (tighter) or 5 (more coverage, more fatigue risk).
+2. **Module Recap question count: 4.** One question per lesson in the module. Clean 1:1 mapping between lessons taught and recalled. Five modules × 4 lessons = 4 recall questions per module.
 
-3. **Quick Recall spacing cadence.** Proposing every 3rd lesson, drawing from 2–3 lessons prior. Could also be every 2nd (tighter spacing, more drag on pace) or every 4th (looser, weaker retention benefit).
+3. **Quick Recall cadence: every 3rd lesson, pulling from a lesson 2–3 prior.** AI·101 Quick Recall positions: lessons 4, 7, 10, 13, 16, 19. Sources: lesson 1 (→ recalled in 4), lesson 4 (→ 7), lesson 7 (→ 10), lesson 10 (→ 13), lesson 13 (→ 16), lesson 16 (→ 19). Keeps pacing crisp without over-testing.
 
-4. **Analogy seed bank.** Should we pre-curate a list of 40–50 cleared analogies (doors, water, rooms, etc.) for writers to draw from? Would enforce cross-cultural discipline. Default: yes, build this as part of voice style guide.
+4. **Analogy seed bank: yes, build as part of the voice style guide.**
+   Pre-curate 40–50 cross-culturally translatable analogies (doors, water, rooms, markets, maps, keys, notebooks, tools, letters, roads, chairs, mirrors, restaurants, etc.). Writers select one per lesson from the bank OR propose a new analogy that matches the ban-list discipline (no sports, no US idioms, no religious references, no specific brand names except when teaching brands). Analogy bank lives at `docs/curriculum/analogy-bank.md`, grows over time.
 
-5. **Mechanical migration lossiness for non-101 courses.** Other courses end up with 3-step lessons post-migration. Is that acceptable to leave in place for weeks/months until each course gets its own rewrite, or do we need a "coming soon" banner warning users those courses are being upgraded? Default: ship as-is without banner; rewrite in priority order.
+5. **No "coming soon" banner on mechanically-migrated non-101 courses.** They ship as 3-step lessons (understand/apply/quiz) after migration. Quality is acceptable as-is. Hand-rewrite priority in future specs will be AI·102 → AI·103 → AI·104 → Truos+ courses in order of traffic.
 
 ---
 
