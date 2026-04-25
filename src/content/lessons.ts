@@ -12,64 +12,78 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 1,
     "totalInModule": 4,
     "title": "What is AI?",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "Ten seconds in",
+        "scenario": "You open a chatbot for the first time. You type, \"What should I have for lunch?\" Ten seconds later it gives you three options, with reasons.",
+        "prompt": "Before we explain the mechanism — what just happened that a normal app couldn't have done?"
+      },
+      {
         "type": "understand",
-        "title": "What is AI?",
+        "title": "Software you talk to",
         "body": [
-          "AI — short for artificial intelligence — is software that does things we used to need a human for. Writing a paragraph, summarizing a meeting, answering a question, sorting photos, reading a chart. It's a tool, not a person.",
-          "The AI most people talk about today is a specific kind: a chatbot that reads what you type and writes back. The big names are ChatGPT (OpenAI), Claude (Anthropic), Gemini (Google), and Copilot (Microsoft). Under the hood they all work the same way.",
-          "You don't need to install anything special. You don't need to code. If you can send a text message or write an email, you can use AI. The whole game is learning what to ask and what to do with the answer."
+          "AI, in 2026, is software you talk to. You type in plain language. It types back in plain language. That's the whole interface.",
+          "The tools everyone names — ChatGPT, Claude, Gemini, Copilot — are all the same shape under the label. Different companies, different branding, same idea: a text box where a machine answers."
         ],
         "analogy": {
           "label": "Mental model",
-          "text": "AI is an assistant that never takes a lunch break, has read almost everything, and will confidently try any task — sometimes well, sometimes badly."
+          "text": "Picture a well-read assistant who never tires. Any hour, any question, an answer on the spot. No appointment, no waiting, no \"let me check my calendar.\""
         }
+      },
+      {
+        "type": "learn",
+        "title": "Where you'll run into it",
+        "body": [
+          "You'll meet AI in two places. As a standalone chatbot — open the site, start typing. Or as a button inside a tool you already use: the Copilot button in Word, Gmail's reply suggestions, the /ai command in Notion. Both count. Both work the same way underneath."
+        ],
+        "watchFor": "If you can type to it and read a reply, it's the kind of AI this course is about. Forget self-driving cars and robots for now — they're a different branch of the family."
       },
       {
         "type": "apply",
         "title": "Which of these is AI?",
-        "scenario": "A colleague says \"we're using AI now.\" Which of these fits the modern definition?",
+        "scenario": "A colleague says, \"we're using AI now.\" Which of these fits what they most likely mean in 2026?",
         "options": [
           {
-            "text": "A chatbot that drafts an email based on a sentence you typed.",
+            "text": "A chatbot that drafts an email from a single sentence you typed.",
             "correct": true,
-            "feedback": "Exactly. Generating new text from your input is the everyday face of AI today."
+            "feedback": "Yes. Generating new text in response to your input is the everyday face of AI today."
           },
           {
             "text": "A macro in Excel that adds up a column.",
             "correct": false,
-            "feedback": "That's automation — a fixed rule. AI, in today's sense, generates new responses it wasn't explicitly programmed to produce."
+            "feedback": "That's automation — a fixed rule. AI, in today's sense, generates new responses it was never explicitly told to produce."
           },
           {
             "text": "A spam filter from 2008.",
             "correct": false,
-            "feedback": "That's an older form of machine learning. It counts historically, but it's not what people mean when they say \"AI\" in 2026."
+            "feedback": "Older machine learning. Counts historically, but it's not what people mean when they say \"AI\" in 2026."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "The easiest way to describe AI to a family member is:",
+        "prompt": "The simplest way to describe AI to a family member is:",
         "options": [
           {
             "text": "A search engine with a new name.",
             "correct": false
           },
           {
-            "text": "A robot that lives in your computer.",
+            "text": "Software you talk to in plain language, that talks back in plain language.",
+            "correct": true
+          },
+          {
+            "text": "A robot living inside your computer.",
             "correct": false
           },
           {
             "text": "A future technology that isn't really here yet.",
             "correct": false
-          },
-          {
-            "text": "Software that reads your input and generates a response — like a very fast, very well-read assistant.",
-            "correct": true
           }
         ],
-        "answerNote": "AI today is not a robot, not just search, and definitely not hypothetical. It's working software you're about to use."
+        "answerNote": "AI today is not a robot, not search, and not hypothetical. It's the chat window you're about to open."
       }
     ]
   },
@@ -83,46 +97,62 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 2,
     "totalInModule": 4,
     "title": "Kinds of AI you'll meet",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "Three doors",
+        "scenario": "You poke around online and see ChatGPT, Midjourney, Gemini, Copilot, Notion AI, and Gmail's reply suggestions. Six different things, all called AI.",
+        "prompt": "Before we sort them — which one would you open first to write a polite cancellation email?"
+      },
+      {
         "type": "understand",
-        "title": "Kinds of AI you'll meet",
+        "title": "Three shapes plus a feature",
         "body": [
-          "You'll hear a lot of terms thrown around. Most of them point at one of three things: AI that writes (chatbots, writing assistants), AI that draws (image generators like Midjourney, DALL·E), and AI that does both plus more (the big 'general' assistants: ChatGPT, Claude, Gemini).",
-          "There's also AI baked into tools you already use — Gmail's Smart Reply, Photoshop's Generative Fill, Notion AI, the Copilot button in Microsoft Word. These aren't separate apps; they're features.",
-          "For commercial work, most people spend 90% of their time in a general chatbot (ChatGPT, Claude, Gemini) or a work-specific one their company provides. Start there. The specialty tools come later, when you know what you're reaching for."
-        ]
+          "Most of what people call AI today fits in three buckets. Chatbots that write — ChatGPT, Claude, Gemini. Image generators that draw — Midjourney, DALL·E. And the same chatbots, doing both at once.",
+          "Then there's a fourth category: AI baked into tools you already use. Gmail's Smart Reply. The Copilot button in Word. Notion's slash command. These aren't separate apps. They're features inside software you already opened.",
+          "For your first month, ignore the specialty tools. A general chatbot covers ninety percent of real work. Pick the one door, walk through it."
+        ],
+        "analogy": {
+          "label": "Mental model",
+          "text": "Think of it like a hardware store. Most jobs need the one all-purpose tool on aisle one. The specialty tools matter, but only after you know what the job actually is."
+        }
+      },
+      {
+        "type": "learn",
+        "title": "Where you'll trip",
+        "body": [
+          "The mistake almost everyone makes: chasing whichever tool was on the news this week. You read about an image generator, sign up, never use it again. Meanwhile your day job — writing, summarizing, drafting — needs a chatbot.",
+          "If your company gives you Copilot or Gemini for Workspace, that's your chatbot. Same shape underneath. Use it for work because IT already cleared it."
+        ],
+        "watchFor": "If a tool is named after one specific thing — making images, transcribing audio, writing code — it's a specialty tool. Useful later. Not where you start."
       },
       {
         "type": "apply",
-        "title": "Pick the right tool",
-        "scenario": "You want to summarize a 30-page PDF. Which is the right first stop?",
+        "title": "Pick the right door",
+        "scenario": "You want to summarize a thirty-page PDF for a Monday meeting. Where do you go first?",
         "options": [
           {
             "text": "Google Search.",
             "correct": false,
-            "feedback": "Search can find the PDF; it can't summarize it."
-          },
-          {
-            "text": "A general AI chatbot like ChatGPT or Claude.",
-            "correct": true,
-            "feedback": "Yes. Uploading a PDF and asking for a summary is one of the most common tasks for general chatbots."
+            "feedback": "Search can find the PDF. It can't read it for you."
           },
           {
             "text": "Midjourney.",
             "correct": false,
-            "feedback": "Midjourney makes images, not summaries. Wrong tool for the job."
+            "feedback": "That's the image-generator door. Wrong tool for reading text."
+          },
+          {
+            "text": "A general chatbot like ChatGPT or Claude.",
+            "correct": true,
+            "feedback": "Yes. Upload the PDF, ask for a summary. This is one of the most common chatbot tasks."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "Which of these is an example of AI \"baked in\" to an existing tool?",
+        "prompt": "Which of these is AI baked into a tool you already use?",
         "options": [
-          {
-            "text": "Your calendar.",
-            "correct": false
-          },
           {
             "text": "Gmail's Smart Reply buttons under an email.",
             "correct": true
@@ -132,11 +162,15 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "A .docx file.",
+            "text": "Your calendar's event list.",
+            "correct": false
+          },
+          {
+            "text": "A plain .docx file.",
             "correct": false
           }
         ],
-        "answerNote": "Features like Smart Reply, Copilot in Word, and Notion AI are AI inside tools you already use — often the easiest on-ramp."
+        "answerNote": "Smart Reply, the Copilot button in Word, Notion's slash command — these are AI features inside software you already opened. Often the easiest place to start."
       }
     ]
   },
@@ -150,39 +184,55 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 3,
     "totalInModule": 4,
     "title": "What's a chatbot?",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "The blank box",
+        "scenario": "You open a chatbot for the first time. There's a text box. A send button. That's it. No menu, no settings panel, no buttons labeled \"summarize\" or \"translate.\"",
+        "prompt": "What does it want you to do? And what happens to all this when you close the tab?"
+      },
+      {
         "type": "understand",
-        "title": "What's a chatbot?",
+        "title": "A chat window, nothing more",
         "body": [
-          "A chatbot is exactly what it sounds like: a chat window where you type to a computer and it types back. That's the whole interface. There's no hidden menu, no dashboard. Type, enter, read the reply.",
-          "The chatbot doesn't know you or remember you across conversations by default. Each new chat starts fresh. Inside a conversation, though, it remembers everything you've said so far — which is why giving it a bit of context early in the chat pays off.",
-          "You can ask it anything. Seriously — anything. The worst that happens is it says 'I can't help with that' or gives you an answer you don't love. Experimenting is free and there's no embarrassing the software."
+          "A chatbot is exactly that — a chat window. You type, it types back. There's no hidden settings panel and no command syntax to learn.",
+          "Inside one conversation, it remembers everything you've said. The role you gave it, the document you pasted, the tone you asked for — all carried forward to the next reply. Across conversations, it forgets you. New chat, clean slate.",
+          "You can ask it anything. The worst case is \"I can't help with that.\" There's no embarrassing the software."
         ],
         "analogy": {
-          "label": "The unspoken rule",
-          "text": "A chatbot is a conversation, not a command line. You don't need the magic words. Talk to it like a smart colleague you just met."
+          "label": "Mental model",
+          "text": "A chatbot is a conversation, not a search bar. Talk to it the way you'd brief a smart colleague you just met. No magic words. Just the context they'd need to help."
         }
       },
       {
+        "type": "learn",
+        "title": "The memory trap",
+        "body": [
+          "Almost everyone gets the memory wrong. They open a brand-new chat tomorrow and expect the bot to remember yesterday's project. It won't. By default, every conversation starts from zero.",
+          "The fix is small. At the top of any serious chat, give it the context: who you are, what you're doing, what good looks like. That setup carries through the whole conversation."
+        ],
+        "watchFor": "If a reply seems to ignore something you said earlier — scroll up. It's almost always still in the chat. The bot is just choosing what to focus on."
+      },
+      {
         "type": "apply",
-        "title": "What does a chatbot remember?",
-        "scenario": "You start a new conversation with a chatbot tomorrow. What does it remember about you from today's chat?",
+        "title": "What does it remember?",
+        "scenario": "You had a great chat yesterday about your business. You open a new conversation today. What does the bot remember about you?",
         "options": [
           {
-            "text": "Only negative interactions.",
+            "text": "Everything from yesterday — your name, your business, your style.",
             "correct": false,
-            "feedback": "No — there's no grudge-keeping. It just doesn't carry anything forward by default."
+            "feedback": "Not by default. Each new conversation is a clean slate unless you've turned on a memory feature and the tool supports it."
           },
           {
-            "text": "Everything, including your name and style preferences.",
-            "correct": false,
-            "feedback": "By default, no. Each conversation is a clean slate unless you've enabled a memory feature and the tool supports it."
-          },
-          {
-            "text": "Nothing — each conversation starts fresh.",
+            "text": "Nothing. Each conversation starts fresh.",
             "correct": true,
-            "feedback": "Correct. This is why it's worth adding a line of context (who you are, what you want) at the start of any serious chat."
+            "feedback": "Right. Which is why a one-line setup at the top of any serious chat pays off. Who you are. What you want."
+          },
+          {
+            "text": "Only the last message you sent yesterday.",
+            "correct": false,
+            "feedback": "No. It's not selective forgetting. It's a clean slate at the start of every new chat."
           }
         ]
       },
@@ -191,7 +241,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "Inside a single conversation, the chatbot:",
         "options": [
           {
-            "text": "Stores your chat in a separate database you can query.",
+            "text": "Forgets the previous message as soon as you hit send.",
             "correct": false
           },
           {
@@ -199,15 +249,15 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Remembers everything said so far and uses it when generating replies.",
-            "correct": true
+            "text": "Stores your chat in a separate database you can query later.",
+            "correct": false
           },
           {
-            "text": "Forgets the previous message as soon as you hit send.",
-            "correct": false
+            "text": "Remembers everything said so far and uses it when generating each reply.",
+            "correct": true
           }
         ],
-        "answerNote": "Within a conversation, context compounds. Things you set up early (your role, the goal, the tone) carry through the rest of the chat."
+        "answerNote": "Within one conversation, context compounds. The role, the goal, the examples you set up early — they carry through every reply that follows."
       }
     ]
   },
@@ -221,39 +271,76 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 4,
     "totalInModule": 4,
     "title": "Signing up: picking a tool",
+    "isModuleEnd": true,
     "steps": [
       {
+        "type": "recall",
+        "title": "Quick recall",
+        "recallingLessonKey": "101-0-0",
+        "prompt": "From lesson one — the simplest way to describe AI to a family member is:",
+        "options": [
+          {
+            "text": "Software you talk to in plain language, that talks back in plain language.",
+            "correct": true
+          },
+          {
+            "text": "A search engine with a new name.",
+            "correct": false
+          },
+          {
+            "text": "A future technology that isn't really here yet.",
+            "correct": false
+          }
+        ],
+        "answerNote": "AI today is a chat window. Now let's pick which one you'll use."
+      },
+      {
+        "type": "think",
+        "title": "Six tabs open",
+        "scenario": "You decide to try AI. You open ChatGPT, Claude, Gemini, Copilot, Perplexity, and one more your friend recommended. Six tabs. You bounce between them for an hour.",
+        "prompt": "After that hour, what have you actually learned about getting good at AI?"
+      },
+      {
         "type": "understand",
-        "title": "Signing up: picking a tool",
+        "title": "Pick one. Stay for a month.",
         "body": [
-          "For your first AI, pick one general chatbot and stick with it for a month. The two we recommend for commercial work: ChatGPT (chat.openai.com) and Claude (claude.ai). Both have free tiers that are more than enough to learn on.",
-          "If your company provides an AI tool — Microsoft Copilot, Google Gemini for Workspace, or an internal chatbot — start there. It's already cleared by IT, and the answers won't end up training someone else's model.",
-          "Avoid the temptation to test six tools at once. They all work the same way. Picking a lane and putting in reps will teach you more than a weekend of comparison shopping."
+          "Pick one general chatbot. Use only that one for the next thirty days. For commercial work, the two we recommend are ChatGPT (chat.openai.com) and Claude (claude.ai). Both have free tiers more than good enough to learn on.",
+          "If your company already provides Copilot or Gemini for Workspace, start there. IT has cleared it. Your work context stays inside company walls. That's worth more than the difference between any two chatbots.",
+          "The skill you're learning is not the tool. It's how to brief one well, push back when it's wrong, and know when to give up and rewrite by hand. That skill transfers."
         ],
         "analogy": {
           "label": "Homework",
-          "text": "Before the next lesson: sign up for one general chatbot. Open it. Type \"Hi, I'm learning to use AI. What's one thing I should try first?\" Read the answer. That's it."
+          "text": "Before the next lesson: sign up for one chatbot. Open it. Type \"Hi, I'm learning to use AI. What's one thing I should try first?\" Read the answer. That's the whole assignment."
         }
       },
       {
+        "type": "learn",
+        "title": "Why people stall here",
+        "body": [
+          "The classic stall: a weekend of comparison shopping. Side-by-side reviews, reddit threads, YouTube takedowns. Monday comes. Nothing has been built. Nothing has been learned.",
+          "Reps beat research. An hour of real use teaches more than ten hours of reading about which tool is best. They're more alike than different. Pick a lane."
+        ],
+        "watchFor": "If you find yourself comparing tools instead of using one — close the tabs. Open the chatbot you picked. Ask it something real about your actual work."
+      },
+      {
         "type": "apply",
-        "title": "Which tool should you start with?",
-        "scenario": "Your company provides Microsoft Copilot for work. What should you do for this course?",
+        "title": "Your company gave you a tool",
+        "scenario": "Your company provides Microsoft Copilot. You also have a free ChatGPT account on your personal email. What's the right setup for this course?",
         "options": [
           {
-            "text": "Ignore it and use the free tier of ChatGPT on your personal account.",
-            "correct": false,
-            "feedback": "Technically fine, but risky: you might leak work context. Use the tool IT has already cleared."
-          },
-          {
-            "text": "Use Copilot for work-related practice, and optionally ChatGPT/Claude for non-work exploration.",
+            "text": "Use Copilot for work-related practice, ChatGPT or Claude on the side for personal exploration.",
             "correct": true,
-            "feedback": "Right call. Stay inside company-approved tools for anything company-related."
+            "feedback": "Right. Stay inside company-approved tools for anything company-related. Personal accounts are fine for personal projects."
           },
           {
-            "text": "Sign up for all five major chatbots and alternate.",
+            "text": "Ignore Copilot. Use the free ChatGPT account for everything, including work.",
             "correct": false,
-            "feedback": "You'll learn less, faster. Pick one, go deep."
+            "feedback": "Risky. You might paste work context into a tool IT hasn't cleared. Use what your company already vetted."
+          },
+          {
+            "text": "Sign up for all five major chatbots and rotate through them.",
+            "correct": false,
+            "feedback": "You'll learn slower. Pick one. Go deep."
           }
         ]
       },
@@ -262,7 +349,7 @@ export const LESSONS: Record<string, Lesson> = {
         "prompt": "The main reason to stick with one chatbot for your first month is:",
         "options": [
           {
-            "text": "The other tools are worse.",
+            "text": "The other tools are noticeably worse.",
             "correct": false
           },
           {
@@ -270,18 +357,17 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": false
           },
           {
-            "text": "Depth beats breadth — reps on one tool teach you the skill, which transfers.",
+            "text": "Reps on one tool teach you the underlying skill, which transfers to the others.",
             "correct": true
           },
           {
-            "text": "They all charge monthly fees.",
+            "text": "They all charge monthly fees you'd duplicate.",
             "correct": false
           }
         ],
-        "answerNote": "The underlying skill — clear prompts, context, iteration — transfers. The surface details of each tool are minor."
+        "answerNote": "Clear prompts, useful context, knowing when to iterate — these transfer. The buttons and branding are the easy part."
       }
-    ],
-    "isModuleEnd": true
+    ]
   },
   "101-1-0": {
     "courseId": 101,
@@ -293,19 +379,33 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 1,
     "totalInModule": 4,
     "title": "It's predicting words",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "Word by word",
+        "scenario": "You ask a chatbot, \"Write me a paragraph about Paris.\" The reply streams in, one word at a time, left to right, as if a hand is writing it.",
+        "prompt": "That stream isn't a stylistic choice. What does it tell you about how the answer is being built?"
+      },
+      {
         "type": "understand",
-        "title": "It's predicting words",
+        "title": "It's predicting, not thinking",
         "body": [
-          "Here's the secret every AI researcher will tell you: the chatbot is not thinking. It's predicting. Given everything that's been said so far, it guesses the most likely next word. Then the next. Then the next. A paragraph is built one word at a time.",
-          "This is why AI feels fluent. A shockingly good next-word predictor produces shockingly fluent sentences. It's also why AI sometimes sounds right but is wrong — it's optimizing for what sounds plausible, not what is true.",
-          "You don't need to understand the math. You just need the mental model: it's a very confident, very well-read word-predictor. Everything else in this course is a consequence of that one fact."
+          "Here is the thing almost nobody gets. The chatbot is not thinking. It is predicting. Given everything said so far, it picks the most likely next word. Then the next. Then the next. A whole paragraph, one word at a time.",
+          "That is why AI feels fluent. A very good next-word predictor produces very fluent sentences. It is also why AI sometimes sounds right but is wrong. The goal is plausibility, not truth."
         ],
         "analogy": {
           "label": "Mental model",
-          "text": "Imagine autocomplete on your phone, but instead of guessing the next word in a text, it's guessing the next word of a whole essay. That's an AI."
+          "text": "Picture the autocomplete on your phone. Now picture it confident enough to keep going for a whole essay. That is the chatbot."
         }
+      },
+      {
+        "type": "learn",
+        "title": "Why fluent and wrong go together",
+        "body": [
+          "Because every word is a guess at what fits, the model favors text that pattern-matches well-written content. Strong grammar. Confident tone. Names and numbers that look right for the topic. None of that is checked against reality. It is checked against what reads like the kind of thing a real source would say."
+        ],
+        "watchFor": "Smooth, confident prose is the default output, even when the underlying claim is shaky. Fluent does not mean correct."
       },
       {
         "type": "apply",
@@ -313,44 +413,44 @@ export const LESSONS: Record<string, Lesson> = {
         "scenario": "Which of these best describes what happens when you ask a chatbot a question?",
         "options": [
           {
-            "text": "It predicts the next word repeatedly until the answer is complete.",
+            "text": "It predicts the next word again and again until the answer is finished.",
             "correct": true,
-            "feedback": "Exactly. Every word is a prediction, and the response is built one small step at a time."
+            "feedback": "Yes. The reply is built one small step at a time, each step a guess at what fits next."
           },
           {
-            "text": "It searches the internet in real time and returns the best result.",
+            "text": "It searches the live web and pastes the best result.",
             "correct": false,
-            "feedback": "Not by default. Unless a chatbot has a browsing feature turned on, it has no live access to the internet."
+            "feedback": "Not by default. Unless a browsing feature is on, the model has no live internet access."
           },
           {
-            "text": "It recalls the exact text from a database it was trained on.",
+            "text": "It looks up the exact passage from a stored copy of its training text.",
             "correct": false,
-            "feedback": "Closer, but still off. It doesn't recall passages — it generates new text by predicting what comes next."
+            "feedback": "Closer, but still off. It does not retrieve passages. It generates new text by predicting what comes next."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "A chatbot gives you a plausible citation that doesn't actually exist. Why?",
+        "prompt": "What is the simplest accurate description of how a chatbot builds an answer?",
         "options": [
           {
-            "text": "It predicted what a citation usually looks like, not what a real one is.",
+            "text": "It pulls a saved answer from a giant FAQ.",
+            "correct": false
+          },
+          {
+            "text": "It guesses the next word, again and again, until the response is done.",
             "correct": true
           },
           {
-            "text": "The training data was wrong.",
+            "text": "It runs a Google search and rewrites the top hit.",
             "correct": false
           },
           {
-            "text": "The chatbot is trying to deceive you.",
-            "correct": false
-          },
-          {
-            "text": "The chatbot is broken.",
+            "text": "It reasons through the question step by step, like a person.",
             "correct": false
           }
         ],
-        "answerNote": "Hallucinations aren't bugs — they're a natural consequence of next-word prediction. Verification is your job."
+        "answerNote": "Next-word prediction is the whole engine. Fluent style and the occasional confident error both fall out of that one fact."
       }
     ]
   },
@@ -364,64 +464,78 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 2,
     "totalInModule": 4,
     "title": "Trained once, used forever",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "The stale answer",
+        "scenario": "You ask a chatbot who the prime minister of Canada is. It answers with a name from two years ago, in the same calm tone it uses for everything else.",
+        "prompt": "The model is not broken. So why does a question that any news site can answer trip it up?"
+      },
+      {
         "type": "understand",
-        "title": "Trained once, used forever",
+        "title": "Trained once, then frozen",
         "body": [
-          "A chatbot's knowledge comes from one big training process: it was shown billions of pages of text (books, articles, websites) and taught to predict the next word. After training, the model is frozen. It doesn't keep learning from your chats.",
-          "This means it has a training cutoff — a date after which it hasn't read anything. Ask it who won yesterday's game and it won't know. Some chatbots have a 'web search' feature that lets them look things up live; most don't, by default.",
-          "It also means your conversation today doesn't change its knowledge tomorrow. You can't teach it something permanent by typing it. If you want the model to know something for a whole project, you have to re-supply it each session."
+          "A chatbot's knowledge comes from one training run. The model was shown billions of pages of text and learned to predict the next word. After that, it is frozen. It does not pick up new facts from your chats.",
+          "That gives it a training cutoff, which is the date its reading stopped. Ask about anything after that date and it will either say it does not know or, worse, guess in the same confident voice it uses for everything else."
         ],
         "analogy": {
-          "label": "Rule of thumb",
-          "text": "If the fact is more recent than \"last year-ish,\" double-check with a real source."
+          "label": "Mental model",
+          "text": "Think of a notebook that was filled in once and then closed. The pages inside are detailed, but nothing new gets added by you reading from it."
         }
       },
       {
+        "type": "learn",
+        "title": "Conversation memory dies with the chat",
+        "body": [
+          "Inside one conversation, the model does remember what you said earlier. That is why setting up context at the start of a chat pays off. But that memory is local to the chat. Close the window and it is gone. Open a new chat and you start clean. Anything you want carried forward, you have to paste in again."
+        ],
+        "watchFor": "If the question depends on recent events, or on something you taught the model in a past chat, treat the answer as suspect by default."
+      },
+      {
         "type": "apply",
-        "title": "Training cutoff check",
-        "scenario": "You ask a chatbot \"Who is the current CEO of Twitter?\" — which is the most likely failure mode?",
+        "title": "Where would this go wrong?",
+        "scenario": "You are about to use a chatbot for one of these tasks. Which one is most likely to give you a stale or invented answer?",
         "options": [
           {
-            "text": "It tells you it doesn't know anything about Twitter.",
+            "text": "Rewrite this paragraph in a friendlier tone.",
             "correct": false,
-            "feedback": "Unlikely. It knows plenty about Twitter up to its training cutoff."
+            "feedback": "Tone rewrites do not depend on recent facts. The model has more than enough language patterns for this."
           },
           {
-            "text": "It gives an answer that was true at its training cutoff, but may be out of date.",
+            "text": "Tell me the latest interest rate the central bank set last week.",
             "correct": true,
-            "feedback": "Yes. Always be skeptical of \"current\" facts — a chatbot's sense of \"now\" is months to years behind reality."
+            "feedback": "Right. Anything fresher than the training cutoff is in danger. Without web search on, the model will guess from older data."
           },
           {
-            "text": "It refuses to answer any question about people.",
+            "text": "Brainstorm ten name ideas for a small bakery.",
             "correct": false,
-            "feedback": "No — chatbots answer questions about public figures by default."
+            "feedback": "Brainstorming names does not need current events. The training data covers this kind of work easily."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "Which statement is true?",
+        "prompt": "Which statement about a chatbot's memory is true?",
         "options": [
           {
-            "text": "Chatbots learn from every conversation they have.",
+            "text": "It learns from every chat and updates its knowledge in real time.",
             "correct": false
           },
           {
-            "text": "Chatbots are constantly scraping Wikipedia.",
+            "text": "It scrapes the web in the background between your messages.",
             "correct": false
           },
           {
-            "text": "Chatbots are trained once; their knowledge is frozen at the cutoff date.",
+            "text": "It is frozen at a training cutoff, and within one chat it remembers what you said until the chat ends.",
             "correct": true
           },
           {
-            "text": "A chatbot can permanently remember facts you tell it just by chatting.",
+            "text": "It permanently saves anything you tell it across all future conversations.",
             "correct": false
           }
         ],
-        "answerNote": "Trained once. Frozen. Any \"freshness\" comes from a separate feature like web search or a file upload — not the model itself."
+        "answerNote": "One training run, then frozen. Any sense of \"now\" comes from a separate feature like web search or a file you paste in, not the model itself."
       }
     ]
   },
@@ -437,6 +551,27 @@ export const LESSONS: Record<string, Lesson> = {
     "title": "Why AI confidently makes stuff up",
     "isModuleEnd": false,
     "steps": [
+      {
+        "type": "recall",
+        "title": "Quick recall",
+        "recallingLessonKey": "101-0-3",
+        "prompt": "Why did the last lesson tell you to stick with one chatbot for your first month?",
+        "options": [
+          {
+            "text": "Because depth on one tool teaches the underlying skill, which transfers.",
+            "correct": true
+          },
+          {
+            "text": "Because the other chatbots are noticeably worse.",
+            "correct": false
+          },
+          {
+            "text": "Because switching tools is technically hard.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Reps on one tool build the real skill. The surface details of each chatbot are minor."
+      },
       {
         "type": "think",
         "title": "The three studies",
@@ -520,63 +655,80 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 4,
     "totalInModule": 4,
     "title": "What AI can't do",
+    "isModuleEnd": true,
     "steps": [
       {
+        "type": "think",
+        "title": "The one-line request",
+        "scenario": "You type, \"Send this to my manager and put the Q3 numbers from our shared drive in the second paragraph.\" You hit enter and wait.",
+        "prompt": "What is the chatbot, by default, actually able to do with that request?"
+      },
+      {
         "type": "understand",
-        "title": "What AI can't do",
+        "title": "It lives inside the chat window",
         "body": [
-          "A chatbot can't access your email, calendar, files, or company systems by default. It can't actually 'send' anything. It can't browse the web unless that feature is explicitly on. Everything it does happens inside the chat window.",
-          "It can't recall previous conversations, can't prove what it said, and can't be held to an answer. If you ask the same question tomorrow, you might get a slightly different reply. That's a feature of how it works, not a bug.",
-          "And it's not self-aware. It doesn't know when it's wrong, doesn't know what it doesn't know, and can't tell you whether you should trust it. That last part — trust calibration — is on you. This course is largely about doing it well."
-        ]
+          "By default, a chatbot has no hands. It can't open your email, read your calendar, touch your files, or reach into company systems. It can't actually send anything. It can't browse the web unless that feature is switched on. Everything it does happens inside the chat box.",
+          "It also has no past with you. It can't recall previous conversations, can't prove what it said last time, and can't be held to an old answer. Ask the same thing tomorrow and the wording may shift. That is how the model works, not a fault."
+        ],
+        "analogy": {
+          "label": "Mental model",
+          "text": "Picture a room with one door, which is the chat window. Words go in, words come out. Nothing in that room reaches into the rest of your house."
+        }
+      },
+      {
+        "type": "learn",
+        "title": "And it does not know when it is wrong",
+        "body": [
+          "The model is not self-aware. It does not know what it does not know. It cannot tell you whether to trust a given answer, because that judgement is not part of what it generates. Knowing when to trust the output, and when to verify it, is on you. Most of this course is about doing that part well."
+        ],
+        "watchFor": "If a chatbot ever asks for a password, claims it sent your email, or says it just checked your calendar with no integration in place, something is wrong. Stop and look at what tool you are actually in."
       },
       {
         "type": "apply",
-        "title": "What should you expect a vanilla chatbot to do?",
-        "scenario": "You type \"Please send this email to my manager.\" What happens?",
+        "title": "What can a vanilla chatbot do here?",
+        "scenario": "You type, \"Please send this email to my manager.\" In a plain chatbot with no integrations, what actually happens?",
         "options": [
           {
-            "text": "It drafts the email in the chat, and you have to copy-paste it yourself.",
+            "text": "It writes the email in the chat. You copy it into your mail app and send it yourself.",
             "correct": true,
-            "feedback": "Exactly. Until you're in a connected tool (Copilot for Outlook, etc.), the chatbot is a text generator, not an agent."
+            "feedback": "Yes. With no integration in place, the chatbot is a text generator. The sending is your job."
           },
           {
-            "text": "It sends the email.",
+            "text": "It sends the email straight to your manager.",
             "correct": false,
-            "feedback": "A default chatbot cannot send anything. It has no access to your inbox."
+            "feedback": "A plain chatbot has no access to your inbox. It cannot send anything on its own."
           },
           {
-            "text": "It asks you for your email password.",
+            "text": "It asks for your email password so it can log in for you.",
             "correct": false,
-            "feedback": "No — and if one ever did, that's a red flag."
+            "feedback": "It should never do this. A chatbot that asks for a password is a red flag, not a feature."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "Which of these is NOT something a vanilla chatbot can do?",
+        "prompt": "Which of these is something a plain chatbot, with no extra integrations, cannot do?",
         "options": [
           {
-            "text": "Brainstorm product names.",
+            "text": "Brainstorm names for a new product.",
             "correct": false
           },
           {
-            "text": "Draft an email.",
+            "text": "Summarize a paragraph you paste into the chat.",
             "correct": false
           },
           {
-            "text": "Read your company's internal Slack history.",
+            "text": "Rewrite a draft in a friendlier tone.",
+            "correct": false
+          },
+          {
+            "text": "Read your company's Slack history and pull a quote from yesterday.",
             "correct": true
-          },
-          {
-            "text": "Summarize a paragraph you paste in.",
-            "correct": false
           }
         ],
-        "answerNote": "A vanilla chatbot lives inside a chat window. To reach into your other apps, it needs a specific integration that was explicitly turned on."
+        "answerNote": "A plain chatbot lives inside the chat window. To touch your other apps, it needs a specific integration that was turned on on purpose."
       }
-    ],
-    "isModuleEnd": true
+    ]
   },
   "101-2-0": {
     "courseId": 101,
@@ -588,64 +740,78 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 1,
     "totalInModule": 4,
     "title": "What is a prompt?",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "Two messages, same chatbot",
+        "scenario": "A coworker types \"write something about Q3.\" Gets back a vague paragraph. You type \"Draft a 4-bullet Q3 update for our sales team — wins, misses, one ask.\" You get something usable on the first try.",
+        "prompt": "Same tool. Same five seconds of typing. What did your message contain that theirs didn't?"
+      },
+      {
         "type": "understand",
-        "title": "What is a prompt?",
+        "title": "A prompt is just what you type",
         "body": [
-          "A prompt is just the text you type to an AI. That's it. Every message you send — one word, one sentence, one paragraph — is a prompt. People sometimes make prompting sound like wizardry. It's not. It's asking.",
-          "What makes a prompt good? It tells the AI three things: what you want (the task), enough background to do it well (the context), and how you want the answer back (the format). Any prompt with all three will outperform most clever tricks.",
-          "For your first prompts, don't worry about structure. Just ask. Watch the reply. Decide what you liked and didn't. That feedback loop — ask, read, refine — is the whole skill."
+          "A prompt is the text you send. One word, one sentence, one paragraph. That's it. There are no magic words. There is no secret handshake.",
+          "What separates a useful prompt from a useless one is what's inside it. Three things, in any order: the task (what you want done), the context (what the AI needs to know to do it well), and the format (how you want the answer back). Hit those three and the AI has almost nothing left to guess."
         ],
         "analogy": {
-          "label": "The 3-part prompt",
-          "text": "1. Task — what you want done. 2. Context — what it needs to know. 3. Format — how to hand it back."
+          "label": "Mental model",
+          "text": "Think of a letter you'd hand to an assistant. Top of the page: do this thing. Middle: here's the background. Bottom: hand it back to me as a one-pager. Same shape works for AI."
         }
       },
       {
+        "type": "learn",
+        "title": "How it shows up in real work",
+        "body": [
+          "Most disappointing AI replies have the same root cause: a prompt missing one of the three parts. \"Help me with my email\" has a task but no context and no format. \"I'm a tax accountant in Ohio\" has context but no task. \"In a table\" has format but nothing to put in it. The AI fills the gaps by guessing, and its guesses are average."
+        ],
+        "watchFor": "If you read your prompt and can't tell what the answer should look like, the AI can't either. Add the missing piece before you hit send."
+      },
+      {
         "type": "apply",
-        "title": "Which of these is the better prompt?",
-        "scenario": "You want help writing a LinkedIn post announcing your promotion. Which prompt is likely to give better output?",
+        "title": "Spot the complete prompt",
+        "scenario": "You want a chatbot to help you announce a new pricing page. Which message is most likely to come back usable on the first try?",
         "options": [
           {
-            "text": "\"Write a LinkedIn post announcing my promotion from Senior Account Exec to Director of Sales. Grateful, a bit self-deprecating, 100 words. I want to thank my manager Rachel.\",\"",
+            "text": "\"Draft a 100-word email to our existing customers announcing our new pricing page. Friendly tone, one link at the end. We raised prices 8% but kept the starter plan free.\"",
             "correct": true,
-            "feedback": "This gives task, context, and format. The output will be sharper by a mile."
+            "feedback": "Task (draft email), context (audience, price change), format (100 words, one link). All three. The reply will be close to usable."
           },
           {
-            "text": "\"Write a LinkedIn post.\"",
+            "text": "\"Write something about our new pricing.\"",
             "correct": false,
-            "feedback": "Too vague. You'll get a generic template that sounds like everyone else's."
+            "feedback": "Task only. No audience, no tone, no length. The AI invents all of that — and not in your voice."
           },
           {
-            "text": "\"Promotion post LinkedIn director sales please.\"",
+            "text": "\"Pricing email customers please thanks.\"",
             "correct": false,
-            "feedback": "Keywords alone leave too much for the AI to invent."
+            "feedback": "Keywords aren't a prompt. The AI has to guess what you mean by every word."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "Which of these is always part of every prompt?",
+        "prompt": "Which is true of every prompt, no matter how short?",
         "options": [
           {
-            "text": "A specific formatting request.",
+            "text": "It needs a question mark to register as a question.",
             "correct": false
           },
           {
-            "text": "At least three paragraphs of context.",
-            "correct": false
-          },
-          {
-            "text": "The text you type — however long or short.",
+            "text": "It is just the text you send — long or short, polished or rough.",
             "correct": true
           },
           {
-            "text": "A question mark.",
+            "text": "It must include the words \"please\" and \"thank you.\"",
+            "correct": false
+          },
+          {
+            "text": "It must use a special prompt template to work.",
             "correct": false
           }
         ],
-        "answerNote": "A prompt is just your input. Fancy structures are optional — but context + task + format is the sturdy default."
+        "answerNote": "A prompt is whatever you type. Templates are optional. Task plus context plus format is the sturdy default — not a rule, just the recipe that keeps working."
       }
     ]
   },
@@ -659,64 +825,99 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 2,
     "totalInModule": 4,
     "title": "Clear asks beat clever ones",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "recall",
+        "title": "Quick recall",
+        "recallingLessonKey": "101-1-2",
+        "prompt": "From the last module — when AI gives you a confident-sounding citation, why might it still be wrong?",
+        "options": [
+          {
+            "text": "Because it predicts plausible-sounding text and sounds the same whether it knows or is guessing.",
+            "correct": true
+          },
+          {
+            "text": "Because the model is trying to deceive you on purpose.",
+            "correct": false
+          },
+          {
+            "text": "Because its training data is mostly fiction.",
+            "correct": false
+          }
+        ],
+        "answerNote": "The tone never changes. Specifics — names, numbers, citations — are the high-risk slots. Verify them, don't trust them."
+      },
+      {
+        "type": "think",
+        "title": "Two ways of asking",
+        "scenario": "Person A types: \"I would be most grateful if you could possibly assist me with refining my email correspondence.\" Person B types: \"Shorten this email to 4 lines. Keep the meeting time. Drop the apology.\"",
+        "prompt": "Both are polite humans. Both want the same thing. Which message does the AI actually have a shot at answering well — and why?"
+      },
+      {
         "type": "understand",
-        "title": "Clear asks beat clever ones",
+        "title": "Specific beats polite",
         "body": [
-          "A common mistake beginners make: trying to sound 'smart' for the AI. Long preambles, over-formal phrasing, excessive please-and-thank-you. None of it matters. The AI doesn't have feelings and doesn't care about your tone. It cares about your specificity.",
-          "The fastest-improving habit you can form is swapping vague verbs for specific ones. 'Help me with my email' → 'Shorten this email to 4 lines.' 'Do something with this data' → 'Find the three outliers in this list.' Specificity is the cheat code.",
-          "If you're stuck, try the 'smart colleague' trick. Imagine you're giving the task to a capable person you just met. What would they need to know? Type that."
+          "Beginners try to sound smart for the AI. Long preambles. Formal phrasing. Stacks of \"please\" and \"thank you.\" None of it changes the output. The model has no feelings to flatter. It has no boss to impress.",
+          "What it does respond to is specificity. Swap vague verbs for measurable ones. \"Help with my email\" becomes \"shorten to 4 lines.\" \"Do something with this list\" becomes \"find the three outliers.\" \"Make it better\" becomes \"cut the three weakest sentences.\" Every swap removes a guess the AI was about to make for you."
         ],
         "analogy": {
-          "label": "Swap vague for specific",
-          "text": "\"Help me\" → \"Shorten to 4 lines.\" \"Do X with Y\" → \"Find the three outliers in Y.\" \"Make it better\" → \"Remove the three weakest sentences.\""
+          "label": "Mental model",
+          "text": "Picture handing a task to a smart colleague who just walked in the door. They're capable but they don't know your situation. What would you actually need to tell them? Type that. Skip the throat-clearing."
         }
       },
       {
+        "type": "learn",
+        "title": "The most common failure",
+        "body": [
+          "When people complain that AI gave them generic output, the prompt almost always contains a vague verb. \"Improve.\" \"Optimize.\" \"Help.\" \"Look at.\" These verbs hide the actual ask. The AI picks an average interpretation, and average is exactly what you didn't want. The fix is to name the change you want to see and a way to know if it happened."
+        ],
+        "watchFor": "If you can't say how you'd check whether the AI did the thing, the verb is too vague. Replace it with one you could test."
+      },
+      {
         "type": "apply",
-        "title": "Rewrite for clarity",
-        "scenario": "Which rewrite of \"help me with my presentation\" is most likely to produce useful output?",
+        "title": "Rewrite the vague ask",
+        "scenario": "You typed \"help me with my presentation\" and got a generic pep talk. Which rewrite is most likely to give you something usable?",
         "options": [
           {
-            "text": "\"I kindly request your esteemed feedback on my presentation.\"",
+            "text": "\"Please assist me with my deck — I would deeply appreciate your insight.\"",
             "correct": false,
-            "feedback": "Politeness without specificity. The AI still doesn't know what to do."
+            "feedback": "More polite, same vagueness. The AI still has no idea what \"assist\" means here."
           },
           {
-            "text": "\"Improve my presentation please.\"",
+            "text": "\"Be more helpful with my presentation this time.\"",
             "correct": false,
-            "feedback": "Still vague. The AI has to guess what \"improve\" means."
+            "feedback": "\"More helpful\" is the same vague verb again. The model has nothing new to act on."
           },
           {
-            "text": "\"Review these 5 slides of bullet points and suggest where I should cut, combine, or clarify. Aim: tighter and more punchy.\"",
+            "text": "\"Read these 5 bullet slides. Tell me which slide to cut, which two to combine, and one sentence I should make punchier.\"",
             "correct": true,
-            "feedback": "Specific task, specific scope, clear intent. You'll get something usable."
+            "feedback": "Specific verbs, specific outputs, a number you can count. You'll get something you can actually use or argue with."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "The single most high-leverage thing to add to a vague prompt is:",
+        "prompt": "What's the single highest-impact change to make to a prompt that returned generic output?",
         "options": [
           {
-            "text": "A specific verb and a measurable outcome.",
+            "text": "Add a longer preamble about why the task matters to you.",
+            "correct": false
+          },
+          {
+            "text": "Add more politeness and a clearer thank-you.",
+            "correct": false
+          },
+          {
+            "text": "Add emojis so the AI matches the tone you want.",
+            "correct": false
+          },
+          {
+            "text": "Replace the vague verb with a specific one and name a measurable outcome.",
             "correct": true
-          },
-          {
-            "text": "A longer preamble about who you are.",
-            "correct": false
-          },
-          {
-            "text": "Emojis.",
-            "correct": false
-          },
-          {
-            "text": "Politeness.",
-            "correct": false
           }
         ],
-        "answerNote": "\"Summarize this in 3 bullets\" beats \"tell me about this\" every time. Aim for asks you could test whether the AI hit."
+        "answerNote": "\"Summarize this in 3 bullets\" beats \"tell me about this\" every time. If you can check whether the AI hit the ask, the ask was specific enough."
       }
     ]
   },
@@ -730,64 +931,78 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 3,
     "totalInModule": 4,
     "title": "Give it context",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "Same task, two new hires",
+        "scenario": "You ask a brand-new hire to \"draft the monthly update.\" They've been on the job four hours. They don't know who reads it, what tone it uses, or what last month's looked like.",
+        "prompt": "They'll write something. What are the odds it sounds like yours — and what would you have to tell them up front to fix that?"
+      },
+      {
         "type": "understand",
-        "title": "Give it context",
+        "title": "Every blank you leave gets filled by a guess",
         "body": [
-          "A prompt without context is like asking a new hire 'write the monthly report' on day one. They'll write something — it just won't be yours. Same with AI. Giving it context is how you get output that fits your specific situation.",
-          "Useful context includes: your role ('I run marketing for a 40-person SaaS company'), your audience ('this is for our sales team, not customers'), constraints ('under 150 words, no jargon'), and examples ('here's a post I liked; make it more like this').",
-          "You don't need all of it every time. But every piece of context you give cuts down the amount the AI has to guess. Less guessing = less generic output."
+          "A prompt with no context is exactly that new hire on day one. The AI will produce a draft. It just won't be your draft. It'll be the average of every \"monthly update\" the model has ever seen.",
+          "Useful context comes in four flavors. Character: who you are and what you do. Customer: who the output is for. Constraints: what it must include, what it must avoid, how long. Cues: an example of something you liked or didn't. Every piece you add is one fewer guess."
         ],
         "analogy": {
-          "label": "The 4 C's of context",
-          "text": "Character (who you are), Customer (who it's for), Constraints (what it must / must not have), Cues (examples)."
+          "label": "Mental model",
+          "text": "Think of a recipe you hand to a cook in an unfamiliar kitchen. They can read \"chicken soup.\" They can't read your mind about which pot, which broth, or who's eating it. The 4 C's are the labels you put on the ingredients."
         }
+      },
+      {
+        "type": "learn",
+        "title": "How it goes wrong in real work",
+        "body": [
+          "The most common context mistake is dumping facts that don't change the answer. Job titles for everyone on the team. The history of the company. A long apology for asking. None of it shapes the output. The test for any sentence of context is simple: would removing it make the AI give a worse answer? If no, cut it. The signal-to-noise of your prompt matters more than its length."
+        ],
+        "watchFor": "If you find yourself padding the prompt to feel thorough, stop. Context is information that changes the answer — not information that proves you tried."
       },
       {
         "type": "apply",
         "title": "Pick the missing context",
-        "scenario": "You ask a chatbot to \"draft a pitch email for our software.\" Output is generic and bland. What's the most useful thing to add?",
+        "scenario": "You asked a chatbot to \"draft a pitch email for our software.\" The reply is bland and could fit any product on earth. What's the most useful thing to add?",
         "options": [
           {
-            "text": "A description of who the email is going to and what problem your software solves for them.",
+            "text": "A request to \"please be more creative this time.\"",
+            "correct": false,
+            "feedback": "Creativity isn't a context problem. The AI has no new information to work with."
+          },
+          {
+            "text": "Who the email is going to and the specific problem your software solves for them.",
             "correct": true,
-            "feedback": "Audience + problem = context. This turns a generic pitch into a specific one."
+            "feedback": "Audience plus problem. Two of the 4 C's, and the two that change every word of the output."
           },
           {
-            "text": "A longer word limit.",
+            "text": "A higher word limit so it has more room to be interesting.",
             "correct": false,
-            "feedback": "More words ≠ better. More context → better."
-          },
-          {
-            "text": "A request for the AI to \"be more creative.\"",
-            "correct": false,
-            "feedback": "Vague, doesn't give it new information to work with."
+            "feedback": "More words won't fix bland. More signal will."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "Which is the best kind of context to add to a prompt?",
+        "prompt": "Which best describes useful context to add to a prompt?",
         "options": [
           {
-            "text": "Information that changes what a good answer looks like.",
+            "text": "Information that, if removed, would make the AI give a worse answer.",
             "correct": true
           },
           {
-            "text": "A list of tools you use.",
+            "text": "Your full job history and a list of every tool you use at work.",
             "correct": false
           },
           {
-            "text": "A long apology for asking.",
+            "text": "A short apology for taking the AI's time.",
             "correct": false
           },
           {
-            "text": "Your full resume.",
+            "text": "Anything that makes the prompt longer and more thorough-looking.",
             "correct": false
           }
         ],
-        "answerNote": "Good context is any information that, if removed, would let the AI give a less fitting answer."
+        "answerNote": "Context is the 4 C's: Character, Customer, Constraints, Cues. Each one closes a gap the AI was about to guess in your place."
       }
     ]
   },
@@ -801,67 +1016,80 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 4,
     "totalInModule": 4,
     "title": "Iterating: ask again",
+    "isModuleEnd": true,
     "steps": [
       {
+        "type": "think",
+        "title": "The 400-word \"100-word summary\"",
+        "scenario": "You asked for a 100-word summary. The reply is 400 words, with three paragraphs you didn't want. It's not bad. It's just not what you asked for.",
+        "prompt": "Most people open a new chat and start over. Why is that almost always the slower move?"
+      },
+      {
         "type": "understand",
-        "title": "Iterating: ask again",
+        "title": "First reply is a draft",
         "body": [
-          "The first response is almost never the final one. Treat it as a draft — feedback on your prompt, not a finished artifact. The real skill is the second prompt: 'Make it shorter.' 'Try again, less formal.' 'Now pretend the reader is skeptical.'",
-          "You can also correct the AI directly. If it got a fact wrong, tell it. If it misread your ask, rephrase. The AI can't argue with you — within the conversation, whatever you say is treated as true for now.",
-          "Stop iterating when the output is good enough to use, not when it's perfect. Chasing perfection inside the chat is usually slower than finishing it yourself."
+          "Treat the first response as feedback on your prompt, not as the finished thing. The actual skill is the second message. \"Make it shorter.\" \"Less formal.\" \"Pretend the reader is skeptical.\" Each follow-up uses everything the AI already wrote and everything you already told it.",
+          "You can also correct the model directly. If it got a fact wrong, say so. If it misread your ask, rephrase. Inside the conversation, whatever you tell it is treated as true for now. There's nothing to argue with — just keep moving."
         ],
         "analogy": {
-          "label": "Three iteration verbs",
-          "text": "Tighten (fewer words). Reframe (different angle). Rewrite (start from scratch with what it learned)."
+          "label": "Mental model",
+          "text": "Picture editing a draft with a pencil instead of throwing the page in the bin. Tighten the sentences. Reframe the angle. Rewrite the part that's wrong. Same page, fewer trips to the printer."
         }
       },
       {
+        "type": "learn",
+        "title": "When to stop",
+        "body": [
+          "The trap on the other end is chasing perfect inside the chat. After three or four good iterations, the marginal improvement per message gets small. At that point, copy the output, finish the last 10% by hand, and ship it. \"Good enough to use\" is the target. Perfect inside the chat usually takes longer than perfect with your own edit on top."
+        ],
+        "watchFor": "If you've sent three follow-ups and the output is still drifting, the issue is your prompt — not the AI's effort. Rewrite the ask from scratch with what you've learned."
+      },
+      {
         "type": "apply",
-        "title": "The AI misreads you",
-        "scenario": "You asked for a 100-word summary and it gave you 400. What's the best follow-up?",
+        "title": "It misread the length",
+        "scenario": "You asked for a 100-word summary. You got 400 words. It's accurate but too long. What's the best next move?",
         "options": [
           {
-            "text": "Copy the long version and trim it by hand.",
+            "text": "Open a brand-new chat and write a fresh prompt from scratch.",
             "correct": false,
-            "feedback": "Fine if urgent, but iterating would have been faster."
+            "feedback": "You'd lose every bit of context the model already has. Fresh chats are for fresh tasks, not corrections."
           },
           {
-            "text": "Start a brand new chat and try again.",
+            "text": "Copy the 400 words into a doc and trim it down by hand.",
             "correct": false,
-            "feedback": "Wasteful — you'd lose all the context you built up. Just follow up."
+            "feedback": "Fine if you're truly out of time, but slower than one good follow-up. You skipped the cheap fix."
           },
           {
-            "text": "\"Cut this to 100 words. Keep the key points, drop the examples.\"",
+            "text": "Reply: \"Cut this to 100 words. Keep the key points, drop the examples.\"",
             "correct": true,
-            "feedback": "Precise correction inside the chat. The model already has the draft; now it tightens."
+            "feedback": "Precise correction inside the chat. The model already has the draft. It just tightens what's there."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "When iterating inside a conversation, the model:",
+        "prompt": "When you keep iterating inside a single conversation, the model:",
         "options": [
           {
-            "text": "Refuses to try more than twice.",
+            "text": "Resets after each message and only reads your latest one.",
             "correct": false
           },
           {
-            "text": "Has access to the full prior exchange and builds on it.",
+            "text": "Locks in its first answer and refuses to change it.",
+            "correct": false
+          },
+          {
+            "text": "Has the full prior exchange available and builds on top of it.",
             "correct": true
           },
           {
-            "text": "Starts each response from scratch.",
-            "correct": false
-          },
-          {
-            "text": "Forgets the previous attempt.",
+            "text": "Randomly forgets earlier turns to keep things fresh.",
             "correct": false
           }
         ],
-        "answerNote": "That's what makes iteration powerful: each follow-up costs less context than starting fresh."
+        "answerNote": "Inside a conversation, context compounds. Tighten, reframe, or rewrite — and stop when the output is good enough to use, not when it's perfect."
       }
-    ],
-    "isModuleEnd": true
+    ]
   },
   "101-3-0": {
     "courseId": 101,
@@ -873,64 +1101,101 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 1,
     "totalInModule": 4,
     "title": "What NOT to share",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "recall",
+        "title": "Quick recall",
+        "recallingLessonKey": "101-2-1",
+        "prompt": "Last lesson: the highest-value thing to add to a vague prompt was —",
+        "options": [
+          {
+            "text": "A specific verb and a measurable outcome.",
+            "correct": true
+          },
+          {
+            "text": "A polite preamble about who you are.",
+            "correct": false
+          },
+          {
+            "text": "A few well-placed emojis.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Specificity beats politeness. Hold that thought — clear asks matter more when the stakes go up, which is where this lesson goes."
+      },
+      {
+        "type": "think",
+        "title": "The paste",
+        "scenario": "It's 4:50pm. A colleague forwards you a customer's complaint thread — full name, account number, partial card. You want to draft a reply fast, so your hand drifts toward the chatbot tab.",
+        "prompt": "Before you paste — what exactly is about to leave your laptop, and where does it go?"
+      },
+      {
         "type": "understand",
-        "title": "What NOT to share",
+        "title": "The chat window is not a vault",
         "body": [
-          "Default rule: don't paste anything into a public chatbot that you wouldn't be comfortable leaking. Passwords, full customer PII, unreleased financials, unpatched security issues, anyone's social security number. These things don't belong in a chat window.",
-          "Why? Because depending on the tool and settings, your messages may be used to improve future models. Even when they aren't, they're stored on someone else's servers. If your company hasn't signed a data agreement with the AI vendor, assume the conversation is less private than email.",
-          "For sensitive work, use the AI your company has approved. If you don't have one, ask IT. If you can't wait, redact the sensitive parts — replace names with 'Customer A,' dollar amounts with '$X.' The AI rarely needs the specifics."
+          "Whatever you type into a public chatbot lands on someone else's servers. Depending on the tool and your settings, it may be read, stored, or used to train the next model. The chat box looks private. It isn't.",
+          "So the rule is simple. Don't paste anything you'd hate to see leak. Passwords, API keys, customer SSNs, full PII, unreleased financials, material non-public info, unpatched security bugs. None of it belongs in a public chat.",
+          "If your company has an approved AI tool with a data agreement, use that. If not, redact. Names become \"Customer A.\" Dollar figures become \"$X.\" The model almost never needs the real specifics to do the work."
         ],
         "analogy": {
-          "label": "Sensible defaults",
-          "text": "No passwords. No secrets. No real customer data in a public chatbot. If in doubt, redact."
+          "label": "Mental model",
+          "text": "Treat a public chatbot like a postcard. The message gets where it's going, but anyone along the route could read it. You don't write your bank PIN on a postcard."
         }
       },
       {
+        "type": "learn",
+        "title": "How this goes wrong",
+        "body": [
+          "The usual failure is small and fast. Someone pastes a contract to \"summarize the key terms.\" Someone drops an earnings draft in to \"polish the language.\" Someone shares a customer ticket with name and address attached because clipping it felt like extra work. None of these feel reckless in the moment. All of them are.",
+          "And \"please don't save this\" inside the prompt does nothing. The model can't honor that promise. The vendor's logging policy does what it does, regardless of what you asked."
+        ],
+        "watchFor": "If the document has a name, a number, an account ID, or a date that hasn't been announced yet — pause. Either redact it, or move to an approved tool. \"Please don't save this\" is not a security model."
+      },
+      {
         "type": "apply",
-        "title": "Safe or not?",
-        "scenario": "Which of these is safe to paste into a public chatbot?",
+        "title": "Three pastes, one is fine",
+        "scenario": "You're using a free public chatbot on your personal account. Three pastes are in front of you. Which one is actually safe to send?",
         "options": [
           {
-            "text": "A customer's social security number and DOB.",
+            "text": "A customer's full name, date of birth, and SSN, with a note asking for a polite refund email.",
             "correct": false,
-            "feedback": "Never. This is textbook PII and should not leave approved systems."
+            "feedback": "Hard no. SSN and DOB are textbook PII and never belong in a public chat — approved tool or not, this gets redacted first."
           },
           {
-            "text": "Your company's unreleased earnings numbers.",
+            "text": "Next quarter's earnings deck, asking for tighter headlines before the board meeting.",
             "correct": false,
-            "feedback": "Don't. MNPI (material non-public info) has legal implications."
+            "feedback": "That's material non-public info. It carries legal exposure on top of the data risk. This needs the approved internal tool, full stop."
           },
           {
-            "text": "A generic customer support email with no names or account IDs.",
+            "text": "A generic complaint email with names, account IDs, and dollar amounts swapped for placeholders.",
             "correct": true,
-            "feedback": "Fine. Generic or redacted text is the sweet spot."
+            "feedback": "Yes. Redacted text gets you the same drafting help with none of the leak. The model rarely needs the real details to write the reply."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "What's the best way to get AI help on a sensitive document?",
+        "prompt": "Your manager wants AI help on a sensitive HR document. The cleanest play is —",
         "options": [
           {
-            "text": "Paste the whole thing into a public chatbot.",
+            "text": "Paste the whole thing into a public chatbot, then delete the chat after.",
             "correct": false
           },
           {
-            "text": "Redact sensitive details, or use a company-approved AI that has a data agreement.",
+            "text": "Use a company-approved AI with a data agreement, or redact the sensitive parts before pasting.",
             "correct": true
           },
           {
-            "text": "Ask the AI to promise it won't save anything.",
+            "text": "Add \"please don't save or train on this\" at the top of the prompt.",
             "correct": false
           },
           {
-            "text": "Email it to a friend first.",
+            "text": "Email the document to a personal account first so it's off the work network.",
             "correct": false
           }
         ],
-        "answerNote": "Redaction + approved tools are the two reliable levers. \"Please don't save this\" is not a security model."
+        "answerNote": "Two reliable levers: an approved tool with a contract, or redaction. Anything else is hoping the vendor reads your mind."
       }
     ]
   },
@@ -944,64 +1209,79 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 2,
     "totalInModule": 4,
     "title": "Fact-checking AI",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "The clean number",
+        "scenario": "AI hands you a memo with this line: \"According to a 2023 McKinsey report, 71% of mid-market firms now use generative AI weekly.\" The number is perfect. The source is famous. Deadline in twenty minutes.",
+        "prompt": "Before you ship — what's the smallest action that protects you if that stat doesn't actually exist?"
+      },
+      {
         "type": "understand",
-        "title": "Fact-checking AI",
+        "title": "Verify the specifics, skip the obvious",
         "body": [
-          "Every answer a chatbot gives you has two possible problems: it could be wrong about a fact, or it could be right but stale. Both are invisible unless you check. Don't skip this step on anything you'll send, ship, or decide from.",
-          "A reliable verification habit: for any specific claim the AI makes — a number, a quote, a name, a policy — open a fresh browser tab and search for the claim. If you can't find a primary source in 30 seconds, treat the claim as suspect.",
-          "You don't have to verify everything. Verify the things that would embarrass you or mislead someone if they were wrong. Generic advice, brainstorms, and summaries of text you provided are usually fine without a fact-check."
+          "Every AI answer has two failure modes. It can be wrong about a fact, or right but stale. Both look identical on screen — same calm tone, same tidy sentence. The reader can't tell which is which. Neither can you, until you check.",
+          "You don't need to verify everything. Verify the things that would embarrass you if they turned out to be wrong. That means specifics: dates, numbers, names, direct quotes, citations, policies. Skip the verification on common knowledge and on summaries of text you handed it.",
+          "The habit: when you see a specific claim, open a new tab and search for the primary source. Not another chatbot. The actual report, the actual press release, the actual government page. If the source isn't obvious in 30 seconds, treat the claim as unconfirmed."
         ],
         "analogy": {
-          "label": "The 30-second rule",
-          "text": "If a primary source isn't obvious in 30 seconds of searching, don't repeat the claim."
+          "label": "Mental model",
+          "text": "Picture a confident tour guide pointing at a building. \"Built in 1847.\" Sounds great. The plaque on the wall is two steps away. Read the plaque before you repeat the date."
         }
       },
       {
+        "type": "learn",
+        "title": "Where the fakes hide",
+        "body": [
+          "Fabrications cluster around specifics that sound borrowed. A percentage attached to a famous publication. A quote attached to a famous person. A case name attached to a court. A study attached to a university. The more authoritative the wrapper, the more confidently the model invents the contents. A vague summary is rarely fake. A statistic with a year and a source often is."
+        ],
+        "watchFor": "The 30-second rule: if a primary source for a specific claim isn't findable in 30 seconds of searching, don't repeat the claim. Cut it, or replace it with something you can stand behind."
+      },
+      {
         "type": "apply",
-        "title": "What to verify",
-        "scenario": "A chatbot writes a paragraph that includes: a company's founding year, a general explanation of SaaS, and a summary of a PDF you uploaded. Which deserves the strictest fact-check?",
+        "title": "Three claims, one needs the most scrutiny",
+        "scenario": "AI drafts a paragraph for your industry blog post. It contains three things: a one-line definition of SaaS, a summary of the PDF you uploaded, and the founding year of a competitor. Which deserves the strictest fact-check before you publish?",
         "options": [
           {
-            "text": "The general explanation of SaaS.",
-            "correct": false,
-            "feedback": "Common-knowledge material is least likely to hallucinate."
-          },
-          {
-            "text": "The company's founding year.",
+            "text": "The competitor's founding year — a specific date about a specific named entity.",
             "correct": true,
-            "feedback": "Specific facts (dates, names, numbers) are where hallucinations hide. Double-check."
+            "feedback": "Right. Specific dates about specific entities are the classic hallucination shape. One search confirms or kills it."
           },
           {
-            "text": "The summary of the PDF you gave it.",
+            "text": "The one-line definition of SaaS.",
             "correct": false,
-            "feedback": "Still worth skimming, but grounded in your input — the risk is lower."
+            "feedback": "Common knowledge is the lowest-risk surface. The model has seen this defined a million times — a wrong definition would be unusual."
+          },
+          {
+            "text": "The summary of the PDF you uploaded.",
+            "correct": false,
+            "feedback": "Worth a skim, not a deep verify. The source material is in the chat — drift is bounded by what you provided."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "What's the most efficient fact-checking habit?",
+        "prompt": "What's the most reliable way to fact-check a specific claim from a chatbot?",
         "options": [
           {
-            "text": "Ask another chatbot.",
+            "text": "Ask the same chatbot if it's sure.",
             "correct": false
           },
           {
-            "text": "Assume the AI is right if it sounds confident.",
+            "text": "Ask a different chatbot for a second opinion.",
             "correct": false
           },
           {
-            "text": "Search for a primary source for any specific claim before using it.",
+            "text": "Trust it if the source name (HBR, Nature, Reuters) is reputable.",
+            "correct": false
+          },
+          {
+            "text": "Open a new tab and search for the primary source on the open web.",
             "correct": true
-          },
-          {
-            "text": "Re-ask the same chatbot if it's sure.",
-            "correct": false
           }
         ],
-        "answerNote": "Chatbots confirm themselves happily; they're bad lie detectors. A quick search on the open web is the shortest path to ground truth."
+        "answerNote": "Chatbots confirm their own answers cheerfully — they're poor lie detectors. The shortest path to ground truth is the open web and the original source."
       }
     ]
   },
@@ -1015,64 +1295,79 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 3,
     "totalInModule": 4,
     "title": "When NOT to use AI",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "The hard email",
+        "scenario": "You have to let someone go on Friday. It's your call, and you've made it. You sit down to write the email and your hand hovers over the AI tab.",
+        "prompt": "What part of this does AI help with, and what part stays yours no matter what?"
+      },
+      {
         "type": "understand",
-        "title": "When NOT to use AI",
+        "title": "Helper, not decider",
         "body": [
-          "Not every task is an AI task. Some tasks need judgment you have and the AI doesn't — ethical calls, performance reviews, firing decisions, customer empathy in a crisis. Others need precision only a real tool can give — legal filings, medical diagnosis, exact financial calculations.",
-          "A useful filter: if the task has high stakes and hallucination would matter, the AI should be a helper, not the decider. It can draft a difficult email; you must decide whether to send it.",
-          "Also: your own thinking. If you're using AI for every first draft, you can lose the ability to form your own point of view. For things you care about saying in your own voice, start with a blank page."
+          "Not every task is an AI task. Some tasks need judgment that lives with you and can't be delegated. Firing a person. Writing a real performance review. Sitting with a customer in a crisis. Calling an ethical line. Other tasks need precision that a chat window can't give — a legal filing, a medical diagnosis, an exact tax calculation, a load-bearing financial model.",
+          "There's also the quieter cost. If you let AI write every first draft, you slowly stop forming your own point of view. For things you genuinely care about saying in your own voice, start with a blank page and let AI in later, if at all.",
+          "The filter that catches most of this: would you be mortified if this answer was wrong and someone acted on it? If yes, AI is a helper, not the decider. It can draft. It can list options. It can pressure-test a memo. The signature, the call, the accountability — yours."
         ],
         "analogy": {
-          "label": "High-stakes filter",
-          "text": "Would I be mortified if this was wrong and someone acted on it? If yes — AI is an assistant, not an author."
+          "label": "Mental model",
+          "text": "AI is a sharp kitchen knife. Brilliant for chopping. Useless for deciding what's for dinner, and dangerous if you hand it to someone and walk away from the stove."
         }
       },
       {
+        "type": "learn",
+        "title": "Where it goes wrong",
+        "body": [
+          "The trap is the soft handoff. You ask AI to \"draft the firing email\" and the words are good enough, so the words become the thing. The decision quietly travels with the draft. A month later you can't quite remember whether you chose those phrases or just kept them. For high-stakes work, generate options and pick. Don't generate an answer and ship."
+        ],
+        "watchFor": "High-stakes filter: \"Would I be mortified if this was wrong and someone acted on it?\" If yes — AI is an assistant, not an author. The human stays in the chair."
+      },
+      {
         "type": "apply",
-        "title": "Is AI the right tool here?",
-        "scenario": "Your manager asks you to make a final call on a contract negotiation. Should AI make the call?",
+        "title": "Where does AI fit?",
+        "scenario": "Your manager asks you to make the final call on a six-figure contract negotiation by end of day. You've got AI open. Where does it fit?",
         "options": [
           {
-            "text": "Yes — it's read more contracts than anyone.",
+            "text": "Let AI make the call — it's read more contracts than any human ever could.",
             "correct": false,
-            "feedback": "Reading ≠ deciding. Judgment under accountability is yours."
+            "feedback": "Reading isn't deciding. Accountability sits with the named human — that's you, not the chat window."
           },
           {
-            "text": "No, but it can help you outline tradeoffs and write the communication.",
+            "text": "Use AI to outline tradeoffs, stress-test your reasoning, and draft the message. You make the call.",
             "correct": true,
-            "feedback": "Right. AI as thinking partner, you as decider."
+            "feedback": "Yes. Helper for the thinking and the drafting. Decider stays human."
           },
           {
-            "text": "Only if the contract is under a certain dollar amount.",
+            "text": "Let AI decide if the contract is under a certain dollar threshold; otherwise escalate.",
             "correct": false,
-            "feedback": "The dollar amount doesn't change who's accountable for the decision — you are."
+            "feedback": "The threshold doesn't change who's accountable. You still own the call, regardless of size."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "The best description of AI's role in high-stakes decisions is:",
+        "prompt": "AI's right role in a high-stakes decision is to —",
         "options": [
           {
-            "text": "Absolve the decider of responsibility.",
-            "correct": false
-          },
-          {
-            "text": "Widen the decider's options and pressure-test their thinking.",
+            "text": "Widen your options and pressure-test your thinking, while you stay the decider.",
             "correct": true
           },
           {
-            "text": "Replace the decider.",
+            "text": "Replace the decider so the decision feels less personal.",
             "correct": false
           },
           {
-            "text": "Rubber-stamp the decider's first instinct.",
+            "text": "Rubber-stamp your first instinct so you can move faster.",
+            "correct": false
+          },
+          {
+            "text": "Absolve you of responsibility if the call turns out badly.",
             "correct": false
           }
         ],
-        "answerNote": "AI expands the surface area of your thinking. Accountability stays with the human."
+        "answerNote": "AI expands the surface area of your thinking. Accountability stays with the human whose name is on the email."
       }
     ]
   },
@@ -1086,67 +1381,102 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 4,
     "totalInModule": 4,
     "title": "Biases and blind spots",
+    "isModuleEnd": true,
     "steps": [
       {
+        "type": "recall",
+        "title": "Quick recall",
+        "recallingLessonKey": "101-3-0",
+        "prompt": "Last lesson: \"Please don't save this\" inside a prompt is —",
+        "options": [
+          {
+            "text": "Not a security model — the vendor's policy does what it does regardless.",
+            "correct": true
+          },
+          {
+            "text": "A binding instruction the model honors before saving anything.",
+            "correct": false
+          },
+          {
+            "text": "Enough protection if the chat is deleted within 24 hours.",
+            "correct": false
+          }
+        ],
+        "answerNote": "Right. Approved tools or redaction — those are the levers. Polite instructions to the model don't reach the logging layer."
+      },
+      {
+        "type": "think",
+        "title": "Five names",
+        "scenario": "You ask AI for five example customer names for a B2B case study. It hands you: John, Michael, Sarah, David, Jennifer. All from companies headquartered in California.",
+        "prompt": "Nothing in the output is technically wrong. So why might it still be a problem when this lands in your marketing deck?"
+      },
+      {
         "type": "understand",
-        "title": "Biases and blind spots",
+        "title": "Trained on us, defaults to us",
         "body": [
-          "AI learned from text humans wrote. That text carries every bias humans carry — about gender, race, class, professions, geographies. When the AI produces an example or a default assumption, those biases often leak through. It'll default to 'he' for a CEO, 'she' for a nurse, Western names, English-first framing.",
-          "It also has culture blind spots. Ask it about nuanced topics outside the US/UK/Western Europe and watch the answers get shallower. This isn't malice — it's a reflection of what got written down at scale on the open internet.",
-          "Your job is to notice. Not every output needs to be perfectly diverse, but you should catch the moments when the AI's default assumption would land badly for your audience — and adjust the prompt or the output before you ship."
+          "AI learned from text humans wrote. That text carries every bias humans carry — about gender, race, class, profession, geography, language. So when the model picks a default, the defaults often skew. \"He\" for the CEO. \"She\" for the nurse. Western names. English-first framing. The output isn't malicious. It's a mirror of what got written down at scale.",
+          "There are also blind spots. Ask about nuanced topics outside the US, UK, or Western Europe and the answers thin out fast. Names get generic. History gets cartoonish. Local context goes missing — because there was less of it in the training pile to begin with.",
+          "Your job is to notice. You're not aiming for perfectly representative output every time. You're aiming to catch the moments where the AI's default would land badly for your audience, and either re-prompt or rewrite before it ships."
         ],
         "analogy": {
-          "label": "Test it",
-          "text": "Ask AI to generate 5 example names for a character in a startup story. Notice the pattern. Ask again. Notice again."
+          "label": "Mental model",
+          "text": "Picture a mirror that mostly faces one room of the building. It reflects clearly, but only what's in that room. Other floors exist — the mirror just wasn't pointed at them."
         }
       },
       {
+        "type": "learn",
+        "title": "How it leaks into your work",
+        "body": [
+          "The damage usually shows up in placeholders that quietly become final. Example names in a deck. Stock personas in a pitch. A generated team photo description where every character is a Western man in his thirties. Each one feels neutral on its own. Stacked across a campaign, your audience sees a company that doesn't seem to see them. The fix isn't arguing with the model. It's specifying. \"Five names from five different regions.\" \"A nurse, gender unspecified.\" \"A CEO whose first name isn't Anglo.\" Concrete asks beat hopeful ones."
+        ],
+        "watchFor": "When you spot a default — a name, a pronoun, a country, a setting — ask whether your audience is in that default. If not, override the prompt before you override the output by hand."
+      },
+      {
         "type": "apply",
-        "title": "Spotting bias",
-        "scenario": "You ask AI to generate a customer testimonial for your B2B software. It writes one from \"John, CEO of Acme.\" What's a useful next move?",
+        "title": "Catching the default",
+        "scenario": "You ask AI for a customer testimonial for your B2B platform. It returns: \"John, CEO at Acme, says our software changed his team's life.\" Good copy, perfect grammar. What's the most useful next move?",
         "options": [
           {
-            "text": "Rewrite with a different name/role/industry and ask for 3–5 variants.",
+            "text": "Re-prompt for 3–5 variants spanning different names, roles, regions, and company sizes.",
             "correct": true,
-            "feedback": "Good instinct. Notice the default, override intentionally."
+            "feedback": "Right. Notice the default, override on purpose. You'll get a richer palette to pick from."
           },
           {
-            "text": "Ship it — it's a placeholder.",
+            "text": "Ship it as a placeholder and swap the name later when a real customer agrees.",
             "correct": false,
-            "feedback": "Placeholders become defaults. Your materials end up looking less representative than your customer base."
+            "feedback": "Placeholders harden into defaults. By the time \"later\" arrives, the deck is in front of clients and the swap never happens."
           },
           {
-            "text": "Complain in a LinkedIn post.",
+            "text": "Reply to the chatbot: \"Stop being biased.\"",
             "correct": false,
-            "feedback": "Optional, but not a substitute for fixing the work."
+            "feedback": "Vague scolding rarely changes the next output. Specific instructions about names, regions, and roles do."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "Why does AI output often reflect stereotypes?",
+        "prompt": "AI output often reflects stereotypes because —",
         "options": [
           {
-            "text": "The company made specific choices to include them.",
+            "text": "The vendor programmed specific opinions into the model.",
             "correct": false
           },
           {
-            "text": "The AI is programmed with opinions.",
+            "text": "The model is broken and a patch will arrive shortly.",
             "correct": false
           },
           {
-            "text": "It's a bug in the software.",
-            "correct": false
-          },
-          {
-            "text": "It learned from human-written text, which carries human biases at scale.",
+            "text": "It was trained on human-written text, which carries human bias at scale.",
             "correct": true
+          },
+          {
+            "text": "It's deliberately testing whether you'll catch and correct it.",
+            "correct": false
           }
         ],
-        "answerNote": "The bias comes from the training data — text humans wrote. The fix isn't arguing with the AI, it's specifying what you want."
+        "answerNote": "The bias is in the training pile — humans wrote it, the model absorbed the patterns. The fix isn't arguing with the model. It's specifying clearly what you actually want."
       }
-    ],
-    "isModuleEnd": true
+    ]
   },
   "101-4-0": {
     "courseId": 101,
@@ -1158,64 +1488,80 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 1,
     "totalInModule": 4,
     "title": "Write a polished email",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "The Sunday-night email",
+        "scenario": "It's 9pm. You owe your ops lead an email about three changes for Monday. You open a chatbot and type, \"Write an email to my ops lead about the changes.\" The reply comes back chirpy, generic, and three paragraphs too long.",
+        "prompt": "Before we fix the prompt — what did the AI not have that it needed?"
+      },
+      {
         "type": "understand",
-        "title": "Write a polished email",
+        "title": "Bullets in, email out",
         "body": [
-          "Drafting email is probably where you'll get the fastest ROI on AI. The pattern: give it the bullets of what you want to say, the audience, and the tone. Don't start with 'write an email about X.' Start with 'here are my 3 points. Turn them into a short, direct email to our ops lead. Warm but not chatty.'",
-          "Paste the thread or context if it exists. AI is much better at replying than initiating — because replying has context built in. If you're responding to something, hand it the whole message.",
-          "Edit before sending. Always. Read aloud once. Cut anything that sounds more like a chatbot than like you. The email that goes out is still yours."
+          "Email is the fastest payoff you'll get from AI. The pattern is small: hand it the bullets, the audience, and the tone. \"Turn these three bullets into a short, direct email to our ops lead. Warm but not chatty.\"",
+          "If you're replying, paste the full thread first. AI replies better than it initiates, because the thread is the context. Don't make it guess.",
+          "Then edit before sending. Always. Read it aloud once. Cut anything that sounds more like a chatbot than like you."
         ],
         "analogy": {
-          "label": "Template",
-          "text": "\"Turn these bullets into a [length] email to [audience] in a [tone] voice: [bullets]. Don't use emojis or headers.\""
+          "label": "Mental model",
+          "text": "Think of a junior on your team writing your first draft. You wouldn't hand them the topic and walk away. You'd give them the bullets, tell them who's reading, and pick a tone. Same here."
         }
       },
       {
+        "type": "learn",
+        "title": "Where the draft goes wrong",
+        "body": [
+          "Generic emails have a tell. They open with \"I hope this finds you well,\" stack three filler sentences, and bury the ask in paragraph four. That's what you get when the prompt was \"write an email about X.\"",
+          "Specifics fix it. One line of audience, three bullets of content, one line of tone, one line of length. You can paste the same scaffold every time."
+        ],
+        "watchFor": "If the draft sounds like a chatbot wrote it, the prompt was the problem — not the model. Add the missing context and try again."
+      },
+      {
         "type": "apply",
-        "title": "Rewrite an email prompt",
-        "scenario": "You want to email your CFO asking for a budget increase. Which prompt is best?",
+        "title": "Pick the better prompt",
+        "scenario": "You need to email your CFO asking for two more sales reps mid-year. She's skeptical of mid-year budget changes. Which prompt gives you a draft worth editing?",
         "options": [
           {
-            "text": "\"Write me an email to my CFO.\"",
+            "text": "\"Write me an email to my CFO about hiring.\"",
             "correct": false,
-            "feedback": "Missing task, context, format. You'll get generic."
+            "feedback": "No audience details, no facts, no tone. You'll get a generic ask with no spine."
           },
           {
-            "text": "\"Turn these bullets into a 150-word email to our CFO, who is skeptical of mid-year budget changes: (1) our lead volume is up 40% (2) we're converting at the same rate (3) we need 2 more AEs. Direct, numbers-first, no fluff.\"",
+            "text": "\"Budget email CFO 2 reps please.\"",
+            "correct": false,
+            "feedback": "Keywords only. The AI will invent everything between the words — including the reasoning."
+          },
+          {
+            "text": "\"Turn these bullets into a 150-word email to our CFO, who is skeptical of mid-year budget changes: (1) lead volume up 40%, (2) conversion rate steady, (3) we need 2 more AEs to keep up. Direct, numbers first, no fluff.\"",
             "correct": true,
-            "feedback": "Exactly right. Audience, facts, tone, length — nothing left to guess."
-          },
-          {
-            "text": "\"Budget email CFO please.\"",
-            "correct": false,
-            "feedback": "Keywords only. The AI invents everything in between."
+            "feedback": "Audience, facts, tone, length — all four. The draft will need light editing, not a rewrite."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "What's the most common mistake in AI-drafted emails?",
+        "prompt": "Why do AI-drafted emails so often sound generic?",
         "options": [
           {
-            "text": "Too short.",
+            "text": "The AI is trained to sound polite.",
             "correct": false
           },
           {
-            "text": "Not sending them.",
-            "correct": false
-          },
-          {
-            "text": "Sounding generic, because the prompt didn't include enough context.",
+            "text": "The prompt didn't include the bullets, the audience, or the tone.",
             "correct": true
           },
           {
-            "text": "Using too many commas.",
+            "text": "The AI is hiding its real opinions.",
+            "correct": false
+          },
+          {
+            "text": "Email is too hard for current models.",
             "correct": false
           }
         ],
-        "answerNote": "Generic output is a prompt problem, not an AI problem. Give it your bullets, your audience, your tone — and read before you send."
+        "answerNote": "Generic in, generic out. Hand it your bullets, your reader, and your tone — then read aloud once before you send."
       }
     ]
   },
@@ -1229,64 +1575,80 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 2,
     "totalInModule": 4,
     "title": "Summarize a long document",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "think",
+        "title": "The 40-page proposal",
+        "scenario": "A vendor sends a 40-page proposal at 4pm. Your COO wants the gist before her 9am call. You paste the whole thing into a chatbot and type, \"summarize this.\" Out comes a tidy paragraph. It tells you what the proposal is about. It doesn't help her decide anything.",
+        "prompt": "Before we rewrite the prompt — what's missing from \"summarize this\" that a useful summary would need?"
+      },
+      {
         "type": "understand",
-        "title": "Summarize a long document",
+        "title": "Summarize for someone, for something",
         "body": [
-          "Paste a document (or upload it, if the tool supports uploads). Then ask for a summary — but specify who it's for and what they need to decide. 'Summarize this 20-page vendor proposal for our COO. She cares about: cost, risk, timeline. 3 bullets each.' This beats 'summarize this.'",
-          "For long things, ask for a structured summary: TL;DR (1 sentence), key points (5 bullets), open questions (3 bullets). The structure forces the AI to separate what the document says from what's still unclear.",
-          "Always skim the original for at least the first and last pages. Summaries miss nuance. You want to catch any 'oh, the last paragraph actually says the opposite' moments before you pass the summary on."
+          "Every summary is a summary for a person, deciding a thing. Tell the AI both. \"Summarize this vendor proposal for our COO. She cares about cost, risk, and timeline. 3 bullets each.\" That beats \"summarize this\" by a wide margin.",
+          "Ask for structure: TL;DR in one sentence, key points as bullets, open questions as bullets. The structure forces the AI to separate what the doc says from what's still unclear.",
+          "Then skim the original — at minimum the first and last pages. Summaries miss nuance. You want to catch the \"actually, the last paragraph reverses everything\" moment before you forward it."
         ],
         "analogy": {
-          "label": "Summary-for-a-purpose prompt",
-          "text": "\"Summarize this for [person]. They care about: [X, Y, Z]. Format: 1-sentence TL;DR, 5 bullets, 3 open questions.\""
+          "label": "Mental model",
+          "text": "A summary is a letter. \"Dear so-and-so, here's what you need to know to decide X.\" Without an addressee and a decision, it's just a shorter copy of the doc."
         }
       },
       {
+        "type": "learn",
+        "title": "Where summaries quietly mislead",
+        "body": [
+          "Summaries flatten contradictions. A doc might argue both sides and land on a hedge. The summary will pick one side and sound certain. The AI is predicting plausible prose, not weighing the evidence.",
+          "Numbers and dates are the next risk. If the proposal says \"$48k over 18 months,\" the summary may shorten it to \"around $50k\" or drop the timeline. Spot-check anything you'd quote in a meeting."
+        ],
+        "watchFor": "If a summary contains a number, a date, or a recommendation you'd act on, find that line in the original before you pass it on."
+      },
+      {
         "type": "apply",
-        "title": "Good summary prompt",
-        "scenario": "You need to summarize a 40-page research report for your VP of Marketing. Which prompt produces the most useful output?",
+        "title": "Pick the prompt that lands",
+        "scenario": "You need to brief your VP of Marketing on a 40-page research report before a Q3 planning meeting. Which prompt produces something she can actually use?",
         "options": [
+          {
+            "text": "\"Summarize for our VP of Marketing. She cares about budget implications, audience insights, and anything that changes our Q3 plan. Format: 1-sentence TL;DR, 5 bullets per category, 3 open questions at the end.\"",
+            "correct": true,
+            "feedback": "Audience, priorities, format. The AI now knows what to pull forward and what to leave behind."
+          },
           {
             "text": "\"Important parts please.\"",
             "correct": false,
-            "feedback": "Too vague — \"important to whom, for what?\""
+            "feedback": "Important to whom, for what? Without that, the AI picks for itself — and it usually picks generic."
           },
           {
             "text": "\"Summarize this report.\"",
             "correct": false,
-            "feedback": "Generic. You'll get a one-paragraph gloss."
-          },
-          {
-            "text": "\"Summarize for our VP of Marketing. She cares about budget implications, audience insights, and anything that changes our Q3 plan. TL;DR + 5 bullets per category.\"",
-            "correct": true,
-            "feedback": "Audience, priorities, format — now the AI knows what to emphasize."
+            "feedback": "You'll get a one-paragraph gloss. Fine for trivia, useless for a meeting."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "A summary is most useful when the prompt specifies:",
+        "prompt": "A useful summary prompt almost always specifies:",
         "options": [
           {
-            "text": "Whether it was written by a human.",
+            "text": "Whether the document was written by a human.",
             "correct": false
           },
           {
-            "text": "The formatting of the input.",
+            "text": "How long the input is.",
             "correct": false
           },
           {
-            "text": "How long the input document is.",
+            "text": "The font of the original.",
             "correct": false
           },
           {
-            "text": "The audience and what they need to decide.",
+            "text": "The reader and what they need to decide.",
             "correct": true
           }
         ],
-        "answerNote": "Every summary is a summary for someone. Tell the AI who."
+        "answerNote": "Summaries serve a person making a call. Tell the AI who, and what they're deciding — and ask for structure on the way out."
       }
     ]
   },
@@ -1300,64 +1662,101 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 3,
     "totalInModule": 4,
     "title": "Brainstorm options",
+    "isModuleEnd": false,
     "steps": [
       {
+        "type": "recall",
+        "title": "Quick recall",
+        "recallingLessonKey": "101-3-3",
+        "prompt": "Why does AI output often default to stereotyped names, roles, or framings?",
+        "options": [
+          {
+            "text": "Someone at the AI company picked them.",
+            "correct": false
+          },
+          {
+            "text": "It learned from human-written text, which carries human biases at scale.",
+            "correct": true
+          },
+          {
+            "text": "It's a bug that gets fixed in each new version.",
+            "correct": false
+          }
+        ],
+        "answerNote": "The bias is in the training data. The fix is to specify what you want — which is exactly what good brainstorm prompts already do."
+      },
+      {
+        "type": "think",
+        "title": "Three subject lines",
+        "scenario": "You ask AI for three subject lines for a webinar invite. You get three. Two are fine. One has the word \"supercharge\" in it. You pick the least-bad one and ship it.",
+        "prompt": "Before we look at the prompt — what would have made you a sharper picker, instead of a reluctant one?"
+      },
+      {
         "type": "understand",
-        "title": "Brainstorm options",
+        "title": "Volume plus constraints",
         "body": [
-          "Where AI really shines: generating options. Ten subject lines, five product names, twelve ways to frame a feature. The AI has no ego and no fatigue. You don't even have to love any of them — they prime your thinking.",
-          "Ask for more than you need. 'Give me 15 options' is always better than 'give me 3.' At 15, you see the full shape of what's possible; at 3, you often get the obvious ones. Then pick, combine, and rewrite in your own voice.",
-          "Set constraints and anti-patterns. 'No puns. No exclamation marks. Don't mention AI. Under 8 words each.' Constraints make brainstorms usable instead of generic."
+          "Brainstorming is where AI quietly shines. It has no ego and no fatigue. Ten subject lines, fifteen product names, twenty ways to frame a feature — same effort.",
+          "Ask for more than you need. Fifteen options shows you the shape of the space. Three options usually shows you the obvious ones. You're not picking the winner — you're surveying what's possible, then picking, combining, and rewriting.",
+          "Set constraints and anti-patterns up front. \"Under 8 words each. No puns. Don't say 'supercharge.'\" Constraints turn a generic list into something you can actually use."
         ],
         "analogy": {
-          "label": "Brainstorm template",
-          "text": "\"Give me 15 [things] for [purpose]. Rules: [constraints]. Anti-patterns: [what not to do].\""
+          "label": "Mental model",
+          "text": "Brainstorming with AI is like ordering off a long restaurant menu instead of asking the waiter to pick one dish for you. The whole point is seeing all your options on one page."
         }
       },
       {
+        "type": "learn",
+        "title": "Where brainstorms go flat",
+        "body": [
+          "Two failure modes show up. One: you ask for three, get three, and feel stuck. The fix is volume — ask for fifteen.",
+          "Two: you ask for fifteen with no rules, and twelve of them sound like every B2B email you've ever deleted. The fix is constraints. Length, tone, banned words, banned styles. The more anti-patterns you name, the sharper the list."
+        ],
+        "watchFor": "If your brainstorm list reads like marketing wallpaper, the prompt skipped constraints. Add three rules and three anti-patterns, then run it again."
+      },
+      {
         "type": "apply",
-        "title": "Good brainstorm prompt",
-        "scenario": "You're brainstorming subject lines for a webinar invite. Best prompt?",
+        "title": "Pick the brainstorm prompt",
+        "scenario": "You're brainstorming subject lines for a webinar called \"AI for Sales Leaders.\" The audience is sales VPs. Which prompt gives you the most usable list?",
         "options": [
+          {
+            "text": "\"Write me a subject line.\"",
+            "correct": false,
+            "feedback": "One option. Hard to compare against, hard to iterate from."
+          },
+          {
+            "text": "\"Give me 15 subject lines for a webinar called 'AI for Sales Leaders.' Audience: sales VPs. Under 8 words. No emojis. No puns. Don't say 'supercharge.'\"",
+            "correct": true,
+            "feedback": "Quantity, audience, constraints, anti-patterns. You'll have something to choose from."
+          },
           {
             "text": "\"Some subject line ideas please.\"",
             "correct": false,
-            "feedback": "Better than nothing, but you'll get a default grab-bag."
-          },
-          {
-            "text": "\"Write a subject line.\"",
-            "correct": false,
-            "feedback": "One generic option. Hard to iterate from."
-          },
-          {
-            "text": "\"Give me 15 subject lines for a webinar titled 'AI for Sales Leaders.' Audience: sales VPs. Under 8 words. No emojis. Don't say 'supercharge.'\"",
-            "correct": true,
-            "feedback": "Quantity, audience, constraints, and anti-patterns. Now you have something to pick from."
+            "feedback": "Better than nothing, but you'll get a default grab-bag with no constraints."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "The most underrated move in brainstorming with AI is:",
+        "prompt": "The most underrated move in AI brainstorming is:",
         "options": [
           {
-            "text": "Letting the AI decide for you.",
-            "correct": false
-          },
-          {
-            "text": "Asking for 10–20 options, then picking, combining, and rewriting.",
+            "text": "Asking for 15 options with constraints, then picking, combining, and rewriting.",
             "correct": true
           },
           {
-            "text": "Asking for a single perfect answer.",
+            "text": "Asking the AI which option is best.",
             "correct": false
           },
           {
-            "text": "Using the first option as-is.",
+            "text": "Taking the first option as-is.",
+            "correct": false
+          },
+          {
+            "text": "Asking for one perfect answer.",
             "correct": false
           }
         ],
-        "answerNote": "You're not hunting for the winner — you're hunting for the shape of the option space. Volume + constraints beats \"give me the best one.\""
+        "answerNote": "You're not hunting for the winner. You're mapping the space. Volume plus constraints beats \"give me the best one\" almost every time."
       }
     ]
   },
@@ -1371,48 +1770,68 @@ export const LESSONS: Record<string, Lesson> = {
     "lessonIndex": 4,
     "totalInModule": 4,
     "title": "Certification quiz — AI·101",
+    "isModuleEnd": true,
     "steps": [
       {
+        "type": "think",
+        "title": "Where you started",
+        "scenario": "Four modules ago, \"AI\" was a vague word in headlines. Now you can describe what's under the hood, write a prompt that earns its keep, spot a hallucination, keep sensitive data out, and turn three real tasks around in a tenth of the time.",
+        "prompt": "Before the wrap-up — which lesson actually changed how you'd use AI tomorrow?"
+      },
+      {
         "type": "understand",
-        "title": "Certification quiz — AI·101",
+        "title": "What you've built",
         "body": [
-          "You've covered the foundation: what AI is, how it thinks, how to prompt it, how to use it without getting burned, and how to apply it to the three most common tasks (email, summary, brainstorm). That's more than most people will ever learn about AI.",
-          "One last check. The next screen is a quick multi-part quiz — same format as every lesson's quick check. Pass it and you've earned the AI·101 certificate. You'll see it in your dashboard and you can share it wherever you want.",
-          "After this: AI·102 goes deeper into prompting patterns, and AI·103 applies AI to specific commercial roles. AI·104 is the capstone where you design and ship your own AI workflow. Keep going."
+          "You've covered the foundation. What AI is. How it thinks. How to prompt it. How to use it without getting burned. And how to apply it to email, summaries, and brainstorming — the three tasks most people do every week.",
+          "That's more than most knowledge workers will ever learn about AI. Most will keep typing one-line prompts and complaining the output is generic. You won't.",
+          "The next screen is the certification quiz — the same shape as every quick check you've already done. Pass it and AI·101 lands in your dashboard, sharable wherever you want."
         ],
         "analogy": {
-          "label": "You've earned it",
-          "text": "Finishing AI·101 puts you ahead of 80% of knowledge workers. Stacking 102, 103, and 104 on top is what takes it from \"I've played with AI\" to \"I use AI every day and it compounds.\""
+          "label": "Mental model",
+          "text": "Think of this like learning to read a map. You're not at every destination yet. But you can pick one up, orient yourself, and walk in the right direction without getting lost."
         }
+      },
+      {
+        "type": "learn",
+        "title": "What's next: 102, 103, 104",
+        "body": [
+          "AI·102 goes deeper into prompting. Patterns, scaffolds, iteration moves — the difference between a draft you'll edit and a draft you'll send. AI·103 takes those patterns and applies them to specific commercial roles: sales, marketing, ops, finance, support. AI·104 is the capstone, where you design and ship one AI workflow at your job — start to finish.",
+          "Each one stacks. 101 makes you literate. 102 makes you fluent. 103 makes you useful in a role. 104 makes you the person on the team who actually ships AI work."
+        ],
+        "watchFor": "The gap between \"I've played with AI\" and \"AI compounds my work every week\" is built lesson by lesson. Don't stop here."
       },
       {
         "type": "apply",
         "title": "Foundation check",
-        "scenario": "Which statement best describes what an AI chatbot does?",
+        "scenario": "A colleague asks: \"What's actually happening when I type a question into ChatGPT?\" Which answer holds up?",
         "options": [
           {
-            "text": "Predicts the next word repeatedly to generate a response to your prompt.",
+            "text": "It searches the live internet and returns the best match.",
+            "correct": false,
+            "feedback": "That's a search engine. Most chatbots don't browse by default."
+          },
+          {
+            "text": "It looks the answer up in a database it was trained on.",
+            "correct": false,
+            "feedback": "Closer, but still off. It generates new text — it doesn't retrieve stored answers."
+          },
+          {
+            "text": "It predicts the next word, over and over, until the reply is built.",
             "correct": true,
-            "feedback": "Correct. The rest of this course builds on that one mental model."
-          },
-          {
-            "text": "Searches the internet and returns results.",
-            "correct": false,
-            "feedback": "That's a search engine, not a chatbot by default."
-          },
-          {
-            "text": "Retrieves exact answers from a database.",
-            "correct": false,
-            "feedback": "Close, but wrong. It generates new text based on patterns, not stored answers."
+            "feedback": "Yes. Every other lesson in this course is a consequence of that one fact."
           }
         ]
       },
       {
         "type": "quiz",
-        "prompt": "You're about to send a chatbot a question for the first time at work. What's the single most important thing to get right?",
+        "prompt": "You're about to send a chatbot a real work prompt for the first time. What matters most?",
         "options": [
           {
-            "text": "Keeping the message under 20 words.",
+            "text": "Keeping it under 20 words.",
+            "correct": false
+          },
+          {
+            "text": "Saying please.",
             "correct": false
           },
           {
@@ -1420,18 +1839,13 @@ export const LESSONS: Record<string, Lesson> = {
             "correct": true
           },
           {
-            "text": "Saying please.",
-            "correct": false
-          },
-          {
             "text": "Using formal English.",
             "correct": false
           }
         ],
-        "answerNote": "Task + context + format is the sturdy default. Most other \"prompt tricks\" are small improvements on top of that foundation."
+        "answerNote": "Task, context, format. The same three pieces fix generic emails, weak summaries, and flat brainstorms — and they'll carry you straight into AI·102."
       }
-    ],
-    "isModuleEnd": true
+    ]
   },
   "102-0-0": {
     "courseId": 102,
