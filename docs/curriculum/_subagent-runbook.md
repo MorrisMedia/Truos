@@ -1,14 +1,14 @@
-# Subagent Runbook — AI·101 Merrill Rewrite
+# Subagent Runbook — Truos Merrill Rewrite (all courses)
 
-This file is shared context for all Phase 5 subagents. Read the whole thing before writing.
+This file is shared context for every Phase-5+ content subagent. Read the whole thing before writing. **This runbook applies to every Truos course** (AI·101/102/103/104 base + CPLT·101/EXL + GEM·101/SHT plus). AI·101 was the voice pilot; every other course follows the same recipe.
 
 ---
 
 ## Your job
 
-Rewrite the AI·101 lessons assigned to you using Merrill's First Principles (5 phases) and Truos's "Feynman in a Stripe doc" voice. Preserve each lesson's existing teaching topic — **don't invent new subject matter**; rewrite the same concept with the new pedagogy and voice.
+Rewrite the module of lessons you're assigned using Merrill's First Principles (5 phases) and Truos's "Feynman in a Stripe doc" voice. Preserve each lesson's existing teaching topic — **don't invent new subject matter**; rewrite the same concept with the new pedagogy and voice.
 
-Edit `src/content/lessons.ts` in place. Find the lesson object by its key (e.g. `"101-2-1": {`) and replace its `steps` array + add `isModuleEnd`/the other fields described below. Keep the top-level metadata (`courseId`, `courseCode`, `suite`, `moduleIdx`, `lessonIdx`, `moduleName`, `lessonIndex`, `totalInModule`, `title`) unchanged unless this runbook tells you to.
+Write your output as a JSON file at `/tmp/truos-<course>-module-<N>.json` (the exact path is in your dispatch prompt). Each value is a full `Lesson` object matching the schema in `src/content/types.ts` exactly. **Do not edit `src/content/lessons.ts` directly — only write the JSON file.**
 
 ---
 
@@ -22,7 +22,7 @@ Every lesson has these step types, in this order:
 4. **Apply** (application) — 60s. A realistic scenario + 3 options. Exactly one `correct: true`. Each option gets `feedback`.
 5. **Quiz** (integration) — 30s. 4 options. Exactly one `correct: true`. `answerNote` at the end.
 
-**Exception — recall-start lessons:** if the runbook tells your lesson to open with a Quick Recall, prepend a `recall` step BEFORE the `think` step. Recall pulls one question from a prior lesson (the runbook specifies which).
+**Exception — recall-start lessons:** if the runbook tells your lesson to open with a Quick Recall, prepend a `recall` step BEFORE the `think` step. Recall pulls one question from a prior lesson (the dispatch prompt specifies which).
 
 ---
 
@@ -37,7 +37,7 @@ QuizStep     = { type: 'quiz', prompt, options: [{ text, correct }], answerNote 
 RecallStep   = { type: 'recall', title, recallingLessonKey, prompt, options: [{ text, correct }], answerNote }
 ```
 
-Every new lesson must have `"isModuleEnd": true` if it's the last lesson of its module (indexes ending in `-3`), otherwise `"isModuleEnd": false`. Keep this field present in every lesson for clarity.
+Every new lesson must have `"isModuleEnd": true` if it's the last lesson of its module (the key with the highest third number in the module), otherwise `"isModuleEnd": false`. Always emit the field.
 
 ---
 
@@ -47,8 +47,8 @@ Every new lesson must have `"isModuleEnd": true` if it's the last lesson of its 
 2. Concrete before abstract. Show the thing, then name it.
 3. Demonstration over assertion. Don't tell them "AI hallucinates" — show the three studies.
 4. **Exactly one analogy per lesson** — goes in the `understand` step's `analogy` field. Never two. Never three.
-5. Banned words: **leverage, utilize, robust, solution, seamless, unlock, supercharge, harness, power of**.
-6. Banned analogy sources: sports (any — baseball, cricket, football, soccer, basketball), US-centric history/idioms ("kick the tires", "home run", "9 yards"), religious references, specific brand names (unless teaching that brand).
+5. Banned words (NEVER use): **leverage, utilize, robust, solution, seamless, unlock, supercharge, harness, power of**. (Exception: a banned word quoted as an anti-pattern — e.g. teaching learners to tell AI "don't say 'supercharge'" — is fine.)
+6. Banned analogy sources: sports (any — baseball, cricket, football, soccer, basketball), US-centric history/idioms ("kick the tires", "home run", "9 yards"), religious references, specific brand names (unless teaching that brand, e.g. Copilot/Gemini courses where the product IS the subject).
 7. Preferred analogy sources (from `analogy-bank.md`): doors, water, rooms, markets, maps, keys, notebooks, tools, letters, roads, chairs, mirrors, restaurants, weather, food (generic), plus roles like "a bright junior", "a well-read assistant".
 8. One dry earned joke per lesson, MAX. If it doesn't land on first read, cut it.
 9. Never "as you probably know." Preferred: "here's the thing almost nobody gets."
@@ -58,82 +58,36 @@ Every new lesson must have `"isModuleEnd": true` if it's the last lesson of its 
 
 ## Reference lessons — match this voice exactly
 
-### Reference A: 101-0-0 "What is AI?" (voice pilot #2 — written by the senior author)
+Open `src/content/lessons.ts` and read these two lessons in full. They are the canonical voice templates:
 
-```json
-{
-  "title": "What is AI?",
-  "isModuleEnd": false,
-  "steps": [
-    {
-      "type": "think",
-      "title": "Ten seconds in",
-      "scenario": "You open a chatbot for the first time. You type, \"What should I have for lunch?\" Ten seconds later it gives you three options, with reasons.",
-      "prompt": "Before we explain the mechanism — what just happened that a normal app couldn't have done?"
-    },
-    {
-      "type": "understand",
-      "title": "Software you talk to",
-      "body": [
-        "AI, in 2026, is software you talk to. You type in plain language. It types back in plain language. That's the whole interface.",
-        "The tools everyone names — ChatGPT, Claude, Gemini, Copilot — are all the same shape under the label. Different companies, different branding, same idea: a text box where a machine answers."
-      ],
-      "analogy": {
-        "label": "Mental model",
-        "text": "Picture a well-read assistant who never tires. Any hour, any question, an answer on the spot. No appointment, no waiting, no \"let me check my calendar.\""
-      }
-    },
-    {
-      "type": "learn",
-      "title": "Where you'll run into it",
-      "body": [
-        "You'll meet AI in two places. As a standalone chatbot — open the site, start typing. Or as a button inside a tool you already use: the Copilot button in Word, Gmail's reply suggestions, the /ai command in Notion. Both count. Both work the same way underneath."
-      ],
-      "watchFor": "If you can type to it and read a reply, it's the kind of AI this course is about. Forget self-driving cars and robots for now — they're a different branch of the family."
-    },
-    {
-      "type": "apply",
-      "title": "Which of these is AI?",
-      "scenario": "A colleague says, \"we're using AI now.\" Which of these fits what they most likely mean in 2026?",
-      "options": [
-        { "text": "A chatbot that drafts an email from a single sentence you typed.", "correct": true, "feedback": "Yes. Generating new text in response to your input is the everyday face of AI today." },
-        { "text": "A macro in Excel that adds up a column.", "correct": false, "feedback": "That's automation — a fixed rule. AI, in today's sense, generates new responses it was never explicitly told to produce." },
-        { "text": "A spam filter from 2008.", "correct": false, "feedback": "Older machine learning. Counts historically, but it's not what people mean when they say \"AI\" in 2026." }
-      ]
-    },
-    {
-      "type": "quiz",
-      "prompt": "The simplest way to describe AI to a family member is:",
-      "options": [
-        { "text": "A search engine with a new name.", "correct": false },
-        { "text": "Software you talk to in plain language, that talks back in plain language.", "correct": true },
-        { "text": "A robot living inside your computer.", "correct": false },
-        { "text": "A future technology that isn't really here yet.", "correct": false }
-      ],
-      "answerNote": "AI today is not a robot, not search, and not hypothetical. It's the chat window you're about to open."
-    }
-  ]
-}
-```
+- **Reference A: `101-0-0`** ("What is AI?") — voice pilot #2, written by the senior author. Simple foundation topic.
+- **Reference B: `101-1-2`** ("Why AI confidently makes stuff up") — voice pilot #1, harder conceptual topic. Shows how the 5-phase lands on abstraction.
 
-### Reference B: 101-1-2 "Why AI confidently makes stuff up" (voice pilot #1 — already in file, read it there)
-
-Open `src/content/lessons.ts`, find `"101-1-2":`, and read the whole object. That's the other canonical template.
+Both are canonical. If you're ever unsure about tone or structure, re-read them.
 
 ---
 
-## Recall step requirements
+## Course-specific context
 
-If your lesson is a **recall-start lesson**, prepend a `recall` step before the `think` step. Lessons that need recall:
+The dispatch prompt will tell you which course you're working in. Keep these in mind:
 
-| Lesson key | Recalling from | Topic of prior lesson |
-|---|---|---|
-| 101-0-3 | 101-0-0 | What is AI? |
-| 101-1-2 | 101-0-3 | Picking a tool |
-| 101-2-1 | 101-1-2 | Hallucinations |
-| 101-3-0 | 101-2-1 | Clear prompts |
-| 101-3-3 | 101-3-0 | What NOT to share |
-| 101-4-2 | 101-3-3 | Biases and blind spots |
+- **AI·102 — AI Prompt Mastery** ($499 tier). Prompting craft at depth. Audience has done AI·101 or equivalent. Don't re-teach fundamentals.
+- **AI·103 — Applied AI at Work** ($999). AI for real commercial roles — sales, marketing, ops, etc. Concrete role-specific scenarios in every Apply step.
+- **AI·104 — AI Workflow Mastery** ($1,499). The capstone — design, ship, defend a real AI workflow. High-signal, builder-flavored.
+- **CPLT·101 — Copilot 101** ($249 Truos+). Microsoft Copilot from zero. Brand names (Copilot, Word, Outlook, Teams) are the subject, not banned.
+- **CPLT·EXL — Copilot + Excel** ($249). Copilot inside Excel for data work.
+- **GEM·101 — Gemini 101** ($249). Google Gemini from zero.
+- **GEM·SHT — Gemini + Google Sheets** ($249). Gemini in Sheets for data work.
+
+Every course issues its own certificate. There is no umbrella bundle cert.
+
+---
+
+## Recall-start lessons
+
+If your dispatch prompt tells you a specific lesson is a recall-start, prepend a `recall` step. The prompt specifies:
+- Which lesson the recall draws from (`recallingLessonKey`)
+- The course — the recall question must be answerable from the prior lesson's content
 
 Recall step shape:
 
@@ -141,8 +95,8 @@ Recall step shape:
 {
   "type": "recall",
   "title": "Quick recall",
-  "recallingLessonKey": "101-X-Y",
-  "prompt": "<single question drawn from the prior lesson's content>",
+  "recallingLessonKey": "<course>-<mi>-<li>",
+  "prompt": "<single question drawn from the prior lesson's teaching>",
   "options": [
     { "text": "...", "correct": true },
     { "text": "...", "correct": false },
@@ -158,36 +112,36 @@ Three options is fine for recall. Keep it crisp — it's a warm-up, not a graded
 
 ## `isModuleEnd`
 
-| Key ending | isModuleEnd |
-|---|---|
-| `-0`, `-1`, `-2` | `false` |
-| `-3` | `true` |
-
-Always emit the field, even when false — makes diffs cleaner.
+The last lesson of each module gets `"isModuleEnd": true`. Every other lesson gets `"isModuleEnd": false`. The dispatch prompt will tell you which lesson is the module end for your assigned module.
 
 ---
 
-## Quiz option discipline (important — we just eliminated the B-bias)
+## Quiz option discipline (important — we eliminated B-bias site-wide)
 
-For every `quiz` and `apply` step, **vary the position of the correct answer**. Across your 4 lessons, aim for a roughly even spread (if possible, A once, B once, C once, D once for quiz; A once, B once, C once for apply). Don't put the correct answer in the same slot twice in a row within your assigned module.
+For every `quiz` and `apply` step, **vary the position of the correct answer**. Across your assigned lessons, aim for a roughly even spread of correct-answer positions. Don't cluster correct answers in the same slot across adjacent lessons.
 
 ---
 
-## Self-check before submitting (required)
+## Final lesson of the final module (certification)
+
+The last lesson of each course's final module historically contains a wrap-up celebration + a teaser for the next product (cert-quiz, future courses, etc.). Keep that spirit — use the 5-phase structure but make the `understand` step a reflection on what the learner has earned, the `learn` step a preview of where the credential lands (LinkedIn, next course, team rollout, whatever fits). The actual certification quiz is a separate system, not this lesson.
+
+---
+
+## Self-check before writing the JSON file (required)
 
 - [ ] Every lesson has exactly 5 steps (6 if recall-start): think → understand → learn → apply → quiz
 - [ ] Exactly one `analogy` in the whole lesson (the `understand` step's `analogy` field)
 - [ ] `watchFor` present on every `learn` step
 - [ ] Every `apply` option has `feedback`; exactly one has `correct: true`
 - [ ] Every `quiz` has 4 options, exactly one `correct: true`, and `answerNote`
-- [ ] No banned words (leverage, utilize, robust, solution, seamless, unlock, supercharge, harness)
-- [ ] No banned analogies (sports, US idioms, religion, specific brands unless teaching them)
+- [ ] No banned words (leverage, utilize, robust, solution, seamless, unlock, supercharge, harness) used as voice
+- [ ] No banned analogies (sports, US idioms, religion, generic brands unless teaching them)
 - [ ] Sentences mostly ≤18 words
-- [ ] `isModuleEnd: true` on every `-3` lesson, `false` elsewhere
-- [ ] Correct-answer position varied across your 4 lessons' quiz steps
+- [ ] `isModuleEnd: true` on the last lesson of your module, `false` elsewhere
+- [ ] Correct-answer position varied across your lessons' quizzes
+- [ ] Top-level Lesson fields (`courseId`, `courseCode`, `suite`, `moduleIdx`, `lessonIdx`, `moduleName`, `lessonIndex`, `totalInModule`, `title`) preserved EXACTLY from the existing version in lessons.ts
 
-## After you finish
+## After writing the file
 
-1. Run `npx tsc --noEmit` — must pass with 0 errors
-2. Run `npm run build` — must succeed
-3. Report: "Module N rewritten. Lessons updated: [keys]. Typecheck + build: pass."
+Report back (under 60 words): "Module {course}-{mi} draft written. Keys: {list}. Recall on: {key or none}. End lesson: {key}."
