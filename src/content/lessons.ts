@@ -8655,7 +8655,7 @@ export const LESSONS: Record<string, Lesson> = {
         "title": "Capstone certification",
         "body": [
           "You've identified leverage, designed a workflow, built and tested it, rolled it out, and sustained it. That's more than most people ever do with AI. Whatever you built — big or small — now exists in the world because you put it there.",
-          "The Truos Capstone certificate is issued after one final defense: a short presentation + live demo + peer review, followed by this quiz. From the Truos side, it's a formal credential. From your side, it's a starting line — the first of many workflows you'll design, ship, and evolve over your career.",
+          "The AI Workflow Mastery certificate is issued after one final defense: a short presentation + live demo + peer review, followed by this quiz. From the Truos side, it's a formal credential. From your side, it's a starting line — the first of many workflows you'll design, ship, and evolve over your career.",
           "Welcome to the small but growing group of people who actually use AI as infrastructure, not decoration. The industry needs many more like you."
         ],
         "analogy": {

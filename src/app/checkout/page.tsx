@@ -8,10 +8,10 @@ export const dynamic = 'force-dynamic';
 
 const PLAN_INFO: Record<string, { name: string; unit: string; recurring: boolean; basePrice: number; desc: string }> = {
   'Team':     { name: 'Team subscription',              unit: '$99/seat/mo',     recurring: true,  basePrice: 99,   desc: 'Monthly per seat. All base courses + full Truos+ suite. Min 5 seats.' },
-  'Bundle':   { name: 'AI·102 + AI·103 + AI·104',       unit: '$2,497 one-time', recurring: false, basePrice: 2497, desc: 'All three paid base courses, lifetime access. Save $500 vs buying individually.' },
-  'AI·102':   { name: 'AI·102 — Practical Prompting',   unit: '$499 one-time',   recurring: false, basePrice: 499,  desc: 'Lifetime access. 24 lessons, ~4 hours.' },
-  'AI·103':   { name: 'AI·103 — AI at Work',            unit: '$999 one-time',   recurring: false, basePrice: 999,  desc: 'Lifetime access. 32 lessons, ~6 hours.' },
-  'AI·104':   { name: 'AI·104 — The Truos Capstone',    unit: '$1,499 one-time', recurring: false, basePrice: 1499, desc: 'Lifetime access. 40 lessons, ~10 hours. Includes capstone project.' },
+  'Bundle':   { name: 'All three paid credentials',     unit: '$2,497 one-time', recurring: false, basePrice: 2497, desc: 'AI Prompt Mastery + Applied AI at Work + AI Workflow Mastery. Lifetime access, save $500 vs buying individually.' },
+  'AI·102':   { name: 'AI Prompt Mastery',              unit: '$499 one-time',   recurring: false, basePrice: 499,  desc: 'Lifetime access. 24 lessons, ~1.5 hours.' },
+  'AI·103':   { name: 'Applied AI at Work',             unit: '$999 one-time',   recurring: false, basePrice: 999,  desc: 'Lifetime access. 32 lessons, ~2 hours.' },
+  'AI·104':   { name: 'AI Workflow Mastery',            unit: '$1,499 one-time', recurring: false, basePrice: 1499, desc: 'Lifetime access. 40 lessons, ~2.5 hours. Includes capstone project.' },
   'CPLT·101': { name: 'Copilot 101',                    unit: '$249 one-time',   recurring: false, basePrice: 249,  desc: 'Truos+ standalone. Lifetime. 20 lessons, ~2.5 hours.' },
   'CPLT·EXL': { name: 'Copilot + Excel',                unit: '$249 one-time',   recurring: false, basePrice: 249,  desc: 'Truos+ standalone. Lifetime. 12 lessons, ~1.5 hours.' },
 };

@@ -76,9 +76,12 @@ function CertCard({ course, cert, userName }: { course: ReturnType<typeof findCo
           <div className="serif" style={{ fontSize: 20, fontStyle: 'italic', color: '#5B5F68', marginBottom: 12, maxWidth: 560 }}>
             has completed the requirements for
           </div>
-          <div style={{ fontSize: 32, letterSpacing: '-0.02em', marginBottom: 8 }}>{course.code} — {course.title}</div>
+          <div style={{ fontSize: 40, letterSpacing: '-0.02em', marginBottom: 6, fontWeight: 600 }}>{course.title}</div>
+          <div style={{ fontSize: 12, color: '#5B5F68', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 16, fontFamily: 'var(--font-mono)' }}>
+            {course.code} · {course.lessons} lessons · {course.modules.length} modules
+          </div>
           <div style={{ fontSize: 15, color: '#5B5F68', maxWidth: 560, lineHeight: 1.5 }}>
-            {course.subtitle} {course.lessons} lessons, {course.modules.length} modules.
+            {course.subtitle}
           </div>
 
           <div style={{ position: 'absolute', bottom: 72, left: 72, right: 72, display: 'flex', justifyContent: 'space-between', alignItems: 'end' }}>

@@ -7,17 +7,19 @@ Live at **[truos.ai](https://truos.ai)**.
 
 Four courses, 116 lessons, ~22 hours. Each lesson is read → engage → quiz.
 
-| Code     | Course                       | Lessons | Tier      |
-|----------|------------------------------|---------|-----------|
-| AI·101   | Getting Started with AI       | 20      | Free      |
-| AI·102   | Practical Prompting           | 24      | $49       |
-| AI·103   | AI at Work                    | 32      | $89       |
-| AI·104   | The Truos Capstone            | 40      | $249      |
+| Code     | Credential                    | Lessons | Tier      |
+|----------|-------------------------------|---------|-----------|
+| AI·101   | AI Foundations                | 20      | Free      |
+| AI·102   | AI Prompt Mastery             | 24      | $499      |
+| AI·103   | Applied AI at Work            | 32      | $999      |
+| AI·104   | AI Workflow Mastery           | 40      | $1,499    |
 
-- **AI·101** assumes zero tech knowledge. What AI is, what a chatbot is, what a prompt is, how to use AI safely.
-- **AI·102** is the daily prompting toolkit: ICEF, roles, iteration, self-critique.
-- **AI·103** applies AI to real commercial roles: sales, marketing, CS, ops, finance — with confidentiality guardrails.
-- **AI·104** is the capstone: design, build, roll out, and sustain an AI workflow your team actually uses.
+- **AI Foundations** assumes zero tech knowledge. What AI is, what a chatbot is, what a prompt is, how to use AI safely.
+- **AI Prompt Mastery** is the daily prompting toolkit: ICEF, roles, iteration, self-critique.
+- **Applied AI at Work** applies AI to real commercial roles: sales, marketing, CS, ops, finance — with confidentiality guardrails.
+- **AI Workflow Mastery** is the capstone: design, build, roll out, and sustain an AI workflow your team actually uses.
+
+Each course issues its own certificate. No bundle credential; every résumé line stands on its course name alone.
 
 ## Architecture
 

@@ -2,7 +2,7 @@ import type { Course } from './types';
 
 export const BASE_COURSES: Course[] = [
   {
-    id: 101, code: 'AI·101', title: 'Getting Started with AI',
+    id: 101, code: 'AI·101', title: 'AI Foundations',
     subtitle: 'No jargon, no coding. What AI actually is, how to talk to it, and how to use it without embarrassing yourself.',
     lessons: 20, hours: 1, tier: 'free', suite: 'base', price: 0,
     modules: [
@@ -14,7 +14,7 @@ export const BASE_COURSES: Course[] = [
     ],
   },
   {
-    id: 102, code: 'AI·102', title: 'Practical Prompting',
+    id: 102, code: 'AI·102', title: 'AI Prompt Mastery',
     subtitle: 'Prompt patterns, research, writing, meetings, data. The daily toolkit.',
     lessons: 24, hours: 1.5, tier: 'paid', suite: 'base', price: 499,
     modules: [
@@ -27,7 +27,7 @@ export const BASE_COURSES: Course[] = [
     ],
   },
   {
-    id: 103, code: 'AI·103', title: 'AI at Work',
+    id: 103, code: 'AI·103', title: 'Applied AI at Work',
     subtitle: 'Sales, marketing, CS, ops, finance — real playbooks for commercial teams.',
     lessons: 32, hours: 2, tier: 'paid', suite: 'base', price: 999,
     modules: [
@@ -40,7 +40,7 @@ export const BASE_COURSES: Course[] = [
     ],
   },
   {
-    id: 104, code: 'AI·104', title: 'The Truos Capstone',
+    id: 104, code: 'AI·104', title: 'AI Workflow Mastery',
     subtitle: 'Design, ship, and measure an AI workflow your team will actually use.',
     lessons: 40, hours: 2.5, tier: 'paid', suite: 'base', price: 1499, capstone: true,
     modules: [

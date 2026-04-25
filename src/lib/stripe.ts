@@ -19,10 +19,10 @@ export interface PlanConfig {
 }
 
 export const PLANS: Record<string, PlanConfig> = {
-  'AI·102':   { envVar: 'STRIPE_PRICE_AI_102',      mode: 'payment',      courseIds: [102],                     label: 'AI·102 — Practical Prompting',    amountCents: 49900 },
-  'AI·103':   { envVar: 'STRIPE_PRICE_AI_103',      mode: 'payment',      courseIds: [103],                     label: 'AI·103 — AI at Work',             amountCents: 99900 },
-  'AI·104':   { envVar: 'STRIPE_PRICE_AI_104',      mode: 'payment',      courseIds: [104],                     label: 'AI·104 — The Truos Capstone',     amountCents: 149900 },
-  'Bundle':   { envVar: 'STRIPE_PRICE_BUNDLE_FULL', mode: 'payment',      courseIds: [102, 103, 104],           label: 'Base bundle — AI·102 + 103 + 104', amountCents: 249700 },
+  'AI·102':   { envVar: 'STRIPE_PRICE_AI_102',      mode: 'payment',      courseIds: [102],                     label: 'AI Prompt Mastery',               amountCents: 49900 },
+  'AI·103':   { envVar: 'STRIPE_PRICE_AI_103',      mode: 'payment',      courseIds: [103],                     label: 'Applied AI at Work',              amountCents: 99900 },
+  'AI·104':   { envVar: 'STRIPE_PRICE_AI_104',      mode: 'payment',      courseIds: [104],                     label: 'AI Workflow Mastery',             amountCents: 149900 },
+  'Bundle':   { envVar: 'STRIPE_PRICE_BUNDLE_FULL', mode: 'payment',      courseIds: [102, 103, 104],           label: 'Base bundle — all three paid credentials', amountCents: 249700 },
   'CPLT·101': { envVar: 'STRIPE_PRICE_CPLT_101',    mode: 'payment',      courseIds: [201],                     label: 'Copilot 101',                      amountCents: 24900 },
   'CPLT·EXL': { envVar: 'STRIPE_PRICE_CPLT_EXL',    mode: 'payment',      courseIds: [202],                     label: 'Copilot + Excel',                  amountCents: 24900 },
   'GEM·101':  { envVar: 'STRIPE_PRICE_GEM_101',     mode: 'payment',      courseIds: [203],                     label: 'Gemini 101',                       amountCents: 24900 },

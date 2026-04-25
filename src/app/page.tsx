@@ -110,7 +110,7 @@ function Pillars() {
     { icon: Icons.book,    title: 'Read, engage, quiz',          body: 'Every lesson is a short read, a hands-on moment, and a check. Finishable in a lunch break.' },
     { icon: Icons.shield,  title: 'Commercial-first examples',   body: 'Not toy demos. Pipeline notes, QBR decks, campaign briefs — the work your team actually ships.' },
     { icon: Icons.chart,   title: 'Org-level visibility',        body: "Admins see who's progressing, who's stuck, and how fluency is compounding across the team." },
-    { icon: Icons.sparkle, title: 'Ends in a capstone',          body: 'AI·104 asks each learner to design and roll out a real AI workflow to their team. The Truos Capstone.' },
+    { icon: Icons.sparkle, title: 'Ends in a shipped workflow',  body: 'AI·104 — AI Workflow Mastery — asks each learner to design, ship, and defend a real AI workflow inside their team.' },
   ];
   return (
     <section style={{ padding: '96px 0', borderTop: '1px solid var(--border)' }}>
@@ -136,10 +136,10 @@ function Pillars() {
 
 function Pricing() {
   const cards = [
-    { id: 101, code: 'AI·101', name: 'Getting Started with AI',  price: 0,    priceLabel: 'Free',    cta: 'Sign up — free',    lessons: 20, hours: 1,   href: '/sign-up?callbackUrl=%2Fcourses%2F101%2F0%2F0' },
-    { id: 102, code: 'AI·102', name: 'Practical Prompting',      price: 499,  priceLabel: '$499',    cta: 'Unlock for $499',   lessons: 24, hours: 1.5, href: '/checkout?plan=AI·102' },
-    { id: 103, code: 'AI·103', name: 'AI at Work',               price: 999,  priceLabel: '$999',    cta: 'Unlock for $999',   lessons: 32, hours: 2,   href: '/checkout?plan=AI·103' },
-    { id: 104, code: 'AI·104', name: 'The Truos Capstone',       price: 1499, priceLabel: '$1,499',  cta: 'Unlock for $1,499', lessons: 40, hours: 2.5, featured: true, href: '/checkout?plan=AI·104' },
+    { id: 101, code: 'AI·101', name: 'AI Foundations',           price: 0,    priceLabel: 'Free',    cta: 'Sign up — free',    lessons: 20, hours: 1,   href: '/sign-up?callbackUrl=%2Fcourses%2F101%2F0%2F0' },
+    { id: 102, code: 'AI·102', name: 'AI Prompt Mastery',        price: 499,  priceLabel: '$499',    cta: 'Unlock for $499',   lessons: 24, hours: 1.5, href: '/checkout?plan=AI·102' },
+    { id: 103, code: 'AI·103', name: 'Applied AI at Work',       price: 999,  priceLabel: '$999',    cta: 'Unlock for $999',   lessons: 32, hours: 2,   href: '/checkout?plan=AI·103' },
+    { id: 104, code: 'AI·104', name: 'AI Workflow Mastery',      price: 1499, priceLabel: '$1,499',  cta: 'Unlock for $1,499', lessons: 40, hours: 2.5, featured: true, href: '/checkout?plan=AI·104' },
   ];
   return (
     <section id="pricing" style={{ padding: '96px 0', borderTop: '1px solid var(--border)' }}>
