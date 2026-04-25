@@ -16,7 +16,13 @@ export default async function LessonPage({ params }: { params: { id: string; mod
 
   const session = await auth();
   const access = await canAccessCourse(session?.user?.id ?? null, session?.user?.email ?? null, courseId);
-  if (!access.allowed) redirect(`/checkout?plan=${encodeURIComponent(course.code)}`);
+  if (!access.allowed) {
+    const here = `/courses/${courseId}/${moduleIdx}/${lessonIdx}`;
+    if (access.reason === 'needs_auth') {
+      redirect(`/sign-up?callbackUrl=${encodeURIComponent(here)}`);
+    }
+    redirect(`/checkout?plan=${encodeURIComponent(course.code)}`);
+  }
 
   return <LessonPlayer course={course} lesson={lesson} userId={session?.user?.id ?? null} />;
 }

@@ -17,7 +17,7 @@ export default async function CertQuizPage({ params }: { params: { id: string } 
   if (!course) notFound();
 
   const session = await auth();
-  if (!session?.user?.id) redirect('/sign-in');
+  if (!session?.user?.id) redirect(`/sign-up?callbackUrl=${encodeURIComponent(`/courses/${courseId}/cert-quiz`)}`);
 
   // Must have access to the course
   const access = await canAccessCourse(session.user.id, session.user.email, courseId);

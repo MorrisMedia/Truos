@@ -4,19 +4,29 @@ import { signIn } from '@/lib/auth';
 import { Logo } from '@/components/Logo';
 import { Icons } from '@/components/icons';
 
+function safeCallback(raw: string | undefined | null): string {
+  if (!raw) return '/dashboard';
+  if (!raw.startsWith('/') || raw.startsWith('//')) return '/dashboard';
+  return raw;
+}
+
 async function doSignIn(formData: FormData) {
   'use server';
   const email = String(formData.get('email') ?? '').trim().toLowerCase();
   const password = String(formData.get('password') ?? '');
+  const callbackUrl = safeCallback(String(formData.get('callbackUrl') ?? ''));
   try {
     await signIn('credentials', { email, password, redirect: false });
   } catch {
-    redirect('/sign-in?error=1');
+    const q = new URLSearchParams({ error: '1' });
+    if (callbackUrl !== '/dashboard') q.set('callbackUrl', callbackUrl);
+    redirect(`/sign-in?${q.toString()}`);
   }
-  redirect('/dashboard');
+  redirect(callbackUrl);
 }
 
 export default function SignInPage({ searchParams }: { searchParams: { error?: string; callbackUrl?: string } }) {
+  const callbackUrl = safeCallback(searchParams.callbackUrl);
   return (
     <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 24 }}>
       <div style={{ maxWidth: 420, width: '100%' }}>
@@ -33,6 +43,7 @@ export default function SignInPage({ searchParams }: { searchParams: { error?: s
         )}
 
         <form action={doSignIn} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <input type="hidden" name="callbackUrl" value={callbackUrl} />
           <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             <span className="eyebrow">EMAIL</span>
             <input name="email" type="email" required placeholder="you@company.com" style={fieldStyle} />
@@ -47,7 +58,7 @@ export default function SignInPage({ searchParams }: { searchParams: { error?: s
         </form>
 
         <div style={{ marginTop: 24, fontSize: 14, color: 'var(--text-muted)' }}>
-          No account? <Link href="/sign-up" style={{ color: 'var(--accent)' }}>Create one</Link>
+          No account? <Link href={`/sign-up${searchParams.callbackUrl ? `?callbackUrl=${encodeURIComponent(callbackUrl)}` : ''}`} style={{ color: 'var(--accent)' }}>Create one</Link>
         </div>
       </div>
     </div>

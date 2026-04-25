@@ -5,20 +5,18 @@ import { isStaffEmail } from './config';
 
 export interface AccessResult {
   allowed: boolean;
-  reason: 'free' | 'staff' | 'entitlement' | 'subscription' | 'paywall' | 'not_found';
+  reason: 'free' | 'staff' | 'entitlement' | 'subscription' | 'paywall' | 'needs_auth' | 'not_found';
 }
 
 export async function canAccessCourse(userId: string | null, email: string | null, courseId: number): Promise<AccessResult> {
-  // Course 101 is always free (no auth required at all)
-  if (courseId === 101) return { allowed: true, reason: 'free' };
-
-  // Paid courses: staff bypass
+  // Staff bypass — works even for free courses (they'd pass anyway, but it's explicit)
   if (isStaffEmail(email)) return { allowed: true, reason: 'staff' };
 
-  // Must be authed
-  if (!userId) return { allowed: false, reason: 'paywall' };
+  // Every course now requires a signed-in user, including AI·101.
+  // Course content is free; the account is the gate.
+  if (!userId) return { allowed: false, reason: 'needs_auth' };
 
-  // Non-paid courses default to free (though we only have 101 free at v1)
+  // AI·101 (and any other non-paid course) is unlocked for any authed user.
   if (!isPaidCourse(courseId)) return { allowed: true, reason: 'free' };
 
   // Check entitlement

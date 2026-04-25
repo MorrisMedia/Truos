@@ -21,6 +21,9 @@ export default async function CoursePage({ params }: { params: { id: string } })
   const session = await auth();
   const access = await canAccessCourse(session?.user?.id ?? null, session?.user?.email ?? null, courseId);
   if (!access.allowed) {
+    if (access.reason === 'needs_auth') {
+      redirect(`/sign-up?callbackUrl=${encodeURIComponent(`/courses/${courseId}`)}`);
+    }
     redirect(`/checkout?plan=${encodeURIComponent(course.code)}`);
   }
 

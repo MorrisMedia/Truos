@@ -23,7 +23,8 @@ export default async function ModuleRecapPage({
   if (!recap) notFound();
 
   const session = await auth();
-  if (!session?.user?.id) redirect('/sign-in');
+  const here = `/courses/${courseId}/module-recap/${moduleIdx}`;
+  if (!session?.user?.id) redirect(`/sign-up?callbackUrl=${encodeURIComponent(here)}`);
 
   const access = await canAccessCourse(session.user.id, session.user.email, courseId);
   if (!access.allowed) redirect(`/checkout?plan=${encodeURIComponent(course.code)}`);

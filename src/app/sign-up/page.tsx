@@ -8,12 +8,20 @@ import { welcomeEmail, codeRedeemedEmail } from '@/lib/emails/templates';
 import { Logo } from '@/components/Logo';
 import { Icons } from '@/components/icons';
 
+function safeCallback(raw: string | undefined | null): string {
+  if (!raw) return '/dashboard';
+  // Only accept internal absolute paths. Reject protocol-relative (//evil.com) and external URLs.
+  if (!raw.startsWith('/') || raw.startsWith('//')) return '/dashboard';
+  return raw;
+}
+
 async function createAccount(formData: FormData) {
   'use server';
   const email = String(formData.get('email') ?? '').trim().toLowerCase();
   const name = String(formData.get('name') ?? '').trim() || null;
   const password = String(formData.get('password') ?? '');
   const accessCode = String(formData.get('accessCode') ?? '').trim().toUpperCase();
+  const callbackUrl = safeCallback(String(formData.get('callbackUrl') ?? ''));
 
   if (!email || !password) throw new Error('Email and password are required');
   if (password.length < 8) throw new Error('Password must be at least 8 characters');
@@ -65,20 +73,27 @@ async function createAccount(formData: FormData) {
   }
 
   await signIn('credentials', { email, password, redirect: false });
-  redirect('/dashboard');
+  redirect(callbackUrl);
 }
 
-export default function SignUpPage({ searchParams }: { searchParams: { code?: string } }) {
+export default function SignUpPage({ searchParams }: { searchParams: { code?: string; callbackUrl?: string } }) {
+  const callbackUrl = safeCallback(searchParams.callbackUrl);
+  const returningToLesson = callbackUrl.startsWith('/courses/');
   return (
     <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 24 }}>
       <div style={{ maxWidth: 420, width: '100%' }}>
         <Link href="/" style={{ textDecoration: 'none' }}><Logo /></Link>
-        <h1 style={{ fontSize: 36, marginTop: 32, marginBottom: 8, letterSpacing: '-0.025em' }}>Create your account</h1>
+        <h1 style={{ fontSize: 36, marginTop: 32, marginBottom: 8, letterSpacing: '-0.025em' }}>
+          {returningToLesson ? 'Create an account to start' : 'Create your account'}
+        </h1>
         <p style={{ color: 'var(--text-muted)', fontSize: 15, marginBottom: 32 }}>
-          Free to sign up. AI·101 is yours immediately.
+          {returningToLesson
+            ? 'AI·101 is free. The account keeps your progress and unlocks your certificate.'
+            : 'Free to sign up. AI·101 is yours immediately.'}
         </p>
 
         <form action={createAccount} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <input type="hidden" name="callbackUrl" value={callbackUrl} />
           <Field label="YOUR NAME (OPTIONAL)">
             <input name="name" type="text" placeholder="Avery Chen" style={fieldStyle} />
           </Field>
@@ -97,7 +112,7 @@ export default function SignUpPage({ searchParams }: { searchParams: { code?: st
         </form>
 
         <div style={{ marginTop: 24, fontSize: 14, color: 'var(--text-muted)' }}>
-          Already have an account? <Link href="/sign-in" style={{ color: 'var(--accent)' }}>Sign in</Link>
+          Already have an account? <Link href={`/sign-in${searchParams.callbackUrl ? `?callbackUrl=${encodeURIComponent(callbackUrl)}` : ''}`} style={{ color: 'var(--accent)' }}>Sign in</Link>
         </div>
       </div>
     </div>

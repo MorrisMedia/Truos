@@ -40,7 +40,7 @@ function Hero() {
           Plus the <Link href="/plus" style={{ color: 'var(--accent)', borderBottom: '1px solid var(--accent)' }}>Truos+ suite</Link> for tool-specific mastery (Copilot, coming: Gemini, ChatGPT, Notion).
         </p>
         <div style={{ display: 'flex', gap: 12, marginBottom: 72 }}>
-          <Link className="btn btn-primary btn-lg" href="/courses/101/0/0">Try a lesson {Icons.arrow}</Link>
+          <Link className="btn btn-primary btn-lg" href="/sign-up?callbackUrl=%2Fcourses%2F101%2F0%2F0">Sign up — start AI·101 free {Icons.arrow}</Link>
           <Link className="btn btn-ghost btn-lg" href="#pricing">See pricing</Link>
         </div>
         <div className="eyebrow" style={{ marginBottom: 18 }}>TRUSTED BY COMMERCIAL TEAMS AT</div>
@@ -136,7 +136,7 @@ function Pillars() {
 
 function Pricing() {
   const cards = [
-    { id: 101, code: 'AI·101', name: 'Getting Started with AI',  price: 0,    priceLabel: 'Free',    cta: 'Start free',        lessons: 20, hours: 1,   href: '/courses/101/0/0' },
+    { id: 101, code: 'AI·101', name: 'Getting Started with AI',  price: 0,    priceLabel: 'Free',    cta: 'Sign up — free',    lessons: 20, hours: 1,   href: '/sign-up?callbackUrl=%2Fcourses%2F101%2F0%2F0' },
     { id: 102, code: 'AI·102', name: 'Practical Prompting',      price: 499,  priceLabel: '$499',    cta: 'Unlock for $499',   lessons: 24, hours: 1.5, href: '/checkout?plan=AI·102' },
     { id: 103, code: 'AI·103', name: 'AI at Work',               price: 999,  priceLabel: '$999',    cta: 'Unlock for $999',   lessons: 32, hours: 2,   href: '/checkout?plan=AI·103' },
     { id: 104, code: 'AI·104', name: 'The Truos Capstone',       price: 1499, priceLabel: '$1,499',  cta: 'Unlock for $1,499', lessons: 40, hours: 2.5, featured: true, href: '/checkout?plan=AI·104' },
@@ -259,22 +259,29 @@ function CTA() {
 function Footer() {
   return (
     <footer style={{ borderTop: '1px solid var(--border)', padding: '48px 0 32px', color: 'var(--text-muted)', fontSize: 13 }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 }}>
-        <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
-          <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <div className="logo">
-              <div className="logo-mark">T</div>
-              <span>Truos</span>
-            </div>
-          </Link>
-          <span className="mono" style={{ fontSize: 11, letterSpacing: '0.08em' }}>© 2026 TRUOS · truos.ai</span>
+      <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 }}>
+          <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+            <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <div className="logo">
+                <div className="logo-mark">T</div>
+                <span>Truos</span>
+              </div>
+            </Link>
+            <span className="mono" style={{ fontSize: 11, letterSpacing: '0.08em' }}>© 2026 TRUOS · truos.ai</span>
+          </div>
+          <div style={{ display: 'flex', gap: 28 }}>
+            <Link className="nav-link" href="/plus">Truos+</Link>
+            <Link className="nav-link" href="/methodology">Methodology</Link>
+            <Link className="nav-link" href="/glossary">Glossary</Link>
+            <Link className="nav-link" href="/verify">Verify a cert</Link>
+            <a className="nav-link" href="mailto:hello@truos.ai">Contact</a>
+          </div>
         </div>
-        <div style={{ display: 'flex', gap: 28 }}>
-          <Link className="nav-link" href="/plus">Truos+</Link>
-          <Link className="nav-link" href="/methodology">Methodology</Link>
-          <Link className="nav-link" href="/glossary">Glossary</Link>
-          <Link className="nav-link" href="/verify">Verify a cert</Link>
-          <a className="nav-link" href="mailto:hello@truos.ai">Contact</a>
+        <div style={{ borderTop: '1px solid var(--border)', paddingTop: 20, fontSize: 12, lineHeight: 1.6, color: 'var(--text-dim)', maxWidth: 780 }}>
+          Built on <Link href="/methodology" style={{ color: 'var(--text-muted)', textDecoration: 'underline', textDecorationColor: 'var(--border-strong)', textUnderlineOffset: 3 }}>Merrill&rsquo;s First Principles of Instruction</Link>.
+          Every Truos lesson uses the same 5-phase scaffold (think → understand → learn → apply → quiz) and spaced retrieval practice so what you learn actually sticks.
+          {' '}<Link href="/methodology" style={{ color: 'var(--accent)' }}>Read how our courses are built →</Link>
         </div>
       </div>
     </footer>
