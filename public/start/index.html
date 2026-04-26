@@ -156,15 +156,19 @@ h2.st em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--lime
 .course-row p{font-size:14px;color:var(--muted);line-height:1.6;font-weight:500}
 .course-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;font-size:11px;color:#555;font-weight:600}
 .authority-section{background:var(--bg2)}
-.authority-inner{max-width:880px;margin:0 auto;padding:56px 24px}
-.authority-card{display:flex;align-items:flex-start;gap:28px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:32px}
-.authority-avatar{flex-shrink:0;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#2a4a1a,#4a7a28);border:2px solid rgba(212,245,71,.3);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:var(--lime)}
-.authority-body h3{font-size:21px;font-weight:900;margin-bottom:3px}
-.authority-body .role{font-size:13px;color:var(--lime);font-weight:600;margin-bottom:12px}
-.authority-body p{font-size:15px;color:#aaa;line-height:1.7;margin-bottom:12px;font-weight:500}
-.authority-stats{display:flex;gap:20px;flex-wrap:wrap}
-.auth-stat .n{font-size:20px;font-weight:900;color:var(--lime);line-height:1}
-.auth-stat .l{font-size:10px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+.authority-inner{max-width:980px;margin:0 auto;padding:56px 24px}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.method-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:24px 22px;display:flex;flex-direction:column;gap:10px}
+.method-num{font-family:monospace;font-size:11px;color:var(--lime);letter-spacing:.16em;font-weight:700}
+.method-card h3{font-size:18px;font-weight:800;letter-spacing:-.015em;line-height:1.2}
+.method-card .ml{font-size:14px;color:#bbb;line-height:1.6;font-weight:500}
+.method-used{margin-top:auto;padding-top:14px;border-top:1px solid var(--border)}
+.method-used-label{font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.method-used-list{display:flex;flex-wrap:wrap;gap:5px}
+.method-used-list span{background:rgba(212,245,71,.07);border:1px solid rgba(212,245,71,.18);color:#dde9af;font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.01em}
+.method-cite{font-family:monospace;font-size:10px;color:var(--muted);font-weight:500;letter-spacing:.02em;line-height:1.5;margin-top:8px}
+.method-foot{margin-top:24px;text-align:center;font-size:13px;color:var(--muted);font-weight:500}
+.method-foot a{color:var(--lime);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(212,245,71,.4)}
 .cert-frame{max-width:600px;margin:36px auto 0;background:var(--bg2);border:1px solid rgba(212,245,71,.16);border-radius:12px;padding:28px;position:relative;overflow:hidden}
 .cert-mockup{background:#fff;border-radius:8px;padding:24px 32px;margin-bottom:18px;border:1px solid #e0e0e0;position:relative}
 .cert-mockup::before{content:'';position:absolute;top:6px;left:6px;right:6px;bottom:6px;border:1px solid #d5d5d5;border-radius:6px;pointer-events:none}
@@ -297,7 +301,8 @@ footer p{font-size:12px;color:#333;font-weight:500}
   .free-lesson h2{font-size:clamp(22px,7vw,32px)}
   .final-cta h2{font-size:clamp(28px,8vw,42px)}
   .paths-grid{grid-template-columns:1fr;gap:10px}
-  .authority-card{flex-direction:column;gap:16px;padding:22px 18px}
+  .method-grid{grid-template-columns:1fr;gap:10px;margin-top:22px}
+  .method-card{padding:20px 18px}
   .cert-perks{grid-template-columns:1fr}
   .cert-footer{flex-direction:column;gap:8px;align-items:flex-start}
   .cert-mockup{padding:20px 22px}
@@ -542,22 +547,61 @@ footer p{font-size:12px;color:#333;font-weight:500}
 
 <div class="authority-section">
   <div class="authority-inner">
-    <div class="chip">Who Built This</div>
-    <h2 class="st" style="margin-bottom:24px">Why trust Truos?<br><em>Here's who's behind it.</em></h2>
-    <div class="authority-card">
-      <div class="authority-avatar">M</div>
-      <div class="authority-body">
-        <h3>Marshall Morris</h3>
-        <div class="role">Founder, Truos · Entrepreneur · AI Practitioner</div>
-        <p>I've spent the last decade building companies where technology meets real-world outcomes — from pet health media reaching 40M+ readers, to political data platforms, to AI-native tools used daily by thousands. When AI started reshaping every industry I work in, I went deep. Truos is what I wish had existed: a structured, practical curriculum that takes anyone from zero to genuinely expert, with credentials to prove it.</p>
-        <p>I built this because I watched too many smart, hardworking people get left behind — not because they lacked talent, but because no one showed them the right path at the right time. This is that path.</p>
-        <div class="authority-stats">
-          <div class="auth-stat"><div class="n">11,400+</div><div class="l">Students</div></div>
-          <div class="auth-stat"><div class="n">4.9★</div><div class="l">Avg Rating</div></div>
-          <div class="auth-stat"><div class="n">116</div><div class="l">Lessons</div></div>
-          <div class="auth-stat"><div class="n">30-day</div><div class="l">Guarantee</div></div>
+    <div class="chip">Why this works</div>
+    <h2 class="st" style="margin-bottom:14px">The same learning science<br><em>used at Harvard, MIT, and Yale.</em></h2>
+    <p class="lead" style="max-width:640px;margin:0 auto 14px">Every Truos lesson is built on three peer-reviewed frameworks from instructional design — not hunches, not "engagement hacks." Citable, defensible, and the reason what you learn actually sticks.</p>
+
+    <div class="method-grid">
+
+      <div class="method-card">
+        <div class="method-num">FRAMEWORK 01</div>
+        <h3>Merrill's First Principles of Instruction</h3>
+        <div class="ml">Every lesson follows a 5-phase scaffold: activation → demonstration → application → integration, organized around a real problem.</div>
+        <div class="method-used">
+          <div class="method-used-label">Same approach used at</div>
+          <div class="method-used-list">
+            <span>Harvard Business School</span>
+            <span>U.S. Military training</span>
+            <span>Wharton Exec Ed</span>
+          </div>
+          <div class="method-cite">Merrill, M. D. (2002). <em>Educational Tech R&amp;D</em>, 50(3).</div>
         </div>
       </div>
+
+      <div class="method-card">
+        <div class="method-num">FRAMEWORK 02</div>
+        <h3>Cognitive Load Theory</h3>
+        <div class="ml">Working memory is finite. Lessons are deliberately short and chunked — no busy slides, no buried point, no padding. Every sentence earns its keep.</div>
+        <div class="method-used">
+          <div class="method-used-label">Same approach used at</div>
+          <div class="method-used-list">
+            <span>MITx · MIT OpenCourseWare</span>
+            <span>Stanford Online</span>
+            <span>Carnegie Mellon OLI</span>
+          </div>
+          <div class="method-cite">Sweller, J. (1988). <em>Cognitive Science</em>, 12(2).</div>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-num">FRAMEWORK 03</div>
+        <h3>Retrieval Practice</h3>
+        <div class="ml">Active recall beats re-reading by <strong style="color:var(--text)">40–60%</strong> in long-term retention. Every third lesson opens with a Quick Recall; every module ends with an interleaved review.</div>
+        <div class="method-used">
+          <div class="method-used-label">Same approach used at</div>
+          <div class="method-used-list">
+            <span>Yale Medical School</span>
+            <span>Khan Academy</span>
+            <span>Wash. U. (where the science was published)</span>
+          </div>
+          <div class="method-cite">Roediger &amp; Karpicke (2006). <em>Psychological Science</em>, 17(3).</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="method-foot">
+      Most online courses skip this. We built our entire schema around it. <a href="https://truos.ai/methodology">Read the full methodology →</a>
     </div>
   </div>
 </div>
