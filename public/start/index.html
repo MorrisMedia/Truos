@@ -28,8 +28,33 @@ body{background:var(--bg);color:var(--text);font-family:'Inter Tight',sans-serif
 .sticky-title{font-size:13px;font-weight:800}
 .sticky-sub{font-size:10px;color:var(--muted)}
 .sticky-btn{flex-shrink:0;background:var(--lime);color:#080808;font-family:'Inter Tight',sans-serif;font-size:13px;font-weight:800;padding:10px 20px;border-radius:5px;text-decoration:none;white-space:nowrap}
-.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 20px 52px;position:relative;overflow:hidden}
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 20px 48px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1100px;height:1000px;background:radial-gradient(ellipse,rgba(212,245,71,.065) 0%,transparent 65%);pointer-events:none}
+/* Hero cert stack — 4 layered certs, the front one big and tilted */
+.hero-cert-stage{position:relative;width:min(560px,90vw);height:380px;margin:8px auto 32px;perspective:1200px}
+.hero-cert{position:absolute;top:0;left:50%;background:#f7f4ed;border-radius:8px;padding:28px 30px 22px;box-shadow:0 30px 80px rgba(0,0,0,.55),0 12px 30px rgba(0,0,0,.45);width:min(440px,82vw);transform-origin:center center;color:#1a1a1a;text-align:left}
+.hero-cert::before{content:'';position:absolute;inset:6px;border:1px solid rgba(0,0,0,.08);border-radius:5px;pointer-events:none}
+.hero-cert.c1{transform:translateX(-50%) rotate(-7deg) translateY(28px) scale(.91);opacity:.55;filter:blur(.3px)}
+.hero-cert.c2{transform:translateX(-50%) rotate(-3.5deg) translateY(14px) scale(.95);opacity:.78}
+.hero-cert.c3{transform:translateX(-50%) rotate(2deg) translateY(0)}
+.hc-strip{display:flex;align-items:center;justify-content:space-between;background:#0a0a0a;color:#D4F547;margin:-28px -30px 18px;padding:11px 20px;font-family:'Inter Tight',sans-serif;font-size:10px;font-weight:800;letter-spacing:.18em;border-radius:8px 8px 0 0}
+.hc-strip .v{color:#888;font-family:monospace;font-weight:500;letter-spacing:.05em}
+.hc-eyebrow{font-family:'Inter Tight',sans-serif;font-size:9px;letter-spacing:.18em;color:#9a948a;text-transform:uppercase;margin-bottom:4px}
+.hc-name{font-family:'Instrument Serif',serif;font-size:22px;color:#1a1a1a;margin-bottom:4px;line-height:1}
+.hc-line{font-size:11px;color:#5a554c;margin-bottom:14px;font-weight:500;line-height:1.5}
+.hc-title{font-family:'Inter Tight',sans-serif;font-size:24px;font-weight:800;color:#0a0a0a;letter-spacing:-.02em;margin-bottom:5px;line-height:1.05}
+.hc-sub{font-family:monospace;font-size:9px;color:#9a948a;letter-spacing:.12em;margin-bottom:18px}
+.hc-foot{display:flex;justify-content:space-between;align-items:flex-end;padding-top:12px;border-top:1px solid #d9d4ca;font-size:10px;color:#9a948a;font-family:monospace;letter-spacing:.06em}
+.hc-sig{font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:#1a1a1a;letter-spacing:0;margin-bottom:1px}
+.hero-stack-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:24px;display:flex;align-items:center;justify-content:center;gap:10px}
+.hero-stack-label .dot{width:5px;height:5px;border-radius:50%;background:var(--lime)}
+@media (max-width:680px){
+  .hero-cert-stage{height:340px;margin-bottom:24px}
+  .hc-strip{margin:-20px -22px 14px;padding:10px 16px;font-size:9px}
+  .hero-cert{padding:20px 22px 16px}
+  .hc-name{font-size:18px}
+  .hc-title{font-size:20px}
+}
 .eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(212,245,71,.09);border:1px solid rgba(212,245,71,.22);color:var(--lime);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:22px}
 .eyebrow::before{content:'●';font-size:7px;animation:blink 1.2s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
@@ -157,10 +182,10 @@ h2.st em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--lime
 .li-cert-meta{font-size:10px;color:var(--muted);font-weight:500}
 .li-badge{font-size:9px;font-weight:700;text-transform:uppercase;padding:2px 5px;border-radius:3px;background:#0a66c2;color:#fff}
 .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:36px}
-.proof-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:22px;overflow:hidden}
-.proof-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.proof-photo{width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border)}
-.proof-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;flex-shrink:0;color:#fff}
+.proof-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;overflow:hidden}
+.proof-top{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.proof-photo{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(212,245,71,.18)}
+.proof-avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0;color:#fff}
 .proof-name{font-size:14px;font-weight:800}
 .proof-role{font-size:12px;color:var(--muted);font-weight:500}
 .proof-stars{color:var(--lime);font-size:13px;margin-bottom:8px}
@@ -318,41 +343,56 @@ footer p{font-size:12px;color:#333;font-weight:500}
 </div>
 
 <section class="hero">
-  <div class="eyebrow">4 Courses · 116 Lessons · 1 Certification · Starts Today</div>
-  <h1>The Greatest Career<br>Opportunity of<br><em>Your Lifetime.</em></h1>
-  <p class="hero-sub">No degree. No tech background. No debt. No prerequisites. Anyone, from any walk of life, can master this.</p>
-  <p class="hero-guarantee">✓ <strong>30-day money-back guarantee</strong> — if you don't see the value, every dollar back.</p>
-  <div class="hero-who">
-    <span class="who-pill">Teachers</span><span class="who-pill">Nurses</span><span class="who-pill">Accountants</span><span class="who-pill">Entrepreneurs</span><span class="who-pill">Veterans</span><span class="who-pill">Sales Pros</span><span class="who-pill">Real Estate Agents</span><span class="who-pill">HR Managers</span><span class="who-pill">Lawyers</span><span class="who-pill">Tradespeople</span><span class="who-pill">Recent Grads</span><span class="who-pill">Stay-at-Home Parents</span><span class="who-pill">Anyone.</span>
-  </div>
-  <div class="cta-group">
-    <a href="#offer" class="btn btn-lg">Get Certified — $495 →</a>
-    <a href="/courses/101/0/0?ref=start" class="btn btn-outline">Take Lesson 1 Free →</a>
-  </div>
-  <div class="hero-social-proof">
-    <div class="avatars">
-      <span style="background:#2563eb">PK</span><span style="background:#7c3aed">LT</span><span style="background:#059669">SK</span><span style="background:#dc2626">MT</span><span style="background:#d97706">JR</span>
+  <div class="eyebrow">4 Credentials · 116 Lessons · Lifetime Access</div>
+  <h1>Real AI credentials.<br><em>Resume-ready.</em></h1>
+  <p class="hero-sub">Four standalone certifications you can put on LinkedIn. Each one earned. Each one verifiable.</p>
+
+  <div class="hero-cert-stage" aria-hidden="true">
+    <div class="hero-cert c1">
+      <div class="hc-strip"><span>TRUOS · AI CREDENTIAL</span><span class="v">VERIFIED</span></div>
+      <div class="hc-eyebrow">This certifies that</div>
+      <div class="hc-name">Avery Chen</div>
+      <div class="hc-line">has completed the coursework and assessment for</div>
+      <div class="hc-title">AI Foundations</div>
+      <div class="hc-sub">AI·101 · 20 LESSONS</div>
     </div>
-    <span>Join <strong style="color:var(--text)">11,400+ professionals</strong> already certified</span>
+    <div class="hero-cert c2">
+      <div class="hc-strip"><span>TRUOS · AI CREDENTIAL</span><span class="v">VERIFIED</span></div>
+      <div class="hc-eyebrow">This certifies that</div>
+      <div class="hc-name">Avery Chen</div>
+      <div class="hc-line">has completed the coursework and assessment for</div>
+      <div class="hc-title">AI Prompt Mastery</div>
+      <div class="hc-sub">AI·102 · 24 LESSONS</div>
+    </div>
+    <div class="hero-cert c3">
+      <div class="hc-strip"><span>TRUOS · AI CREDENTIAL</span><span class="v">0x7K2A-9P4X</span></div>
+      <div class="hc-eyebrow">This certifies that</div>
+      <div class="hc-name">Avery Chen</div>
+      <div class="hc-line">has successfully completed the coursework, applied projects, and certification assessment for</div>
+      <div class="hc-title">AI Workflow Mastery</div>
+      <div class="hc-sub">AI·104 · 40 LESSONS · CAPSTONE PROJECT DEFENDED</div>
+      <div class="hc-foot">
+        <div>
+          <div class="hc-sig">— Truos curriculum team</div>
+          <div>ISSUED 20 APRIL 2026</div>
+        </div>
+        <div style="text-align:right">
+          <div>VERIFY AT</div>
+          <div style="color:#1a1a1a">truos.ai/verify</div>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="hero-stack-label"><span class="dot"></span>Stack all four. Show your work.</div>
+
+  <div class="cta-group" style="margin-top:28px">
+    <a href="#offer" class="btn btn-lg">Get all 4 — $495 →</a>
+    <a href="/sign-up?callbackUrl=%2Fcourses%2F101%2F0%2F0&ref=start" class="btn btn-outline">Try AI Foundations free →</a>
+  </div>
+
+  <p class="hero-guarantee">✓ <strong>30-day money-back guarantee</strong> · No degree or tech background required</p>
 </section>
 
-<div class="imagine-section" id="imagine">
-  <div class="imagine-inner">
-    <div class="imagine-intro">
-      <small>Close your eyes for a second</small>
-      <h2>Imagine…<br><em>What if this was you?</em></h2>
-    </div>
-    <div class="imagine-list">
-      <div class="imagine-item"><div class="imagine-q">Imagine</div><div class="imagine-text"><h3>What if you were the most AI-literate person in your entire office?</h3><p>Not because you're smarter. Not because you have a different degree. Just because you learned something they haven't — yet. What does that do for your salary, your title, your options?</p></div></div>
-      <div class="imagine-item"><div class="imagine-q">What if</div><div class="imagine-text"><h3>You could finish your week's work by Wednesday — and no one knew how?</h3><p>Your colleagues grinding through the same hours. You've already done what they'll spend three more days on. That's not science fiction. That's what AI fluency looks like in practice.</p></div></div>
-      <div class="imagine-item"><div class="imagine-q">Imagine</div><div class="imagine-text"><h3>What if a $200,000 degree wasn't the only path to a better career?</h3><p>No loan debt. No two-year commitment. No leaving your family. Just focused learning in the evenings — and a credential more relevant than most graduate degrees right now.</p></div></div>
-      <div class="imagine-item"><div class="imagine-q">What if</div><div class="imagine-text"><h3>You could relaunch your career — or start a new one — from exactly where you are?</h3><p>A parent returning to work. A veteran transitioning out. Someone who hit a ceiling. The AI era doesn't care about your résumé gaps. It cares about what you can do right now.</p></div></div>
-      <div class="imagine-item"><div class="imagine-q">Imagine</div><div class="imagine-text"><h3>What if you could run a business — solo — that used to require a full team?</h3><p>Marketing. Service. Research. Content. Analysis. All of it. One person. You. The era of the one-person operation that punches like a company is already here.</p></div></div>
-      <div class="imagine-item"><div class="imagine-q">What if</div><div class="imagine-text"><h3>Your kids watched you become the person who got ahead — not the one left behind?</h3><p>This is a rare moment where the decision you make right now has an outsized impact on everything that follows. The people who moved early in every major technology shift won. This is that moment.</p></div></div>
-    </div>
-  </div>
-</div>
 
 <div class="news-section">
   <div class="news-intro">
@@ -485,29 +525,15 @@ footer p{font-size:12px;color:#333;font-weight:500}
 </section>
 
 <div class="dark-band"><div class="section" style="text-align:center">
-  <div class="chip">The World of Tomorrow</div>
-  <h2 class="st">New roles. New income.<br><em>New version of you.</em></h2>
-  <p class="lead" style="max-width:520px;margin:0 auto">Roles that didn't exist 3 years ago. Most don't require a degree — just what this certification teaches.</p>
-  <div class="jobs-grid">
-    <div class="job-card"><div class="tag">High Demand</div><h4>AI Operations Lead</h4><p>Own AI strategy inside any org.</p><div class="job-salary">$120k–$180k</div></div>
-    <div class="job-card"><div class="tag">New Role</div><h4>Prompt Engineer</h4><p>Design systems that make AI produce pro output.</p><div class="job-salary">$90k–$150k</div></div>
-    <div class="job-card"><div class="tag">Solo · Consulting</div><h4>AI Consultant</h4><p>Help businesses implement AI. One contract &gt; salary.</p><div class="job-salary">$150–$400/hr</div></div>
-    <div class="job-card"><div class="tag">Any Background</div><h4>AI-Augmented Pro</h4><p>Whatever you do — do it 10× better with AI.</p><div class="job-salary">+25–40% lift</div></div>
-    <div class="job-card"><div class="tag">Founder</div><h4>Solo Business Owner</h4><p>Build what used to require a team of 10.</p><div class="job-salary">Unlimited ceiling</div></div>
-    <div class="job-card"><div class="tag">Creative</div><h4>AI Content Lead</h4><p>Run a full content operation alone, faster.</p><div class="job-salary">$85k–$130k</div></div>
+  <div class="chip">What Changes</div>
+  <h2 class="st">What it looks like<br><em>six months in.</em></h2>
+  <div class="transform-grid">
+    <div class="transform-card"><div class="number">10×</div><h3>Output, same hours</h3></div>
+    <div class="transform-card"><div class="number">1st</div><h3>Call when AI comes up</h3></div>
+    <div class="transform-card"><div class="number">4</div><h3>Credentials on LinkedIn</h3></div>
+    <div class="transform-card"><div class="number">$0</div><h3>Recurring fees, ever</h3></div>
   </div>
 </div></div>
-
-<section class="section" style="text-align:center">
-  <div class="chip">What Changes</div>
-  <h2 class="st">Six months from now,<br><em>this is your life.</em></h2>
-  <div class="transform-grid">
-    <div class="transform-card"><div class="number">10×</div><h3>Output, same hours</h3><p>People wonder how you produce so much. AI is your multiplier on everything.</p></div>
-    <div class="transform-card"><div class="number">1st</div><h3>Call in any room</h3><p>When your company needs someone who gets AI — they call you.</p></div>
-    <div class="transform-card"><div class="number">∞</div><h3>Doors that didn't exist</h3><p>New roles. New income. Opportunities others walk right past.</p></div>
-    <div class="transform-card"><div class="number">0</div><h3>Fear about the future</h3><p>You're on the right side. You know what you know. That's everything.</p></div>
-  </div>
-</section>
 
 <div class="authority-section">
   <div class="authority-inner">
@@ -532,44 +558,44 @@ footer p{font-size:12px;color:#333;font-weight:500}
 </div>
 
 <section class="section">
-  <div class="chip">Real People. Real Results.</div>
-  <h2 class="st">From every background.<br><em>Every walk of life.</em></h2>
+  <div class="chip">From actual graduates</div>
+  <h2 class="st">Real credentials.<br><em>Real outcomes.</em></h2>
   <div class="proof-grid">
     <div class="proof-card">
-      <div class="proof-top"><div class="proof-avatar" style="background:#059669">SK</div><div><div class="proof-name">Sandra K.</div><div class="proof-role">Registered Nurse · Houston, TX</div></div></div>
+      <div class="proof-top"><img src="/start/sandra-k.jpg" alt="Sandra K." class="proof-photo"><div><div class="proof-name">Sandra K.</div><div class="proof-role">RN · Houston, TX</div></div></div>
       <div class="proof-stars">★★★★★</div>
-      <blockquote>"I'm a nurse. Zero tech background. Six weeks after finishing, I'm the person my entire hospital system calls about AI implementation. Nothing in my career has moved this fast."</blockquote>
-      <div class="proof-outcome">📈 Bedside RN → Hospital AI Lead in 6 weeks</div>
+      <blockquote>"Zero tech background. Now I'm the person my hospital calls about AI."</blockquote>
+      <div class="proof-outcome">📈 RN → Hospital AI Lead in 6 weeks</div>
     </div>
     <div class="proof-card">
-      <div class="proof-top"><div class="proof-avatar" style="background:#7c3aed">PK</div><div><div class="proof-name">Priya M.</div><div class="proof-role">Operations Manager · Chicago, IL</div></div></div>
+      <div class="proof-top"><img src="/start/priya-m.jpg" alt="Priya M." class="proof-photo"><div><div class="proof-name">Priya M.</div><div class="proof-role">Ops Manager · Chicago, IL</div></div></div>
       <div class="proof-stars">★★★★★</div>
-      <blockquote>"I spent $50k on an MBA and learned less about my career future than I did here. Promoted within 60 days of finishing."</blockquote>
-      <div class="proof-outcome">📈 Promoted + $22k salary increase in 60 days</div>
+      <blockquote>"$50k on an MBA taught me less than this did. Promoted in 60 days."</blockquote>
+      <div class="proof-outcome">📈 Promoted + $22k raise</div>
     </div>
     <div class="proof-card">
-      <div class="proof-top"><img src="/start/lena-t.jpg" alt="Lena T." class="proof-photo"><div><div class="proof-name">Lena T.</div><div class="proof-role">Marketing Consultant · Atlanta, GA</div></div></div>
+      <div class="proof-top"><img src="/start/lena-t.jpg" alt="Lena T." class="proof-photo"><div><div class="proof-name">Lena T.</div><div class="proof-role">Marketing · Atlanta, GA</div></div></div>
       <div class="proof-stars">★★★★★</div>
-      <blockquote>"I was a stay-at-home parent for 4 years. This certification was how I relaunched — and I came back earning more than when I left. AI changed everything for me."</blockquote>
-      <div class="proof-outcome">📈 Relaunched career at $18k more than before</div>
+      <blockquote>"Stay-at-home parent for 4 years. Relaunched at more than I left at."</blockquote>
+      <div class="proof-outcome">📈 Re-entered career at +$18k</div>
     </div>
     <div class="proof-card">
-      <div class="proof-top"><div class="proof-avatar" style="background:#dc2626">MT</div><div><div class="proof-name">Marcus T.</div><div class="proof-role">Independent Consultant · Finance</div></div></div>
+      <div class="proof-top"><img src="/start/marcus-t.jpg" alt="Marcus T." class="proof-photo"><div><div class="proof-name">Marcus T.</div><div class="proof-role">Consultant · Finance</div></div></div>
       <div class="proof-stars">★★★★★</div>
-      <blockquote>"The capstone project alone opened three consulting conversations. I wasn't trying to get clients — I just had something real to show. The ROI on $495 is genuinely insane."</blockquote>
-      <div class="proof-outcome">📈 3 new consulting clients from capstone portfolio</div>
+      <blockquote>"Capstone alone opened 3 client conversations. ROI on $495 is genuinely insane."</blockquote>
+      <div class="proof-outcome">📈 3 new clients from one project</div>
     </div>
     <div class="proof-card">
-      <div class="proof-top"><div class="proof-avatar" style="background:#2563eb">JR</div><div><div class="proof-name">James R.</div><div class="proof-role">Army Veteran · Small Business Owner</div></div></div>
+      <div class="proof-top"><img src="/start/james-r.jpg" alt="James R." class="proof-photo"><div><div class="proof-name">James R.</div><div class="proof-role">Veteran · Solo Operator</div></div></div>
       <div class="proof-stars">★★★★★</div>
-      <blockquote>"I left the military not knowing what came next. Truos gave me a path. I now run a 1-person AI consulting practice billing $175/hr. Didn't need a degree. Just the skills."</blockquote>
-      <div class="proof-outcome">📈 0 → $175/hr solo consulting practice</div>
+      <blockquote>"Left the military, found a path. Now billing $175/hr. No degree needed."</blockquote>
+      <div class="proof-outcome">📈 0 → $175/hr solo practice</div>
     </div>
     <div class="proof-card">
-      <div class="proof-top"><div class="proof-avatar" style="background:#0891b2">DR</div><div><div class="proof-name">Diana R.</div><div class="proof-role">High School Teacher · Phoenix, AZ</div></div></div>
+      <div class="proof-top"><img src="/start/diana-r.jpg" alt="Diana R." class="proof-photo"><div><div class="proof-name">Diana R.</div><div class="proof-role">Teacher · Phoenix, AZ</div></div></div>
       <div class="proof-stars">★★★★★</div>
-      <blockquote>"My district hired me as their AI Curriculum Lead. $31k raise. I still can't believe it happened from a $495 program."</blockquote>
-      <div class="proof-outcome">📈 Teacher → District AI Lead, +$31k salary</div>
+      <blockquote>"District hired me as their AI Curriculum Lead. Still can't believe it from $495."</blockquote>
+      <div class="proof-outcome">📈 Teacher → AI Lead, +$31k</div>
     </div>
   </div>
 </section>
