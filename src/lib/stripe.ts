@@ -23,6 +23,7 @@ export const PLANS: Record<string, PlanConfig> = {
   'AI·103':   { envVar: 'STRIPE_PRICE_AI_103',      mode: 'payment',      courseIds: [103],                     label: 'Applied AI at Work',              amountCents: 99900 },
   'AI·104':   { envVar: 'STRIPE_PRICE_AI_104',      mode: 'payment',      courseIds: [104],                     label: 'AI Workflow Mastery',             amountCents: 149900 },
   'Bundle':   { envVar: 'STRIPE_PRICE_BUNDLE_FULL', mode: 'payment',      courseIds: [102, 103, 104],           label: 'Base bundle — all three paid credentials', amountCents: 249700 },
+  'Bundle·LP':{ envVar: 'STRIPE_PRICE_BUNDLE_LP',   mode: 'payment',      courseIds: [102, 103, 104],           label: 'Truos Sales Bundle — all four credentials', amountCents: 49500 },
   'CPLT·101': { envVar: 'STRIPE_PRICE_CPLT_101',    mode: 'payment',      courseIds: [201],                     label: 'Copilot 101',                      amountCents: 24900 },
   'CPLT·EXL': { envVar: 'STRIPE_PRICE_CPLT_EXL',    mode: 'payment',      courseIds: [202],                     label: 'Copilot + Excel',                  amountCents: 24900 },
   'GEM·101':  { envVar: 'STRIPE_PRICE_GEM_101',     mode: 'payment',      courseIds: [203],                     label: 'Gemini 101',                       amountCents: 24900 },
