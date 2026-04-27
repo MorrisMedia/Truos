@@ -6,6 +6,7 @@ import { stripe, isStripeConfigured } from '@/lib/stripe';
 import { APP_URL } from '@/lib/config';
 import { sendEmail } from '@/lib/email';
 import { welcomeEmail, accessGrantedEmail } from '@/lib/emails/templates';
+import { computeShareCents } from '@/lib/affiliate';
 
 // Claims a paid Stripe Checkout session by creating (or attaching to) a Truos user account.
 // POST /api/account/claim-purchase  (form fields: session_id, password, name?)
@@ -35,6 +36,7 @@ export async function POST(req: Request) {
 
   const courseIds = (s.metadata?.courseIds ?? '').split(',').filter(Boolean).map(Number);
   const plan = s.metadata?.plan ?? null;
+  const partnerId = s.metadata?.partnerId ?? null;
 
   const passwordHash = await bcrypt.hash(password, 10);
   const user = await prisma.user.create({ data: { email, name, passwordHash } });
@@ -66,6 +68,32 @@ export async function POST(req: Request) {
       create: { userId: user.id, courseId: cid, source: 'purchase', sourceId: purchase.id },
       update: { sourceId: purchase.id, expiresAt: null },
     });
+  }
+
+  // Affiliate attribution — partner-attributed purchase by an anonymous buyer.
+  if (partnerId) {
+    try {
+      const partner = await prisma.affiliatePartner.findUnique({ where: { id: partnerId } });
+      if (partner) {
+        const amount = s.amount_total ?? 0;
+        const share = computeShareCents(amount, partner.revenueSharePct);
+        await prisma.affiliateAttribution.upsert({
+          where: { stripeSessionId: s.id },
+          create: {
+            partnerId,
+            userId: user.id,
+            purchaseId: purchase.id,
+            stripeSessionId: s.id,
+            amountCents: amount,
+            shareCents: share,
+            status: 'purchase',
+          },
+          update: { userId: user.id, purchaseId: purchase.id },
+        });
+      }
+    } catch (err) {
+      console.warn('[claim] affiliate attribution failed', err);
+    }
   }
 
   // Backfill the Stripe session/customer with the new userId so the webhook (and Stripe dashboard) can correlate.

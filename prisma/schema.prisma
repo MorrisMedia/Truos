@@ -35,13 +35,13 @@ model EmailLog {
   userId     String?
   toEmail    String
   subject    String
-  kind       String   // 'welcome' | 'access_granted' | 'cert_earned' | 'broadcast' | 'code_redeemed'
+  kind       String // 'welcome' | 'access_granted' | 'cert_earned' | 'broadcast' | 'code_redeemed'
   providerId String?
-  status     String   // 'sent' | 'failed'
+  status     String // 'sent' | 'failed'
   error      String?
   sentAt     DateTime @default(now())
 
-  user       User?    @relation(fields: [userId], references: [id])
+  user User? @relation(fields: [userId], references: [id])
 
   @@index([userId])
   @@index([kind])
@@ -50,14 +50,14 @@ model EmailLog {
 }
 
 model Organization {
-  id                String   @id @default(cuid())
-  name              String
-  stripeCustomerId  String?  @unique
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  id               String   @id @default(cuid())
+  name             String
+  stripeCustomerId String?  @unique
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
-  members       User[]
-  subscription  Subscription?
+  members      User[]
+  subscription Subscription?
 
   @@map("truos_orgs")
 }
@@ -68,43 +68,43 @@ model Subscription {
   stripeSubscriptionId String   @unique
   stripePriceId        String
   seats                Int
-  status               String   // 'active' | 'past_due' | 'canceled' | 'trialing'
+  status               String // 'active' | 'past_due' | 'canceled' | 'trialing'
   currentPeriodEnd     DateTime
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
 
-  org                  Organization @relation(fields: [orgId], references: [id])
+  org Organization @relation(fields: [orgId], references: [id])
 
   @@map("truos_subscriptions")
 }
 
 model Purchase {
-  id                      String   @id @default(cuid())
+  id                      String    @id @default(cuid())
   userId                  String
   courseIds               Int[]
-  amount                  Int      // cents
-  currency                String   @default("usd")
-  stripePaymentIntentId   String?  @unique
-  stripeCheckoutSessionId String?  @unique
-  status                  String   // 'pending' | 'completed' | 'refunded'
+  amount                  Int // cents
+  currency                String    @default("usd")
+  stripePaymentIntentId   String?   @unique
+  stripeCheckoutSessionId String?   @unique
+  status                  String // 'pending' | 'completed' | 'refunded'
   paidAt                  DateTime?
-  createdAt               DateTime @default(now())
+  createdAt               DateTime  @default(now())
 
-  user                    User     @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id])
 
   @@map("truos_purchases")
 }
 
 model CourseEntitlement {
-  id         String    @id @default(cuid())
-  userId     String
-  courseId   Int
-  source     String    // 'purchase' | 'comp_code' | 'manual_grant' | 'subscription'
-  sourceId   String?
-  grantedAt  DateTime  @default(now())
-  expiresAt  DateTime?
+  id        String    @id @default(cuid())
+  userId    String
+  courseId  Int
+  source    String // 'purchase' | 'comp_code' | 'manual_grant' | 'subscription'
+  sourceId  String?
+  grantedAt DateTime  @default(now())
+  expiresAt DateTime?
 
-  user       User      @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id])
 
   @@unique([userId, courseId, source])
   @@index([userId])
@@ -112,16 +112,16 @@ model CourseEntitlement {
 }
 
 model CompCode {
-  id          String   @id @default(cuid())
-  code        String   @unique
-  label       String?
-  courseIds   Int[]
-  maxUses     Int?
-  uses        Int      @default(0)
-  expiresAt   DateTime?
-  createdBy   String
-  createdAt   DateTime @default(now())
-  disabledAt  DateTime?
+  id         String    @id @default(cuid())
+  code       String    @unique
+  label      String?
+  courseIds  Int[]
+  maxUses    Int?
+  uses       Int       @default(0)
+  expiresAt  DateTime?
+  createdBy  String
+  createdAt  DateTime  @default(now())
+  disabledAt DateTime?
 
   redemptions CompCodeRedemption[]
 
@@ -134,8 +134,8 @@ model CompCodeRedemption {
   userId     String
   redeemedAt DateTime @default(now())
 
-  code       CompCode @relation(fields: [codeId], references: [id])
-  user       User     @relation(fields: [userId], references: [id])
+  code CompCode @relation(fields: [codeId], references: [id])
+  user User     @relation(fields: [userId], references: [id])
 
   @@unique([codeId, userId])
   @@map("truos_code_redemptions")
@@ -148,9 +148,9 @@ model LessonProgress {
   moduleIdx   Int
   lessonIdx   Int
   completedAt DateTime @default(now())
-  score       Int      // 0-100
+  score       Int // 0-100
 
-  user        User     @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id])
 
   @@unique([userId, courseId, moduleIdx, lessonIdx])
   @@index([userId, courseId])
@@ -164,8 +164,73 @@ model Certificate {
   issuedAt         DateTime @default(now())
   verificationHash String   @unique
 
-  user             User     @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id])
 
   @@unique([userId, courseId])
   @@map("truos_certificates")
+}
+
+model AffiliatePartner {
+  id           String  @id @default(cuid())
+  slug         String  @unique
+  name         String
+  heroImageUrl String?
+  heroHeadline String?
+  bio          String?
+
+  couponCode           String @unique
+  couponPercentOff     Int?
+  couponAmountOffCents Int?
+  bundlePriceCents     Int    @default(49500)
+
+  revenueSharePct Int @default(30)
+
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  attributions AffiliateAttribution[]
+  payouts      AffiliatePayout[]
+
+  @@map("truos_affiliate_partners")
+}
+
+model AffiliateAttribution {
+  id        String           @id @default(cuid())
+  partnerId String
+  partner   AffiliatePartner @relation(fields: [partnerId], references: [id])
+
+  userId          String?
+  purchaseId      String?
+  stripeSessionId String  @unique
+
+  amountCents Int
+  shareCents  Int
+  status      String
+  paidAt      DateTime?
+  refundedAt  DateTime?
+  payoutId    String?
+
+  createdAt DateTime @default(now())
+
+  @@index([partnerId, createdAt])
+  @@map("truos_affiliate_attributions")
+}
+
+model AffiliatePayout {
+  id        String           @id @default(cuid())
+  partnerId String
+  partner   AffiliatePartner @relation(fields: [partnerId], references: [id])
+
+  totalCents       Int
+  attributionCount Int
+  paidAt           DateTime
+  method           String
+  reference        String?
+  notes            String?
+
+  createdAt DateTime @default(now())
+
+  @@index([partnerId, paidAt])
+  @@map("truos_affiliate_payouts")
 }

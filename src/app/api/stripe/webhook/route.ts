@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import { stripe, PLANS } from '@/lib/stripe';
 import { sendEmail } from '@/lib/email';
 import { accessGrantedEmail } from '@/lib/emails/templates';
+import { computeShareCents } from '@/lib/affiliate';
 
 export const runtime = 'nodejs';
 
@@ -53,7 +54,38 @@ export async function POST(req: Request) {
 async function handleCheckoutCompleted(s: Stripe.Checkout.Session) {
   const userId = s.metadata?.userId || s.client_reference_id;
   const plan = s.metadata?.plan;
+  const partnerId = s.metadata?.partnerId;
   const courseIds = (s.metadata?.courseIds ?? '').split(',').filter(Boolean).map(Number);
+
+  // Affiliate attribution — fire regardless of whether userId is present yet.
+  if (partnerId && s.payment_status === 'paid') {
+    try {
+      const partner = await prisma.affiliatePartner.findUnique({ where: { id: partnerId } });
+      if (partner) {
+        const amount = s.amount_total ?? 0;
+        const share = computeShareCents(amount, partner.revenueSharePct);
+        await prisma.affiliateAttribution.upsert({
+          where: { stripeSessionId: s.id },
+          create: {
+            partnerId,
+            userId: userId ?? null,
+            stripeSessionId: s.id,
+            amountCents: amount,
+            shareCents: share,
+            status: 'purchase',
+          },
+          update: {
+            userId: userId ?? null,
+            amountCents: amount,
+            shareCents: share,
+            status: 'purchase',
+          },
+        });
+      }
+    } catch (err) {
+      console.error('[stripe] affiliate attribution failed', err);
+    }
+  }
 
   if (s.mode === 'payment' && userId) {
     // One-time course purchase

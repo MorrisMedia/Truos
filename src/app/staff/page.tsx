@@ -42,6 +42,7 @@ export default async function StaffOverviewPage() {
             <Link href="/staff/users" className="btn btn-ghost btn-sm">Users</Link>
             <Link href="/staff/orgs" className="btn btn-ghost btn-sm">Organizations</Link>
             <Link href="/staff/codes" className="btn btn-ghost btn-sm">Comp codes</Link>
+            <Link href="/staff/affiliates" className="btn btn-ghost btn-sm">Affiliates</Link>
             <Link href="/staff/broadcasts" className="btn btn-ghost btn-sm">Broadcasts</Link>
           </div>
         </div>
