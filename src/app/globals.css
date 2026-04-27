@@ -355,6 +355,62 @@ p { margin: 0; }
   .glossary-term__tip::after { left: auto; right: 18px; }
 }
 
+/* ---------------- Mobile (homepage + global) ---------------- */
+@media (max-width: 768px) {
+  html, body { font-size: 15px; }
+  h1 { font-size: clamp(34px, 9vw, 46px) !important; line-height: 1.05 !important; }
+  h2 { font-size: clamp(26px, 7vw, 34px) !important; line-height: 1.12 !important; }
+  h3 { font-size: 20px !important; }
+
+  .container { padding: 0 20px !important; }
+
+  /* Nav: keep logo + sign-in CTA, hide secondary anchors */
+  .nav { padding: 14px 18px !important; }
+  .nav-links { gap: 14px !important; }
+  .nav-links a.nav-link[href^="#"],
+  .nav-links a.nav-link[href="/plus"],
+  .nav-links a.nav-link[href="/glossary"],
+  .nav-links a.nav-link[href="/verify"] { display: none !important; }
+
+  /* Section vertical rhythm — kill dead space */
+  .home-section { padding: 56px 0 !important; }
+  .home-hero { padding: 56px 0 40px !important; }
+
+  /* Hero: stacked CTAs, full width */
+  .home-h1 { letter-spacing: -0.025em !important; }
+  .home-lead { font-size: 17px !important; margin-bottom: 28px !important; }
+  .home-hero-ctas { flex-direction: column !important; gap: 10px !important; align-items: stretch !important; }
+  .home-hero-ctas .btn { width: 100% !important; justify-content: center !important; }
+
+  /* Trust stats row: smaller, wraps gracefully */
+  .home-trust-row { gap: 18px !important; padding-top: 18px !important; margin-top: 18px !important; }
+
+  /* Section heading: stack the right-hand description */
+  .home-section-head { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; margin-bottom: 32px !important; }
+
+  /* Grids collapse to single column on mobile */
+  .home-grid-2 { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .home-grid-3 { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .home-grid-4 { grid-template-columns: 1fr !important; gap: 14px !important; }
+
+  /* Course cards: tighter padding, smaller titles */
+  .home-grid-2 .panel { padding: 22px !important; }
+  .home-grid-2 .panel h3 { font-size: 24px !important; }
+
+  /* Bundle: stack price under copy */
+  .home-bundle { grid-template-columns: 1fr !important; gap: 20px !important; padding: 24px !important; }
+  .home-bundle-price { align-items: flex-start !important; }
+  .home-bundle-price > div:first-child { text-align: left !important; }
+  .home-bundle-price .btn { width: 100% !important; justify-content: center !important; }
+
+  /* Final CTA: smaller hero outcome panel, stacked buttons */
+  .home-final-ctas { flex-direction: column !important; align-items: stretch !important; gap: 10px !important; }
+  .home-final-ctas .btn { width: 100% !important; justify-content: center !important; }
+
+  /* Footer: stack links under brand */
+  .home-footer-row > div:nth-child(2) { width: 100%; gap: 18px !important; }
+}
+
 /* ---------------- Scrollbar ---------------- */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
