@@ -27,7 +27,7 @@ export default function ViewSonicLayout({ children }: { children: React.ReactNod
             fontFamily: 'var(--font-mono)', fontWeight: 600, fontSize: 13,
           }}>T</div>
           <span style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>×</span>
-          <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: '-0.01em', color: '#003DA5' }}>ViewSonic</span>
+          <img src="/viewsonic/viewsonic-mark.svg" alt="ViewSonic" style={{ height: 20 }} />
           <span style={{ marginLeft: 8, fontSize: 12, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
             AI Academy
           </span>
