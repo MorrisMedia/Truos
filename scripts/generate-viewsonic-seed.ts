@@ -12,7 +12,7 @@ const org = {
   id: 'viewsonic',
   name: 'ViewSonic Corporation',
   seatsContracted: 1500,
-  seatsActive: 1247,
+  seatsActive: 1447,
   plusTier: true,
   contractStart: '2026-02-01',
   contractEnd: '2027-02-01',
