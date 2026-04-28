@@ -4,7 +4,7 @@ export const BASE_COURSES: Course[] = [
   {
     id: 101, code: 'AI·101', title: 'AI Foundations',
     subtitle: 'No jargon, no coding. What AI actually is, how to talk to it, and how to use it without embarrassing yourself.',
-    lessons: 20, hours: 1, tier: 'free', suite: 'base', price: 0,
+    lessons: 20, hours: 1, tier: 'paid', suite: 'base', price: 199,
     modules: [
       { name: 'What is AI, really?',            lessons: ['What is AI?', "Kinds of AI you'll meet", "What's a chatbot?", 'Signing up: picking a tool'] },
       { name: 'How AI thinks (without the math)', lessons: ["It's predicting words", 'Trained once, used forever', 'Why AI confidently makes stuff up', "What AI can't do"] },
