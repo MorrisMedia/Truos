@@ -41,7 +41,7 @@ function Hero() {
           Plus the <Link href="/plus" style={{ color: 'var(--accent)', borderBottom: '1px solid var(--accent)' }}>Truos+ suite</Link> for tool-specific mastery (Copilot, coming: Gemini, ChatGPT, Notion).
         </p>
         <div className="home-hero-ctas" style={{ display: 'flex', gap: 12, marginBottom: 32 }}>
-          <Link className="btn btn-primary btn-lg" href="/sign-up?callbackUrl=%2Fcourses%2F101%2F0%2F0">Start AI·101 free {Icons.arrow}</Link>
+          <Link className="btn btn-primary btn-lg" href="/checkout?plan=AI·101">Start AI·101 {Icons.arrow}</Link>
           <Link className="btn btn-ghost btn-lg" href="#pricing">See pricing</Link>
         </div>
         <div className="home-trust-row" style={{
@@ -212,7 +212,7 @@ function Credibility() {
 
 function Pricing() {
   const cards = [
-    { id: 101, code: 'AI·101', name: 'AI Foundations',           price: 0,    priceLabel: 'Free',    cta: 'Sign up — free',    lessons: 20, hours: 1,   href: '/sign-up?callbackUrl=%2Fcourses%2F101%2F0%2F0' },
+    { id: 101, code: 'AI·101', name: 'AI Foundations',           price: 199,  priceLabel: '$199',   cta: 'Unlock for $199',  lessons: 20, hours: 1,   href: '/checkout?plan=AI·101' },
     { id: 102, code: 'AI·102', name: 'AI Prompt Mastery',        price: 499,  priceLabel: '$499',    cta: 'Unlock for $499',   lessons: 24, hours: 1.5, href: '/checkout?plan=AI·102' },
     { id: 103, code: 'AI·103', name: 'Applied AI at Work',       price: 999,  priceLabel: '$999',    cta: 'Unlock for $999',   lessons: 32, hours: 2,   href: '/checkout?plan=AI·103' },
     { id: 104, code: 'AI·104', name: 'AI Workflow Mastery',      price: 1499, priceLabel: '$1,499',  cta: 'Unlock for $1,499', lessons: 40, hours: 2.5, featured: true, href: '/checkout?plan=AI·104' },
@@ -316,10 +316,10 @@ function FinalCTA() {
           Today, you can be one <span className="serif" style={{ fontStyle: 'italic' }}>of them.</span>
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: 17, maxWidth: 540, margin: '0 auto 36px', lineHeight: 1.5 }}>
-          AI·101 is free and takes about an hour. The rest is yours when you&rsquo;re ready.
+          AI·101 takes about an hour. $199 one-time, lifetime access.
         </p>
         <div className="home-final-ctas" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link className="btn btn-primary btn-lg" href="/sign-up?callbackUrl=%2Fcourses%2F101%2F0%2F0">Start AI·101 free {Icons.arrow}</Link>
+          <Link className="btn btn-primary btn-lg" href="/checkout?plan=AI·101">Start AI·101 {Icons.arrow}</Link>
           <Link className="btn btn-ghost btn-lg" href="/checkout?plan=Bundle">Get the bundle — $2,497</Link>
         </div>
         <div style={{ marginTop: 16, fontSize: 12, color: 'var(--text-dim)' }}>30-day money-back guarantee · No coding required · Lifetime access</div>
