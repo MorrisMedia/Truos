@@ -14,25 +14,29 @@ export default function ViewSonicLayout({ children }: { children: React.ReactNod
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '16px 32px',
+        padding: '20px 32px',
         borderBottom: '1px solid var(--border)',
         background: 'var(--bg)',
       }}>
-        <Link href="/viewsonic" style={{ display: 'inline-flex', alignItems: 'center', gap: 14 }}>
-          <img src="/viewsonic/viewsonic-mark.svg" alt="ViewSonic" style={{ height: 26 }} />
-          <span style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>×</span>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+        <Link href="/viewsonic" style={{ display: 'inline-flex', alignItems: 'center', gap: 18 }}>
+          <img src="/viewsonic/viewsonic-mark.svg" alt="ViewSonic" style={{ height: 32 }} />
+          <span style={{
+            width: 1, height: 24, background: 'var(--border-strong)', display: 'inline-block',
+          }} />
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
             <div style={{
-              width: 24, height: 24, borderRadius: 5,
+              width: 32, height: 32, borderRadius: 7,
               background: 'var(--text)', color: 'var(--accent)',
               display: 'grid', placeItems: 'center',
-              fontFamily: 'var(--font-mono)', fontWeight: 600, fontSize: 12,
+              fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 16,
             }}>T</div>
-            <span style={{ fontSize: 14, fontWeight: 600, letterSpacing: '-0.01em' }}>Truos</span>
+            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+              <span style={{ fontSize: 17, fontWeight: 600, letterSpacing: '-0.02em' }}>Truos</span>
+              <span style={{ fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginTop: 2 }}>
+                AI Academy
+              </span>
+            </div>
           </div>
-          <span style={{ marginLeft: 6, fontSize: 11, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-            AI Academy
-          </span>
         </Link>
         <PersonaSwitcher current={persona} />
       </header>

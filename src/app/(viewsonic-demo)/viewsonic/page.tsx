@@ -17,17 +17,33 @@ async function pickPersona(persona: 'admin' | 'manager' | 'learner') {
 export default function ViewSonicEntry() {
   return (
     <div style={{ minHeight: 'calc(100vh - 200px)', display: 'grid', placeItems: 'center', padding: 24 }}>
-      <div style={{ maxWidth: 520, width: '100%', textAlign: 'center' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
-          <img src="/viewsonic/viewsonic-mark.svg" alt="ViewSonic" style={{ height: 48 }} />
+      <div style={{ maxWidth: 560, width: '100%', textAlign: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}>
+          <img src="/viewsonic/viewsonic-mark.svg" alt="ViewSonic" style={{ height: 80, maxWidth: '90%' }} />
         </div>
-        <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 12 }}>DEMO ENVIRONMENT</div>
-        <h1 style={{ fontSize: 40, letterSpacing: '-0.025em', marginBottom: 12, fontWeight: 500 }}>
-          ViewSonic AI Academy
+        <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 14 }}>DEMO ENVIRONMENT</div>
+        <h1 style={{ fontSize: 44, letterSpacing: '-0.025em', marginBottom: 14, fontWeight: 500, lineHeight: 1.05 }}>
+          AI Academy
         </h1>
-        <p style={{ color: 'var(--text-muted)', fontSize: 16, lineHeight: 1.55, marginBottom: 40 }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: 16, lineHeight: 1.55, marginBottom: 12 }}>
           Pick a view to step into the experience. Real ViewSonic team — illustrative data.
         </p>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 36 }}>
+          Powered by
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: 5,
+            padding: '3px 8px', borderRadius: 4,
+            background: 'var(--bg-panel)', border: '1px solid var(--border)',
+          }}>
+            <span style={{
+              width: 14, height: 14, borderRadius: 3,
+              background: 'var(--text)', color: 'var(--accent)',
+              display: 'inline-grid', placeItems: 'center',
+              fontWeight: 700, fontSize: 8, letterSpacing: 0,
+            }}>T</span>
+            <span style={{ color: 'var(--text)', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 11, letterSpacing: '-0.01em', textTransform: 'none' }}>Truos</span>
+          </span>
+        </div>
 
         <div style={{ display: 'grid', gap: 12 }}>
           {([
