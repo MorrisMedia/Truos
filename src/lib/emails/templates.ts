@@ -186,6 +186,49 @@ export function broadcastEmail({ name, userId, subject, headline, body: bodyText
   };
 }
 
+// ---- Org templates ----
+
+export function orgInviteEmail({ name, orgName, inviteUrl }: {
+  name?: string | null;
+  orgName: string;
+  inviteUrl: string;
+}): EmailPayload {
+  const greeting = name ? `Hi ${escapeHtml(name)},` : 'Hi,';
+  const body = `
+    ${h1(`You've been invited to ${escapeHtml(orgName)}'s AI training.`)}
+    ${p(`${greeting} ${escapeHtml(orgName)} has set up an AI fluency program on Truos — and you've been invited to join.`)}
+    ${p('Complete four credentials and become the person your team calls when AI comes up. Most people earn their first cert in under 90 minutes.')}
+    ${btn(inviteUrl, 'Accept invitation')}
+    ${muted(`Link not working? Copy and paste this into your browser:<br>${escapeHtml(inviteUrl)}`)}
+  `;
+  return {
+    subject: `You've been invited to ${orgName}'s AI training program`,
+    html: layout(`${orgName} invited you to AI training on Truos.`, body),
+    text: `${greeting}\n\n${orgName} has invited you to join their AI training program on Truos.\n\nAccept your invitation here: ${inviteUrl}\n\n— Truos`,
+  };
+}
+
+export function orgNudgeEmail({ recipientName, managerName, orgName, courseTitle, resumeUrl }: {
+  recipientName?: string | null;
+  managerName: string;
+  orgName: string;
+  courseTitle: string;
+  resumeUrl: string;
+}): EmailPayload {
+  const greeting = recipientName ? `Hi ${escapeHtml(recipientName)},` : 'Hi,';
+  const body = `
+    ${h1(`${escapeHtml(managerName)} wants you to keep going.`)}
+    ${p(`${greeting} ${escapeHtml(managerName)} at ${escapeHtml(orgName)} sent you a reminder about <strong>${escapeHtml(courseTitle)}</strong>.`)}
+    ${p("It won't take long — most people finish a module in under 20 minutes. Jump back in when you have a moment.")}
+    ${btn(resumeUrl, 'Continue learning')}
+  `;
+  return {
+    subject: `${managerName} wants you to keep going in ${courseTitle}`,
+    html: layout(`${managerName} sent you a nudge about ${courseTitle}.`, body),
+    text: `${greeting}\n\n${managerName} sent you a reminder about ${courseTitle}.\n\nContinue: ${resumeUrl}\n\n— Truos`,
+  };
+}
+
 function escapeHtml(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
