@@ -26,7 +26,7 @@ export default function ViewSonicLayout({ children }: { children: React.ReactNod
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
             <div style={{
               width: 32, height: 32, borderRadius: 7,
-              background: 'var(--text)', color: 'var(--accent)',
+              background: 'var(--accent)', color: 'var(--accent-ink)',
               display: 'grid', placeItems: 'center',
               fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 16,
             }}>T</div>

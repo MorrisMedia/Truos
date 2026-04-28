@@ -37,7 +37,7 @@ export default function ViewSonicEntry() {
           }}>
             <span style={{
               width: 14, height: 14, borderRadius: 3,
-              background: 'var(--text)', color: 'var(--accent)',
+              background: 'var(--accent)', color: 'var(--accent-ink)',
               display: 'inline-grid', placeItems: 'center',
               fontWeight: 700, fontSize: 8, letterSpacing: 0,
             }}>T</span>
