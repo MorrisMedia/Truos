@@ -88,8 +88,8 @@ export default function SignUpPage({ searchParams }: { searchParams: { code?: st
         </h1>
         <p style={{ color: 'var(--text-muted)', fontSize: 15, marginBottom: 32 }}>
           {returningToLesson
-            ? 'AI·101 is free. The account keeps your progress and unlocks your certificate.'
-            : 'Free to sign up. AI·101 is yours immediately.'}
+            ? 'Create an account, then unlock AI·101 for $199 — lifetime access.'
+            : 'Create an account to get started. Unlock AI·101 for $199.'}
         </p>
 
         <form action={createAccount} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
