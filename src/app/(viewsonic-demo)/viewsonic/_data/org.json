@@ -1,0 +1,10 @@
+{
+  "id": "viewsonic",
+  "name": "ViewSonic Corporation",
+  "seatsContracted": 1500,
+  "seatsActive": 1247,
+  "plusTier": true,
+  "contractStart": "2026-02-01",
+  "contractEnd": "2027-02-01",
+  "monthlySpendUsd": 22500
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "colorpro",
+    "name": "ColorPro Creator",
+    "seats": 229
+  },
+  {
+    "id": "sales-amer",
+    "name": "Sales — Americas",
+    "region": "Americas",
+    "seats": 263
+  },
+  {
+    "id": "sales-emea",
+    "name": "Sales — EMEA",
+    "region": "EMEA",
+    "seats": 186
+  },
+  {
+    "id": "sales-apac",
+    "name": "Sales — APAC",
+    "region": "APAC",
+    "seats": 147
+  },
+  {
+    "id": "product-eng",
+    "name": "Product Engineering",
+    "seats": 240
+  },
+  {
+    "id": "marketing",
+    "name": "Marketing",
+    "seats": 112
+  },
+  {
+    "id": "cust-success",
+    "name": "Customer Success",
+    "seats": 79
+  },
+  {
+    "id": "channel-partners",
+    "name": "Channel Partners",
+    "seats": 72
+  },
+  {
+    "id": "operations",
+    "name": "Operations",
+    "seats": 58
+  },
+  {
+    "id": "finance-legal",
+    "name": "Finance & Legal",
+    "seats": 34
+  },
+  {
+    "id": "hr",
+    "name": "HR / People",
+    "seats": 18
+  },
+  {
+    "id": "executive",
+    "name": "Executive",
+    "seats": 9
+  }
+]

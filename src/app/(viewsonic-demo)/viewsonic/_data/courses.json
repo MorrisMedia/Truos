@@ -1,0 +1,47 @@
+[
+  {
+    "id": 101,
+    "code": "AI·101",
+    "title": "AI Foundations",
+    "subtitle": "No jargon, no coding. What AI actually is, how to talk to it, and how to use it without embarrassing yourself.",
+    "lessons": 20,
+    "hours": 1,
+    "tier": "free"
+  },
+  {
+    "id": 102,
+    "code": "AI·102",
+    "title": "AI Prompt Mastery",
+    "subtitle": "Prompt patterns, research, writing, meetings, data. The daily toolkit.",
+    "lessons": 24,
+    "hours": 1.5,
+    "tier": "paid"
+  },
+  {
+    "id": 103,
+    "code": "AI·103",
+    "title": "Applied AI at Work",
+    "subtitle": "Sales, marketing, CS, ops, finance — real playbooks for commercial teams.",
+    "lessons": 32,
+    "hours": 2,
+    "tier": "paid"
+  },
+  {
+    "id": 104,
+    "code": "AI·104",
+    "title": "AI Workflow Mastery",
+    "subtitle": "Design, ship, and defend a real AI workflow inside your team.",
+    "lessons": 28,
+    "hours": 2.5,
+    "tier": "paid"
+  },
+  {
+    "id": 105,
+    "code": "AI·105",
+    "title": "AI Mastery Capstone",
+    "subtitle": "A real, portfolio-worthy project you complete and own.",
+    "lessons": 22,
+    "hours": 5,
+    "tier": "plus"
+  }
+]
