@@ -18,6 +18,9 @@ export default function ViewSonicEntry() {
   return (
     <div style={{ minHeight: 'calc(100vh - 200px)', display: 'grid', placeItems: 'center', padding: 24 }}>
       <div style={{ maxWidth: 520, width: '100%', textAlign: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
+          <img src="/viewsonic/viewsonic-mark.svg" alt="ViewSonic" style={{ height: 48 }} />
+        </div>
         <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 12 }}>DEMO ENVIRONMENT</div>
         <h1 style={{ fontSize: 40, letterSpacing: '-0.025em', marginBottom: 12, fontWeight: 500 }}>
           ViewSonic AI Academy
