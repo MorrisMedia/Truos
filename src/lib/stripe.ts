@@ -19,6 +19,7 @@ export interface PlanConfig {
 }
 
 export const PLANS: Record<string, PlanConfig> = {
+  'AI·101':   { envVar: 'STRIPE_PRICE_AI_101',      mode: 'payment',      courseIds: [101],                     label: 'AI Foundations',                  amountCents: 19900 },
   'AI·102':   { envVar: 'STRIPE_PRICE_AI_102',      mode: 'payment',      courseIds: [102],                     label: 'AI Prompt Mastery',               amountCents: 49900 },
   'AI·103':   { envVar: 'STRIPE_PRICE_AI_103',      mode: 'payment',      courseIds: [103],                     label: 'Applied AI at Work',              amountCents: 99900 },
   'AI·104':   { envVar: 'STRIPE_PRICE_AI_104',      mode: 'payment',      courseIds: [104],                     label: 'AI Workflow Mastery',             amountCents: 149900 },
