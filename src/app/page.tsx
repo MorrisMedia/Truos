@@ -11,7 +11,6 @@ export default function HomePage() {
       <CourseCatalog />
       <Testimonials />
       <Credibility />
-      <Pricing />
       <FinalCTA />
       <Footer />
     </>
@@ -93,7 +92,6 @@ function CourseCatalog() {
                 <div className="code" style={{ fontSize: 13, color: c.capstone ? 'var(--accent)' : 'var(--text-muted)', letterSpacing: '0.08em' }}>{c.code}</div>
                 <div style={{ display: 'flex', gap: 8 }}>
                   {c.capstone && <span className="badge accent">CAPSTONE</span>}
-                  {c.tier === 'paid' ? <span className="badge paid">${c.price}</span> : <span className="badge success">FREE</span>}
                 </div>
               </div>
               <h3 style={{ fontSize: 32, marginBottom: 8, letterSpacing: '-0.025em' }}>{c.title}</h3>
@@ -316,11 +314,10 @@ function FinalCTA() {
           Today, you can be one <span className="serif" style={{ fontStyle: 'italic' }}>of them.</span>
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: 17, maxWidth: 540, margin: '0 auto 36px', lineHeight: 1.5 }}>
-          AI·101 takes about an hour. $199 one-time, lifetime access.
+          AI·101 takes about an hour.
         </p>
         <div className="home-final-ctas" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link className="btn btn-primary btn-lg" href="/checkout?plan=AI·101">Start AI·101 {Icons.arrow}</Link>
-          <Link className="btn btn-ghost btn-lg" href="/checkout?plan=Bundle">Get the bundle — $2,497</Link>
         </div>
         <div style={{ marginTop: 16, fontSize: 12, color: 'var(--text-dim)' }}>30-day money-back guarantee · No coding required · Lifetime access</div>
       </div>
