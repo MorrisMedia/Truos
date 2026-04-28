@@ -12,7 +12,14 @@ const resend: Resend | null = API_KEY ? new Resend(API_KEY) : null;
 export interface SendArgs {
   to: string;
   userId?: string | null;
-  kind: 'welcome' | 'access_granted' | 'cert_earned' | 'broadcast' | 'code_redeemed';
+  kind:
+    | 'welcome'
+    | 'access_granted'
+    | 'cert_earned'
+    | 'broadcast'
+    | 'code_redeemed'
+    | 'org_invite'
+    | 'org_nudge';
   payload: EmailPayload;
 }
 

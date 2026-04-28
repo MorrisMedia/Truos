@@ -26,6 +26,7 @@ model User {
   entitlements    CourseEntitlement[]
   codeRedemptions CompCodeRedemption[]
   emailLogs       EmailLog[]
+  orgMemberships  OrgMembership[]
 
   @@map("truos_users")
 }
@@ -35,7 +36,7 @@ model EmailLog {
   userId     String?
   toEmail    String
   subject    String
-  kind       String // 'welcome' | 'access_granted' | 'cert_earned' | 'broadcast' | 'code_redeemed'
+  kind       String // 'welcome' | 'access_granted' | 'cert_earned' | 'broadcast' | 'code_redeemed' | 'org_invite' | 'org_nudge'
   providerId String?
   status     String // 'sent' | 'failed'
   error      String?
@@ -58,8 +59,44 @@ model Organization {
 
   members      User[]
   subscription Subscription?
+  departments  OrgDepartment[]
+  memberships  OrgMembership[]
 
   @@map("truos_orgs")
+}
+
+model OrgDepartment {
+  id        String  @id @default(cuid())
+  orgId     String
+  name      String
+  managerId String?
+
+  org         Organization    @relation(fields: [orgId], references: [id])
+  memberships OrgMembership[]
+
+  @@unique([orgId, name])
+  @@map("truos_org_departments")
+}
+
+model OrgMembership {
+  id           String    @id @default(cuid())
+  userId       String?
+  orgId        String
+  departmentId String?
+  orgRole      String    @default("member") // 'org_admin' | 'org_manager' | 'member'
+  inviteEmail  String?
+  inviteToken  String?   @unique
+  invitedAt    DateTime  @default(now())
+  joinedAt     DateTime?
+
+  user User?          @relation(fields: [userId], references: [id])
+  org  Organization   @relation(fields: [orgId], references: [id])
+  dept OrgDepartment? @relation(fields: [departmentId], references: [id])
+
+  @@index([orgId])
+  @@index([userId])
+  @@index([inviteToken])
+  @@map("truos_org_memberships")
 }
 
 model Subscription {

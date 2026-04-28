@@ -3,6 +3,82 @@
 AI training for commercial teams — from zero tech knowledge to a shipped AI workflow.
 Live at **[truos.ai](https://truos.ai)**.
 
+---
+
+## HLM Org Dashboard
+
+The HomeLife Media org dashboard lives at `/hlm` — production subdomain: **`homelife.truos.ai`**.
+
+### What it is
+
+A three-persona training dashboard wired to real DB data and auth:
+- **Admin** (`/hlm/admin`) — Pulse metrics, People roster with course status, Invite wizard
+- **Manager** (`/hlm/manager`) — Dept-scoped Pulse, Team table, Nudge composer
+- **Learner** (`/hlm/learn`) — Resume card, Courses with entitlement gating, Certificate gallery
+
+### Set up a new org (first time)
+
+```bash
+# 1. Apply the migration to your Neon DB
+npx prisma migrate deploy
+
+# 2. Seed the HomeLife Media org + 7 departments + Marshall as org_admin
+npx ts-node --project tsconfig.json prisma/seed-hlm.ts
+
+# 3. Promote yourself to org_admin (if not already)
+# Update orgMemberships.orgRole = 'org_admin' for your user in the DB
+```
+
+### Invite flow
+
+1. Admin navigates to `/hlm/admin/onboard` and pastes employee emails
+2. `POST /api/hlm/invites` creates `OrgMembership` rows with unique `inviteToken` and sends emails via Resend
+3. Employee receives email → clicks link → lands on `/hlm/join?token=xxx`
+4. If not signed in → redirected to `/sign-in` with `callbackUrl=/hlm/join?token=xxx`
+5. If signed in → sees accept screen → clicks "Accept invitation"
+6. `POST /api/hlm/invites/accept` sets `userId`, `joinedAt=now()`, clears `inviteToken`
+7. Employee redirected to `/hlm` → role-based redirect to `/hlm/learn` (or `/hlm/manager`, `/hlm/admin`)
+
+### Nudge flow
+
+1. Manager goes to `/hlm/manager/nudge` — sees team members who haven't started any course
+2. Selects a template and recipients
+3. `POST /api/hlm/nudge` sends personalized reminder emails via Resend
+4. Emails arrive from Truos with manager's name + link to `/hlm/learn`
+
+### Roles
+
+| Role | Route | Can see |
+|------|-------|---------|
+| `org_admin` | `/hlm/admin` | All members, all depts, org-wide metrics, invite flow |
+| `org_manager` | `/hlm/manager` | Own dept members, dept metrics, nudge composer |
+| `member` | `/hlm/learn` | Own progress, courses, certificates |
+
+To promote a user: update `orgRole` in `truos_org_memberships` for their membership row.
+
+### CNAME for `homelife.truos.ai`
+
+1. Add `homelife.truos.ai` as a custom domain in your Vercel project settings
+2. Add a CNAME record in your DNS provider:
+   ```
+   homelife.truos.ai  →  cname.vercel-dns.com
+   ```
+3. Vercel will auto-provision the SSL certificate
+
+### API routes
+
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| `POST` | `/api/hlm/invites` | org_admin | Create invite rows + send emails |
+| `POST` | `/api/hlm/invites/accept` | any signed-in user | Accept invite by token |
+| `POST` | `/api/hlm/nudge` | org_manager | Send nudge emails to team members |
+
+### Env vars needed
+
+No new env vars — uses the same `RESEND_API_KEY`, `DATABASE_URL`, `AUTH_SECRET`, and `NEXT_PUBLIC_APP_URL` already in the project.
+
+---
+
 ## The curriculum
 
 Four courses, 116 lessons, ~22 hours. Each lesson is read → engage → quiz.
@@ -23,50 +99,16 @@ Each course issues its own certificate. No bundle credential; every résumé lin
 
 ## Architecture
 
-Clickable prototype built in plain HTML + React (via UMD) + Babel Standalone. No build step. Open `index.html` in a browser and it runs.
-
-```
-index.html         App shell, routing, TWEAKS panel
-content.js         All 116 lessons (read + engage + quiz per lesson)
-shared.jsx         Icons, COURSES catalog, ORG/TEAM, Logo/Avatar/ProgressRing
-landing.jsx        Marketing page (hero, catalog, pricing, CTA)
-course.jsx         Course home (module tree, progress, lesson navigation)
-lesson.jsx         Lesson player + LessonComplete + Certificate
-admin.jsx          Org admin dashboard + Stripe checkout
-styles.css         Design system (dark theme, lime accent)
-```
-
-## Content model
-
-`content.js` defines one entry per lesson, keyed by `${courseId}-${moduleIdx}-${lessonIdx}`. Each lesson has:
-
-```js
-{
-  courseCode: 'AI·101',
-  moduleName: 'What is AI, really?',
-  lessonIndex: 1,
-  totalInModule: 4,
-  title: 'What is AI?',
-  steps: [
-    { type: 'read',   title, body: [...paragraphs], callout: { label, text } },
-    { type: 'engage', title, prompt, options: [{ text, correct, feedback }] },
-    { type: 'quiz',   prompt, options: [{ text, correct }], answerNote },
-  ],
-}
-```
-
-`COURSES` in `shared.jsx` is the catalog (for landing + course home). `content.js` is the lesson bodies. Structure and content are versioned together.
+Next.js 14 (App Router), Prisma + Neon Postgres, NextAuth v5, Resend.
 
 ## Running locally
 
-It's a static site — serve the directory with anything:
-
 ```bash
-python3 -m http.server 8000
-# open http://localhost:8000
+npm install
+cp .env.example .env.local   # fill in DATABASE_URL, AUTH_SECRET, RESEND_API_KEY
+npx prisma migrate dev
+npm run dev
 ```
-
-Or use the dev-bar at the bottom of the page to jump between screens without starting a course.
 
 ## Design
 
@@ -74,12 +116,3 @@ Or use the dev-bar at the bottom of the page to jump between screens without sta
 - Electric lime accent (`#D4F547`), used sparingly
 - Inter Tight for UI, Instrument Serif for editorial moments, monospace for course codes
 - Hairline borders, all-caps tracked eyebrows, subtle grain
-- Light mode, alternate accents, and gamification toggle available in the Tweaks panel
-
-## Next steps
-
-- Wire up Stripe for real checkout (currently presentational)
-- Wire up Clerk or similar for auth (org → user login hierarchy)
-- Persist progress to a backend (currently `localStorage`-only)
-- Move to a framework (likely Next.js) when auth/backend come in
-- Swap React UMD + Babel Standalone for a real build pipeline at that point
