@@ -34,6 +34,22 @@ async function createAccount(formData: FormData) {
     data: { email, name, passwordHash },
   });
 
+  // Auto-join: if the email domain matches an Organization.domains entry, attach the user
+  // to that org as a learner. Org-level autoGrantAll handles course access — no entitlements needed.
+  const domain = email.split('@')[1]?.toLowerCase();
+  if (domain) {
+    const org = await prisma.organization.findFirst({
+      where: { domains: { has: domain } },
+      select: { id: true },
+    });
+    if (org) {
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { orgId: org.id, orgRole: 'learner' },
+      });
+    }
+  }
+
   // Optional comp code redemption
   let redeemedCourseIds: number[] | null = null;
   let redeemedCodeStr: string | null = null;

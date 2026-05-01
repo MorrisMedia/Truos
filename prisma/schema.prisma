@@ -15,19 +15,24 @@ model User {
   passwordHash    String
   role            String   @default("member") // 'member' | 'staff'
   orgId           String?
+  divisionId      String?
+  orgRole         String? // null | 'owner' | 'admin' | 'manager' | 'learner'
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   emailSubscribed Boolean  @default(true)
 
   org             Organization?        @relation(fields: [orgId], references: [id])
+  division        OrgDivision?         @relation("DivisionMembers", fields: [divisionId], references: [id])
+  ledDivision     OrgDivision?         @relation("DivisionLead")
   progress        LessonProgress[]
   certificates    Certificate[]
   purchases       Purchase[]
   entitlements    CourseEntitlement[]
   codeRedemptions CompCodeRedemption[]
   emailLogs       EmailLog[]
-  orgMemberships  OrgMembership[]
 
+  @@index([orgId])
+  @@index([divisionId])
   @@map("truos_users")
 }
 
@@ -51,52 +56,46 @@ model EmailLog {
 }
 
 model Organization {
-  id               String   @id @default(cuid())
+  id               String    @id @default(cuid())
+  slug             String?   @unique
   name             String
-  stripeCustomerId String?  @unique
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  domains          String[]  @default([])
+  primaryColor     String?
+  logoUrl          String?
+  trashTalk        String?
+  trashTalkAt      DateTime?
+  autoGrantAll     Boolean   @default(false)
+  stripeCustomerId String?   @unique
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 
   members      User[]
+  divisions    OrgDivision[]
   subscription Subscription?
-  departments  OrgDepartment[]
-  memberships  OrgMembership[]
 
   @@map("truos_orgs")
 }
 
-model OrgDepartment {
-  id        String  @id @default(cuid())
-  orgId     String
-  name      String
-  managerId String?
+model OrgDivision {
+  id          String    @id @default(cuid())
+  orgId       String
+  slug        String
+  name        String
+  color       String?
+  emoji       String?
+  leadUserId  String?   @unique
+  trashTalk   String?
+  trashTalkAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
-  org         Organization    @relation(fields: [orgId], references: [id])
-  memberships OrgMembership[]
+  org     Organization @relation(fields: [orgId], references: [id])
+  lead    User?        @relation("DivisionLead", fields: [leadUserId], references: [id])
+  members User[]       @relation("DivisionMembers")
 
-  @@unique([orgId, name])
-  @@map("truos_org_departments")
-}
-
-model OrgMembership {
-  id           String    @id @default(cuid())
-  userId       String?
-  orgId        String
-  departmentId String?
-  orgRole      String    @default("member") // 'org_admin' | 'org_manager' | 'member'
-  inviteEmail  String?
-  inviteToken  String?   @unique
-  invitedAt    DateTime  @default(now())
-  joinedAt     DateTime?
-
-  user User?          @relation(fields: [userId], references: [id])
-  org  Organization   @relation(fields: [orgId], references: [id])
-  dept OrgDepartment? @relation(fields: [departmentId], references: [id])
-
+  @@unique([orgId, slug])
   @@index([orgId])
-  @@index([userId])
-  @@index([inviteToken])
-  @@map("truos_org_memberships")
+  @@map("truos_org_divisions")
 }
 
 model Subscription {

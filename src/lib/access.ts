@@ -5,7 +5,7 @@ import { isStaffEmail } from './config';
 
 export interface AccessResult {
   allowed: boolean;
-  reason: 'free' | 'staff' | 'entitlement' | 'subscription' | 'paywall' | 'needs_auth' | 'not_found';
+  reason: 'free' | 'staff' | 'entitlement' | 'subscription' | 'org_grant' | 'paywall' | 'needs_auth' | 'not_found';
 }
 
 export async function canAccessCourse(userId: string | null, email: string | null, courseId: number): Promise<AccessResult> {
@@ -19,6 +19,15 @@ export async function canAccessCourse(userId: string | null, email: string | nul
   // AI·101 (and any other non-paid course) is unlocked for any authed user.
   if (!isPaidCourse(courseId)) return { allowed: true, reason: 'free' };
 
+  // Org-level "all courses free" — covers HomeLife Media employees and any future tenant
+  // with autoGrantAll=true. Short-circuits before per-course entitlement checks so adding
+  // new Truos+ courses requires zero per-user backfill.
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { orgId: true, org: { select: { autoGrantAll: true } } },
+  });
+  if (user?.org?.autoGrantAll) return { allowed: true, reason: 'org_grant' };
+
   // Check entitlement
   const ent = await prisma.courseEntitlement.findFirst({
     where: {
@@ -30,7 +39,6 @@ export async function canAccessCourse(userId: string | null, email: string | nul
   if (ent) return { allowed: true, reason: 'entitlement' };
 
   // Check team subscription (user's org has active subscription)
-  const user = await prisma.user.findUnique({ where: { id: userId }, select: { orgId: true } });
   if (user?.orgId) {
     const sub = await prisma.subscription.findFirst({
       where: {

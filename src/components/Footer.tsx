@@ -1,6 +1,11 @@
 import Link from 'next/link';
+import { auth } from '@/lib/auth';
+import { getOrgContext } from '@/lib/org';
 
-export function Footer() {
+export async function Footer() {
+  const session = await auth();
+  const ctx = session?.user?.id ? await getOrgContext(session.user.id) : null;
+  const showLeague = ctx?.orgSlug === 'hlm';
   return (
     <footer style={{ borderTop: '1px solid var(--border)', padding: '48px 0 32px', color: 'var(--text-muted)', fontSize: 13 }}>
       <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -19,6 +24,7 @@ export function Footer() {
             <Link className="nav-link" href="/methodology">Methodology</Link>
             <Link className="nav-link" href="/glossary">Glossary</Link>
             <Link className="nav-link" href="/verify">Verify a cert</Link>
+            {showLeague && <Link className="nav-link" href="/homelife">🏆 TRUOS LEAGUE</Link>}
             <a className="nav-link" href="mailto:hello@truos.ai">Contact</a>
           </div>
         </div>
