@@ -1,10 +1,13 @@
+import { redirect } from 'next/navigation';
 import { sendEmail } from '@/lib/email';
 import { getOrgBySlug } from '@/lib/org';
 import { prisma } from '@/lib/prisma';
+import { SaveButton } from '../../_components/SaveButton';
+import { Flash } from '../../_components/Flash';
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://truos.ai';
 
-async function sendInvites(formData: FormData): Promise<{ sent: number; skipped: string[] }> {
+async function sendInvites(formData: FormData) {
   'use server';
   const raw = String(formData.get('emails') ?? '');
   const message = String(formData.get('message') ?? '').trim();
@@ -14,49 +17,68 @@ async function sendInvites(formData: FormData): Promise<{ sent: number; skipped:
       .filter(Boolean)
       .filter(e => /.+@.+\..+/.test(e))
   ));
+  if (list.length === 0) {
+    redirect('/homelife/admin/invite?error=no-emails');
+  }
   const hlm = await getOrgBySlug('hlm');
-  if (!hlm) return { sent: 0, skipped: list };
+  if (!hlm) redirect('/homelife/admin/invite?error=no-org');
 
   let sent = 0;
   const skipped: string[] = [];
+  const failed: string[] = [];
+
   for (const email of list) {
     const exists = await prisma.user.findUnique({ where: { email }, select: { id: true } });
-    if (exists) { skipped.push(`${email} (already a user)`); continue; }
+    if (exists) { skipped.push(email); continue; }
     const link = `${APP_URL}/sign-up?email=${encodeURIComponent(email)}&callbackUrl=${encodeURIComponent('/homelife')}`;
+    const safeMsg = message.replace(/[<>]/g, '');
     const html = `
-      <div style="font-family:-apple-system,sans-serif;max-width:520px;margin:0 auto;padding:32px 16px;color:#111;">
-        <h1 style="font-size:22px;letter-spacing:-0.02em;">You&rsquo;re invited to join the TRUOS LEAGUE</h1>
-        <p style="font-size:15px;color:#444;line-height:1.6;">
-          HomeLife Media is rolling out Truos AI training to the team. Every course is free for HLM employees,
-          and every cert you earn scores points for your division.
-        </p>
-        ${message ? `<blockquote style="border-left:3px solid #c4f439;padding:8px 16px;color:#222;font-size:14px;background:#fafafa;">${message.replace(/[<>]/g, '')}</blockquote>` : ''}
-        <p style="margin:28px 0;text-align:center;">
-          <a href="${link}" style="background:#c4f439;color:#000;padding:14px 28px;border-radius:6px;text-decoration:none;font-weight:700;">Create your account →</a>
-        </p>
-        <p style="font-size:12px;color:#666;">Or paste this link: ${link}</p>
-        <p style="font-size:12px;color:#999;margin-top:32px;">— Marshall · TRUOS LEAGUE · ${APP_URL}/homelife</p>
-      </div>
-    `.trim();
+<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:520px;margin:0 auto;padding:32px 16px;color:#111;">
+  <h1 style="font-size:22px;letter-spacing:-0.02em;margin:0 0 16px;">You&rsquo;re invited to join the <span style="color:#5a7f00">TRUOS LEAGUE</span></h1>
+  <p style="font-size:15px;color:#444;line-height:1.6;margin:0 0 16px;">
+    HomeLife Media is rolling out Truos AI training to the team. Every course is free for HLM employees,
+    and every cert you earn scores points for your division.
+  </p>
+  ${safeMsg ? `<blockquote style="border-left:3px solid #c4f439;padding:12px 16px;color:#222;font-size:14px;background:#fafafa;margin:16px 0;border-radius:4px;">${safeMsg}</blockquote>` : ''}
+  <p style="margin:28px 0;text-align:center;">
+    <a href="${link}" style="background:#c4f439;color:#000;padding:14px 28px;border-radius:6px;text-decoration:none;font-weight:700;display:inline-block;">Create your account →</a>
+  </p>
+  <p style="font-size:12px;color:#666;margin:0 0 8px;">Or paste this link:</p>
+  <p style="font-size:11px;color:#888;word-break:break-all;font-family:monospace;margin:0;">${link}</p>
+  <p style="font-size:12px;color:#999;margin-top:32px;border-top:1px solid #eee;padding-top:16px;">— Marshall · TRUOS LEAGUE · ${APP_URL}/homelife</p>
+</div>`.trim();
     try {
-      await sendEmail({
+      const result = await sendEmail({
         to: email,
         kind: 'broadcast',
         payload: {
-          subject: 'You&rsquo;re invited to TRUOS LEAGUE',
+          subject: 'You\'re invited to TRUOS LEAGUE',
           html,
           text: `You're invited to join the TRUOS LEAGUE — Truos AI training for HomeLife Media.\n\n${message ? `"${message}"\n\n` : ''}Create your account: ${link}`,
         },
       });
-      sent++;
-    } catch (err) {
-      skipped.push(`${email} (send failed)`);
+      if (result.ok) sent++;
+      else failed.push(email);
+    } catch {
+      failed.push(email);
     }
   }
-  return { sent, skipped };
+  const params = new URLSearchParams({
+    sent: String(sent),
+    skipped: String(skipped.length),
+    failed: String(failed.length),
+  });
+  if (skipped.length) params.set('skippedList', skipped.slice(0, 5).join(','));
+  if (failed.length) params.set('failedList', failed.slice(0, 5).join(','));
+  redirect(`/homelife/admin/invite?${params.toString()}`);
 }
 
-export default function InviteAdminPage() {
+export default function InviteAdminPage({ searchParams }: { searchParams: { sent?: string; skipped?: string; failed?: string; skippedList?: string; failedList?: string; error?: string } }) {
+  const sent = parseInt(searchParams.sent ?? '0', 10);
+  const skipped = parseInt(searchParams.skipped ?? '0', 10);
+  const failed = parseInt(searchParams.failed ?? '0', 10);
+  const error = searchParams.error;
+
   return (
     <>
       <h2 style={{ fontSize: 22, marginBottom: 8 }}>Invite HLM teammates</h2>
@@ -64,10 +86,23 @@ export default function InviteAdminPage() {
         Paste any number of emails (commas, spaces, or newlines). They&rsquo;ll get a link to create their Truos account; once signed up,
         they&rsquo;re auto-enrolled in HomeLife Media with all 8 courses free.
       </p>
-      <form action={async (fd) => {
-        'use server';
-        await sendInvites(fd);
-      }} style={{ background: 'var(--bg-panel)', border: '1px solid var(--border)', borderRadius: 8, padding: 18 }}>
+
+      {error === 'no-emails' && <Flash type="error">Couldn&rsquo;t find any valid email addresses in what you pasted.</Flash>}
+      {error === 'no-org' && <Flash type="error">HomeLife org missing — re-run <code>npm run seed:hlm</code>.</Flash>}
+      {sent > 0 && (
+        <Flash type="success">
+          ✅ Sent {sent} invitation{sent === 1 ? '' : 's'}.
+          {skipped > 0 && <> Skipped {skipped} (already a Truos user{searchParams.skippedList ? `: ${searchParams.skippedList}${skipped > 5 ? '…' : ''}` : ''}).</>}
+          {failed > 0 && <> {failed} failed to send{searchParams.failedList ? `: ${searchParams.failedList}` : ''}.</>}
+        </Flash>
+      )}
+      {sent === 0 && (skipped > 0 || failed > 0) && (
+        <Flash type="info">
+          No new invites sent. {skipped > 0 && <>{skipped} already a user.</>} {failed > 0 && <>{failed} failed.</>}
+        </Flash>
+      )}
+
+      <form action={sendInvites} style={{ background: 'var(--bg-panel)', border: '1px solid var(--border)', borderRadius: 8, padding: 18 }}>
         <label style={{ display: 'block', fontSize: 13, color: 'var(--text-muted)', marginBottom: 6 }}>Emails</label>
         <textarea
           name="emails"
@@ -93,7 +128,7 @@ export default function InviteAdminPage() {
           }}
         />
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 14 }}>
-          <button type="submit" className="btn btn-primary">Send invites</button>
+          <SaveButton pendingLabel="Sending…">Send invites</SaveButton>
         </div>
       </form>
     </>

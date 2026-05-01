@@ -2,8 +2,11 @@ import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { sendEmail } from '@/lib/email';
 import { getDivisionLedBy } from '@/lib/org';
-import { findCourse, ALL_COURSES } from '@/content/courses';
+import { ALL_COURSES } from '@/content/courses';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { SaveButton } from '../../_components/SaveButton';
+import { Flash } from '../../_components/Flash';
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://truos.ai';
 
@@ -24,6 +27,8 @@ async function sendNudge(formData: FormData) {
     select: { id: true, email: true, name: true, certificates: { select: { courseId: true } } },
   });
 
+  let sent = 0;
+  let failed = 0;
   for (const r of recipients) {
     const completed = new Set(r.certificates.map(c => c.courseId));
     const next = ALL_COURSES.find(c => !completed.has(c.id));
@@ -42,20 +47,24 @@ async function sendNudge(formData: FormData) {
       </div>
     `.trim();
     try {
-      await sendEmail({
+      const r2 = await sendEmail({
         to: r.email, userId: r.id, kind: 'broadcast',
         payload: { subject, html, text: personalized },
       });
-    } catch {}
+      if (r2.ok) sent++; else failed++;
+    } catch { failed++; }
   }
   revalidatePath('/homelife/team/nudge');
+  redirect(`/homelife/team/nudge?sent=${sent}&failed=${failed}`);
 }
 
-export default async function NudgePage() {
+export default async function NudgePage({ searchParams }: { searchParams: { sent?: string; failed?: string } }) {
   const session = await auth();
   if (!session?.user?.id) return null;
   const division = await getDivisionLedBy(session.user.id);
   if (!division) return null;
+  const sent = parseInt(searchParams.sent ?? '0', 10);
+  const failed = parseInt(searchParams.failed ?? '0', 10);
 
   const teammates = await prisma.user.findMany({
     where: { divisionId: division.id, id: { not: session.user.id } },
@@ -73,6 +82,8 @@ export default async function NudgePage() {
       <p style={{ color: 'var(--text-muted)', fontSize: 14, marginBottom: 20 }}>
         Defaults to the 5 lowest-completion teammates in your division. Tokens supported: <code>{'{{firstName}}'}</code>, <code>{'{{nextCourseCode}}'}</code>, <code>{'{{divisionName}}'}</code>.
       </p>
+      {sent > 0 && <Flash type="success">✅ Sent {sent} nudge{sent === 1 ? '' : 's'}.{failed > 0 && ` ${failed} failed.`}</Flash>}
+      {sent === 0 && failed > 0 && <Flash type="error">⚠️ All {failed} sends failed — check Resend API key.</Flash>}
 
       <form action={sendNudge} style={{ background: 'var(--bg-panel)', border: '1px solid var(--border)', borderRadius: 8, padding: 18 }}>
         <label style={{ display: 'block', fontSize: 13, color: 'var(--text-muted)', marginBottom: 8 }}>Recipients</label>
@@ -113,7 +124,7 @@ export default async function NudgePage() {
         />
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 14 }}>
-          <button type="submit" className="btn btn-primary" disabled={teammates.length === 0}>Send nudge</button>
+          <SaveButton pendingLabel="Sending…" disabled={teammates.length === 0}>Send nudge</SaveButton>
         </div>
       </form>
     </>

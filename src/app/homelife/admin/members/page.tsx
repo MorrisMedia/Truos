@@ -1,6 +1,8 @@
 import { revalidatePath, revalidateTag } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { getOrgBySlug } from '@/lib/org';
+import { Flash } from '../../_components/Flash';
 
 async function updateMember(formData: FormData) {
   'use server';
@@ -10,16 +12,18 @@ async function updateMember(formData: FormData) {
   if (!userId) return;
   const hlm = await getOrgBySlug('hlm');
   if (!hlm) return;
-  await prisma.user.update({
+  const updated = await prisma.user.update({
     where: { id: userId },
     data: {
       divisionId: divisionId === '' ? null : divisionId,
       orgRole: ['owner','admin','manager','learner'].includes(orgRole) ? orgRole : 'learner',
     },
+    select: { name: true, email: true },
   });
   revalidateTag(`league:${hlm.id}`);
   revalidatePath('/homelife/admin/members');
   revalidatePath('/homelife');
+  redirect(`/homelife/admin/members?flash=updated&n=${encodeURIComponent(updated.name ?? updated.email)}`);
 }
 
 async function removeMember(formData: FormData) {
@@ -28,18 +32,22 @@ async function removeMember(formData: FormData) {
   if (!userId) return;
   const hlm = await getOrgBySlug('hlm');
   if (!hlm) return;
-  await prisma.user.update({
+  const removed = await prisma.user.update({
     where: { id: userId },
     data: { orgId: null, orgRole: null, divisionId: null },
+    select: { name: true, email: true },
   });
   revalidateTag(`league:${hlm.id}`);
   revalidatePath('/homelife/admin/members');
   revalidatePath('/homelife');
+  redirect(`/homelife/admin/members?flash=removed&n=${encodeURIComponent(removed.name ?? removed.email)}`);
 }
 
-export default async function MembersAdminPage() {
+export default async function MembersAdminPage({ searchParams }: { searchParams: { flash?: string; n?: string } }) {
   const hlm = await getOrgBySlug('hlm');
   if (!hlm) return null;
+  const flash = searchParams.flash;
+  const n = searchParams.n;
   const [members, divisions] = await Promise.all([
     prisma.user.findMany({
       where: { orgId: hlm.id },
@@ -62,6 +70,9 @@ export default async function MembersAdminPage() {
   return (
     <>
       <h2 style={{ fontSize: 22, marginBottom: 16 }}>Members ({members.length})</h2>
+
+      {flash === 'updated' && <Flash type="success">✅ Updated <b>{n}</b>.</Flash>}
+      {flash === 'removed' && <Flash type="info">Removed <b>{n}</b> from HomeLife (certificates preserved).</Flash>}
 
       <div style={{ background: 'var(--bg-panel)', border: '1px solid var(--border)', borderRadius: 8, overflow: 'hidden' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>

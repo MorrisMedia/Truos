@@ -1,7 +1,10 @@
 import { revalidatePath, revalidateTag } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { getDivisionLedBy, getOrgBySlug } from '@/lib/org';
+import { SaveButton } from '../../_components/SaveButton';
+import { Flash } from '../../_components/Flash';
 
 async function updateDivisionTrashTalk(formData: FormData) {
   'use server';
@@ -18,13 +21,15 @@ async function updateDivisionTrashTalk(formData: FormData) {
   if (hlm) revalidateTag(`league:${hlm.id}`);
   revalidatePath('/homelife');
   revalidatePath('/homelife/team/trash-talk');
+  redirect(`/homelife/team/trash-talk?flash=${text ? 'saved' : 'cleared'}`);
 }
 
-export default async function TeamTrashTalkPage() {
+export default async function TeamTrashTalkPage({ searchParams }: { searchParams: { flash?: string } }) {
   const session = await auth();
   if (!session?.user?.id) return null;
   const division = await getDivisionLedBy(session.user.id);
   if (!division) return null;
+  const flash = searchParams.flash;
 
   return (
     <>
@@ -32,6 +37,8 @@ export default async function TeamTrashTalkPage() {
       <p style={{ color: 'var(--text-muted)', fontSize: 14, marginBottom: 20 }}>
         ≤200 chars. Shown on the public scoreboard under your division row, in your division color, italic.
       </p>
+      {flash === 'saved' && <Flash type="success">✅ Saved — live on the scoreboard.</Flash>}
+      {flash === 'cleared' && <Flash type="info">Trash-talk cleared.</Flash>}
       <form action={updateDivisionTrashTalk} style={{ background: 'var(--bg-panel)', border: '1px solid var(--border)', borderRadius: 8, padding: 18 }}>
         <textarea
           name="trashTalk"
@@ -52,7 +59,7 @@ export default async function TeamTrashTalkPage() {
           </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 14 }}>
-          <button type="submit" className="btn btn-primary">Save</button>
+          <SaveButton pendingLabel="Saving…">Save</SaveButton>
         </div>
       </form>
     </>

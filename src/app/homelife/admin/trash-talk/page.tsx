@@ -1,6 +1,9 @@
 import { revalidatePath, revalidateTag } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { getOrgBySlug } from '@/lib/org';
+import { SaveButton } from '../../_components/SaveButton';
+import { Flash } from '../../_components/Flash';
 
 async function updateTrashTalk(formData: FormData) {
   'use server';
@@ -14,11 +17,13 @@ async function updateTrashTalk(formData: FormData) {
   revalidateTag(`league:${hlm.id}`);
   revalidatePath('/homelife');
   revalidatePath('/homelife/admin/trash-talk');
+  redirect(`/homelife/admin/trash-talk?flash=${text ? 'saved' : 'cleared'}`);
 }
 
-export default async function TrashTalkAdminPage() {
+export default async function TrashTalkAdminPage({ searchParams }: { searchParams: { flash?: string } }) {
   const hlm = await getOrgBySlug('hlm');
   if (!hlm) return null;
+  const flash = searchParams.flash;
 
   return (
     <>
@@ -26,6 +31,8 @@ export default async function TrashTalkAdminPage() {
       <p style={{ color: 'var(--text-muted)', fontSize: 14, marginBottom: 20 }}>
         One line, ≤200 chars. Drops into the ticker for 24h, stays on the standings for 7 days.
       </p>
+      {flash === 'saved' && <Flash type="success">✅ Banner saved — live on the scoreboard.</Flash>}
+      {flash === 'cleared' && <Flash type="info">Banner cleared.</Flash>}
       <form action={updateTrashTalk} style={{ background: 'var(--bg-panel)', border: '1px solid var(--border)', borderRadius: 8, padding: 18 }}>
         <textarea
           name="trashTalk"
@@ -43,7 +50,7 @@ export default async function TrashTalkAdminPage() {
           <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>
             {hlm.trashTalkAt ? `Last updated ${hlm.trashTalkAt.toISOString().slice(0, 16).replace('T', ' ')} UTC` : 'No banner set yet'}
           </span>
-          <button type="submit" className="btn btn-primary">Save banner</button>
+          <SaveButton pendingLabel="Saving…">Save banner</SaveButton>
         </div>
       </form>
     </>
