@@ -18,10 +18,10 @@ This is real infrastructure, not a sales demo. New `@homelifemedia.com` sign-ups
 ## Scope
 
 **In scope (this build):**
-- Schema additions: extend `Organization`, add `OrgDivision`, extend `User` with `divisionId` + `orgRole`
-- Seed: HLM org with `domains: ['homelifemedia.com']` + a starter list of divisions Marshall provides
+- Schema additions: extend `Organization` (incl. `autoGrantAll` flag), add `OrgDivision`, extend `User` with `divisionId` + `orgRole`
+- Seed: HLM org with `domains: ['homelifemedia.com']`, `autoGrantAll: true`, no divisions (Marshall creates them in `/admin/divisions`)
 - Auto-join hook on sign-up
-- Auto-grant of all 8 entitlements (AI·101–104 + 4 Truos+) to HLM members on join
+- Org-level "all courses free" via `autoGrantAll` flag honored in `canAccessCourse` — covers AI·101–104, all current Truos+ courses, AND any new Truos+ courses added later automatically (no backfill required)
 - `/homelife` public scoreboard
 - `/homelife/admin` (Marshall-only) — manage divisions, assign members, set managers, edit org-level trash-talk
 - `/homelife/team` (manager-only) — see own division roster, edit division trash-talk, send a nudge email
@@ -67,6 +67,7 @@ model Organization {
   logoUrl          String?                                   // NEW
   trashTalk        String?                                   // NEW — org-level banner, ≤200 chars
   trashTalkAt      DateTime?                                 // NEW
+  autoGrantAll     Boolean  @default(false)                  // NEW — true: members get every course free, no entitlement rows needed
   stripeCustomerId String?  @unique
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
@@ -135,31 +136,45 @@ if (org) {
     where: { id: user.id },
     data: { orgId: org.id, orgRole: 'learner' },
   });
-  // grant all 8 courses
-  for (const courseId of [101,102,103,104,201,202,203,204]) {
-    await prisma.courseEntitlement.upsert({
-      where: { userId_courseId_source: { userId: user.id, courseId, source: 'org_grant' } },
-      create: { userId: user.id, courseId, source: 'org_grant', sourceId: org.id },
-      update: {},
-    });
-  }
 }
 ```
 
-Existing `canAccessCourse` in `src/lib/access.ts` already honors `entitlement` reasons — no change needed.
+No entitlement rows are created. Access is implicit via the `autoGrantAll` flag on the org.
+
+**Update `canAccessCourse`** in `src/lib/access.ts` — add a new short-circuit branch:
+
+```ts
+// inside canAccessCourse(...)
+const user = await prisma.user.findUnique({
+  where: { id: userId },
+  include: { org: true },
+});
+if (user?.org?.autoGrantAll) {
+  return { ok: true, reason: 'org_grant' };
+}
+// ...existing free / staff / entitlement / paywall logic...
+```
+
+This means **any course the catalog adds in the future is automatically available** to every HLM member, retroactive and forward-looking. No backfill scripts, no entitlement bloat, no missed Truos+ rollouts.
 
 ## Points engine (derived)
 
-No `points` column anywhere. Points are computed from `Certificate.courseId` at query time:
+No `points` column anywhere. Points are computed from `Certificate.courseId` at query time, with a **derived rule** based on the course's `suite` field rather than a hardcoded ID map:
 
 ```ts
-const POINTS: Record<number, number> = {
-  101: 1, 102: 2, 103: 3, 104: 4,
-  201: 2, 202: 2, 203: 2, 204: 2,
-};
+function pointsForCourse(courseId: number): number {
+  const c = findCourse(courseId);
+  if (!c) return 0;
+  if (c.suite === 'base') {
+    // 101→1, 102→2, 103→3, 104→4
+    return courseId - 100;
+  }
+  // suite === 'plus' — covers existing Truos+ AND any future Truos+ courses
+  return 2;
+}
 ```
 
-Per-division total: `SUM(POINTS[cert.courseId])` across all certs of all members of that division. Per-member total: same SUM scoped to one user.
+Per-division total: `SUM(pointsForCourse(cert.courseId))` across all certs of all members. Per-member total: same SUM scoped to one user.
 
 For the leaderboard query, do this in a single SQL `groupBy` on `Certificate` joined with `User → Division`. Cache the aggregate in-memory for 60s using `unstable_cache` keyed by org slug; the public page uses `revalidate = 60`.
 
@@ -247,24 +262,73 @@ Manager-only (`orgRole === 'manager'`, scoped to their `OrgDivision.leadUserId =
 
 ## Seed
 
-A migration seed creates the HLM org and a starter division list. Marshall confirms the division roster before merge — placeholder list to start:
+The migration seed creates the HLM org plus all 10 starter divisions. Marshall assigns the leader for each division in `/homelife/admin/divisions` after launch.
 
 | Division | Slug | Color | Emoji |
 |---|---|---|---|
-| iHeartDogs | `iheartdogs` | `#84CC16` (lime) | 🐕 |
-| iHeartCats | `iheartcats` | `#F59E0B` (amber) | 🐈 |
-| Cannanine | `cannanine` | `#14B8A6` (teal) | 🌿 |
-| DogMob | `dogmob` | `#EF4444` (red) | 🐾 |
-| PawMyGosh | `pawmygosh` | `#A855F7` (purple) | ✨ |
-| LuckyPuppyMag | `luckypuppy` | `#F472B6` (pink) | 🍀 |
-| Hero Co | `hero` | `#0EA5E9` (sky) | 🦸 |
-| HQ / Ops | `hq` | `#64748B` (slate) | ⚙️ |
+| Product | `product` | `#6366F1` (indigo) | 🧩 |
+| Social | `social` | `#EC4899` (pink) | 📱 |
+| Publishing | `publishing` | `#F59E0B` (amber) | 📰 |
+| Advertising | `advertising` | `#EF4444` (red) | 📣 |
+| Accounting | `accounting` | `#10B981` (emerald) | 💰 |
+| Marketing | `marketing` | `#D946EF` (fuchsia) | 🎯 |
+| Hero Support | `hero-support` | `#0EA5E9` (sky) | 🦸 |
+| Warehouse | `warehouse` | `#F97316` (orange) | 📦 |
+| IT | `it` | `#06B6D4` (cyan) | 💻 |
+| HQ | `hq` | `#64748B` (slate) | ⚙️ |
 
-Marshall is `orgRole: 'owner'`, `divisionId: hq.id` on seed.
+```ts
+const hlm = await prisma.organization.upsert({
+  where: { slug: 'hlm' },
+  create: {
+    slug: 'hlm',
+    name: 'HomeLife Media',
+    domains: ['homelifemedia.com'],
+    autoGrantAll: true,
+    primaryColor: '#0F172A',
+  },
+  update: {},
+});
+
+// Seed all 10 divisions
+const DIVISIONS = [
+  { slug: 'product',      name: 'Product',      color: '#6366F1', emoji: '🧩' },
+  { slug: 'social',       name: 'Social',       color: '#EC4899', emoji: '📱' },
+  { slug: 'publishing',   name: 'Publishing',   color: '#F59E0B', emoji: '📰' },
+  { slug: 'advertising',  name: 'Advertising',  color: '#EF4444', emoji: '📣' },
+  { slug: 'accounting',   name: 'Accounting',   color: '#10B981', emoji: '💰' },
+  { slug: 'marketing',    name: 'Marketing',    color: '#D946EF', emoji: '🎯' },
+  { slug: 'hero-support', name: 'Hero Support', color: '#0EA5E9', emoji: '🦸' },
+  { slug: 'warehouse',    name: 'Warehouse',    color: '#F97316', emoji: '📦' },
+  { slug: 'it',           name: 'IT',           color: '#06B6D4', emoji: '💻' },
+  { slug: 'hq',           name: 'HQ',           color: '#64748B', emoji: '⚙️' },
+];
+for (const d of DIVISIONS) {
+  await prisma.orgDivision.upsert({
+    where: { orgId_slug: { orgId: hlm.id, slug: d.slug } },
+    create: { ...d, orgId: hlm.id },
+    update: {},
+  });
+}
+
+// Backfill: existing @homelifemedia.com users get orgId set.
+// No entitlements needed — autoGrantAll handles access.
+await prisma.user.updateMany({
+  where: { email: { endsWith: '@homelifemedia.com' }, orgId: null },
+  data: { orgId: hlm.id, orgRole: 'learner' },
+});
+await prisma.user.update({
+  where: { email: 'marshall@homelifemedia.com' },
+  data: { orgRole: 'owner' },
+});
+```
+
+Marshall assigns each division's leader (`OrgDivision.leadUserId`) in `/homelife/admin/divisions` after launch. Members are assigned to divisions in `/homelife/admin/members`.
 
 ## Edge cases
 
-- **Existing Truos user signs up with HLM email** — no migration retro-grant; only NEW sign-ups auto-enroll. Pre-existing HLM users get a one-time admin script `npm run script:hlm-backfill` that looks up `User.email LIKE '%@homelifemedia.com'` and calls the same join+grant logic.
+- **Existing Truos user with HLM email** — handled in the seed migration (one `updateMany` sets `orgId` on every existing `@homelifemedia.com` user). No separate backfill script needed because access is implicit via `autoGrantAll` — no entitlements to backfill.
+- **New Truos+ course launches** — automatically available to every HLM member with zero migration. Just add the course to `PLUS_COURSES` and ship.
 - **HLM member leaves the company** — owner manually flips `orgId` to null in `/admin/members`. Their certs persist (and contribute history to the scoreboard until removed). v1 leaves their certs counted; manual cleanup only.
 - **Manager promoted from learner** — when admin sets `OrgDivision.leadUserId`, a DB trigger isn't needed; the admin form mutation also writes `User.orgRole = 'manager'` for the new lead and demotes the prior lead to `learner` if they had no other division.
 - **Two divisions tied on points** — sort tiebreak: most recent cert.
@@ -292,8 +356,7 @@ Marshall is `orgRole: 'owner'`, `divisionId: hq.id` on seed.
 - `src/lib/league.ts` — points + bonus computation, cached aggregations
 - `src/lib/org.ts` — `getOrgForDomain(email)`, `joinOrg(userId, orgId)`, `grantAllCourses(userId, orgId)`
 - `prisma/migrations/<ts>_homelife_tenant/migration.sql`
-- `scripts/seed-hlm.ts`
-- `scripts/hlm-backfill.ts`
+- `scripts/seed-hlm.ts` — also handles backfill of existing `@homelifemedia.com` users
 
 **Modified files:**
 - `prisma/schema.prisma` — schema additions above
@@ -312,6 +375,4 @@ Marshall is `orgRole: 'owner'`, `divisionId: hq.id` on seed.
 
 ## Open questions
 
-1. **Division roster final list** — placeholder above; need Marshall's actual list before seed merges.
-2. **HLM logo asset** — does HomeLife Media have a wordmark to drop in `public/homelife/`? If not, render the text "HOMELIFE MEDIA" set in IBM Plex Mono.
-3. **Backfill scope** — run `hlm-backfill` immediately after deploy, or hold for explicit go?
+1. **HLM logo asset** — does HomeLife Media have a wordmark to drop in `public/homelife/`? If not, render the text "HOMELIFE MEDIA" set in IBM Plex Mono.
