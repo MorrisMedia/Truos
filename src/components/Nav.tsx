@@ -1,10 +1,13 @@
 import Link from 'next/link';
 import { auth } from '@/lib/auth';
+import { getOrgContext } from '@/lib/org';
 import { Logo } from './Logo';
 import { Icons } from './icons';
 
 export async function Nav({ variant = 'home' }: { variant?: 'home' | 'course' | 'plus' | 'minimal' }) {
   const session = await auth();
+  const ctx = session?.user?.id ? await getOrgContext(session.user.id) : null;
+  const showHLMAdmin = ctx?.orgSlug === 'hlm' && ctx.isOwner;
 
   return (
     <nav className="nav">
@@ -27,6 +30,7 @@ export async function Nav({ variant = 'home' }: { variant?: 'home' | 'course' | 
             </Link>
           </>
         ) : null}
+        {showHLMAdmin && <Link className="nav-link" href="/homelife/admin" style={{ color: 'var(--accent)' }}>HLM admin</Link>}
         {session?.user?.isStaff && <Link className="nav-link" href="/staff" style={{ color: 'var(--accent)' }}>Staff</Link>}
         {session?.user ? (
           <>

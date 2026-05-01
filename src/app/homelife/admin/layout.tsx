@@ -22,11 +22,13 @@ export default async function HomeLifeAdminLayout({ children }: { children: Reac
         <div className="container">
           <Link href="/homelife" className="nav-link" style={{ fontSize: 13, marginBottom: 12, display: 'inline-block' }}>← TRUOS LEAGUE</Link>
           <h1 style={{ fontSize: 32, letterSpacing: '-0.025em' }}>HomeLife admin</h1>
-          <nav style={{ display: 'flex', gap: 18, marginTop: 16, fontSize: 14 }}>
+          <nav style={{ display: 'flex', gap: 18, marginTop: 16, fontSize: 14, flexWrap: 'wrap' }}>
+            <Link href="/homelife/admin" className="nav-link">Overview</Link>
             <Link href="/homelife/admin/divisions" className="nav-link">Divisions</Link>
             <Link href="/homelife/admin/members" className="nav-link">Members</Link>
-            <Link href="/homelife/admin/trash-talk" className="nav-link">Trash-talk</Link>
             <Link href="/homelife/admin/invite" className="nav-link">Invite</Link>
+            <Link href="/homelife/admin/trash-talk" className="nav-link">Trash-talk</Link>
+            <Link href="/homelife" className="nav-link" style={{ marginLeft: 'auto', color: 'var(--accent)' }}>🏆 View scoreboard →</Link>
           </nav>
         </div>
       </section>
