@@ -16,7 +16,7 @@ export function Standings({ rows }: { rows: DivisionStanding[] }) {
               <span className="hl-div-name">{r.name}</span>
               {r.onFire && <span className="hl-fire-badge">ON FIRE</span>}
             </div>
-            {r.trashTalk && r.trashTalkAt && (Date.now() - r.trashTalkAt.getTime()) < 7 * 24 * 36e5 && (
+            {r.trashTalk && r.trashTalkAtMs && (Date.now() - r.trashTalkAtMs) < 7 * 24 * 36e5 && (
               <div className="hl-trashtalk" style={{ color: r.color ?? undefined }}>{r.trashTalk}</div>
             )}
           </div>

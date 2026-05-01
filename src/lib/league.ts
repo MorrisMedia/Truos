@@ -42,10 +42,10 @@ export interface DivisionStanding {
   members: number;
   points: number;
   pointsToday: number;
-  lastCertAt: Date | null;
+  lastCertAtMs: number | null; // ms since epoch — Date doesn't survive unstable_cache JSON round-trip
   onFire: boolean; // 3+ certs in last 24h
   trashTalk: string | null;
-  trashTalkAt: Date | null;
+  trashTalkAtMs: number | null;
   spark: number[]; // points per day, last 14 days
 }
 
@@ -103,10 +103,10 @@ async function _getStandings(orgId: string): Promise<DivisionStanding[]> {
       members: div.members.length,
       points,
       pointsToday,
-      lastCertAt,
+      lastCertAtMs: lastCertAt ? lastCertAt.getTime() : null,
       onFire: recentCerts >= 3,
       trashTalk: div.trashTalk,
-      trashTalkAt: div.trashTalkAt,
+      trashTalkAtMs: div.trashTalkAt ? div.trashTalkAt.getTime() : null,
       spark,
     };
   });
@@ -114,8 +114,8 @@ async function _getStandings(orgId: string): Promise<DivisionStanding[]> {
   // Sort: points DESC, then most recent cert, then name
   standings.sort((a, b) => {
     if (b.points !== a.points) return b.points - a.points;
-    const at = a.lastCertAt?.getTime() ?? 0;
-    const bt = b.lastCertAt?.getTime() ?? 0;
+    const at = a.lastCertAtMs ?? 0;
+    const bt = b.lastCertAtMs ?? 0;
     if (bt !== at) return bt - at;
     return a.name.localeCompare(b.name);
   });
@@ -139,7 +139,7 @@ export interface ActivityEntry {
   basePoints: number;
   bonusPoints: number;
   speedRun: boolean;
-  issuedAt: Date;
+  issuedAtMs: number;
   certHash: string;
 }
 
@@ -181,7 +181,7 @@ async function _getActivityFeed(orgId: string, limit = 30): Promise<ActivityEntr
       basePoints: base,
       bonusPoints: speedRun ? speedRunBonus() : 0,
       speedRun,
-      issuedAt: c.issuedAt,
+      issuedAtMs: c.issuedAt.getTime(),
       certHash: c.verificationHash,
     };
   });

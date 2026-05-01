@@ -1,7 +1,7 @@
 import { ActivityEntry, DivisionStanding } from '@/lib/league';
 
-function timeAgo(d: Date): string {
-  const s = (Date.now() - d.getTime()) / 1000;
+function timeAgo(ms: number): string {
+  const s = (Date.now() - ms) / 1000;
   if (s < 60) return `${Math.floor(s)}s ago`;
   if (s < 3600) return `${Math.floor(s / 60)}m ago`;
   if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
@@ -15,7 +15,7 @@ export function Ticker({ feed, standings }: { feed: ActivityEntry[]; standings: 
   }
   for (const e of feed.slice(0, 12)) {
     const bonus = e.bonusPoints > 0 ? ` +${e.bonusPoints} BONUS` : '';
-    items.push(`${e.divisionEmoji ?? '🟢'} ${e.userDisplayName} +${e.basePoints + e.bonusPoints} · ${e.courseCode}${bonus} · ${timeAgo(e.issuedAt)}`);
+    items.push(`${e.divisionEmoji ?? '🟢'} ${e.userDisplayName} +${e.basePoints + e.bonusPoints} · ${e.courseCode}${bonus} · ${timeAgo(e.issuedAtMs)}`);
   }
   for (const s of standings) {
     if (s.onFire) items.push(`🎯 ${s.name} ON FIRE — ${s.pointsToday} pts today`);
