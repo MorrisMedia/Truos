@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { getOrgBySlug } from '@/lib/org';
 import { Flash } from '../../_components/Flash';
+import { SaveButton } from '../../_components/SaveButton';
 
 async function updateMember(formData: FormData) {
   'use server';
@@ -74,54 +75,56 @@ export default async function MembersAdminPage({ searchParams }: { searchParams:
       {flash === 'updated' && <Flash type="success">✅ Updated <b>{n}</b>.</Flash>}
       {flash === 'removed' && <Flash type="info">Removed <b>{n}</b> from HomeLife (certificates preserved).</Flash>}
 
-      <div style={{ background: 'var(--bg-panel)', border: '1px solid var(--border)', borderRadius: 8, overflow: 'hidden' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
-          <thead>
-            <tr style={{ background: 'var(--bg-hover)' }}>
-              {['Name / Email','Division','Role','Certs','Save / Remove'].map((h, i) => (
-                <th key={h} style={{ ...cellStyle, textAlign: i === 4 ? 'right' : 'left', fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {members.map(m => (
-              <tr key={m.id}>
-                <td style={cellStyle}>
-                  <div style={{ fontWeight: 600 }}>{m.name ?? <span style={{ color: 'var(--text-muted)' }}>—</span>}</div>
-                  <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{m.email}</div>
-                </td>
-                <td style={cellStyle}>
-                  <form action={updateMember} id={`m-${m.id}`}>
-                    <input type="hidden" name="userId" value={m.id} />
-                    <select name="divisionId" defaultValue={m.divisionId ?? ''} style={{ ...inputStyle, width: 160 }}>
-                      <option value="">—</option>
-                      {divisions.map(d => <option key={d.id} value={d.id}>{d.emoji} {d.name}</option>)}
-                    </select>
-                  </form>
-                </td>
-                <td style={cellStyle}>
-                  <select form={`m-${m.id}`} name="orgRole" defaultValue={m.orgRole ?? 'learner'} style={{ ...inputStyle, width: 110 }}>
-                    <option value="learner">learner</option>
-                    <option value="manager">manager</option>
-                    <option value="admin">admin</option>
-                    <option value="owner">owner</option>
-                  </select>
-                </td>
-                <td style={{ ...cellStyle, color: 'var(--text-muted)', fontFamily: 'monospace', fontSize: 13 }}>{m._count.certificates}</td>
-                <td style={{ ...cellStyle, whiteSpace: 'nowrap', textAlign: 'right' }}>
-                  <button form={`m-${m.id}`} type="submit" className="btn btn-ghost" style={{ fontSize: 12, padding: '6px 12px', marginRight: 6 }}>Save</button>
-                  <form action={removeMember} style={{ display: 'inline' }}>
-                    <input type="hidden" name="userId" value={m.id} />
-                    <button type="submit" className="btn btn-ghost" style={{ fontSize: 12, padding: '6px 12px' }}>Remove</button>
-                  </form>
-                </td>
-              </tr>
-            ))}
-            {members.length === 0 && (
-              <tr><td colSpan={5} style={{ ...cellStyle, textAlign: 'center', color: 'var(--text-muted)', padding: 32 }}>No members yet — share <code>/sign-up</code> with HLM teammates.</td></tr>
-            )}
-          </tbody>
-        </table>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 180px 130px 60px auto auto', gap: 12, padding: '0 16px', fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          <span>Name / Email</span>
+          <span>Division</span>
+          <span>Role</span>
+          <span>Certs</span>
+          <span style={{ textAlign: 'right' }}>Save</span>
+          <span style={{ textAlign: 'right' }}>Remove</span>
+        </div>
+        {members.map(m => (
+          <div key={m.id} style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 180px 130px 60px auto auto',
+            gap: 12,
+            alignItems: 'center',
+            background: 'var(--bg-panel)',
+            border: '1px solid var(--border)',
+            borderRadius: 8,
+            padding: '12px 16px',
+          }}>
+            <div>
+              <div style={{ fontWeight: 600, fontSize: 14 }}>{m.name ?? <span style={{ color: 'var(--text-muted)' }}>—</span>}</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{m.email}</div>
+            </div>
+            <form action={updateMember} style={{ display: 'contents' }}>
+              <input type="hidden" name="userId" value={m.id} />
+              <select name="divisionId" defaultValue={m.divisionId ?? ''} style={{ ...inputStyle, width: '100%' }}>
+                <option value="">—</option>
+                {divisions.map(d => <option key={d.id} value={d.id}>{d.emoji} {d.name}</option>)}
+              </select>
+              <select name="orgRole" defaultValue={m.orgRole ?? 'learner'} style={{ ...inputStyle, width: '100%' }}>
+                <option value="learner">learner</option>
+                <option value="manager">manager</option>
+                <option value="admin">admin</option>
+                <option value="owner">owner</option>
+              </select>
+              <span style={{ color: 'var(--text-muted)', fontFamily: 'monospace', fontSize: 13 }}>{m._count.certificates}</span>
+              <SaveButton variant="ghost" pendingLabel="Saving…" style={{ fontSize: 12, padding: '6px 14px' }}>Save</SaveButton>
+            </form>
+            <form action={removeMember}>
+              <input type="hidden" name="userId" value={m.id} />
+              <SaveButton variant="ghost" pendingLabel="Removing…" style={{ fontSize: 12, padding: '6px 12px' }}>Remove</SaveButton>
+            </form>
+          </div>
+        ))}
+        {members.length === 0 && (
+          <div style={{ background: 'var(--bg-panel)', border: '1px solid var(--border)', borderRadius: 8, padding: 32, textAlign: 'center', color: 'var(--text-muted)' }}>
+            No members yet — share <code>/sign-up</code> with HLM teammates.
+          </div>
+        )}
       </div>
 
       <p style={{ marginTop: 16, color: 'var(--text-muted)', fontSize: 13 }}>

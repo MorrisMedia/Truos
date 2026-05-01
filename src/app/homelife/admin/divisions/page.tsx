@@ -138,53 +138,57 @@ export default async function DivisionsAdminPage({ searchParams }: { searchParam
         <SaveButton style={{ padding: '8px 18px' }} pendingLabel="Creating…">+ Create division</SaveButton>
       </form>
 
-      <div style={{ background: 'var(--bg-panel)', border: '1px solid var(--border)', borderRadius: 8, overflow: 'hidden' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
-          <thead>
-            <tr style={{ background: 'var(--bg-hover)' }}>
-              <th style={{ ...cellStyle, textAlign: 'left', fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Division</th>
-              <th style={{ ...cellStyle, textAlign: 'left', fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Members</th>
-              <th style={{ ...cellStyle, textAlign: 'left', fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Leader (email)</th>
-              <th style={{ ...cellStyle, textAlign: 'left', fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Color / Emoji</th>
-              <th style={{ ...cellStyle, textAlign: 'right', width: 1, fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Save / Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {divisions.map(d => (
-              <tr key={d.id}>
-                <td style={cellStyle}>
-                  <form action={updateDivision} id={`f-${d.id}`}>
-                    <input type="hidden" name="id" value={d.id} />
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <span style={{ display: 'inline-block', width: 4, height: 28, background: d.color ?? 'var(--accent)', borderRadius: 2 }} />
-                      <input name="name" defaultValue={d.name} style={{ ...inputStyle, fontWeight: 600, fontSize: 14, width: 180 }} />
-                    </div>
-                  </form>
-                </td>
-                <td style={{ ...cellStyle, color: 'var(--text-muted)', fontFamily: 'var(--font-mono, monospace)', fontSize: 13 }}>{d._count.members}</td>
-                <td style={cellStyle}>
-                  <input form={`f-${d.id}`} name="leadEmail" defaultValue={d.lead?.email ?? ''} placeholder="email or blank" style={{ ...inputStyle, width: 220 }} />
-                </td>
-                <td style={cellStyle}>
-                  <div style={{ display: 'flex', gap: 6 }}>
-                    <input form={`f-${d.id}`} name="emoji" defaultValue={d.emoji ?? '🟢'} maxLength={4} style={{ ...inputStyle, width: 50, textAlign: 'center' }} />
-                    <input form={`f-${d.id}`} name="color" defaultValue={d.color ?? '#64748B'} style={{ ...inputStyle, width: 90, fontFamily: 'monospace' }} />
-                  </div>
-                </td>
-                <td style={{ ...cellStyle, whiteSpace: 'nowrap' }}>
-                  <button form={`f-${d.id}`} type="submit" className="btn btn-ghost" style={{ fontSize: 12, padding: '6px 12px', marginRight: 6 }}>Save</button>
-                  {d._count.members === 0 && (
-                    <form action={deleteDivision} style={{ display: 'inline' }}>
-                      <input type="hidden" name="id" value={d.id} />
-                      <button type="submit" className="btn btn-ghost" style={{ fontSize: 12, padding: '6px 12px', color: 'var(--accent)' }}>×</button>
-                    </form>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 60px 1fr 60px 100px auto', gap: 12, padding: '0 16px', fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          <span>Division</span>
+          <span>Members</span>
+          <span>Leader (email)</span>
+          <span>Emoji</span>
+          <span>Color</span>
+          <span style={{ textAlign: 'right' }}>Save</span>
+        </div>
+        {divisions.map(d => (
+          <form
+            key={d.id}
+            action={updateDivision}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 60px 1fr 60px 100px auto',
+              gap: 12,
+              alignItems: 'center',
+              background: 'var(--bg-panel)',
+              border: '1px solid var(--border)',
+              borderLeft: `4px solid ${d.color ?? 'var(--accent)'}`,
+              borderRadius: 8,
+              padding: '14px 16px',
+            }}
+          >
+            <input type="hidden" name="id" value={d.id} />
+            <input name="name" defaultValue={d.name} style={{ ...inputStyle, fontWeight: 600, fontSize: 14 }} />
+            <span style={{ color: 'var(--text-muted)', fontFamily: 'monospace', fontSize: 13 }}>{d._count.members}</span>
+            <input name="leadEmail" defaultValue={d.lead?.email ?? ''} placeholder="email or blank" style={inputStyle} />
+            <input name="emoji" defaultValue={d.emoji ?? '🟢'} maxLength={4} style={{ ...inputStyle, textAlign: 'center' }} />
+            <input name="color" defaultValue={d.color ?? '#64748B'} style={{ ...inputStyle, fontFamily: 'monospace' }} />
+            <div style={{ display: 'flex', gap: 6, justifyContent: 'flex-end' }}>
+              <SaveButton variant="ghost" pendingLabel="Saving…" style={{ fontSize: 12, padding: '6px 14px' }}>Save</SaveButton>
+            </div>
+          </form>
+        ))}
       </div>
+
+      {divisions.some(d => d._count.members === 0) && (
+        <div style={{ marginTop: 16, padding: 16, background: 'var(--bg-panel)', border: '1px solid var(--border)', borderRadius: 8 }}>
+          <div style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 10, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Delete empty division</div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {divisions.filter(d => d._count.members === 0).map(d => (
+              <form key={d.id} action={deleteDivision} style={{ display: 'inline' }}>
+                <input type="hidden" name="id" value={d.id} />
+                <SaveButton variant="ghost" pendingLabel="Deleting…" style={{ fontSize: 12, padding: '6px 12px', color: 'var(--text-muted)' }}>{d.emoji ?? '🗑'} {d.name} ×</SaveButton>
+              </form>
+            ))}
+          </div>
+        </div>
+      )}
 
       <p style={{ marginTop: 16, color: 'var(--text-muted)', fontSize: 13 }}>
         Leader email must belong to a HomeLife member. Setting a leader promotes them to <code>manager</code> and demotes the prior leader to <code>learner</code>. Owners aren&apos;t demoted.
