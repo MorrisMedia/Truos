@@ -9,6 +9,7 @@ export default function HomePage() {
       <Nav variant="home" />
       <Hero />
       <CourseCatalog />
+      <Pricing />
       <Testimonials />
       <Credibility />
       <FinalCTA />

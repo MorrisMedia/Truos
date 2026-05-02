@@ -7,12 +7,23 @@ import { sendEmail } from '@/lib/email';
 import { welcomeEmail, codeRedeemedEmail } from '@/lib/emails/templates';
 import { Logo } from '@/components/Logo';
 import { Icons } from '@/components/icons';
+import { findCourse } from '@/content/courses';
 
 function safeCallback(raw: string | undefined | null): string {
   if (!raw) return '/dashboard';
   // Only accept internal absolute paths. Reject protocol-relative (//evil.com) and external URLs.
   if (!raw.startsWith('/') || raw.startsWith('//')) return '/dashboard';
   return raw;
+}
+
+function courseFromCallback(callbackUrl: string) {
+  const match = callbackUrl.match(/^\/courses\/(\d+)/);
+  if (!match) return null;
+  return findCourse(Number(match[1])) ?? null;
+}
+
+function formatPrice(price: number): string {
+  return `$${price.toLocaleString('en-US')}`;
 }
 
 async function createAccount(formData: FormData) {
@@ -94,19 +105,52 @@ async function createAccount(formData: FormData) {
 
 export default function SignUpPage({ searchParams }: { searchParams: { code?: string; callbackUrl?: string } }) {
   const callbackUrl = safeCallback(searchParams.callbackUrl);
+  const targetCourse = courseFromCallback(callbackUrl);
   const returningToLesson = callbackUrl.startsWith('/courses/');
+  const headline = targetCourse
+    ? `Create an account to start ${targetCourse.code}`
+    : returningToLesson
+      ? 'Create an account to start'
+      : 'Create your account';
+  const subhead = targetCourse
+    ? `Create an account, then unlock ${targetCourse.code} · ${targetCourse.title} for ${formatPrice(targetCourse.price)} — lifetime access.`
+    : returningToLesson
+      ? 'Create an account, then unlock the credential you want — lifetime access.'
+      : 'Create an account to get started. Lifetime access to every credential you buy.';
   return (
     <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 24 }}>
       <div style={{ maxWidth: 420, width: '100%' }}>
         <Link href="/" style={{ textDecoration: 'none' }}><Logo /></Link>
         <h1 style={{ fontSize: 36, marginTop: 32, marginBottom: 8, letterSpacing: '-0.025em' }}>
-          {returningToLesson ? 'Create an account to start' : 'Create your account'}
+          {headline}
         </h1>
         <p style={{ color: 'var(--text-muted)', fontSize: 15, marginBottom: 32 }}>
-          {returningToLesson
-            ? 'Create an account, then unlock AI·101 for $199 — lifetime access.'
-            : 'Create an account to get started. Unlock AI·101 for $199.'}
+          {subhead}
         </p>
+
+        {targetCourse && (
+          <div style={{
+            padding: 16,
+            border: '1px solid var(--border)',
+            borderRadius: 8,
+            background: 'var(--bg-panel)',
+            marginBottom: 24,
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12,
+          }}>
+            <div>
+              <div className="mono" style={{ fontSize: 11, color: 'var(--accent)', letterSpacing: '0.08em', marginBottom: 4 }}>
+                {targetCourse.code}
+              </div>
+              <div style={{ fontSize: 16, letterSpacing: '-0.015em', marginBottom: 2 }}>{targetCourse.title}</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
+                {targetCourse.lessons} lessons · ~{targetCourse.hours}h · lifetime
+              </div>
+            </div>
+            <div style={{ fontSize: 24, fontWeight: 500, letterSpacing: '-0.025em' }}>
+              {formatPrice(targetCourse.price)}
+            </div>
+          </div>
+        )}
 
         <form action={createAccount} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <input type="hidden" name="callbackUrl" value={callbackUrl} />
