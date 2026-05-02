@@ -34,27 +34,32 @@ async function sendInvites(formData: FormData) {
     const safeMsg = message.replace(/[<>]/g, '');
     const html = `
 <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:520px;margin:0 auto;padding:32px 16px;color:#111;">
-  <h1 style="font-size:22px;letter-spacing:-0.02em;margin:0 0 16px;">You&rsquo;re invited to join the <span style="color:#5a7f00">TRUOS LEAGUE</span></h1>
-  <p style="font-size:15px;color:#444;line-height:1.6;margin:0 0 16px;">
-    HomeLife Media is rolling out Truos AI training to the team. Every course is free for HLM employees,
-    and every cert you earn scores points for your division.
+  <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#5a7f00;margin:0 0 12px;font-weight:700;">Truos AI Training · HomeLife Media</p>
+  <h1 style="font-size:24px;letter-spacing:-0.02em;margin:0 0 16px;line-height:1.25;">Free AI training, on the company.</h1>
+  <p style="font-size:15px;color:#444;line-height:1.6;margin:0 0 14px;">
+    HomeLife Media is rolling out <strong>Truos AI Training</strong> to the team. Eight courses, from "what is AI?" to building a real workflow your team will use — designed for working pros, not engineers.
   </p>
+  <ul style="font-size:14px;color:#444;line-height:1.6;margin:0 0 16px;padding-left:20px;">
+    <li><strong>All courses free</strong> for HLM employees</li>
+    <li><strong>Verifiable certificates</strong> for every course you finish (LinkedIn-shareable)</li>
+    <li>Your progress scores points for your division on the <span style="color:#5a7f00;font-weight:600;">TRUOS LEAGUE</span> scoreboard</li>
+  </ul>
   ${safeMsg ? `<blockquote style="border-left:3px solid #c4f439;padding:12px 16px;color:#222;font-size:14px;background:#fafafa;margin:16px 0;border-radius:4px;">${safeMsg}</blockquote>` : ''}
   <p style="margin:28px 0;text-align:center;">
-    <a href="${link}" style="background:#c4f439;color:#000;padding:14px 28px;border-radius:6px;text-decoration:none;font-weight:700;display:inline-block;">Create your account →</a>
+    <a href="${link}" style="background:#c4f439;color:#000;padding:14px 28px;border-radius:6px;text-decoration:none;font-weight:700;display:inline-block;">Start training →</a>
   </p>
   <p style="font-size:12px;color:#666;margin:0 0 8px;">Or paste this link:</p>
   <p style="font-size:11px;color:#888;word-break:break-all;font-family:monospace;margin:0;">${link}</p>
-  <p style="font-size:12px;color:#999;margin-top:32px;border-top:1px solid #eee;padding-top:16px;">— Marshall · TRUOS LEAGUE · ${APP_URL}/homelife</p>
+  <p style="font-size:12px;color:#999;margin-top:32px;border-top:1px solid #eee;padding-top:16px;">— Marshall · Truos AI Training · ${APP_URL}/homelife</p>
 </div>`.trim();
     try {
       const result = await sendEmail({
         to: email,
         kind: 'broadcast',
         payload: {
-          subject: 'You\'re invited to TRUOS LEAGUE',
+          subject: 'Truos AI Training — free for HomeLife employees',
           html,
-          text: `You're invited to join the TRUOS LEAGUE — Truos AI training for HomeLife Media.\n\n${message ? `"${message}"\n\n` : ''}Create your account: ${link}`,
+          text: `Truos AI Training — free for HomeLife employees.\n\nHomeLife Media is rolling out Truos AI Training to the team. Eight courses, all free for HLM, verifiable certificates, and your progress scores points for your division on the TRUOS LEAGUE scoreboard.\n\n${message ? `"${message}"\n\n` : ''}Start training: ${link}`,
         },
       });
       if (result.ok) sent++;
