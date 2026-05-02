@@ -15,7 +15,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-export const revalidate = 60;
+// Hits Prisma in render — must run at request time, not build time.
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function HomeLifeScoreboard() {
   const org = await getOrgBySlug('hlm');
