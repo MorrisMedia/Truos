@@ -13,7 +13,7 @@ async function upsertUser(email: string, name: string, password: string) {
 }
 
 async function grantAllCourses(userId: string) {
-  const allPaid = [102, 103, 104, 201, 202];
+  const allPaid = [101, 102, 103, 104, 201, 202, 203, 204];
   for (const cid of allPaid) {
     await prisma.courseEntitlement.upsert({
       where: { userId_courseId_source: { userId, courseId: cid, source: 'manual_grant' } },
