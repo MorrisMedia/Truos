@@ -65,14 +65,14 @@ export default async function DashboardPage() {
               const pct = total ? Math.round((done / total) * 100) : 0;
               const access = hasAccess(c.id);
               return (
-                <Link key={c.id} href={access ? `/courses/${c.id}` : `/checkout?plan=${c.code}`} className="panel" style={{
+                <Link key={c.id} href={access ? `/courses/${c.id}` : '/#pricing'} className="panel" style={{
                   padding: 28, textDecoration: 'none',
                   background: access ? 'var(--bg-panel)' : 'color-mix(in oklab, var(--bg-panel) 70%, transparent)',
                   opacity: access ? 1 : 0.85,
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
                     <div className="code" style={{ color: 'var(--text-muted)', fontSize: 12, letterSpacing: '0.08em' }}>{c.code}</div>
-                    {c.tier === 'paid' && !access && <span className="badge paid">${c.price}</span>}
+                    {c.tier === 'paid' && !access && <span className="badge paid">LOCKED</span>}
                     {access && done > 0 && pct < 100 && <span className="badge accent">{pct}%</span>}
                     {access && pct === 100 && <span className="badge success">COMPLETE</span>}
                   </div>
@@ -81,7 +81,7 @@ export default async function DashboardPage() {
                   <div className="progress-bar" style={{ marginBottom: 12 }}><span style={{ width: `${pct}%` }} /></div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'var(--text-muted)' }}>
                     <span>{done} / {total} lessons</span>
-                    <span>{access ? (done > 0 ? 'Continue' : 'Start') : `Unlock for $${c.price}`} {Icons.arrow}</span>
+                    <span>{access ? (done > 0 ? 'Continue' : 'Start') : 'Contact sales'} {Icons.arrow}</span>
                   </div>
                 </Link>
               );
@@ -96,10 +96,10 @@ export default async function DashboardPage() {
               const pct = total ? Math.round((done / total) * 100) : 0;
               const access = hasAccess(c.id);
               return (
-                <Link key={c.id} href={access ? `/courses/${c.id}` : `/checkout?plan=${c.code}`} className="panel" style={{ padding: 28, textDecoration: 'none' }}>
+                <Link key={c.id} href={access ? `/courses/${c.id}` : '/#pricing'} className="panel" style={{ padding: 28, textDecoration: 'none' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
                     <div className="code" style={{ color: 'var(--accent)', fontSize: 12, letterSpacing: '0.08em' }}>{c.code}</div>
-                    {!access && <span className="badge paid">${c.price}</span>}
+                    {!access && <span className="badge paid">LOCKED</span>}
                     {access && pct > 0 && pct < 100 && <span className="badge accent">{pct}%</span>}
                     {access && pct === 100 && <span className="badge success">COMPLETE</span>}
                   </div>
@@ -108,7 +108,7 @@ export default async function DashboardPage() {
                   <div className="progress-bar" style={{ marginBottom: 12 }}><span style={{ width: `${pct}%` }} /></div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'var(--text-muted)' }}>
                     <span>{done} / {total} lessons</span>
-                    <span>{access ? (done > 0 ? 'Continue' : 'Start') : `Unlock for $${c.price}`} {Icons.arrow}</span>
+                    <span>{access ? (done > 0 ? 'Continue' : 'Start') : 'Contact sales'} {Icons.arrow}</span>
                   </div>
                 </Link>
               );

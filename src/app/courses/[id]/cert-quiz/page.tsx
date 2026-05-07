@@ -21,7 +21,7 @@ export default async function CertQuizPage({ params }: { params: { id: string } 
 
   // Must have access to the course
   const access = await canAccessCourse(session.user.id, session.user.email, courseId);
-  if (!access.allowed) redirect(`/checkout?plan=${encodeURIComponent(course.code)}`);
+  if (!access.allowed) redirect('/#pricing');
 
   // Must have finished every lesson before attempting cert quiz
   const totalLessons = Object.keys(LESSONS).filter(k => k.startsWith(`${courseId}-`)).length;

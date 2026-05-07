@@ -115,11 +115,11 @@ export function CertQuizPlayer({ course, questions, hasPaidEntitlement = true }:
               <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 10 }}>🎓 CERTIFICATE REQUIRES A PAID PLAN</div>
               <p style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.6, margin: 0 }}>
                 This course is free and you can take the quiz for practice. The Truos credential
-                itself unlocks with any paid course (from $249) — which also unlocks certs for every
-                free course you complete.
+                itself unlocks with any paid course — which also unlocks certs for every free course
+                you complete. Talk to sales for team pricing.
               </p>
               <div style={{ marginTop: 12, display: 'flex', gap: 10 }}>
-                <Link className="btn btn-ghost btn-sm" href="/#pricing">See paid plans →</Link>
+                <Link className="btn btn-ghost btn-sm" href="/#pricing">Contact sales →</Link>
               </div>
             </div>
           )}
@@ -192,11 +192,11 @@ export function CertQuizPlayer({ course, questions, hasPaidEntitlement = true }:
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: 14.5, lineHeight: 1.6, marginBottom: 16 }}>
                 {course.code} content is free, but the Truos credential is reserved for paid members.
-                Any paid course (from $249) unlocks the certificate for this course — and every free course
-                you complete after. One-time payment, lifetime cert access.
+                Any paid course unlocks the certificate for this course — and every free course you
+                complete after. Lifetime cert access; talk to sales for pricing.
               </p>
               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                <Link className="btn btn-primary" href="/#pricing">See paid plans →</Link>
+                <Link className="btn btn-primary" href="/#pricing">Contact sales →</Link>
                 <Link className="btn btn-ghost" href="/plus">Browse Truos+</Link>
               </div>
             </div>

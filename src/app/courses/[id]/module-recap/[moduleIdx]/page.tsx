@@ -27,7 +27,7 @@ export default async function ModuleRecapPage({
   if (!session?.user?.id) redirect(`/sign-up?callbackUrl=${encodeURIComponent(here)}`);
 
   const access = await canAccessCourse(session.user.id, session.user.email, courseId);
-  if (!access.allowed) redirect(`/checkout?plan=${encodeURIComponent(course.code)}`);
+  if (!access.allowed) redirect('/#pricing');
 
   const questions = buildRecapQuestions(recap);
 

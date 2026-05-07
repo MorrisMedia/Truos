@@ -22,10 +22,6 @@ function courseFromCallback(callbackUrl: string) {
   return findCourse(Number(match[1])) ?? null;
 }
 
-function formatPrice(price: number): string {
-  return `$${price.toLocaleString('en-US')}`;
-}
-
 async function createAccount(formData: FormData) {
   'use server';
   const email = String(formData.get('email') ?? '').trim().toLowerCase();
@@ -67,7 +63,7 @@ async function createAccount(formData: FormData) {
   if (accessCode) {
     const code = await prisma.compCode.findUnique({ where: { code: accessCode } });
     if (code && !code.disabledAt && (!code.expiresAt || code.expiresAt > new Date()) && (code.maxUses === null || code.uses < code.maxUses)) {
-      const targetCourses = code.courseIds.length > 0 ? code.courseIds : [102, 103, 104, 201, 202];
+      const targetCourses = code.courseIds.length > 0 ? code.courseIds : [102, 103, 104, 201, 202, 203, 204];
       await prisma.$transaction([
         prisma.compCodeRedemption.create({ data: { codeId: code.id, userId: user.id } }),
         prisma.compCode.update({ where: { id: code.id }, data: { uses: { increment: 1 } } }),
@@ -113,10 +109,10 @@ export default function SignUpPage({ searchParams }: { searchParams: { code?: st
       ? 'Create an account to start'
       : 'Create your account';
   const subhead = targetCourse
-    ? `Create an account, then unlock ${targetCourse.code} · ${targetCourse.title} for ${formatPrice(targetCourse.price)} — lifetime access.`
+    ? `Create an account to begin ${targetCourse.code} · ${targetCourse.title}. Lifetime access for paid members.`
     : returningToLesson
       ? 'Create an account, then unlock the credential you want — lifetime access.'
-      : 'Create an account to get started. Lifetime access to every credential you buy.';
+      : 'Create an account to get started. Lifetime access for paid members.';
   return (
     <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 24 }}>
       <div style={{ maxWidth: 420, width: '100%' }}>
@@ -135,19 +131,13 @@ export default function SignUpPage({ searchParams }: { searchParams: { code?: st
             borderRadius: 8,
             background: 'var(--bg-panel)',
             marginBottom: 24,
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12,
           }}>
-            <div>
-              <div className="mono" style={{ fontSize: 11, color: 'var(--accent)', letterSpacing: '0.08em', marginBottom: 4 }}>
-                {targetCourse.code}
-              </div>
-              <div style={{ fontSize: 16, letterSpacing: '-0.015em', marginBottom: 2 }}>{targetCourse.title}</div>
-              <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
-                {targetCourse.lessons} lessons · ~{targetCourse.hours}h · lifetime
-              </div>
+            <div className="mono" style={{ fontSize: 11, color: 'var(--accent)', letterSpacing: '0.08em', marginBottom: 4 }}>
+              {targetCourse.code}
             </div>
-            <div style={{ fontSize: 24, fontWeight: 500, letterSpacing: '-0.025em' }}>
-              {formatPrice(targetCourse.price)}
+            <div style={{ fontSize: 16, letterSpacing: '-0.015em', marginBottom: 2 }}>{targetCourse.title}</div>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
+              {targetCourse.lessons} lessons · ~{targetCourse.hours}h · lifetime
             </div>
           </div>
         )}

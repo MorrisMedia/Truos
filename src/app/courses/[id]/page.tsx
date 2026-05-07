@@ -24,7 +24,7 @@ export default async function CoursePage({ params }: { params: { id: string } })
     if (access.reason === 'needs_auth') {
       redirect(`/sign-up?callbackUrl=${encodeURIComponent(`/courses/${courseId}`)}`);
     }
-    redirect(`/checkout?plan=${encodeURIComponent(course.code)}`);
+    redirect('/#pricing');
   }
 
   const userId = session?.user?.id;

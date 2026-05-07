@@ -34,15 +34,15 @@ function Hero() {
           <span style={{ color: 'var(--accent)' }}>●</span>&nbsp;&nbsp;AI FLUENCY · BUILT FOR THE 90% WHO AREN&rsquo;T ENGINEERS
         </div>
         <h1 className="home-h1" style={{ maxWidth: 920, marginBottom: 28 }}>
-          AI fluency you can <span className="serif" style={{ fontStyle: 'italic' }}>actually finish</span>.
+          AI fluency your team will <span className="serif" style={{ fontStyle: 'italic' }}>actually finish</span>.
         </h1>
         <p className="home-lead" style={{ fontSize: 20, color: 'var(--text-muted)', maxWidth: 640, marginBottom: 40, lineHeight: 1.45 }}>
-          Four credentials. 116 lessons. Start from zero in AI·101 — finish with a shipped AI workflow you defended in AI·104.
+          Four credentials. 116 lessons. Built for the 90% of your workforce who aren&rsquo;t engineers.
           Plus the <Link href="/plus" style={{ color: 'var(--accent)', borderBottom: '1px solid var(--accent)' }}>Truos+ suite</Link> for tool-specific mastery (Copilot, coming: Gemini, ChatGPT, Notion).
         </p>
         <div className="home-hero-ctas" style={{ display: 'flex', gap: 12, marginBottom: 32 }}>
-          <Link className="btn btn-primary btn-lg" href="/checkout?plan=AI·101">Start AI·101 {Icons.arrow}</Link>
-          <Link className="btn btn-ghost btn-lg" href="#pricing">See pricing</Link>
+          <a className="btn btn-primary btn-lg" href="mailto:hello@truos.ai?subject=Truos%20demo%20request">Book a demo {Icons.arrow}</a>
+          <Link className="btn btn-ghost btn-lg" href="#pricing">Contact sales</Link>
         </div>
         <div className="home-trust-row" style={{
           display: 'flex', gap: 32, alignItems: 'center', flexWrap: 'wrap',
@@ -210,80 +210,43 @@ function Credibility() {
 }
 
 function Pricing() {
-  const cards = [
-    { id: 101, code: 'AI·101', name: 'AI Foundations',           price: 199,  priceLabel: '$199',   cta: 'Unlock for $199',  lessons: 20, hours: 1,   href: '/checkout?plan=AI·101' },
-    { id: 102, code: 'AI·102', name: 'AI Prompt Mastery',        price: 499,  priceLabel: '$499',    cta: 'Unlock for $499',   lessons: 24, hours: 1.5, href: '/checkout?plan=AI·102' },
-    { id: 103, code: 'AI·103', name: 'Applied AI at Work',       price: 999,  priceLabel: '$999',    cta: 'Unlock for $999',   lessons: 32, hours: 2,   href: '/checkout?plan=AI·103' },
-    { id: 104, code: 'AI·104', name: 'AI Workflow Mastery',      price: 1499, priceLabel: '$1,499',  cta: 'Unlock for $1,499', lessons: 40, hours: 2.5, featured: true, href: '/checkout?plan=AI·104' },
-  ];
   return (
     <section id="pricing" className="home-section" style={{ padding: '96px 0', borderTop: '1px solid var(--border)' }}>
       <div className="container">
-        <div style={{ marginBottom: 48 }}>
+        <div style={{ marginBottom: 48, maxWidth: 720 }}>
           <div className="eyebrow" style={{ marginBottom: 16 }}>PRICING</div>
-          <h2 className="home-h2" style={{ maxWidth: 720 }}>Pay once. <span className="serif" style={{ fontStyle: 'italic' }}>Keep it forever.</span></h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: 16, maxWidth: 640, marginTop: 12, lineHeight: 1.5 }}>
-            Lifetime access to every course you buy. No subscriptions, no renewals. 30-day money-back guarantee on every purchase.
+          <h2 className="home-h2">Pricing built around <span className="serif" style={{ fontStyle: 'italic' }}>your team</span>.</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: 16, marginTop: 12, lineHeight: 1.5 }}>
+            We tailor pricing to your team size, rollout timeline, and credential mix. Talk to sales for a quote — individual credentials, full bundles, and org-wide programs are all available.
           </p>
         </div>
 
-        <div className="eyebrow" style={{ marginBottom: 20 }}>INDIVIDUAL CREDENTIALS</div>
-        <div className="home-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 16 }}>
-          {cards.map((c) => (
-            <div key={c.id} className="panel" style={{
-              padding: 24,
-              background: c.featured ? 'linear-gradient(160deg, #16181C, #1a1d14)' : 'var(--bg-panel)',
-              borderColor: c.featured ? 'rgba(212,245,71,0.3)' : 'var(--border)',
-              position: 'relative',
-            }}>
-              {c.featured && <div style={{ position: 'absolute', top: -10, right: 20 }} className="badge accent">CAPSTONE</div>}
-              <div className="mono" style={{ fontSize: 11, color: c.featured ? 'var(--accent)' : 'var(--text-muted)', letterSpacing: '0.08em', marginBottom: 10 }}>{c.code}</div>
-              <div style={{ fontSize: 20, letterSpacing: '-0.015em', marginBottom: 8, minHeight: 48, lineHeight: 1.2 }}>{c.name}</div>
-              <div style={{ fontSize: 32, fontWeight: 500, letterSpacing: '-0.025em', marginBottom: 6 }}>{c.priceLabel}</div>
-              <div style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 20 }}>
-                {c.lessons} lessons · ~{c.hours}h · lifetime
-              </div>
-              <Link className={`btn ${c.price === 0 ? 'btn-primary' : 'btn-ghost'} btn-sm`} href={c.href} style={{ width: '100%', textAlign: 'center', display: 'block' }}>
-                {c.cta}
-              </Link>
-            </div>
-          ))}
-        </div>
-
-        <div className="home-bundle" style={{
-          padding: 32,
+        <div className="panel" style={{
+          padding: 40,
           background: 'color-mix(in oklab, var(--accent) 6%, var(--bg-panel))',
           border: '1px solid rgba(212,245,71,0.3)',
           borderRadius: 'var(--radius-lg)',
-          display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 32, alignItems: 'center',
+          display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 32, alignItems: 'center',
         }}>
           <div>
-            <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 10 }}>SAVE $500 · BEST VALUE</div>
-            <div style={{ fontSize: 26, letterSpacing: '-0.02em', marginBottom: 6, lineHeight: 1.2 }}>Get all three paid credentials</div>
-            <div style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.55, marginBottom: 12 }}>
-              AI·102 + AI·103 + AI·104. 96 lessons, ~6h total. Lifetime access. Includes the capstone project.
+            <div className="eyebrow" style={{ color: 'var(--accent)', marginBottom: 10 }}>CONTACT SALES</div>
+            <div style={{ fontSize: 26, letterSpacing: '-0.02em', marginBottom: 8, lineHeight: 1.25 }}>Get a quote tailored to your team</div>
+            <div style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.55, marginBottom: 16 }}>
+              Tell us about your team and the credentials you&rsquo;re considering. We&rsquo;ll send pricing within one business day.
             </div>
             <div style={{ display: 'flex', gap: 14, fontSize: 12, color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-              <span style={{ display: 'flex', gap: 6, alignItems: 'center' }}><span style={{ color: 'var(--accent)', display: 'flex' }}>{Icons.check}</span> 30-day money back</span>
-              <span style={{ display: 'flex', gap: 6, alignItems: 'center' }}><span style={{ color: 'var(--accent)', display: 'flex' }}>{Icons.check}</span> Lifetime updates</span>
+              <span style={{ display: 'flex', gap: 6, alignItems: 'center' }}><span style={{ color: 'var(--accent)', display: 'flex' }}>{Icons.check}</span> Volume pricing</span>
+              <span style={{ display: 'flex', gap: 6, alignItems: 'center' }}><span style={{ color: 'var(--accent)', display: 'flex' }}>{Icons.check}</span> Lifetime access</span>
               <span style={{ display: 'flex', gap: 6, alignItems: 'center' }}><span style={{ color: 'var(--accent)', display: 'flex' }}>{Icons.check}</span> Verifiable certificates</span>
             </div>
           </div>
-          <div className="home-bundle-price" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 12 }}>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: 14, color: 'var(--text-dim)', textDecoration: 'line-through' }}>$2,997</div>
-              <div style={{ fontSize: 36, fontWeight: 500, letterSpacing: '-0.025em' }}>$2,497</div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 10 }}>
+            <a className="btn btn-primary btn-lg" href="mailto:hello@truos.ai?subject=Truos%20pricing%20inquiry" style={{ width: '100%', justifyContent: 'center' }}>
+              Contact sales {Icons.arrow}
+            </a>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', textAlign: 'right' }}>
+              hello@truos.ai
             </div>
-            <Link className="btn btn-primary btn-lg" href="/checkout?plan=Bundle" style={{ width: '100%', justifyContent: 'center' }}>
-              Get the bundle {Icons.arrow}
-            </Link>
-          </div>
-        </div>
-
-        <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid var(--border)', textAlign: 'center' }}>
-          <div style={{ fontSize: 14, color: 'var(--text-muted)' }}>
-            Need a team plan?{' '}
-            <a href="mailto:hello@truos.ai?subject=Truos%20for%20Teams" style={{ color: 'var(--accent)' }}>Contact us {Icons.arrow}</a>
           </div>
         </div>
       </div>
@@ -312,15 +275,16 @@ function FinalCTA() {
           </div>
         </div>
         <h2 className="home-h2" style={{ maxWidth: 720, margin: '0 auto 24px' }}>
-          Today, you can be one <span className="serif" style={{ fontStyle: 'italic' }}>of them.</span>
+          Your team can be them <span className="serif" style={{ fontStyle: 'italic' }}>by next quarter.</span>
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: 17, maxWidth: 540, margin: '0 auto 36px', lineHeight: 1.5 }}>
-          AI·101 takes about an hour.
+          A 30-minute demo is enough to scope a rollout.
         </p>
         <div className="home-final-ctas" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link className="btn btn-primary btn-lg" href="/checkout?plan=AI·101">Start AI·101 {Icons.arrow}</Link>
+          <a className="btn btn-primary btn-lg" href="mailto:hello@truos.ai?subject=Truos%20demo%20request">Book a demo {Icons.arrow}</a>
+          <a className="btn btn-ghost btn-lg" href="mailto:hello@truos.ai?subject=Truos%20pricing%20inquiry">Contact sales</a>
         </div>
-        <div style={{ marginTop: 16, fontSize: 12, color: 'var(--text-dim)' }}>30-day money-back guarantee · No coding required · Lifetime access</div>
+        <div style={{ marginTop: 16, fontSize: 12, color: 'var(--text-dim)' }}>Lifetime access · Verifiable certificates · No coding required</div>
       </div>
     </section>
   );

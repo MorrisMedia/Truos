@@ -21,7 +21,7 @@ export default async function LessonPage({ params }: { params: { id: string; mod
     if (access.reason === 'needs_auth') {
       redirect(`/sign-up?callbackUrl=${encodeURIComponent(here)}`);
     }
-    redirect(`/checkout?plan=${encodeURIComponent(course.code)}`);
+    redirect('/#pricing');
   }
 
   return <LessonPlayer course={course} lesson={lesson} userId={session?.user?.id ?? null} />;

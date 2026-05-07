@@ -35,7 +35,6 @@ export default function TruosPlusPage() {
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
                   <div className="code" style={{ fontSize: 13, color: 'var(--accent)', letterSpacing: '0.08em' }}>{c.code}</div>
-                  <span className="badge paid">${c.price}</span>
                 </div>
                 <h3 style={{ fontSize: 30, marginBottom: 10, letterSpacing: '-0.025em' }}>{c.title}</h3>
                 <p style={{ color: 'var(--text-muted)', marginBottom: 28, fontSize: 14, lineHeight: 1.5 }}>{c.subtitle}</p>
@@ -65,11 +64,11 @@ export default function TruosPlusPage() {
                 TEAMS GET EVERY TRUOS<span style={{ fontWeight: 700 }}>+</span> COURSE
               </div>
               <div style={{ fontSize: 15, lineHeight: 1.55 }}>
-                The team plan ($99/seat/mo) includes every Truos+ course — current and future — automatically.
+                The team plan includes every Truos+ course — current and future — automatically. Pricing scales with team size.
               </div>
-              <Link className="btn btn-ghost btn-sm" style={{ marginTop: 14 }} href="/checkout?plan=Team">
-                See team plan {Icons.arrow}
-              </Link>
+              <a className="btn btn-ghost btn-sm" style={{ marginTop: 14 }} href="mailto:hello@truos.ai?subject=Truos%2B%20team%20plan">
+                Contact sales {Icons.arrow}
+              </a>
             </div>
           </div>
         </div>
