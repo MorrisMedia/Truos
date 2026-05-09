@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+// Sidesteps Vercel's stale edge 404 cache for this path.
+
 type Msg = { role: 'user' | 'assistant'; content: string };
 
 const STORAGE_KEY = 'tru.session.v1';
