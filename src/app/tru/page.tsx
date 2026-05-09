@@ -19,6 +19,7 @@ export default function TruPage() {
   const [streaming, setStreaming] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const bottomRef = useRef<HTMLDivElement | null>(null);
   const taRef = useRef<HTMLTextAreaElement | null>(null);
 
   // Hydrate from localStorage
@@ -45,10 +46,17 @@ export default function TruPage() {
     }
   }, [messages, hydrated]);
 
-  // Autoscroll
+  // Autoscroll: keep the latest turn visible. Stays out of the way if the
+  // user has scrolled up to read earlier content.
   useEffect(() => {
-    const el = scrollRef.current;
-    if (el) el.scrollTop = el.scrollHeight;
+    const scroller = scrollRef.current;
+    const bottom = bottomRef.current;
+    if (!scroller || !bottom) return;
+    const distanceFromBottom =
+      scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight;
+    if (distanceFromBottom < 160) {
+      bottom.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
   }, [messages, streaming]);
 
   // Auto-resize textarea
@@ -151,11 +159,13 @@ export default function TruPage() {
   return (
     <main
       style={{
-        minHeight: '100dvh',
+        height: '100dvh',
+        maxHeight: '100dvh',
         display: 'flex',
         flexDirection: 'column',
         background: 'var(--bg)',
         color: 'var(--text)',
+        overflow: 'hidden',
       }}
     >
       <header
@@ -209,8 +219,11 @@ export default function TruPage() {
         ref={scrollRef}
         style={{
           flex: 1,
+          minHeight: 0,
           overflowY: 'auto',
+          overflowX: 'hidden',
           padding: '32px 20px 24px',
+          WebkitOverflowScrolling: 'touch',
         }}
       >
         <div
@@ -225,6 +238,7 @@ export default function TruPage() {
           {messages.map((m, i) => (
             <Bubble key={i} role={m.role} content={m.content} streaming={streaming && i === messages.length - 1} />
           ))}
+          <div ref={bottomRef} aria-hidden style={{ height: 1 }} />
         </div>
       </div>
 
