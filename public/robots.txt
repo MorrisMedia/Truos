@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /tru
+Disallow: /api/tru/
