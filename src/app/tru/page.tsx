@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from 'react';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 
-const STORAGE_KEY = 'tru.session.v1';
 const GREETING: Msg = {
   role: 'assistant',
   content:
@@ -17,34 +16,44 @@ export default function TruPage() {
   const [messages, setMessages] = useState<Msg[]>([GREETING]);
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [loadingSession, setLoadingSession] = useState(true);
+  const [copied, setCopied] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const taRef = useRef<HTMLTextAreaElement | null>(null);
 
-  // Hydrate from localStorage
+  // On mount: if URL has ?s=<id>, load that session from server.
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const saved = JSON.parse(raw) as Msg[];
-        if (Array.isArray(saved) && saved.length > 0) setMessages(saved);
-      }
-    } catch {
-      // ignore
+    const params = new URLSearchParams(window.location.search);
+    const sid = params.get('s');
+    if (!sid) {
+      setLoadingSession(false);
+      return;
     }
-    setHydrated(true);
+    setSessionId(sid);
+    fetch(`/api/tru/session/${encodeURIComponent(sid)}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.messages && Array.isArray(data.messages) && data.messages.length > 0) {
+          setMessages(data.messages as Msg[]);
+        }
+      })
+      .catch(() => {
+        // ignore — fall back to greeting
+      })
+      .finally(() => setLoadingSession(false));
   }, []);
 
-  // Persist
+  // Sync URL with sessionId once we have one.
   useEffect(() => {
-    if (!hydrated) return;
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
-    } catch {
-      // ignore
-    }
-  }, [messages, hydrated]);
+    if (!sessionId) return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('s') === sessionId) return;
+    params.set('s', sessionId);
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.replaceState(null, '', newUrl);
+  }, [sessionId]);
 
   // Autoscroll: keep the latest turn visible. Stays out of the way if the
   // user has scrolled up to read earlier content.
@@ -94,8 +103,12 @@ export default function TruPage() {
         body: JSON.stringify({
           messages: next.slice(0, -1).map(({ role, content }) => ({ role, content })),
           meta,
+          sessionId: sessionId ?? undefined,
         }),
       });
+
+      const newSid = res.headers.get('X-Tru-Session-Id');
+      if (newSid && newSid !== sessionId) setSessionId(newSid);
 
       if (!res.ok || !res.body) {
         const err = await res.text().catch(() => '');
@@ -140,10 +153,18 @@ export default function TruPage() {
   }
 
   function reset() {
-    if (!confirm('Start over? Your conversation will be cleared.')) return;
+    if (!confirm('Start a fresh conversation? You\'ll get a new save link.')) return;
     setMessages([GREETING]);
+    setSessionId(null);
+    window.history.replaceState(null, '', window.location.pathname);
+  }
+
+  async function copyLink() {
+    if (!sessionId) return;
     try {
-      localStorage.removeItem(STORAGE_KEY);
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
     } catch {
       // ignore
     }
@@ -215,6 +236,68 @@ export default function TruPage() {
         </button>
       </header>
 
+      {sessionId && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 12,
+            padding: '10px 20px',
+            background: 'rgba(212, 245, 71, 0.08)',
+            borderBottom: '1px solid var(--border)',
+            color: 'var(--text)',
+            fontSize: 13,
+            lineHeight: 1.4,
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0, flex: 1 }}>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 10,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: 'var(--accent)',
+                whiteSpace: 'nowrap',
+                fontWeight: 600,
+              }}
+            >
+              SAVE YOUR CHAT LINK
+            </span>
+            <span
+              style={{
+                color: 'var(--text-muted)',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              to continue where you left off
+            </span>
+          </div>
+          <button
+            onClick={copyLink}
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 11,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: copied ? 'var(--accent-ink)' : 'var(--text)',
+              background: copied ? 'var(--accent)' : 'transparent',
+              padding: '6px 12px',
+              border: '1px solid ' + (copied ? 'var(--accent)' : 'var(--border-strong)'),
+              borderRadius: 'var(--radius-sm)',
+              fontWeight: 600,
+              flexShrink: 0,
+              transition: 'all 120ms ease',
+            }}
+          >
+            {copied ? 'Copied' : 'Copy link'}
+          </button>
+        </div>
+      )}
+
       <div
         ref={scrollRef}
         style={{
@@ -235,9 +318,20 @@ export default function TruPage() {
             gap: 24,
           }}
         >
-          {messages.map((m, i) => (
-            <Bubble key={i} role={m.role} content={m.content} streaming={streaming && i === messages.length - 1} />
-          ))}
+          {loadingSession ? (
+            <div style={{ color: 'var(--text-dim)', fontSize: 14, padding: '40px 0' }}>
+              Loading your conversation…
+            </div>
+          ) : (
+            messages.map((m, i) => (
+              <Bubble
+                key={i}
+                role={m.role}
+                content={m.content}
+                streaming={streaming && i === messages.length - 1}
+              />
+            ))
+          )}
           <div ref={bottomRef} aria-hidden style={{ height: 1 }} />
         </div>
       </div>

@@ -270,3 +270,18 @@ model AffiliatePayout {
   @@index([partnerId, paidAt])
   @@map("truos_affiliate_payouts")
 }
+
+model TruSession {
+  id          String   @id @default(cuid())
+  name        String?
+  sender      String?
+  learnerRole String?
+  messages    Json     @default("[]")
+  msgCount    Int      @default(0)
+  startedAt   DateTime @default(now())
+  lastSeenAt  DateTime @updatedAt
+  ipFirst     String?
+
+  @@index([lastSeenAt])
+  @@map("truos_tru_sessions")
+}
